@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Class Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Class Games">
+<meta name="theme-color" content="#5b4bdb">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<style>
+:root{
+  --bg:#f2f2f7; --card:#ffffff; --card2:#f7f7fa; --text:#111118; --muted:#6e6e78; --line:#e4e4ea;
+  --accent:#5b4bdb; --accent2:#7c6cf0; --on-accent:#fff;
+  --ok:#22a06b; --warn:#f59e0b; --bad:#e5484d;
+  --sa-t:env(safe-area-inset-top,0px); --sa-b:env(safe-area-inset-bottom,0px);
+  --sa-l:env(safe-area-inset-left,0px); --sa-r:env(safe-area-inset-right,0px);
+  --radius:16px; --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#0f0f14; --card:#1c1c24; --card2:#24242e; --text:#f3f3f8; --muted:#9a9aa8; --line:#2c2c38;
+  --accent:#8b7cf6; --accent2:#a597ff;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f0f14; --card:#1c1c24; --card2:#24242e; --text:#f3f3f8; --muted:#9a9aa8; --line:#2c2c38;
+    --accent:#8b7cf6; --accent2:#a597ff;
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font-family:var(--font);
+  -webkit-text-size-adjust:100%;overscroll-behavior:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+input,textarea{-webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+#app{position:fixed;inset:0;display:flex;flex-direction:column;overflow:hidden}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
+.topbar{flex:0 0 auto;display:flex;align-items:center;gap:8px;min-height:52px;
+  padding:calc(var(--sa-t) + 6px) calc(var(--sa-r) + 10px) 6px calc(var(--sa-l) + 10px);
+  background:var(--bg);border-bottom:1px solid var(--line)}
+.topbar h1{flex:1;font-size:19px;font-weight:700;margin:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .side{flex:0 0 84px;display:flex;align-items:center}
+.topbar .side.r{justify-content:flex-end}
+.tbtn{background:none;border:0;color:var(--accent);font:inherit;font-size:17px;font-weight:600;padding:8px 6px;border-radius:10px;min-height:44px;cursor:pointer;white-space:nowrap}
+.tbtn:active{opacity:.5}
+.content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px calc(var(--sa-r) + 14px) calc(var(--sa-b) + 24px) calc(var(--sa-l) + 14px)}
+.wrap{max-width:720px;margin:0 auto;width:100%}
+h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:22px 4px 8px}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.row{display:flex;align-items:center;gap:12px;padding:13px 16px;min-height:54px;border-bottom:1px solid var(--line);cursor:pointer;background:var(--card)}
+.row:last-child{border-bottom:0}
+.row:active{background:var(--card2)}
+.row .ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--card2);flex:0 0 36px}
+.row .txt{flex:1;min-width:0}
+.row .t{font-size:17px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .s{font-size:13px;color:var(--muted);margin-top:2px}
+.row .chev{color:var(--muted);font-size:20px;opacity:.6}
+.row.static{cursor:default}.row.static:active{background:var(--card)}
+.folderhead{display:flex;align-items:center;gap:8px;padding:10px 4px 8px;margin-top:18px}
+.folderhead .tri{width:30px;text-align:left;font-size:15px;color:var(--muted)}
+.folderhead .name{flex:1;font-size:16px;font-weight:700;cursor:pointer}
+.folderhead .cnt{color:var(--muted);font-size:13px}
+.folderhead .tbtn{font-size:15px;padding:6px 8px;min-height:36px}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:15px 18px;font:inherit;font-size:17px;font-weight:600;
+  background:var(--accent);color:var(--on-accent);cursor:pointer;text-align:center}
+.btn:active{filter:brightness(.9)}
+.btn.sec{background:var(--card);color:var(--accent);border:1px solid var(--line)}
+.btn.bad{background:var(--card);color:var(--bad);border:1px solid var(--line)}
+.btn.ok{background:var(--ok)}
+.btn.big{font-size:20px;padding:20px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.btnrow{display:flex;gap:10px}
+.btnrow .btn{flex:1;padding-left:8px;padding-right:8px}
+.field{padding:12px 16px;border-bottom:1px solid var(--line);background:var(--card)}
+.field:last-child{border-bottom:0}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.field input[type=text],.field select,.field textarea{width:100%;border:0;background:transparent;color:var(--text);font:inherit;font-size:17px;padding:4px 0;outline:none}
+.field textarea{min-height:220px;resize:vertical;line-height:1.45;font-size:17px}
+.field select{-webkit-appearance:none;appearance:none}
+.hint{font-size:13px;color:var(--muted);margin:8px 4px 0;line-height:1.4}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:12px 4px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:15px}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;min-height:54px;border-bottom:1px solid var(--line);background:var(--card);cursor:pointer}
+.toggle:last-child{border-bottom:0}
+.toggle .lbl{font-size:17px}
+.toggle .sub{font-size:13px;color:var(--muted);margin-top:2px}
+.sw{width:51px;height:31px;border-radius:16px;background:#c9c9d1;position:relative;transition:background .2s;flex:0 0 51px}
+:root[data-theme="dark"] .sw{background:#3a3a46}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sw{background:#3a3a46}}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.25);transition:transform .2s}
+.sw.on{background:var(--ok)!important}.sw.on::after{transform:translateX(20px)}
+.seg{display:flex;background:var(--card2);border-radius:12px;padding:3px;gap:2px;border:1px solid var(--line)}
+.seg button{flex:1;border:0;background:transparent;color:var(--text);font:inherit;font-size:15px;font-weight:600;padding:10px 4px;border-radius:10px;cursor:pointer;min-height:40px}
+.seg button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.stepper{display:flex;align-items:center;gap:0;background:var(--card2);border-radius:10px}
+.stepper button{width:44px;height:38px;border:0;background:transparent;color:var(--accent);font-size:22px;font-weight:600;cursor:pointer}
+.stepper span{min-width:28px;text-align:center;font-weight:700;font-size:17px}
+.check{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:0 0 26px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
+.check.on{background:var(--accent);border-color:var(--accent)}
+.empty{padding:40px 20px;text-align:center;color:var(--muted);font-size:15px;line-height:1.5}
+.empty .big{font-size:44px;margin-bottom:10px}
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.gcard{background:var(--card);border-radius:20px;padding:22px 20px;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.gcard:active{transform:scale(.98)}
+.gcard .emoji{font-size:44px;position:absolute;top:16px;right:18px}
+.gcard .n{font-size:22px;font-weight:800}
+.gcard .d{font-size:14px;color:var(--muted);margin-top:4px}
+.gcard.soon{opacity:.55;cursor:default}
+.gcard.charades{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.gcard.charades .d{color:rgba(255,255,255,.85)}
+.hero{padding:calc(var(--sa-t) + 26px) 20px 18px;text-align:center}
+.hero .title{font-size:34px;font-weight:800;letter-spacing:-.02em}
+.hero .sub{color:var(--muted);font-size:15px;margin-top:4px}
+/* modal / sheet */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center;z-index:50;animation:fade .15s}
+@media (min-width:600px){.modal{align-items:center;padding:20px}}
+.sheet{background:var(--bg);width:100%;max-width:560px;max-height:calc(100% - var(--sa-t) - 20px);border-radius:22px 22px 0 0;padding:14px 16px calc(var(--sa-b) + 16px);overflow-y:auto;animation:up .2s}
+@media (min-width:600px){.sheet{border-radius:22px;padding-bottom:16px}}
+.sheet h3{margin:4px 0 12px;font-size:20px;text-align:center}
+.sheet p{margin:0 0 16px;text-align:center;color:var(--muted);font-size:15px;line-height:1.45}
+@keyframes fade{from{opacity:0}}
+@keyframes up{from{transform:translateY(30px)}}
+.toast{position:fixed;left:50%;bottom:calc(var(--sa-b) + 26px);transform:translateX(-50%);background:#222;color:#fff;padding:11px 18px;border-radius:999px;font-size:15px;z-index:60;box-shadow:0 4px 16px rgba(0,0,0,.3);max-width:88%;text-align:center;animation:fade .2s}
+/* play */
+.play{background:var(--accent);color:#fff;position:absolute;inset:0;display:flex;flex-direction:column;overflow:hidden;
+  padding:var(--sa-t) var(--sa-r) var(--sa-b) var(--sa-l);transition:background .12s}
+.play.ready{background:#1f1f2b}
+.play.good{background:var(--ok)}
+.play.pass{background:var(--warn)}
+.play .ptop{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;font-size:16px;font-weight:600}
+.play .ptop button{background:rgba(255,255,255,.18);border:0;color:#fff;font:inherit;font-size:15px;font-weight:600;padding:9px 14px;border-radius:999px;min-height:40px;cursor:pointer}
+.play .timerbar{height:6px;background:rgba(255,255,255,.25);margin:0 14px;border-radius:3px;overflow:hidden}
+.play .timerbar i{display:block;height:100%;background:#fff;width:100%;transition:width .2s linear}
+.play .timerbar.hot i{background:#ffd166}
+.play .clock{font-variant-numeric:tabular-nums;font-size:22px;font-weight:800;min-width:60px;text-align:center}
+.play .word{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px 24px;font-weight:800;line-height:1.08;word-break:break-word;letter-spacing:-.01em;min-height:0}
+.play .word span{display:block;width:100%}
+.play .sub{text-align:center;opacity:.8;font-size:16px;padding:0 20px 8px}
+.play .actions{display:flex;gap:14px;padding:10px 16px 18px}
+.play .actions button{flex:1;border:0;border-radius:22px;padding:22px 10px;font:inherit;font-size:24px;font-weight:800;cursor:pointer;min-height:96px;color:#fff}
+.play .actions .p{background:rgba(0,0,0,.28)}
+.play .actions .g{background:rgba(255,255,255,.22)}
+.play .actions button:active{transform:scale(.97)}
+.play .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;overflow-y:auto}
+.play .center .h{font-size:34px;font-weight:800;margin-bottom:8px}
+.play .center .t{font-size:18px;opacity:.85;line-height:1.5;max-width:520px}
+.play .center .count{font-size:140px;font-weight:900;line-height:1}
+.play .pbtn{background:#fff;color:#1f1f2b;border:0;border-radius:16px;padding:18px 34px;font:inherit;font-size:20px;font-weight:700;margin-top:22px;cursor:pointer;min-width:220px}
+.play .pbtn.ghost{background:rgba(255,255,255,.14);color:#fff}
+.play .pbtn:active{filter:brightness(.9)}
+.play .results{flex:1;overflow-y:auto;padding:0 16px;width:100%;max-width:640px;margin:0 auto}
+.play .rlist{background:rgba(255,255,255,.12);border-radius:14px;padding:6px 0;margin:10px 0}
+.play .rlist div{padding:8px 14px;font-size:17px;display:flex;justify-content:space-between}
+.play .rlist div + div{border-top:1px solid rgba(255,255,255,.1)}
+.play .score{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:8px 0 10px}
+.play .score>div{background:rgba(255,255,255,.14);border-radius:14px;padding:12px 18px;min-width:120px;text-align:center}
+.play .score>div.lead{background:#fff;color:#1f1f2b}
+.play .score .n{font-size:14px;opacity:.85}.play .score .v{font-size:30px;font-weight:900}
+.play .resacts{display:flex;gap:10px;padding:12px 16px 12px;width:100%;max-width:640px;margin:0 auto}
+.play .resacts .pbtn{flex:1;margin:0;min-width:0;padding:16px 10px;font-size:18px}
+@media (orientation:landscape) and (max-height:520px){
+  .play .actions button{min-height:70px;padding:14px;font-size:20px}
+  .play .center .h{font-size:26px}.play .center .count{font-size:100px}
+}
+.ver{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+'use strict';
+const APP_VERSION = '1.0.0';
+const LS_KEY = 'classGames.v1';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+const uid = () => Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-4);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const IS_STANDALONE = window.navigator.standalone === true || matchMedia('(display-mode: standalone)').matches;
+
+/* ===================== Preset decks ===================== */
+const PRESET_DECKS = [
+  { id: 'preset_animals', name: 'Animals', emoji: '🐾', words: ['dog','cat','elephant','monkey','lion','giraffe','kangaroo','snake','frog','penguin','chicken','cow','horse','rabbit','bear','crocodile','dolphin','shark','butterfly','spider','mouse','owl','pig','duck','gorilla','octopus','bee','turtle','eagle','zebra'] },
+  { id: 'preset_actions', name: 'Actions (verbs)', emoji: '🏃', words: ['run','jump','swim','sleep','eat','drink','dance','sing','read','write','cook','drive','fly','climb','cry','laugh','brush your teeth','wash your hands','ride a bike','play the guitar','take a photo','paint','fish','sneeze','yawn','clap','wave','whisper','shout','tiptoe','dig','throw a ball','catch','kick','skate','ski','hug','fall asleep','wake up','get dressed'] },
+  { id: 'preset_jobs', name: 'Jobs', emoji: '👩‍🚒', words: ['teacher','doctor','firefighter','police officer','chef','pilot','farmer','dentist','nurse','singer','football player','astronaut','builder','waiter','hairdresser','vet','painter','photographer','bus driver','scientist','actor','baker','mechanic','lifeguard','magician','clown','judge','DJ','gardener','postman'] },
+  { id: 'preset_food', name: 'Food & drink', emoji: '🍕', words: ['pizza','spaghetti','ice cream','banana','apple','hamburger','chips','soup','sandwich','chocolate','popcorn','watermelon','carrot','egg','cheese','milk','orange juice','lemon','chewing gum','lollipop','sushi','corn on the cob','cereal','pancake','coffee','tea','grapes','strawberry','chicken wings','noodles'] },
+  { id: 'preset_sports', name: 'Sports & hobbies', emoji: '⚽', words: ['football','basketball','tennis','swimming','boxing','karate','yoga','golf','baseball','volleyball','surfing','skateboarding','cycling','horse riding','archery','bowling','ping pong','gymnastics','fishing','chess','video games','ballet','rock climbing','skiing','rugby','running','weightlifting','ice skating','juggling','drawing'] },
+  { id: 'preset_classroom', name: 'Classroom objects', emoji: '✏️', words: ['pencil','rubber','ruler','scissors','glue','book','backpack','pencil sharpener','whiteboard','chair','desk','computer','clock','window','door','crayons','notebook','calculator','globe','bin','stapler','pencil case','marker','tablet','projector','dictionary','highlighter','paper','map','blackboard'] },
+  { id: 'preset_feelings', name: 'Feelings', emoji: '😄', words: ['happy','sad','angry','scared','tired','bored','surprised','excited','shy','nervous','hungry','thirsty','cold','hot','sick','confused','proud','embarrassed','in love','sleepy','worried','jealous','calm','disgusted','lonely','brave','silly','grumpy','relaxed','frustrated'] },
+  { id: 'preset_routines', name: 'Daily routines', emoji: '⏰', words: ['wake up','brush your teeth','have breakfast','get dressed','go to school','have lunch','do homework','watch TV','have a shower','go to bed','comb your hair','make the bed','walk the dog','wash the dishes','put on shoes','set the alarm','have dinner','tidy your room','take the bus','read a book','play video games','call a friend','take out the rubbish','water the plants','brush your hair'] },
+  { id: 'preset_places', name: 'Places in town', emoji: '🏙️', words: ['school','hospital','supermarket','cinema','library','swimming pool','restaurant','zoo','airport','train station','beach','park','museum','bank','police station','fire station','gym','hairdresser','bakery','church','castle','farm','stadium','hotel','shopping centre','bus stop','pharmacy','post office','playground','garage'] },
+  { id: 'preset_clothes', name: 'Clothes', emoji: '👕', words: ['T-shirt','jeans','dress','skirt','hat','scarf','gloves','boots','trainers','socks','jacket','coat','sunglasses','umbrella','pyjamas','swimsuit','tie','cap','belt','shorts','jumper','raincoat','high heels','crown','helmet','watch','earrings','glasses','backpack','ring'] },
+  { id: 'preset_weather', name: 'Weather & seasons', emoji: '🌦️', words: ['rainy','sunny','windy','snowy','cloudy','stormy','foggy','hot','cold','thunder','lightning','rainbow','summer','winter','spring','autumn','hurricane','tornado','ice','flood','earthquake','heat wave','hail','frost','sunset'] },
+  { id: 'preset_transport', name: 'Transport', emoji: '🚲', words: ['car','bus','bicycle','motorbike','train','plane','helicopter','boat','ship','submarine','rocket','skateboard','scooter','taxi','lorry','tractor','hot air balloon','canoe','horse','ambulance','fire engine','tram','ferry','roller skates','spaceship'] },
+  { id: 'preset_body', name: 'Body & health', emoji: '🦷', words: ['head','shoulders','knees','toes','eyes','ears','mouth','nose','elbow','stomach','back','hair','teeth','tongue','heart','headache','toothache','cold','cough','broken arm','sunburn','fever','sneeze','hiccups','stomach ache','bandage','plaster','injection','thermometer','crutches'] },
+  { id: 'preset_characters', name: 'Characters & stories', emoji: '🦸', words: ['Spider-Man','Harry Potter','Elsa','Batman','Mario','Pikachu','Shrek','Santa Claus','Cinderella','Superman','a pirate','a vampire','a zombie','a robot','a witch','a ghost','a princess','a knight','a dragon','a mermaid','a cowboy','a ninja','an alien','Minions','Peppa Pig','Sonic','Buzz Lightyear','a wizard','Frankenstein','a giant'] },
+  { id: 'preset_house', name: 'At home', emoji: '🏠', words: ['bed','sofa','fridge','oven','television','lamp','mirror','toilet','shower','bath','washing machine','vacuum cleaner','microwave','iron','kettle','pillow','blanket','stairs','garden','garage','key','remote control','toothbrush','hairdryer','alarm clock','curtains','wardrobe','bookshelf','frying pan','broom'] },
+  { id: 'preset_holidays', name: 'Halloween & Christmas', emoji: '🎃', words: ['pumpkin','skeleton','witch','vampire','ghost','spider web','bat','haunted house','trick or treat','mummy','black cat','Santa Claus','reindeer','snowman','Christmas tree','present','elf','sleigh','stocking','candy cane','gingerbread man','fireplace','chimney','snowball fight','carol singers','turkey','crackers','mistletoe','angel','star'] },
+];
+const PRESET_FOLDER = { id: 'preset', name: 'Preset decks' };
+
+/* ===================== Store ===================== */
+const DEFAULT_SETTINGS = { roundSeconds: 60, allowPass: true, avoidRepeats: true, sound: true, showPresets: true, theme: 'auto', teams: 1, teamNames: ['Team 1', 'Team 2', 'Team 3', 'Team 4'], lastDecks: [], collapsed: {} };
+let db;
+function freshDb() { return { v: 1, folders: [], decks: [], settings: JSON.parse(JSON.stringify(DEFAULT_SETTINGS)) }; }
+function normalizeDb(d) {
+  if (!d || typeof d !== 'object') return freshDb();
+  d.v = 1;
+  d.folders = Array.isArray(d.folders) ? d.folders.filter(f => f && f.id && typeof f.name === 'string').map(f => ({ id: String(f.id), name: f.name })) : [];
+  d.decks = Array.isArray(d.decks) ? d.decks.filter(k => k && k.id && typeof k.name === 'string').map(k => ({
+    id: String(k.id), name: k.name, folderId: k.folderId ? String(k.folderId) : null,
+    words: cleanWords(Array.isArray(k.words) ? k.words : []),
+    created: k.created || Date.now(), updated: k.updated || Date.now(),
+  })) : [];
+  const folderIds = new Set(d.folders.map(f => f.id));
+  d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
+  d.settings = { ...JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), ...(d.settings || {}) };
+  if (!Array.isArray(d.settings.teamNames) || d.settings.teamNames.length < 4) d.settings.teamNames = [...DEFAULT_SETTINGS.teamNames];
+  if (!Array.isArray(d.settings.lastDecks)) d.settings.lastDecks = [];
+  if (!d.settings.collapsed || typeof d.settings.collapsed !== 'object') d.settings.collapsed = {};
+  return d;
+}
+function loadDb() {
+  try { const raw = localStorage.getItem(LS_KEY); if (raw) return normalizeDb(JSON.parse(raw)); } catch (e) { console.warn('load failed', e); }
+  return freshDb();
+}
+function saveDb() {
+  db.savedAt = Date.now();
+  try { localStorage.setItem(LS_KEY, JSON.stringify(db)); } catch (e) { toast('Could not save: ' + e.message); }
+}
+function cleanWords(arr) {
+  const seen = new Set(); const out = [];
+  for (let w of arr) {
+    w = String(w ?? '').replace(/\s+/g, ' ').trim();
+    if (!w) continue;
+    const k = w.toLowerCase();
+    if (seen.has(k)) continue;
+    seen.add(k); out.push(w);
+  }
+  return out;
+}
+/* Parse free text into words: one per line; commas/semicolons/tabs split a line; "1. " or "- " prefixes are removed. */
+function parseWords(text) {
+  const lines = String(text || '').split(/\r?\n/);
+  const out = [];
+  for (const line of lines) {
+    const parts = /[,;\t]/.test(line) ? line.split(/[,;\t]/) : [line];
+    for (let p of parts) {
+      p = p.trim().replace(/^(?:[-*•]|\d+[.)])\s*/, '').replace(/^["']|["']$/g, '');
+      out.push(p);
+    }
+  }
+  return cleanWords(out);
+}
+const allDecks = () => db.settings.showPresets ? db.decks.concat(PRESET_DECKS) : db.decks;
+const getDeck = id => db.decks.find(k => k.id === id) || PRESET_DECKS.find(k => k.id === id) || null;
+const isPreset = k => !!(k && k.id && String(k.id).startsWith('preset_'));
+const getFolder = id => id === 'preset' ? PRESET_FOLDER : db.folders.find(f => f.id === id) || null;
+const sortByName = a => a.slice().sort((x, y) => x.name.localeCompare(y.name, undefined, { sensitivity: 'base' }));
+function foldersSorted() { return sortByName(db.folders); }
+function decksInFolder(fid) { return sortByName(db.decks.filter(k => (k.folderId || null) === (fid || null))); }
+function addFolder(name) { const f = { id: uid(), name: String(name).trim() || 'Folder' }; db.folders.push(f); saveDb(); return f; }
+function upsertDeck(d) {
+  const i = db.decks.findIndex(k => k.id === d.id);
+  d.updated = Date.now();
+  if (i >= 0) db.decks[i] = d; else { d.created = d.created || Date.now(); db.decks.push(d); }
+  saveDb(); return d;
+}
+function deleteDeck(id) { db.decks = db.decks.filter(k => k.id !== id); db.settings.lastDecks = db.settings.lastDecks.filter(x => x !== id); saveDb(); }
+function deleteFolder(id) { db.decks.forEach(k => { if (k.folderId === id) k.folderId = null; }); db.folders = db.folders.filter(f => f.id !== id); saveDb(); }
+function uniqueName(name, exceptId) {
+  let n = name, i = 2;
+  const taken = () => allDecks().some(k => k.id !== exceptId && k.name.toLowerCase() === n.toLowerCase());
+  while (taken()) n = `${name} (${i++})`;
+  return n;
+}
+/* Import: returns {kind:'backup', data} | {kind:'decks', decks:[{name,words,folderName?}]} | {kind:'words', words, name} */
+function detectImport(text, fileName) {
+  const t = String(text || '').trim();
+  const baseName = (fileName || '').replace(/\.[^.]+$/, '').trim();
+  if (t.startsWith('{') || t.startsWith('[')) {
+    try {
+      const j = JSON.parse(t);
+      if (j && Array.isArray(j.decks) && (Array.isArray(j.folders) || j.v)) return { kind: 'backup', data: normalizeDb(JSON.parse(t)) };
+      if (Array.isArray(j)) {
+        if (j.every(x => typeof x === 'string')) return { kind: 'words', words: cleanWords(j), name: baseName };
+        const decks = j.filter(x => x && Array.isArray(x.words)).map(x => ({ name: String(x.name || baseName || 'Imported'), words: cleanWords(x.words), folderName: x.folder || x.folderName || null }));
+        if (decks.length) return { kind: 'decks', decks };
+      }
+      if (j && Array.isArray(j.words)) return { kind: 'words', words: cleanWords(j.words), name: String(j.name || baseName || '') };
+    } catch (e) { /* fall through to plain text */ }
+  }
+  return { kind: 'words', words: parseWords(t), name: baseName };
+}
+function mergeBackup(data, replace) {
+  if (replace) { db = normalizeDb(data); saveDb(); return { decks: db.decks.length, folders: db.folders.length }; }
+  let nd = 0, nf = 0;
+  const folderMap = {};
+  for (const f of data.folders) {
+    const ex = db.folders.find(x => x.id === f.id) || db.folders.find(x => x.name.toLowerCase() === f.name.toLowerCase());
+    if (ex) folderMap[f.id] = ex.id; else { const nfo = { id: f.id, name: f.name }; db.folders.push(nfo); folderMap[f.id] = nfo.id; nf++; }
+  }
+  for (const k of data.decks) {
+    const ex = db.decks.find(x => x.id === k.id);
+    const deck = { ...k, folderId: k.folderId ? (folderMap[k.folderId] || null) : null };
+    if (ex) { Object.assign(ex, deck); } else { db.decks.push(deck); nd++; }
+  }
+  saveDb();
+  return { decks: nd, folders: nf };
+}
+function exportBackup() { return JSON.stringify({ ...db, exportedAt: new Date().toISOString(), app: 'Class Games ' + APP_VERSION }, null, 2); }
+const safeFile = n => String(n).replace(/[\\/:*?"<>|]/g, '_');
+const nWords = n => n + (n === 1 ? ' word' : ' words');
+
+/* ===================== UI helpers ===================== */
+let toastTimer;
+function toast(msg, ms = 2200) {
+  $$('.toast').forEach(t => t.remove());
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t);
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.remove(), ms);
+}
+function openSheet(html, onMount) {
+  const m = document.createElement('div'); m.className = 'modal';
+  m.innerHTML = `<div class="sheet">${html}</div>`;
+  m.addEventListener('click', e => { if (e.target === m) closeSheet(m); });
+  document.body.appendChild(m);
+  if (onMount) onMount(m);
+  return m;
+}
+function closeSheet(m) { if (m && m.parentNode) m.remove(); }
+function confirmDlg(title, text, okLabel = 'OK', danger = false) {
+  return new Promise(res => {
+    const m = openSheet(`<h3>${esc(title)}</h3>${text ? `<p>${esc(text)}</p>` : ''}
+      <div class="btnrow"><button class="btn sec" data-a="no">Cancel</button><button class="btn ${danger ? 'bad' : ''}" data-a="yes">${esc(okLabel)}</button></div>`);
+    m.addEventListener('click', e => { const a = e.target.dataset.a; if (a) { closeSheet(m); res(a === 'yes'); } });
+  });
+}
+function promptDlg(title, value = '', placeholder = '', okLabel = 'Save') {
+  return new Promise(res => {
+    const m = openSheet(`<h3>${esc(title)}</h3><div class="card"><div class="field"><input type="text" id="pv" value="${esc(value)}" placeholder="${esc(placeholder)}" autocomplete="off" autocapitalize="sentences"></div></div>
+      <div class="btnrow" style="margin-top:14px"><button class="btn sec" data-a="no">Cancel</button><button class="btn" data-a="yes">${esc(okLabel)}</button></div>`,
+      mm => { const i = $('#pv', mm); setTimeout(() => { i.focus(); i.select(); }, 50); i.addEventListener('keydown', e => { if (e.key === 'Enter') mm.querySelector('[data-a=yes]').click(); }); });
+    m.addEventListener('click', e => { const a = e.target.dataset.a; if (a) { const v = $('#pv', m).value; closeSheet(m); res(a === 'yes' ? v : null); } });
+  });
+}
+function chooseDlg(title, options) { // options: [{label, value, sub?, danger?}]
+  return new Promise(res => {
+    const m = openSheet(`<h3>${esc(title)}</h3><div class="card">${options.map((o, i) => `<div class="row" data-i="${i}"><div class="txt"><div class="t" style="${o.danger ? 'color:var(--bad)' : ''}">${esc(o.label)}</div>${o.sub ? `<div class="s">${esc(o.sub)}</div>` : ''}</div></div>`).join('')}</div>
+      <button class="btn sec" data-a="no" style="margin-top:14px">Cancel</button>`);
+    m.addEventListener('click', e => {
+      const r = e.target.closest('.row'); if (r) { closeSheet(m); res(options[+r.dataset.i].value); return; }
+      if (e.target.dataset.a === 'no') { closeSheet(m); res(null); }
+    });
+  });
+}
+async function shareOrDownload(text, filename, mime) {
+  const blob = new Blob([text], { type: mime });
+  try {
+    const file = new File([blob], filename, { type: mime });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: filename }); return true; }
+  } catch (e) { if (e && e.name === 'AbortError') return false; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+  return true;
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); toast('Copied'); return true; } catch (e) { toast('Copy not available'); return false; }
+}
+function applyTheme() {
+  const t = db.settings.theme;
+  if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t);
+}
+function topbar(title, left, right) {
+  return `<div class="topbar"><div class="side">${left || ''}</div><h1>${esc(title)}</h1><div class="side r">${right || ''}</div></div>`;
+}
+const backBtn = (label = 'Back', fallback = '#library') => `<button class="tbtn" data-nav="back" data-fallback="${fallback}">‹ ${esc(label)}</button>`;
+
+/* ===================== Router ===================== */
+const app = $('#app');
+const navState = { depth: 0 };
+function route() {
+  const h = location.hash.replace(/^#\/?/, '') || 'home';
+  const i = h.indexOf('/');
+  const name = i < 0 ? h : h.slice(0, i);
+  const arg = i < 0 ? '' : h.slice(i + 1);
+  $$('.modal').forEach(m => m.remove());
+  const screens = { home: renderHome, library: renderLibrary, deck: renderDeck, edit: renderEdit, setup: renderSetup, play: renderPlay, settings: renderSettings };
+  (screens[name] || renderHome)(arg);
+}
+function go(hash) { location.hash = hash; }
+function back(fallback = '#library') {
+  if (navState.depth > 0) { navState.depth--; history.back(); } else location.replace(fallback);
+}
+window.addEventListener('hashchange', route);
+app.addEventListener('click', e => {
+  const b = e.target.closest('[data-nav]'); if (!b) return;
+  const v = b.dataset.nav;
+  if (v === 'back') back(b.dataset.fallback || '#library'); else { navState.depth++; go(v); }
+});
+
+/* ===================== Screens ===================== */
+function renderHome() {
+  app.innerHTML = `<div class="screen">
+    <div class="content"><div class="wrap">
+      <div class="hero"><div class="title">Class Games</div><div class="sub">Pick a game</div></div>
+      <div class="games">
+        <div class="gcard charades" data-nav="#library"><div class="emoji">🎭</div><div class="n">Charades</div><div class="d">Act it out, the class guesses. Your own word decks.</div></div>
+        <div class="gcard soon"><div class="emoji">🧩</div><div class="n">More soon</div><div class="d">New games will appear here.</div></div>
+      </div>
+      <div style="margin-top:22px"><button class="btn sec" data-nav="#settings">Settings & backup</button></div>
+      <div class="ver">v${APP_VERSION}${IS_STANDALONE ? '' : ' · add to your Home Screen for the full-screen app'}</div>
+    </div></div></div>`;
+}
+
+function renderLibrary() {
+  const s = db.settings;
+  const folderBlock = (fid, name, decks, isPresetF) => {
+    const key = fid || 'none';
+    const collapsed = !!s.collapsed[key];
+    const menu = (isPresetF || !fid) ? '' : `<button class="tbtn" data-fmenu="${fid}">•••</button>`;
+    const rows = decks.map(k => `<div class="row" data-nav="#deck/${k.id}"><div class="ic">${esc(k.emoji || (isPresetF ? '📚' : '🗂️'))}</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}</div></div><div class="chev">›</div></div>`).join('');
+    return `<div class="folderhead" data-collapse="${key}"><span class="tri">${collapsed ? '▶' : '▼'}</span><div class="name">${esc(name)}</div><span class="cnt">${decks.length}</span>${menu}</div>
+      ${collapsed ? '' : `<div class="card">${rows || `<div class="row static"><div class="txt"><div class="s">Empty folder · use ••• to add a deck</div></div></div>`}</div>`}`;
+  };
+  const folders = foldersSorted();
+  const unfiled = decksInFolder(null);
+  let body = '';
+  if (!db.decks.length && !folders.length) {
+    body += `<div class="empty"><div class="big">🗂️</div>No decks of your own yet.<br>Tap <b>New deck</b> to type a list, or <b>Import</b> to bring in a file or pasted text.</div>`;
+  } else {
+    if (unfiled.length || !folders.length) body += folderBlock(null, 'My decks', unfiled, false);
+    for (const f of folders) body += folderBlock(f.id, f.name, decksInFolder(f.id), false);
+  }
+  if (s.showPresets) body += folderBlock('preset', 'Preset decks', PRESET_DECKS, true);
+  app.innerHTML = `<div class="screen">
+    ${topbar('Charades', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#settings">Settings</button>`)}
+    <div class="content"><div class="wrap">
+      <button class="btn big" data-nav="#setup" ${allDecks().length ? '' : 'disabled'}>▶ Play</button>
+      <div class="btnrow" style="margin-top:10px"><button class="btn sec" data-nav="#edit/new">+ New deck</button><button class="btn sec" data-act="newfolder">+ Folder</button><button class="btn sec" data-act="import">Import</button></div>
+      ${body}
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', async e => {
+    const fm = e.target.closest('[data-fmenu]'); if (fm) { folderMenu(fm.dataset.fmenu); return; }
+    const c = e.target.closest('[data-collapse]'); if (c) { const k = c.dataset.collapse; s.collapsed[k] = !s.collapsed[k]; saveDb(); renderLibrary(); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'newfolder') { const n = await promptDlg('New folder', '', 'Folder name', 'Create'); if (n && n.trim()) { addFolder(n); renderLibrary(); } }
+    if (a.dataset.act === 'import') importSheet();
+  });
+}
+async function folderMenu(fid) {
+  const f = getFolder(fid); if (!f) return;
+  const v = await chooseDlg(f.name, [
+    { label: 'New deck in this folder', value: 'new' },
+    { label: 'Rename folder', value: 'rename' },
+    { label: 'Delete folder', value: 'delete', sub: 'Decks inside are kept and moved to My decks', danger: true },
+  ]);
+  if (v === 'new') { navState.depth++; go('#edit/new?folder=' + fid); }
+  if (v === 'rename') { const n = await promptDlg('Rename folder', f.name); if (n && n.trim()) { f.name = n.trim(); saveDb(); renderLibrary(); } }
+  if (v === 'delete') { if (await confirmDlg('Delete folder "' + f.name + '"?', 'The decks inside will not be deleted.', 'Delete', true)) { deleteFolder(fid); renderLibrary(); } }
+}
+
+function renderDeck(id) {
+  const k = getDeck(id);
+  if (!k) { location.replace('#library'); return; }
+  const preset = isPreset(k);
+  const folder = preset ? PRESET_FOLDER : getFolder(k.folderId);
+  app.innerHTML = `<div class="screen">
+    ${topbar(k.name, backBtn(), preset ? '' : `<button class="tbtn" data-nav="#edit/${k.id}">Edit</button>`)}
+    <div class="content"><div class="wrap">
+      <div class="hint" style="margin:0 4px 12px">${folder ? '📁 ' + esc(folder.name) + ' · ' : ''}${nWords(k.words.length)}${preset ? ' · preset (copy it to edit)' : ''}</div>
+      <button class="btn big" data-act="play">▶ Play this deck</button>
+      <div class="btnrow" style="margin-top:10px">
+        ${preset ? `<button class="btn sec" data-act="copy">Copy to my decks</button>` : `<button class="btn sec" data-act="move">Move</button><button class="btn sec" data-act="dup">Duplicate</button>`}
+        <button class="btn sec" data-act="export">Export</button>
+      </div>
+      <h2 class="sec">Words</h2>
+      <div class="chips">${k.words.map(w => `<span class="chip">${esc(w)}</span>`).join('') || '<span class="hint">No words yet. Tap Edit to add some.</span>'}</div>
+      ${preset ? '' : `<div style="margin-top:20px"><button class="btn bad" data-act="delete">Delete deck</button></div>`}
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', async e => {
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    const act = a.dataset.act;
+    if (act === 'play') { db.settings.lastDecks = [k.id]; saveDb(); navState.depth++; go('#setup'); }
+    if (act === 'copy' || act === 'dup') {
+      const d = upsertDeck({ id: uid(), name: uniqueName(k.name), folderId: preset ? null : k.folderId, words: k.words.slice() });
+      toast('Copied as "' + d.name + '"'); navState.depth++; go('#edit/' + d.id);
+    }
+    if (act === 'move') {
+      const opts = [{ label: 'My decks (no folder)', value: '' }].concat(foldersSorted().map(f => ({ label: f.name, value: f.id }))).concat([{ label: '+ New folder…', value: '__new' }]);
+      let v = await chooseDlg('Move to', opts); if (v === null) return;
+      if (v === '__new') { const n = await promptDlg('New folder', '', 'Folder name', 'Create'); if (!n || !n.trim()) return; v = addFolder(n).id; }
+      k.folderId = v || null; upsertDeck(k); renderDeck(id); toast('Moved');
+    }
+    if (act === 'export') {
+      const v = await chooseDlg('Export "' + k.name + '"', [
+        { label: 'Share as text file (.txt)', value: 'txt', sub: 'One word per line. Re-import it anywhere.' },
+        { label: 'Share as JSON', value: 'json', sub: 'Keeps the deck name and folder.' },
+        { label: 'Copy words to clipboard', value: 'copy' },
+      ]);
+      if (v === 'txt') shareOrDownload(k.words.join('\n'), safeFile(k.name) + '.txt', 'text/plain');
+      if (v === 'json') shareOrDownload(JSON.stringify({ name: k.name, folder: folder && !preset ? folder.name : null, words: k.words }, null, 2), safeFile(k.name) + '.json', 'application/json');
+      if (v === 'copy') copyText(k.words.join('\n'));
+    }
+    if (act === 'delete') { if (await confirmDlg('Delete "' + k.name + '"?', 'This cannot be undone.', 'Delete', true)) { deleteDeck(id); toast('Deleted'); back('#library'); } }
+  });
+}
+
+function renderEdit(arg) {
+  const q = arg.indexOf('?');
+  const idPart = q < 0 ? arg : arg.slice(0, q);
+  const params = new URLSearchParams(q < 0 ? '' : arg.slice(q + 1));
+  const isNew = idPart === 'new';
+  const k = isNew ? { id: uid(), name: '', folderId: params.get('folder') || null, words: [] } : getDeck(idPart);
+  if (!k || isPreset(k)) { location.replace('#library'); return; }
+  const folderOpts = [`<option value="">My decks (no folder)</option>`].concat(foldersSorted().map(f => `<option value="${f.id}" ${k.folderId === f.id ? 'selected' : ''}>${esc(f.name)}</option>`)).concat([`<option value="__new">+ New folder…</option>`]).join('');
+  app.innerHTML = `<div class="screen">
+    ${topbar(isNew ? 'New deck' : 'Edit deck', `<button class="tbtn" data-act="cancel">Cancel</button>`, `<button class="tbtn" data-act="save">Save</button>`)}
+    <div class="content"><div class="wrap">
+      <div class="card">
+        <div class="field"><label>Deck name</label><input type="text" id="dname" value="${esc(k.name)}" placeholder="e.g. Unit 3 vocabulary" autocomplete="off"></div>
+        <div class="field"><label>Folder</label><select id="dfolder">${folderOpts}</select></div>
+        <div class="field"><label>Words · <span id="wcount">${k.words.length}</span></label><textarea id="dwords" placeholder="One word or phrase per line&#10;(commas also work)" autocapitalize="none" autocorrect="off" spellcheck="false">${esc(k.words.join('\n'))}</textarea></div>
+      </div>
+      <div class="hint">Paste a list from Notes, a document or a website. Numbers like "1." and bullets are removed automatically. Duplicates are ignored.</div>
+      <div class="btnrow" style="margin-top:12px"><button class="btn sec" data-act="sort">Sort A–Z</button><button class="btn sec" data-act="clean">Tidy up</button></div>
+    </div></div></div>`;
+  const ta = $('#dwords', app), name = $('#dname', app), sel = $('#dfolder', app), wc = $('#wcount', app);
+  const count = () => { wc.textContent = parseWords(ta.value).length; };
+  ta.addEventListener('input', count);
+  sel.addEventListener('change', async () => {
+    if (sel.value === '__new') {
+      const n = await promptDlg('New folder', '', 'Folder name', 'Create');
+      if (n && n.trim()) { const f = addFolder(n); const o = document.createElement('option'); o.value = f.id; o.textContent = f.name; sel.insertBefore(o, sel.lastElementChild); sel.value = f.id; }
+      else sel.value = k.folderId || '';
+    }
+  });
+  if (isNew) setTimeout(() => name.focus(), 80);
+  const doSave = () => {
+    const words = parseWords(ta.value);
+    const nm = uniqueName(name.value.trim() || 'Untitled deck', k.id);
+    upsertDeck({ ...k, name: nm, folderId: sel.value && sel.value !== '__new' ? sel.value : null, words });
+    toast(words.length ? 'Saved · ' + nWords(words.length) : 'Saved (no words yet)');
+    if (isNew) location.replace('#deck/' + k.id); else back('#deck/' + k.id);
+  };
+  $('.screen', app).addEventListener('click', e => {
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'save') doSave();
+    if (a.dataset.act === 'cancel') back(isNew ? '#library' : '#deck/' + k.id);
+    if (a.dataset.act === 'sort') { ta.value = parseWords(ta.value).sort((x, y) => x.localeCompare(y, undefined, { sensitivity: 'base' })).join('\n'); count(); }
+    if (a.dataset.act === 'clean') { ta.value = parseWords(ta.value).join('\n'); count(); toast('Tidied'); }
+  });
+}
+
+function importSheet() {
+  const folderOpts = [`<option value="">My decks (no folder)</option>`].concat(foldersSorted().map(f => `<option value="${f.id}">${esc(f.name)}</option>`)).join('');
+  const m = openSheet(`<h3>Import</h3>
+    <p>Paste a list, or choose a .txt / .csv / .json file. A full backup file restores everything.</p>
+    <div class="card">
+      <div class="field"><label>Deck name</label><input type="text" id="iname" placeholder="Name for the new deck" autocomplete="off"></div>
+      <div class="field"><label>Folder</label><select id="ifolder">${folderOpts}</select></div>
+      <div class="field"><label>List · <span id="icount">0</span> words</label><textarea id="itext" style="min-height:140px" placeholder="Paste here…" autocapitalize="none" autocorrect="off" spellcheck="false"></textarea></div>
+    </div>
+    <div class="btnrow" style="margin-top:12px"><button class="btn sec" id="ifile">Choose file…</button><button class="btn" id="igo" disabled>Import</button></div>
+    <input type="file" id="ifileinput" accept=".txt,.csv,.json,.tsv,text/plain,text/csv,application/json" style="display:none">
+    <div id="ibackup" style="display:none;margin-top:14px"></div>
+    <button class="btn sec" id="icancel" style="margin-top:10px">Cancel</button>`);
+  const ta = $('#itext', m), name = $('#iname', m), goBtn = $('#igo', m), cnt = $('#icount', m), fi = $('#ifileinput', m), bk = $('#ibackup', m);
+  let pending = null;
+  const analyse = fileName => {
+    pending = detectImport(ta.value, fileName);
+    bk.style.display = 'none';
+    if (pending.kind === 'backup') {
+      cnt.textContent = '—'; goBtn.disabled = true; goBtn.textContent = 'Import';
+      bk.style.display = 'block';
+      bk.innerHTML = `<div class="card"><div class="row static"><div class="ic">💾</div><div class="txt"><div class="t">Backup file</div><div class="s">${pending.data.decks.length} decks · ${pending.data.folders.length} folders</div></div></div></div>
+        <div class="btnrow" style="margin-top:10px"><button class="btn" id="bmerge">Merge into mine</button><button class="btn bad" id="breplace">Replace everything</button></div>`;
+      $('#bmerge', bk).onclick = () => { const r = mergeBackup(pending.data, false); closeSheet(m); toast(`Merged: ${r.decks} new decks, ${r.folders} new folders`); route(); };
+      $('#breplace', bk).onclick = async () => { if (await confirmDlg('Replace everything?', 'All your current decks and folders will be replaced by the backup.', 'Replace', true)) { mergeBackup(pending.data, true); closeSheet(m); toast('Backup restored'); applyTheme(); route(); } };
+    } else if (pending.kind === 'decks') {
+      cnt.textContent = pending.decks.reduce((a, d) => a + d.words.length, 0) + ' in ' + pending.decks.length + ' decks';
+      goBtn.disabled = false; goBtn.textContent = 'Import ' + pending.decks.length + ' decks';
+    } else {
+      cnt.textContent = pending.words.length; goBtn.disabled = pending.words.length === 0; goBtn.textContent = 'Import';
+      if (pending.name && !name.value) name.value = pending.name;
+    }
+  };
+  ta.addEventListener('input', () => analyse(null));
+  $('#ifile', m).onclick = () => fi.click();
+  fi.addEventListener('change', () => {
+    const f = fi.files && fi.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { ta.value = String(r.result || ''); analyse(f.name); };
+    r.onerror = () => toast('Could not read the file');
+    r.readAsText(f);
+  });
+  goBtn.onclick = () => {
+    if (!pending) return;
+    const fid = $('#ifolder', m).value || null;
+    if (pending.kind === 'decks') {
+      let n = 0;
+      for (const d of pending.decks) {
+        let folderId = fid;
+        if (!folderId && d.folderName) { const ex = db.folders.find(f => f.name.toLowerCase() === String(d.folderName).toLowerCase()); folderId = ex ? ex.id : addFolder(String(d.folderName)).id; }
+        upsertDeck({ id: uid(), name: uniqueName(d.name), folderId, words: d.words }); n++;
+      }
+      closeSheet(m); toast('Imported ' + n + ' decks'); route();
+    } else {
+      const d = upsertDeck({ id: uid(), name: uniqueName(name.value.trim() || pending.name || 'Imported deck'), folderId: fid, words: pending.words });
+      closeSheet(m); toast('Imported ' + nWords(d.words.length)); navState.depth++; go('#deck/' + d.id);
+    }
+  };
+  $('#icancel', m).onclick = () => closeSheet(m);
+}
+
+/* ===================== Setup ===================== */
+function renderSetup() {
+  const s = db.settings;
+  const all = allDecks();
+  if (!all.length) { location.replace('#library'); return; }
+  const validIds = new Set(all.map(k => k.id));
+  s.lastDecks = s.lastDecks.filter(id => validIds.has(id));
+  if (!s.lastDecks.length) s.lastDecks = [all[0].id];
+  const selected = new Set(s.lastDecks);
+  const groups = [];
+  const unfiled = decksInFolder(null); if (unfiled.length) groups.push({ id: 'none', name: 'My decks', decks: unfiled });
+  for (const f of foldersSorted()) { const d = decksInFolder(f.id); if (d.length) groups.push({ id: f.id, name: f.name, decks: d }); }
+  if (s.showPresets) groups.push({ id: 'preset', name: 'Preset decks', decks: PRESET_DECKS });
+  const times = [30, 45, 60, 90, 120, 0];
+  const render = () => {
+    const total = all.filter(k => selected.has(k.id)).reduce((a, k) => a + k.words.length, 0);
+    app.innerHTML = `<div class="screen">
+      ${topbar('Game setup', backBtn(), '')}
+      <div class="content"><div class="wrap">
+        <button class="btn big ok" data-act="start" ${total ? '' : 'disabled'}>▶ Start · ${nWords(total)}</button>
+        <h2 class="sec">Round time</h2>
+        <div class="seg">${times.map(t => `<button data-time="${t}" class="${s.roundSeconds === t ? 'on' : ''}">${t ? t + 's' : '∞'}</button>`).join('')}</div>
+        <h2 class="sec">Teams</h2>
+        <div class="card">
+          <div class="toggle" style="cursor:default"><div><div class="lbl">Number of teams</div><div class="sub">1 = whole class plays together</div></div>
+            <div class="stepper"><button data-team="-1">−</button><span>${s.teams}</span><button data-team="1">+</button></div></div>
+          ${s.teams > 1 ? Array.from({ length: s.teams }, (_, i) => `<div class="field"><label>Team ${i + 1} name</label><input type="text" data-tname="${i}" value="${esc(s.teamNames[i])}" autocomplete="off"></div>`).join('') : ''}
+        </div>
+        <h2 class="sec">Options</h2>
+        <div class="card">
+          <div class="toggle" data-opt="allowPass"><div><div class="lbl">Allow pass</div><div class="sub">Skipped words come back later in the round</div></div><div class="sw ${s.allowPass ? 'on' : ''}"></div></div>
+          <div class="toggle" data-opt="avoidRepeats"><div><div class="lbl">No repeats between rounds</div><div class="sub">Until every word has been used</div></div><div class="sw ${s.avoidRepeats ? 'on' : ''}"></div></div>
+          <div class="toggle" data-opt="sound"><div><div class="lbl">Sounds</div><div class="sub">Ticks in the last seconds and an end buzzer</div></div><div class="sw ${s.sound ? 'on' : ''}"></div></div>
+        </div>
+        <h2 class="sec">Decks to play</h2>
+        ${groups.map(g => `<div class="folderhead"><div class="name">${esc(g.name)}</div><button class="tbtn" data-selall="${g.id}">${g.decks.every(k => selected.has(k.id)) ? 'None' : 'All'}</button></div>
+          <div class="card">${g.decks.map(k => `<div class="row" data-deck="${k.id}"><div class="check ${selected.has(k.id) ? 'on' : ''}">✓</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}</div></div></div>`).join('')}</div>`).join('')}
+      </div></div></div>`;
+    const sc = $('.screen', app);
+    sc.addEventListener('click', e => {
+      const t = e.target.closest('[data-time]'); if (t) { s.roundSeconds = +t.dataset.time; saveDb(); render(); return; }
+      const tm = e.target.closest('[data-team]'); if (tm) { s.teams = Math.min(4, Math.max(1, s.teams + (+tm.dataset.team))); saveDb(); render(); return; }
+      const o = e.target.closest('[data-opt]'); if (o) { s[o.dataset.opt] = !s[o.dataset.opt]; saveDb(); render(); return; }
+      const sa = e.target.closest('[data-selall]'); if (sa) { const g = groups.find(x => x.id === sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); s.lastDecks = [...selected]; saveDb(); render(); return; }
+      const d = e.target.closest('[data-deck]'); if (d) { const id = d.dataset.deck; if (selected.has(id)) selected.delete(id); else selected.add(id); s.lastDecks = [...selected]; saveDb(); render(); return; }
+      const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'start') startGame([...selected]);
+    });
+    sc.addEventListener('change', e => { const i = e.target.closest('[data-tname]'); if (i) { s.teamNames[+i.dataset.tname] = i.value.trim() || `Team ${+i.dataset.tname + 1}`; saveDb(); } });
+  };
+  render();
+}
+
+/* ===================== Game engine ===================== */
+/* game.pool  = words not yet shown in this game (shuffled)
+   game.used  = words already shown (when "no repeats" is on they wait here until the pool runs dry)
+   game.queue = this round's working list; a passed word goes to the back of it */
+let game = null;
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function startGame(deckIds) {
+  const s = db.settings;
+  const words = cleanWords(deckIds.map(getDeck).filter(Boolean).flatMap(k => k.words));
+  if (!words.length) { toast('No words selected'); return; }
+  game = { words, pool: shuffle(words.slice()), used: [], queue: [],
+    teams: Array.from({ length: s.teams }, (_, i) => ({ name: s.teamNames[i] || `Team ${i + 1}`, score: 0 })),
+    turn: 0, round: 1, phase: 'ready', current: null, got: [], passed: [], endAt: 0, timer: null, count: 3, lastTick: null };
+  audio.unlock();
+  keepAwake(true);
+  if (location.hash === '#play') renderPlay(); else { navState.depth++; go('#play'); }
+}
+function exitGame() {
+  stopGame();
+  if (navState.depth >= 2) { navState.depth -= 2; history.go(-2); }
+  else { navState.depth = 0; location.replace('#library'); }
+}
+function refill() {
+  const g = game;
+  if (!g.pool.length) g.pool = shuffle(g.used.splice(0));
+  if (!g.pool.length) g.pool = shuffle(g.words.slice());
+  g.queue = g.pool.splice(0);
+}
+function nextWord() {
+  const g = game;
+  if (!g.queue.length) refill();
+  g.current = g.queue.shift() || null;
+  return g.current;
+}
+function markWord(ok) {
+  const g = game; if (!g || !g.current) return;
+  const w = g.current;
+  if (ok) { g.got.push(w); g.teams[g.turn].score++; audio.ding(); }
+  else { g.passed.push(w); audio.buzz(); }
+  if (!ok && db.settings.allowPass) g.queue.push(w);       // comes back later this round
+  else if (db.settings.avoidRepeats) g.used.push(w);        // parked until the pool is empty
+  else g.pool.push(w);                                      // may show up again any time
+  if (!ok && db.settings.allowPass && g.queue.length === 1 && g.queue[0] === w && g.pool.length) {
+    g.queue = g.pool.splice(0).concat(g.queue);             // don't show the same word twice in a row
+  }
+  nextWord();
+}
+function endRound() {
+  const g = game; clearInterval(g.timer); clearTimeout(g.timer); g.timer = null;
+  if (g.current) { g.queue.unshift(g.current); g.current = null; }
+  g.pool = g.queue.concat(g.pool); g.queue = [];             // unseen words go back to the pool
+  g.phase = 'roundEnd';
+  audio.horn();
+  renderPlay();
+}
+function beginRound() {
+  const g = game;
+  g.got = []; g.passed = [];
+  g.phase = 'countdown'; g.count = 3;
+  renderPlay();
+  const step = () => {
+    if (!game || game.phase !== 'countdown') return;
+    g.count--;
+    if (g.count <= 0) { goWords(); } else { audio.tick(true); renderPlay(); g.timer = setTimeout(step, 800); }
+  };
+  audio.tick(true);
+  g.timer = setTimeout(step, 800);
+}
+function goWords() {
+  const g = game; clearTimeout(g.timer);
+  g.phase = 'word';
+  nextWord();
+  const secs = db.settings.roundSeconds;
+  g.endAt = secs ? Date.now() + secs * 1000 : 0;
+  g.lastTick = null;
+  renderPlay();
+  g.timer = setInterval(() => {
+    if (!game || game.phase !== 'word') return;
+    if (g.endAt) {
+      const left = Math.max(0, g.endAt - Date.now());
+      updateTimer(left, secs * 1000);
+      const sec = Math.ceil(left / 1000);
+      if (sec <= 5 && sec > 0 && g.lastTick !== sec) { g.lastTick = sec; audio.tick(); }
+      if (left <= 0) endRound();
+    }
+  }, 100);
+}
+function updateTimer(left, total) {
+  const bar = $('.timerbar i'), clock = $('.clock'), tb = $('.timerbar');
+  if (bar) bar.style.width = (100 * left / total) + '%';
+  if (clock) clock.textContent = fmt(left);
+  if (tb) tb.classList.toggle('hot', left <= 10000);
+}
+const fmt = ms => { const s = Math.ceil(ms / 1000); return s >= 60 ? Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0') : String(s); };
+function fitWord(el) {
+  if (!el) return;
+  const box = el.parentElement; let size = Math.min(box.clientWidth / 4, box.clientHeight * 0.7, 260);
+  el.style.fontSize = size + 'px';
+  let guard = 0;
+  while ((el.scrollWidth > box.clientWidth - 40 || el.scrollHeight > box.clientHeight - 20) && size > 22 && guard++ < 40) { size *= 0.9; el.style.fontSize = size + 'px'; }
+}
+function renderPlay() {
+  const g = game;
+  if (!g) { location.replace('#setup'); return; }
+  const s = db.settings, team = g.teams[g.turn], multi = g.teams.length > 1;
+  let html = '';
+  const exitBtn = `<button data-p="exit">✕ Exit</button>`;
+  if (g.phase === 'ready') {
+    html = `<div class="play ready"><div class="ptop"><span>${multi ? esc(team.name) : 'Charades'}</span>${exitBtn}</div>
+      <div class="center"><div class="h">${multi ? esc(team.name) + ', get ready!' : 'Get ready!'}</div>
+      <div class="t">Give the iPad to the actor. Only they should see the screen.<br>${s.roundSeconds ? s.roundSeconds + ' seconds' : 'No time limit'} · ${nWords(g.words.length)}</div>
+      <button class="pbtn" data-p="begin">I'm the actor · Start</button>
+      ${multi ? `<div class="score" style="margin-top:28px">${g.teams.map((t, i) => `<div class="${i === g.turn ? 'lead' : ''}"><div class="n">${esc(t.name)}</div><div class="v">${t.score}</div></div>`).join('')}</div>` : ''}
+      </div></div>`;
+  } else if (g.phase === 'countdown') {
+    html = `<div class="play ready"><div class="ptop"><span>${multi ? esc(team.name) : ''}</span>${exitBtn}</div><div class="center"><div class="count">${g.count}</div><div class="t">Hold it so the class can't see</div></div></div>`;
+  } else if (g.phase === 'word') {
+    const total = s.roundSeconds * 1000, left = g.endAt ? Math.max(0, g.endAt - Date.now()) : 0;
+    html = `<div class="play"><div class="ptop"><button data-p="exit">✕</button><span class="clock">${g.endAt ? fmt(left) : '∞'}</span><button data-p="endnow">End round</button></div>
+      ${g.endAt ? `<div class="timerbar ${left <= 10000 ? 'hot' : ''}"><i style="width:${100 * left / total}%"></i></div>` : ''}
+      <div class="word"><span>${esc(g.current)}</span></div>
+      <div class="sub">${multi ? esc(team.name) + ' · ' : ''}${g.got.length} ✓ · swipe right = got it${s.allowPass ? ', left = pass' : ''}</div>
+      <div class="actions">${s.allowPass ? `<button class="p" data-p="pass">Pass ↷</button>` : ''}<button class="g" data-p="got">Got it ✓</button></div></div>`;
+  } else if (g.phase === 'roundEnd') {
+    const nextTurn = (g.turn + 1) % g.teams.length;
+    const passedOnly = [...new Set(g.passed)].filter(w => !g.got.includes(w));
+    html = `<div class="play ready"><div class="ptop"><span>Round ${g.round} · ${multi ? esc(team.name) : 'Result'}</span>${exitBtn}</div>
+      <div class="results">
+        <div class="score">${multi ? g.teams.map((t, i) => `<div class="${i === g.turn ? 'lead' : ''}"><div class="n">${esc(t.name)}</div><div class="v">${t.score}</div></div>`).join('') : `<div class="lead"><div class="n">Got it</div><div class="v">${g.got.length}</div></div><div><div class="n">Passed</div><div class="v">${passedOnly.length}</div></div>`}</div>
+        <div class="rlist">${g.got.map(w => `<div><span>${esc(w)}</span><span>✓</span></div>`).join('')}${passedOnly.map(w => `<div style="opacity:.7"><span>${esc(w)}</span><span>↷</span></div>`).join('')}${!g.got.length && !passedOnly.length ? '<div><span>No words played</span></div>' : ''}</div>
+      </div>
+      <div class="resacts"><button class="pbtn ghost" data-p="finish">Finish game</button><button class="pbtn" data-p="next">${multi ? 'Next: ' + esc(g.teams[nextTurn].name) : 'Another round'}</button></div></div>`;
+  } else if (g.phase === 'over') {
+    const best = Math.max(...g.teams.map(t => t.score));
+    const winners = g.teams.filter(t => t.score === best);
+    html = `<div class="play ready"><div class="ptop"><span>Game over</span><span></span></div>
+      <div class="center"><div class="h">${multi ? (winners.length === 1 ? '🏆 ' + esc(winners[0].name) + ' wins!' : '🤝 It\'s a tie!') : '🎉 Well done!'}</div>
+      <div class="score">${g.teams.map(t => `<div class="${t.score === best && multi ? 'lead' : ''}"><div class="n">${multi ? esc(t.name) : 'Total'}</div><div class="v">${t.score}</div></div>`).join('')}</div>
+      <div class="t">${g.round} round${g.round > 1 ? 's' : ''} · ${nWords(g.words.length)} in play</div>
+      <button class="pbtn" data-p="again">Play again</button><button class="pbtn ghost" data-p="exit">Back to decks</button></div></div>`;
+  }
+  app.innerHTML = html;
+  fitWord($('.word span'));
+  const root = $('.play', app);
+  root.addEventListener('click', async e => {
+    const b = e.target.closest('[data-p]'); if (!b) return;
+    const p = b.dataset.p;
+    if (p === 'exit') { if (g.phase === 'over' || (g.phase === 'ready' && g.round === 1 && g.turn === 0) || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) exitGame(); }
+    if (p === 'begin') beginRound();
+    if (p === 'got') flashThen('good', () => markWord(true));
+    if (p === 'pass') flashThen('pass', () => markWord(false));
+    if (p === 'endnow') endRound();
+    if (p === 'next') { g.turn = (g.turn + 1) % g.teams.length; if (g.turn === 0) g.round++; g.phase = 'ready'; renderPlay(); }
+    if (p === 'finish') { g.phase = 'over'; renderPlay(); }
+    if (p === 'again') { const ids = db.settings.lastDecks; stopGame(); startGame(ids); }
+  });
+  if (g.phase === 'word') {
+    let sx = null, sy = null;
+    root.addEventListener('touchstart', e => { const t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; }, { passive: true });
+    root.addEventListener('touchend', e => {
+      if (sx === null || e.target.closest('button')) { sx = null; return; }
+      const t = e.changedTouches[0]; const dx = t.clientX - sx, dy = t.clientY - sy; sx = null;
+      if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) { if (dx > 0) flashThen('good', () => markWord(true)); else if (s.allowPass) flashThen('pass', () => markWord(false)); }
+    }, { passive: true });
+  }
+}
+let flashing = false;
+function flashThen(cls, fn) {
+  if (flashing || !game || game.phase !== 'word') return;
+  const root = $('.play'); if (!root) { fn(); return; }
+  flashing = true;
+  root.classList.add(cls);
+  setTimeout(() => { flashing = false; fn(); if (game && game.phase === 'word') renderPlay(); }, 140);
+}
+function stopGame() { if (game) { clearInterval(game.timer); clearTimeout(game.timer); } game = null; keepAwake(false); }
+document.addEventListener('keydown', e => {
+  if (!game || game.phase !== 'word') return;
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flashThen('good', () => markWord(true)); }
+  if (e.key === 'ArrowLeft' && db.settings.allowPass) { e.preventDefault(); flashThen('pass', () => markWord(false)); }
+});
+
+/* Keep the screen on while playing */
+let wakeLock = null;
+async function keepAwake(on) {
+  try {
+    if (on && 'wakeLock' in navigator && !wakeLock) { wakeLock = await navigator.wakeLock.request('screen'); wakeLock.addEventListener('release', () => { wakeLock = null; }); }
+    if (!on && wakeLock) { const w = wakeLock; wakeLock = null; await w.release(); }
+  } catch (e) { wakeLock = null; }
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && game && location.hash === '#play') keepAwake(true); });
+window.addEventListener('hashchange', () => {
+  const playing = location.hash === '#play';
+  keepAwake(playing);
+  if (!playing && game) { if (game.phase === 'word' || game.phase === 'countdown') { clearInterval(game.timer); clearTimeout(game.timer); game.phase = 'ready'; game.pool = game.queue.concat(game.pool); game.queue = []; game.current = null; } }
+});
+
+/* ===================== Audio (synthesised, no files) ===================== */
+const audio = {
+  ctx: null,
+  unlock() { if (!db.settings.sound) return; try { this.ctx = this.ctx || new (window.AudioContext || window.webkitAudioContext)(); if (this.ctx.state === 'suspended') this.ctx.resume(); } catch (e) {} },
+  beep(freq, dur, type = 'sine', vol = 0.25, when = 0) {
+    if (!db.settings.sound || !this.ctx) return;
+    try { const o = this.ctx.createOscillator(), g = this.ctx.createGain(); o.type = type; o.frequency.value = freq;
+      o.connect(g); g.connect(this.ctx.destination); const t = this.ctx.currentTime + when; g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur); o.start(t); o.stop(t + dur + 0.02); } catch (e) {}
+  },
+  tick(soft) { this.beep(soft ? 660 : 1000, 0.08, 'square', soft ? 0.08 : 0.12); },
+  ding() { this.beep(880, 0.12, 'sine', 0.2); this.beep(1320, 0.18, 'sine', 0.2, 0.09); },
+  buzz() { this.beep(220, 0.18, 'sawtooth', 0.12); },
+  horn() { this.beep(392, 0.35, 'square', 0.18); this.beep(311, 0.6, 'square', 0.18, 0.3); },
+};
+
+/* ===================== Settings ===================== */
+let persistState = '';
+function renderSettings() {
+  const s = db.settings;
+  app.innerHTML = `<div class="screen">
+    ${topbar('Settings', backBtn('Back', '#home'), '')}
+    <div class="content"><div class="wrap">
+      <h2 class="sec">Appearance</h2>
+      <div class="seg">${['auto', 'light', 'dark'].map(t => `<button data-theme="${t}" class="${s.theme === t ? 'on' : ''}">${t[0].toUpperCase() + t.slice(1)}</button>`).join('')}</div>
+      <h2 class="sec">Library</h2>
+      <div class="card">
+        <div class="toggle" data-opt="showPresets"><div><div class="lbl">Show preset decks</div><div class="sub">${PRESET_DECKS.length} built-in decks</div></div><div class="sw ${s.showPresets ? 'on' : ''}"></div></div>
+      </div>
+      <h2 class="sec">Backup</h2>
+      <div class="card">
+        <div class="row" data-act="backup"><div class="ic">💾</div><div class="txt"><div class="t">Export backup</div><div class="s">${db.decks.length} decks, ${db.folders.length} folders → one .json file. Save it to Files or AirDrop it.</div></div><div class="chev">›</div></div>
+        <div class="row" data-act="restore"><div class="ic">📥</div><div class="txt"><div class="t">Restore / import</div><div class="s">Backup .json, or a .txt / .csv list</div></div><div class="chev">›</div></div>
+      </div>
+      <div class="hint">Your decks live only on this device, inside this app. Nothing is uploaded anywhere. Make a backup now and then, especially before deleting the app or clearing Safari data.</div>
+      <h2 class="sec">Danger zone</h2>
+      <div class="card"><div class="row" data-act="wipe"><div class="ic">🗑️</div><div class="txt"><div class="t" style="color:var(--bad)">Delete all my decks and folders</div></div></div></div>
+      <div class="ver">Class Games v${APP_VERSION} · ${IS_STANDALONE ? 'installed' : 'browser'}${persistState ? ' · storage ' + persistState : ''}</div>
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', async e => {
+    const t = e.target.closest('[data-theme]'); if (t) { s.theme = t.dataset.theme; saveDb(); applyTheme(); renderSettings(); return; }
+    const o = e.target.closest('[data-opt]'); if (o) { s[o.dataset.opt] = !s[o.dataset.opt]; saveDb(); renderSettings(); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'backup') { const stamp = new Date().toISOString().slice(0, 10); await shareOrDownload(exportBackup(), `class-games-backup-${stamp}.json`, 'application/json'); }
+    if (a.dataset.act === 'restore') importSheet();
+    if (a.dataset.act === 'wipe') { if (await confirmDlg('Delete everything?', 'All your decks and folders will be removed. Presets stay. This cannot be undone.', 'Delete all', true)) { db.decks = []; db.folders = []; s.lastDecks = []; saveDb(); toast('Deleted'); renderSettings(); } }
+  });
+}
+
+/* ===================== Boot ===================== */
+db = loadDb();
+applyTheme();
+if (!location.hash) history.replaceState(null, '', '#home');
+document.addEventListener('gesturestart', e => e.preventDefault());
+document.addEventListener('dblclick', e => { if (!e.target.closest('input,textarea')) e.preventDefault(); });
+if (navigator.storage && navigator.storage.persist) { navigator.storage.persist().then(p => { persistState = p ? 'persistent' : 'best-effort'; }).catch(() => {}); }
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(reg => {
+      reg.addEventListener('updatefound', () => {
+        const nw = reg.installing;
+        if (nw) nw.addEventListener('statechange', () => { if (nw.state === 'installed' && navigator.serviceWorker.controller) toast('Update downloaded. Close and reopen the app to use it.', 4000); });
+      });
+    }).catch(() => {});
+  });
+}
+
+/* ===================== Self-test (open index.html?selftest) ===================== */
+if (location.search.includes('selftest')) {
+  const results = [];
+  const t = (name, cond) => results.push((cond ? 'PASS ' : 'FAIL ') + name);
+  try {
+    t('parseWords lines', JSON.stringify(parseWords('dog\ncat\n\n dog \nCat')) === '["dog","cat"]');
+    t('parseWords commas', JSON.stringify(parseWords('a, b; c\td')) === '["a","b","c","d"]');
+    t('parseWords numbering', JSON.stringify(parseWords('1. run\n2) jump\n- swim\n• fly\n"hop"')) === '["run","jump","swim","fly","hop"]');
+    t('parseWords phrase with spaces', JSON.stringify(parseWords('brush   your teeth')) === '["brush your teeth"]');
+    const bk = detectImport(JSON.stringify({ v: 1, folders: [{ id: 'f1', name: 'Unit 1' }], decks: [{ id: 'd1', name: 'Verbs', folderId: 'f1', words: ['run'] }] }), 'x.json');
+    t('detect backup', bk.kind === 'backup' && bk.data.decks.length === 1 && bk.data.decks[0].folderId === 'f1');
+    const dk = detectImport(JSON.stringify({ name: 'Food', words: ['pizza', 'pizza', 'tea'] }), 'food.json');
+    t('detect single deck json', dk.kind === 'words' && dk.words.length === 2 && dk.name === 'Food');
+    const arr = detectImport(JSON.stringify([{ name: 'A', words: ['x'] }, { name: 'B', words: ['y'], folder: 'Unit 2' }]), 'multi.json');
+    t('detect multi deck json', arr.kind === 'decks' && arr.decks.length === 2 && arr.decks[1].folderName === 'Unit 2');
+    const tx = detectImport('one\ntwo\nthree', 'My List.txt');
+    t('detect txt', tx.kind === 'words' && tx.words.length === 3 && tx.name === 'My List');
+    const saved = JSON.stringify(db);
+    db = freshDb();
+    const r1 = mergeBackup(bk.data, false); t('merge adds', r1.decks === 1 && r1.folders === 1 && db.decks[0].folderId === 'f1');
+    const r2 = mergeBackup(bk.data, false); t('merge idempotent', r2.decks === 0 && db.decks.length === 1);
+    t('uniqueName', uniqueName('Verbs') === 'Verbs (2)' && uniqueName('Animals') === 'Animals (2)');
+    const d = upsertDeck({ id: 'zz', name: 'Test', folderId: null, words: ['a', 'b', 'c'] });
+    db.settings.roundSeconds = 0; db.settings.teams = 2; db.settings.allowPass = true; db.settings.sound = false; db.settings.avoidRepeats = true;
+    game = { words: d.words, pool: shuffle(d.words.slice()), used: [], queue: [], teams: [{ name: 'A', score: 0 }, { name: 'B', score: 0 }], turn: 0, round: 1, phase: 'word', current: null, got: [], passed: [], endAt: 0, timer: null };
+    nextWord(); const first = game.current; t('nextWord picks', !!first);
+    markWord(true); t('got scores', game.teams[0].score === 1 && game.got[0] === first && game.current !== first);
+    const second = game.current; markWord(false); t('pass requeues', game.passed[0] === second && game.queue.includes(second) && game.current !== second);
+    markWord(true); markWord(true); t('all words eventually', game.got.length === 3 && game.teams[0].score === 3);
+    t('cycle restarts when exhausted', !!game.current && game.words.includes(game.current));
+    // pass with a single word left must not loop on itself forever but also must not crash
+    game.queue = []; game.pool = []; game.used = []; game.current = 'solo'; game.words = ['solo']; markWord(false); t('single word pass', game.current === 'solo');
+    endRound(); t('endRound parks words', game.phase === 'roundEnd' && game.current === null && game.pool.includes('solo'));
+    // repeats-off: got words return to the pool
+    db.settings.avoidRepeats = false; game.phase = 'word'; game.words = ['p', 'q']; game.pool = ['p', 'q']; game.used = []; game.queue = []; nextWord(); markWord(true); markWord(true); t('repeats off keeps cycling', !!game.current);
+    game = null; db = JSON.parse(saved); saveDb();
+  } catch (e) { results.push('FAIL exception ' + (e && e.stack || e)); }
+  document.body.innerHTML = '<pre id="selftest" style="padding:20px;font:14px monospace;color:#000;background:#fff">' + results.join('\n') + '\nDONE ' + results.filter(r => r.startsWith('FAIL')).length + ' failures</pre>';
+} else {
+  route();
+  // Dev preview only: index.html?demo=word|ready|roundEnd|over jumps straight into a game screen.
+  const demo = new URLSearchParams(location.search).get('demo');
+  if (demo) { db.settings.sound = false; startGame([PRESET_DECKS[0].id]); if (demo === 'word') { game.phase = 'word'; nextWord(); game.endAt = Date.now() + 42000; } else game.phase = demo; renderPlay(); }
+}
+</script>
+</body>
+</html>
