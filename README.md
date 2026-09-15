@@ -3,10 +3,21 @@
 Classroom games as an installable web app for the iPad. Pure static files, no build step, no server, no accounts.
 Everything the teacher creates (decks, folders, settings) is stored **on the iPad only**, inside the app's own storage.
 
-Games so far:
+All games share one deck library: 16 preset English-vocabulary decks plus your own decks in folders.
+Import lists by pasting or from .txt / .csv / .json files, export decks, full backup/restore.
+An entry can be a single word (`dog`) or a pair (`dog | perro`, also `dog<tab>perro`, `dog = perro`, `dog - perro`),
+optionally with a third part (`dog | perro | 🐶`). Charades only shows the first part.
 
-- **Charades** – preset decks (16 English-vocabulary sets) plus your own decks, organised in folders.
-  Import lists by pasting or from .txt / .csv / .json files, export decks, full backup/restore, teams, timer, pass, sounds.
+Games:
+
+- **Charades** – act it out; timer, teams, pass, no-repeats, sounds.
+- **Buzz Monster** – category board: each selected deck is a column (choose how many columns and cards per column),
+  teams pick cards worth 100–600 points, some hide a monster 👹 (eats points), a gift 🎁 or double points ✨.
+  Turn-based or "anyone can buzz in"; optional penalty for wrong answers.
+- **Futaba** – 1–4 players sit around the iPad, one rotated panel each; first correct tap wins the round.
+  Modes: Pairs (needs `word | translation` entries), Listen (the iPad speaks the word), Scramble, Gaps.
+- **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
+  cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
 
 ## Files
 
@@ -49,5 +60,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over` opens a game screen directly for screenshots.
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzcard|futaba|futaba2|futaba3|memory` opens a game screen directly for screenshots.
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.
