@@ -210,7 +210,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .fprompt{text-align:center;font-weight:800;font-size:clamp(16px,2.2vw,26px);line-height:1.1;overflow:hidden;max-height:2.3em}
 .fopts{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:0}
 .fopts.cols-3{grid-template-columns:1fr 1fr 1fr}
-.fopt{border:0;border-radius:12px;background:var(--card2);color:var(--text);font:inherit;font-weight:700;font-size:clamp(14px,1.8vw,22px);padding:4px 8px;cursor:pointer;min-height:0;overflow:hidden;overflow-wrap:anywhere;touch-action:none;-webkit-user-select:none;user-select:none}
+.fopt{border:0;border-radius:12px;background:var(--card2);color:var(--text);font:inherit;font-weight:700;font-size:clamp(14px,1.8vw,22px);padding:4px 8px;cursor:pointer;min-height:0;overflow:hidden;overflow-wrap:normal;word-break:keep-all;line-height:1.15;touch-action:none;-webkit-user-select:none;user-select:none}
 .fopt:active{filter:brightness(.9)}
 .fopt.right{background:var(--ok);color:#fff}
 .fopt.wrong{background:var(--bad);color:#fff}
@@ -232,7 +232,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.3.1';
+const APP_VERSION = '1.3.2';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -1510,9 +1510,60 @@ function renderFutaba() {
     if (futabaAnswer(pi, correct) && fut && fut.phase === 'round' && !fut.ending) renderFutaba();
   });
 }
+/* 5+ players: seats spread evenly along an ellipse (equal distance along the edge, not equal angle),
+   each panel turned so its bottom edge faces outward; panels shrink until no two overlap. */
+function layoutFutabaRing(root, panels, W, H) {
+  const n = panels.length, m = 6, off = n % 2 === 0 ? 0.5 : 0;
+  let ph = Math.min(H * 0.27, W * 0.27, 230), pw = 340;
+  const corners = (st, w, h) => { const c = Math.cos(st.rot), sn = Math.sin(st.rot); return [[-w / 2, -h / 2], [w / 2, -h / 2], [w / 2, h / 2], [-w / 2, h / 2]].map(([x, y]) => [st.cx + x * c - y * sn, st.cy + x * sn + y * c]); };
+  const overlap = (A, B) => {
+    for (const R of [A, B]) for (let i = 0; i < 2; i++) {
+      const ax = R[i + 1][0] - R[i][0], ay = R[i + 1][1] - R[i][1];
+      const pa = A.map(([x, y]) => x * ax + y * ay), pb = B.map(([x, y]) => x * ax + y * ay);
+      if (Math.max(...pa) < Math.min(...pb) - 1 || Math.max(...pb) < Math.min(...pa) - 1) return false;
+    }
+    return true;
+  };
+  const place = () => {
+    const Rx = W / 2 - ph / 2 - m, Ry = H / 2 - ph / 2 - m, N = 720, pts = [];
+    let len = 0, px = Rx, py = 0;
+    for (let k = 0; k <= N; k++) { const th = k / N * 2 * Math.PI, x = Rx * Math.cos(th), y = Ry * Math.sin(th); if (k) len += Math.hypot(x - px, y - py); pts.push({ th, len }); px = x; py = y; }
+    const bottom = pts[N / 4].len, spacing = len / n, seats = [];
+    for (let i = 0; i < n; i++) {
+      let target = (bottom + spacing * (off - i)) % len; if (target < 0) target += len;
+      const q = pts.find(pt => pt.len >= target) || pts[N];
+      const phi = Math.atan2(Math.sin(q.th) / Ry, Math.cos(q.th) / Rx);            // outward normal of the ellipse here
+      const st = { cx: W / 2 + Rx * Math.cos(q.th), cy: H / 2 + Ry * Math.sin(q.th), phi, rot: phi - Math.PI / 2 };
+      for (let k = 0; k < 4; k++) {                                                   // pull inward until all corners are on screen
+        let over = 0; corners(st, pw, ph).forEach(([x, y]) => { over = Math.max(over, m - x, x - (W - m), m - y, y - (H - m)); });
+        if (over <= 0) break; st.cx -= over * Math.cos(phi); st.cy -= over * Math.sin(phi);
+      }
+      seats.push(st);
+    }
+    return { seats, spacing };
+  };
+  let res = place(); pw = Math.min(pw, res.spacing * 0.86); ph = Math.min(ph, pw * 0.9); res = place();
+  for (let guard = 0; guard < 14; guard++) {
+    const cs = res.seats.map(st => corners(st, pw, ph)); let bad = false;
+    for (let i = 0; i < n && !bad; i++) for (let j = i + 1; j < n; j++) if (overlap(cs[i], cs[j])) { bad = true; break; }
+    if (!bad) break;
+    pw *= 0.94; ph = Math.min(ph, pw * 0.9); res = place();
+  }
+  panels.forEach((el, i) => {
+    const st = res.seats[i]; el.classList.add('small');
+    Object.assign(el.style, { width: pw + 'px', height: ph + 'px', left: st.cx - pw / 2 + 'px', top: st.cy - ph / 2 + 'px', transform: `rotate(${(st.rot * 180 / Math.PI).toFixed(1)}deg)` });
+  });
+  const cc = $('.fcenter', root); if (cc) { cc.style.top = '50%'; cc.style.transform = 'translate(-50%,-50%)'; }
+  fitFutabaText(root);
+}
+/* shrink answer text until it fits instead of breaking words in half */
+function fitFutabaText(root) {
+  $$('.fopt, .fprompt', root).forEach(el => { el.style.fontSize = ''; let fs = parseFloat(getComputedStyle(el).fontSize); let guard = 0; while ((el.scrollHeight > el.clientHeight + 2 || el.scrollWidth > el.clientWidth + 1) && fs > 10 && guard++ < 14) { fs -= 1; el.style.fontSize = fs + 'px'; } });
+}
 function layoutFutaba() {
   const root = $('.play.fut'); if (!root) return;
   const W = root.clientWidth, H = root.clientHeight; const panels = $$('.fpanel', root); const n = panels.length; if (!n) return;
+  if (n >= 5) { layoutFutabaRing(root, panels, W, H); return; }
   const slots = futabaSlots(n, W >= H); const gap = 10;
   const hasSides = slots.some(s => s.side === 'l' || s.side === 'r'), hasTop = slots.some(s => s.side === 't');
   const rowOf = Math.max(...slots.filter(s => s.side === 'b' || s.side === 't').map(s => s.of), 1), colOf = Math.max(...slots.filter(s => s.side === 'l' || s.side === 'r').map(s => s.of), 1);
@@ -1533,8 +1584,7 @@ function layoutFutaba() {
     }
   });
   const c = $('.fcenter', root); if (c) { if (n === 1 || n === 3) { c.style.top = '14px'; c.style.transform = 'translate(-50%,0)'; } else { c.style.top = '50%'; c.style.transform = 'translate(-50%,-50%)'; } }
-  // shrink answer text until it fits on one or two lines instead of breaking words
-  $$('.fpanel.small .fopt, .fpanel.small .fprompt', root).forEach(el => { el.style.fontSize = ''; let fs = parseFloat(getComputedStyle(el).fontSize); let guard = 0; while (el.scrollHeight > el.clientHeight + 2 && fs > 10 && guard++ < 12) { fs -= 1; el.style.fontSize = fs + 'px'; } });
+  fitFutabaText(root);
 }
 
 /* ===================== Memory (pairs or trios) ===================== */
@@ -1851,7 +1901,7 @@ if (location.search.includes('selftest')) {
   if (demo) {
     db.settings.sound = false; const four = new Set(PRESET_DECKS.slice(0, 4).map(k => k.id));
     if (demo === 'buzz' || demo === 'buzzcard' || demo === 'buzzq') { Object.assign(gameCfg('buzz'), { categories: 4, rows: 5, teams: 3, questions: true, qTime: 10 }); startBuzz(four); if (demo !== 'buzzq') { clearInterval(buzz.timer); buzz.phase = 'board'; } if (demo === 'buzzcard') { buzz.open = { ci: 0, r: 2, answer: false, specialDone: false }; buzz.cats[0].cells[2].special = 'double'; } }
-    else if (/^futaba/.test(demo)) { const np = { futaba: 4, futaba2: 2, futaba3: 3, futaba6: 6, futaba8: 8 }[demo] || 4; Object.assign(gameCfg('futaba'), { players: np, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); if (np >= 3) { fut.players[0].rank = 1; fut.players[0].score = 2; fut.players[0].delta = '+2'; fut.won = 0; fut.players[1].locked = true; fut.players[1].score = -2; fut.players[1].delta = '−2'; renderFutaba(); } }
+    else if (/^futaba/.test(demo)) { const np = { futaba: 4, futaba2: 2, futaba3: 3, futaba5: 5, futaba6: 6, futaba7: 7, futaba8: 8 }[demo] || 4; Object.assign(gameCfg('futaba'), { players: np, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); if (np >= 3) { fut.players[0].rank = 1; fut.players[0].score = 2; fut.players[0].delta = '+2'; fut.won = 0; fut.players[1].locked = true; fut.players[1].score = -2; fut.players[1].delta = '−2'; renderFutaba(); } }
     else if (demo === 'memory') { Object.assign(gameCfg('memory'), { sets: 8, size: 2, teams: 2, variant: 'scrambled' }); startMemory(four); mem.cards[0].up = true; mem.cards[1].done = true; mem.cards[1].by = 0; mem.cards[2].done = true; mem.cards[2].by = 0; renderMemory(); }
     else { startGame([PRESET_DECKS[0].id]); if (demo === 'word') { game.phase = 'word'; nextWord(); game.endAt = Date.now() + 42000; } else game.phase = demo; renderPlay(); }
   }
