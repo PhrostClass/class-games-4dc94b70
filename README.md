@@ -20,6 +20,10 @@ Games:
   Listen speaks the word with the best installed voice (install an Enhanced/Premium voice in iPad Settings → Accessibility →
   Spoken Content → Voices). Scoring: 2 players = +1 / −1; 3+ players = first +2, second +1 (3-second window), wrong −2;
   not answering costs nothing; negative scores allowed.
+- **Queue** (tool, not a game) – groups of students (seeded with the 2026-27 lists); a student taps their name to join the
+  queue and sits down; the teacher taps "Call next" and the iPad says the name in Spanish. Each student has a unique colour,
+  an emoji or a photo; queue position is shown on the card and waiting time in the list. Teacher panel behind a 4-digit PIN
+  (default 1234): groups, students, paste a list, photos, re-colour, change PIN. The live queue survives closing the app.
 - **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
   cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
 
@@ -72,5 +76,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory` opens a game screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups` opens a game screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.

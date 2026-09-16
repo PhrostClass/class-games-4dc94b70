@@ -225,6 +225,50 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .mcard.up .front{transform:rotateY(0deg)}
 .mcard.done{cursor:default}
 .mcard.done .front{background:#e8fff3;box-shadow:inset 0 0 0 5px var(--tc,#22a06b)}
+/* queue */
+.gcard.queue{background:linear-gradient(135deg,#1e6fd9,#4f9cf7);color:#fff}.gcard.queue .d{color:rgba(255,255,255,.85)}
+.qgroups{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.qgcard{background:var(--card);border-radius:18px;padding:18px 14px;text-align:center;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.qgcard:active{transform:scale(.97)}
+.qgicon{font-size:42px}.qgname{font-size:18px;font-weight:800;margin-top:6px}.qgsub{font-size:13px;color:var(--muted);margin-top:2px}.qgcount{font-size:13px;color:var(--muted);margin-top:6px}
+.qbody{flex:1;display:flex;gap:12px;padding:10px calc(var(--sa-r) + 12px) calc(var(--sa-b) + 12px) calc(var(--sa-l) + 12px);min-height:0}
+.qgrid{flex:1;display:grid;gap:10px;grid-auto-rows:minmax(0,1fr);min-height:0;min-width:0;overflow:auto}
+.qcard{background:var(--card);border:3px solid transparent;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;min-height:0;padding:6px;-webkit-user-select:none;user-select:none}
+.qcard:active{transform:scale(.96)}
+.qcard.inq{border-color:var(--ok);background:#e9fbf3;color:#1f1f2b}
+.qcard.now{border-color:var(--warn)}
+.qpos{position:absolute;top:6px;right:8px;background:var(--ok);color:#fff;font-weight:800;font-size:13px;padding:2px 9px;border-radius:999px}
+.qpos.now{background:var(--warn)}
+.qav{width:clamp(48px,9vmin,92px);height:clamp(48px,9vmin,92px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:clamp(24px,4.5vmin,46px);overflow:hidden;flex-shrink:0}
+.qav img,.qmini img,.qnowav img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.qname{font-size:clamp(14px,2.2vmin,22px);font-weight:800;margin-top:6px;text-align:center;line-height:1.15}
+.qpanel{width:240px;flex-shrink:0;background:var(--card);border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:0}
+.qnow{background:linear-gradient(135deg,#ff7043,#ff8a65);border-radius:14px;padding:12px 10px;text-align:center;color:#fff;opacity:.4;transition:opacity .3s}
+.qnow.show{opacity:1}
+.qnowlbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;opacity:.85;margin-bottom:6px}
+.qnowav{width:60px;height:60px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid rgba(255,255,255,.5);overflow:hidden}
+.qnowname{font-size:22px;font-weight:900;line-height:1.1;word-break:break-word}
+.qdone{margin-top:8px;background:rgba(255,255,255,.25);border:0;color:#fff;font:inherit;font-weight:800;padding:7px 14px;border-radius:999px;cursor:pointer}
+.qhead{display:flex;align-items:center;gap:8px;font-weight:900;font-size:16px}
+.qbadge{background:var(--accent);color:#fff;border-radius:999px;padding:1px 10px;font-size:13px}
+.qlist{list-style:none;margin:0;padding:0;flex:1;overflow-y:auto;min-height:0}
+.qlist li{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:14px}
+.qlist li.qempty{color:var(--muted);justify-content:center;border:0;padding:14px 0}
+.qnum{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.qnum.first{background:var(--warn)}
+.qmini{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;overflow:hidden;flex-shrink:0}
+.qmini.big{width:44px;height:44px;font-size:22px;cursor:pointer}
+.qlname{flex:1;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qwait{font-size:12px;color:var(--muted)}
+.qrm{background:none;border:0;color:var(--muted);font-size:16px;cursor:pointer;padding:2px 4px}
+.qcall{padding:12px}.qclear{padding:9px;font-size:15px}
+.qbanner{position:fixed;left:0;right:0;bottom:0;background:var(--warn);color:#1f1f2b;text-align:center;padding:18px 18px calc(var(--sa-b) + 18px);font-size:22px;font-weight:900;z-index:40;transform:translateY(110%);transition:transform .3s}
+.qbanner.show{transform:none}
+.qsrow{gap:10px}.qsrow .txt{cursor:pointer}
+.emojirow{display:flex;flex-wrap:wrap;gap:4px}.emojirow span{font-size:24px;padding:3px 5px;border-radius:8px;border:2px solid transparent;cursor:pointer}.emojirow span.on{border-color:var(--accent);background:var(--card2)}
+.pindots{display:flex;gap:12px;justify-content:center;margin:6px 0 16px}.pindots i{width:16px;height:16px;border-radius:50%;background:var(--line);display:block}.pindots i.on{background:var(--accent)}
+.pinpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:260px;margin:0 auto}.pinpad button{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;font:inherit;font-size:22px;font-weight:800;color:var(--text);cursor:pointer}.pinpad button.del{font-size:16px;color:var(--muted)}
+@media (orientation:portrait){.qbody{flex-direction:column}.qpanel{width:auto;max-height:42%}}
 .ver{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}
 </style>
 </head>
@@ -232,7 +276,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.3.2';
+const APP_VERSION = '1.4.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -275,6 +319,7 @@ function normalizeDb(d) {
     created: k.created || Date.now(), updated: k.updated || Date.now(),
   })) : [];
   d.turnQuestions = Array.isArray(d.turnQuestions) ? cleanWords(d.turnQuestions) : [];
+  d.queue = normalizeQueue(d.queue);
   const folderIds = new Set(d.folders.map(f => f.id));
   d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
   d.settings = { ...JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), ...(d.settings || {}) };
@@ -286,7 +331,7 @@ function normalizeDb(d) {
 }
 function loadDb() {
   try { const raw = localStorage.getItem(LS_KEY); if (raw) return normalizeDb(JSON.parse(raw)); } catch (e) { console.warn('load failed', e); }
-  return freshDb();
+  return normalizeDb(freshDb());
 }
 function saveDb() {
   db.savedAt = Date.now();
@@ -396,6 +441,7 @@ function mergeBackup(data, replace) {
     if (ex) { Object.assign(ex, deck); } else { db.decks.push(deck); nd++; }
   }
   if (Array.isArray(data.turnQuestions)) db.turnQuestions = cleanWords((db.turnQuestions || []).concat(data.turnQuestions));
+  if (data.queue && Array.isArray(data.queue.groups)) { db.queue = normalizeQueue(db.queue); for (const g of data.queue.groups) if (!db.queue.groups.some(x => x.id === g.id)) db.queue.groups.push(g); db.queue = normalizeQueue(db.queue); }
   saveDb();
   return { decks: nd, folders: nf };
 }
@@ -478,7 +524,9 @@ function route() {
   const arg = i < 0 ? '' : h.slice(i + 1);
   $$('.modal').forEach(m => m.remove());
   const screens = { home: renderHome, library: renderLibrary, deck: renderDeck, edit: renderEdit, setup: renderSetup, play: renderPlay, settings: renderSettings,
-    buzz: renderBuzzSetup, buzzplay: renderBuzz, futaba: renderFutabaSetup, futabaplay: renderFutaba, memory: renderMemorySetup, memoryplay: renderMemory };
+    buzz: renderBuzzSetup, buzzplay: renderBuzz, futaba: renderFutabaSetup, futabaplay: renderFutaba, memory: renderMemorySetup, memoryplay: renderMemory,
+    queue: a => a ? renderQueueGroup(a) : renderQueueGroups() };
+  clearInterval(qTimer);
   (screens[name] || renderHome)(arg);
 }
 function go(hash) { location.hash = hash; }
@@ -502,6 +550,7 @@ function renderHome() {
         <div class="gcard buzz" data-nav="#buzz"><div class="emoji">🎲</div><div class="n">Yahtzee</div><div class="d">Turn question, pick a card, win points, dodge the monster.</div></div>
         <div class="gcard futaba" data-nav="#futaba"><div class="emoji">⚡</div><div class="n">Futaba</div><div class="d">Up to 8 players around the iPad race to tap the answer.</div></div>
         <div class="gcard memory" data-nav="#memory"><div class="emoji">🃏</div><div class="n">Memory</div><div class="d">Find the pairs or trios.</div></div>
+        <div class="gcard queue" data-nav="#queue"><div class="emoji">🎓</div><div class="n">Queue</div><div class="d">Students tap their name and sit down. You call the next one.</div></div>
         <div class="gcard decks" data-nav="#library"><div class="emoji">🗂️</div><div class="n">Decks</div><div class="d">${plural(db.decks.length, 'deck')} of yours · ${db.folders.length} folders · ${PRESET_DECKS.length} presets</div></div>
       </div>
       <div style="margin-top:22px"><button class="btn sec" data-nav="#settings">Settings & backup</button></div>
@@ -1686,6 +1735,193 @@ function layoutMemory() {
 }
 window.addEventListener('resize', () => { layoutFutaba(); layoutMemory(); });
 
+/* ===================== Queue (students tap their name and sit down; the teacher calls the next one) ===================== */
+const Q_EMOJIS = ['😊', '😎', '🤩', '🥳', '😄', '🤓', '😃', '🌟', '🎉', '🦸', '🐱', '🐶', '🦊', '🐼', '🐸', '🦄', '🐯', '🐨'];
+const Q_ICONS = ['🦁', '🐯', '🦊', '🐻', '🐼', '🐨', '🦄', '🐸', '🦋', '🌈', '⭐', '🚀', '🎨', '🎵', '🏆', '📚', '🌺', '🍎'];
+const Q_COLORS = ['#4f6ef7', '#ff7043', '#26c6a0', '#ab47bc', '#ec407a', '#ffa726', '#66bb6a', '#ef5350', '#7e57c2', '#29b6f6', '#8d6e63', '#26a69a', '#c0ca33', '#5c6bc0', '#f06292', '#00acc1'];
+/* This year's groups (from Desktop\Alumnos 2026-27.pdf, 2026-27) */
+const Q_SEED = [
+  { name: '5º EP A', sub: 'Cambridge · Mon & Wed 12:55', icon: '🦁', students: ['Candela', 'Bosco', 'Juan', 'Jose Ignacio', 'Clara', 'Jon', 'Guillermo'] },
+  { name: '2 EP', sub: 'English 2 Days · Mon & Wed 13:45', icon: '🐯', students: ['Martina', 'Alaia', 'Elena', 'Natalia', 'Macarena', 'Lola', 'Olivia', 'Mikel', 'Alejandra', 'Manuela'] },
+  { name: '5º EP Reduced (M/W)', sub: 'English 2 Days · Mon & Wed 16:35', icon: '🦊', students: ['Cayetana', 'Claudia', 'Mikel'] },
+  { name: '1 ESO A', sub: 'Cambridge · Tue & Thu 12:55', icon: '🐻', students: ['Pablo', 'Carmen', 'Arrieta', 'Lucia', 'Martin', 'Juan Nicolas'] },
+  { name: '2º ESO A', sub: 'Cambridge · Tue & Thu 13:45', icon: '🐼', students: ['Noa', 'Beltran', 'Jorge', 'Covadonga', 'Ignacio', 'Carla'] },
+  { name: '5º EP Reduced (T/Th)', sub: 'English 2 Days · Tue & Thu 16:35', icon: '🐨', students: ['Felipe', 'Lucas', 'Pedro'] },
+];
+function qSeed() {
+  return { pin: '1234', live: {}, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }) };
+}
+/* Every student in a group gets a different colour (and emoji while there are enough). */
+function qAssignLooks(group) {
+  const used = new Set(), usedE = new Set();
+  group.students.forEach((s, i) => {
+    if (!s.color || used.has(s.color)) s.color = Q_COLORS.find(c => !used.has(c)) || `hsl(${Math.round((used.size * 137.508) % 360)} 65% 48%)`;
+    used.add(s.color);
+    if (!s.emoji || (usedE.has(s.emoji) && usedE.size < Q_EMOJIS.length)) s.emoji = Q_EMOJIS.find(e => !usedE.has(e)) || Q_EMOJIS[i % Q_EMOJIS.length];
+    usedE.add(s.emoji);
+  });
+}
+function normalizeQueue(q) {
+  if (!q || typeof q !== 'object' || !Array.isArray(q.groups)) return qSeed();
+  q.pin = /^\d{4}$/.test(String(q.pin || '')) ? String(q.pin) : '1234';
+  q.live = q.live && typeof q.live === 'object' ? q.live : {};
+  q.groups = q.groups.filter(g => g && g.id && typeof g.name === 'string').map(g => ({ id: String(g.id), name: g.name, sub: g.sub || '', icon: g.icon || '🎓',
+    students: (Array.isArray(g.students) ? g.students : []).filter(s => s && s.id && typeof s.name === 'string').map(s => ({ id: String(s.id), name: s.name, emoji: s.emoji || '', color: s.color || '', photo: typeof s.photo === 'string' ? s.photo : null })) }));
+  q.groups.forEach(qAssignLooks);
+  return q;
+}
+const qGroup = id => db.queue.groups.find(g => g.id === id) || null;
+const qLive = gid => { const l = db.queue.live; if (!l[gid] || !Array.isArray(l[gid].q)) l[gid] = { q: [], now: null, nowAt: 0 }; return l[gid]; };
+/* --- pure queue operations (tested) --- */
+function qJoin(live, sid) { if (live.q.some(x => x.id === sid)) return false; live.q.push({ id: sid, at: Date.now() }); return true; }
+function qLeave(live, sid) { const n = live.q.length; live.q = live.q.filter(x => x.id !== sid); return live.q.length < n; }
+function qNext(live) { const x = live.q.shift(); if (!x) return null; live.now = x.id; live.nowAt = Date.now(); return x.id; }
+const qPos = (live, sid) => live.q.findIndex(x => x.id === sid) + 1;
+const ordinal = n => n + (n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][Math.min(n % 10, 4)] || 'th');
+const waitMin = at => Math.max(0, Math.round((Date.now() - at) / 60000));
+let qTimer = null;
+
+function qAvatar(s, cls) { return `<div class="${cls}" style="background:${s.color}">${s.photo ? `<img src="${s.photo}" alt="">` : esc(s.emoji || '😊')}</div>`; }
+function qTeacherBtn() { return `<button class="tbtn" data-act="teacher">⚙︎ Teacher</button>`; }
+
+function renderQueueGroups() {
+  const gs = db.queue.groups;
+  app.innerHTML = `<div class="screen">
+    ${topbar('Queue', backBtn('Games', '#home'), qTeacherBtn())}
+    <div class="content"><div class="wrap">
+      <div class="hint" style="margin:0 4px 12px">Open your group. Students tap their name to join the queue and sit down; you call the next one.</div>
+      ${gs.length ? `<div class="qgroups">${gs.map(g => { const live = db.queue.live[g.id]; const n = live && live.q ? live.q.length : 0; return `<div class="qgcard" data-nav="#queue/${g.id}"><div class="qgicon">${esc(g.icon)}</div><div class="qgname">${esc(g.name)}</div><div class="qgsub">${esc(g.sub)}</div><div class="qgcount">${plural(g.students.length, 'student')}${n ? ` · <b>${n} waiting</b>` : ''}</div></div>`; }).join('')}</div>`
+        : `<div class="empty"><div class="big">🎓</div>No groups yet. Tap Teacher to add one.</div>`}
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', e => { const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'teacher') qTeacher(); });
+}
+function renderQueueGroup(gid) {
+  const g = qGroup(gid); if (!g) { location.replace('#queue'); return; }
+  const live = qLive(gid);
+  const now = live.now ? g.students.find(s => s.id === live.now) : null;
+  const n = g.students.length, cols = n <= 4 ? 2 : n <= 9 ? 3 : n <= 16 ? 4 : 5;
+  app.innerHTML = `<div class="screen">
+    ${topbar(g.icon + ' ' + g.name, backBtn('Groups', '#queue'), qTeacherBtn())}
+    <div class="qbody">
+      <div class="qgrid" style="grid-template-columns:repeat(${cols},1fr)">${g.students.map(s => { const p = qPos(live, s.id); return `<div class="qcard ${p ? 'inq' : ''} ${live.now === s.id ? 'now' : ''}" data-stu="${s.id}">${p ? `<div class="qpos">${ordinal(p)}</div>` : live.now === s.id ? '<div class="qpos now">📢</div>' : ''}${qAvatar(s, 'qav')}<div class="qname">${esc(s.name)}</div></div>`; }).join('') || '<div class="empty">No students in this group yet.</div>'}</div>
+      <aside class="qpanel">
+        <div class="qnow ${now ? 'show' : ''}"><div class="qnowlbl">📢 Now at the desk</div>${now ? qAvatar(now, 'qnowav') + `<div class="qnowname">${esc(now.name)}</div><button class="qdone" data-q="done">Done ✓</button>` : '<div class="qnowname" style="opacity:.7">—</div>'}</div>
+        <div class="qhead"><span>Queue</span><span class="qbadge">${live.q.length}</span></div>
+        <ol class="qlist">${live.q.map((x, i) => { const s = g.students.find(y => y.id === x.id); if (!s) return ''; return `<li><span class="qnum ${i === 0 ? 'first' : ''}">${i + 1}</span>${qAvatar(s, 'qmini')}<span class="qlname">${esc(s.name)}</span><span class="qwait">${waitMin(x.at)} min</span><button class="qrm" data-rm="${s.id}">✕</button></li>`; }).join('') || '<li class="qempty">No one queued yet</li>'}</ol>
+        <button class="btn qcall" data-q="next" ${live.q.length ? '' : 'disabled'}>📢 Call next</button>
+        <button class="btn sec qclear" data-q="clear" ${live.q.length || now ? '' : 'disabled'}>Clear</button>
+      </aside>
+    </div>
+    <div class="qbanner" id="qbanner"></div></div>`;
+  const sc = $('.screen', app);
+  sc.addEventListener('click', async e => {
+    const card = e.target.closest('[data-stu]');
+    if (card) {
+      const s = g.students.find(x => x.id === card.dataset.stu); if (!s) return;
+      if (qPos(live, s.id)) { qLeave(live, s.id); toast(s.name + ' left the queue'); }
+      else { qJoin(live, s.id); audio.unlock(); audio.tick(true); toast(`${s.name}, you are ${ordinal(qPos(live, s.id))}. Go and sit down 😊`, 2600); }
+      saveDb(); renderQueueGroup(gid); return;
+    }
+    const rm = e.target.closest('[data-rm]'); if (rm) { qLeave(live, rm.dataset.rm); saveDb(); renderQueueGroup(gid); return; }
+    const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'teacher') { qTeacher(gid); return; }
+    const q = e.target.closest('[data-q]'); if (!q) return;
+    if (q.dataset.q === 'next') {
+      const id = qNext(live); const s = g.students.find(x => x.id === id); saveDb(); renderQueueGroup(gid);
+      if (s) { const b = $('#qbanner'); b.textContent = `📢 ${s.name} — ¡ven a la mesa!`; b.classList.add('show'); setTimeout(() => { const bb = $('#qbanner'); if (bb) bb.classList.remove('show'); }, 4000); speak(s.name, 'es-ES'); }
+    }
+    if (q.dataset.q === 'done') { live.now = null; saveDb(); renderQueueGroup(gid); }
+    if (q.dataset.q === 'clear') { if (await confirmDlg('Clear the queue?', '', 'Clear', true)) { live.q = []; live.now = null; saveDb(); renderQueueGroup(gid); } }
+  });
+  clearInterval(qTimer); qTimer = setInterval(() => { $$('.qlist .qwait').forEach((el, i) => { if (live.q[i]) el.textContent = waitMin(live.q[i].at) + ' min'; }); }, 20000);
+}
+
+/* --- teacher side: PIN, groups, students, photos --- */
+function qAskPin() {
+  return new Promise(res => {
+    let entry = '';
+    const m = openSheet(`<h3>Teacher access</h3><p>Enter your PIN</p><div class="pindots">${[0, 1, 2, 3].map(i => `<i data-dot="${i}"></i>`).join('')}</div>
+      <div class="pinpad">${['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'].map(k => k ? `<button data-k="${k}" class="${k === '⌫' ? 'del' : ''}">${k}</button>` : '<span></span>').join('')}</div>
+      <div class="hint" id="pinerr" style="text-align:center;min-height:18px;color:var(--bad)"></div>
+      <button class="btn sec" data-a="no" style="margin-top:10px">Cancel</button>`);
+    const dots = () => $$('[data-dot]', m).forEach((d, i) => d.classList.toggle('on', i < entry.length));
+    m.addEventListener('click', e => {
+      const k = e.target.closest('[data-k]');
+      if (k) { if (k.dataset.k === '⌫') entry = entry.slice(0, -1); else if (entry.length < 4) entry += k.dataset.k; dots();
+        if (entry.length === 4) { if (entry === db.queue.pin) { closeSheet(m); res(true); } else { $('#pinerr', m).textContent = 'Wrong PIN, try again'; entry = ''; setTimeout(dots, 250); } } return; }
+      if (e.target.dataset.a === 'no') { closeSheet(m); res(false); }
+    });
+  });
+}
+async function qTeacher(gid) {
+  if (!(await qAskPin())) return;
+  if (gid) qEditGroup(gid); else qGroupsPanel();
+}
+function qGroupsPanel() {
+  const render = () => {
+    const m = openSheet(`<h3>Groups</h3>
+      <div class="card">${db.queue.groups.map(g => `<div class="row" data-g="${g.id}"><div class="ic">${esc(g.icon)}</div><div class="txt"><div class="t">${esc(g.name)}</div><div class="s">${esc(g.sub || '')}${g.sub ? ' · ' : ''}${plural(g.students.length, 'student')}</div></div><div class="chev">›</div></div>`).join('') || '<div class="row static"><div class="txt"><div class="s">No groups yet</div></div></div>'}</div>
+      <div class="btnrow" style="margin-top:12px"><button class="btn sec" data-a="add">+ New group</button><button class="btn sec" data-a="pin">Change PIN</button></div>
+      <button class="btn sec" data-a="no" style="margin-top:10px">Close</button>`);
+    m.addEventListener('click', async e => {
+      const g = e.target.closest('[data-g]'); if (g) { closeSheet(m); qEditGroup(g.dataset.g, () => render()); return; }
+      const a = e.target.dataset.a; if (!a) return;
+      if (a === 'no') { closeSheet(m); route(); }
+      if (a === 'add') { const n = await promptDlg('New group', '', 'e.g. 3º EP B', 'Create'); if (n && n.trim()) { const gr = { id: uid(), name: n.trim(), sub: '', icon: Q_ICONS[db.queue.groups.length % Q_ICONS.length], students: [] }; db.queue.groups.push(gr); saveDb(); closeSheet(m); qEditGroup(gr.id, () => render()); } }
+      if (a === 'pin') { const v = await promptDlg('New 4-digit PIN', '', '1234', 'Save'); if (v === null) return; if (/^\d{4}$/.test(v.trim())) { db.queue.pin = v.trim(); saveDb(); toast('PIN updated'); } else toast('The PIN must be 4 digits'); }
+    });
+  };
+  render();
+}
+function qEditGroup(gid, onClose) {
+  const g = qGroup(gid); if (!g) return;
+  const render = () => {
+    const m = openSheet(`<h3>${esc(g.icon)} ${esc(g.name)}</h3>
+      <div class="card">
+        <div class="field"><label>Group name</label><input type="text" id="qgname" value="${esc(g.name)}" autocomplete="off"></div>
+        <div class="field"><label>Subtitle (days, time…)</label><input type="text" id="qgsub" value="${esc(g.sub || '')}" placeholder="Mon & Wed 12:55" autocomplete="off"></div>
+        <div class="field"><label>Icon</label><div class="emojirow">${Q_ICONS.map(i => `<span data-icon="${i}" class="${g.icon === i ? 'on' : ''}">${i}</span>`).join('')}</div></div>
+      </div>
+      <h2 class="sec">Students · ${g.students.length}</h2>
+      <div class="card">${g.students.map(s => `<div class="row static qsrow"><div data-photo="${s.id}" title="Tap for a photo">${qAvatar(s, 'qmini big')}</div><div class="txt" data-rename="${s.id}"><div class="t">${esc(s.name)}</div><div class="s">${s.photo ? '📷 photo · tap the picture to change it' : 'tap the picture to add a photo'}</div></div>${s.photo ? `<button class="tbtn" data-nophoto="${s.id}" style="font-size:13px">no photo</button>` : ''}<button class="tbtn" data-del="${s.id}" style="color:var(--bad)">✕</button></div>`).join('') || '<div class="row static"><div class="txt"><div class="s">No students yet</div></div></div>'}</div>
+      <div class="card" style="margin-top:10px"><div class="field" style="display:flex;gap:8px;align-items:center"><input type="text" id="qnew" placeholder="Student name" autocomplete="off" autocapitalize="words" style="flex:1"><button class="btn" data-a="addstu" style="width:auto;padding:10px 16px">Add</button></div></div>
+      <div class="btnrow" style="margin-top:10px"><button class="btn sec" data-a="paste">Paste a list</button><button class="btn sec" data-a="recolor">Re-colour</button><button class="btn bad" data-a="delgroup">Delete group</button></div>
+      <button class="btn" data-a="close" style="margin-top:10px">Done</button>`);
+    const save = () => { g.name = $('#qgname', m).value.trim() || g.name; g.sub = $('#qgsub', m).value.trim(); saveDb(); };
+    const rerender = () => { save(); closeSheet(m); render(); };
+    $('#qnew', m).addEventListener('keydown', e => { if (e.key === 'Enter') $('[data-a=addstu]', m).click(); });
+    m.addEventListener('click', async e => {
+      const ic = e.target.closest('[data-icon]'); if (ic) { g.icon = ic.dataset.icon; $$('[data-icon]', m).forEach(x => x.classList.toggle('on', x === ic)); $('h3', m).textContent = g.icon + ' ' + g.name; saveDb(); return; }
+      const ph = e.target.closest('[data-photo]'); if (ph) { qPickPhoto(g, ph.dataset.photo, rerender); return; }
+      const np = e.target.closest('[data-nophoto]'); if (np) { const s = g.students.find(x => x.id === np.dataset.nophoto); if (s) { s.photo = null; rerender(); } return; }
+      const rn = e.target.closest('[data-rename]'); if (rn) { const s = g.students.find(x => x.id === rn.dataset.rename); const v = await promptDlg('Rename', s.name); if (v && v.trim()) { s.name = v.trim(); rerender(); } return; }
+      const del = e.target.closest('[data-del]'); if (del) { const s = g.students.find(x => x.id === del.dataset.del); if (await confirmDlg('Remove ' + s.name + '?', '', 'Remove', true)) { g.students = g.students.filter(x => x.id !== s.id); rerender(); } return; }
+      const a = e.target.dataset.a; if (!a) return;
+      if (a === 'addstu') { const v = $('#qnew', m).value.trim(); if (!v) return; g.students.push({ id: uid(), name: v, emoji: '', color: '', photo: null }); qAssignLooks(g); rerender(); }
+      if (a === 'paste') { closeSheet(m); qPasteList(g, () => render()); }
+      if (a === 'recolor') { g.students.forEach(s => { s.color = ''; s.emoji = ''; }); qAssignLooks(g); rerender(); toast('New colours'); }
+      if (a === 'delgroup') { if (await confirmDlg('Delete "' + g.name + '"?', 'All its students are removed. This cannot be undone.', 'Delete', true)) { db.queue.groups = db.queue.groups.filter(x => x.id !== g.id); delete db.queue.live[g.id]; saveDb(); closeSheet(m); if (onClose) onClose(); else route(); } }
+      if (a === 'close') { save(); closeSheet(m); if (onClose) onClose(); else route(); }
+    });
+  };
+  render();
+}
+function qPasteList(g, done) {
+  const m = openSheet(`<h3>Paste a list</h3><p>One name per line. They are added to ${esc(g.name)}.</p><div class="card"><div class="field"><textarea id="qpaste" style="min-height:160px" autocapitalize="words" spellcheck="false"></textarea></div></div>
+    <div class="btnrow" style="margin-top:12px"><button class="btn sec" data-a="no">Cancel</button><button class="btn" data-a="yes">Add</button></div>`);
+  m.addEventListener('click', e => { const a = e.target.dataset.a; if (!a) return; if (a === 'yes') { const names = parseWords($('#qpaste', m).value).map(term); names.forEach(n => g.students.push({ id: uid(), name: n, emoji: '', color: '', photo: null })); qAssignLooks(g); saveDb(); toast('Added ' + plural(names.length, 'student')); } closeSheet(m); done(); });
+}
+function qPickPhoto(g, sid, done) {
+  const s = g.students.find(x => x.id === sid); if (!s) return;
+  let input = $('#qphoto'); if (!input) { input = document.createElement('input'); input.type = 'file'; input.id = 'qphoto'; input.accept = 'image/*'; input.style.display = 'none'; document.body.appendChild(input); }
+  input.onchange = () => {
+    const f = input.files && input.files[0]; input.value = ''; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => { const img = new Image(); img.onload = () => { const max = 180, sc = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); s.photo = c.toDataURL('image/jpeg', 0.72); saveDb(); toast('Photo saved'); done(); }; img.src = r.result; };
+    r.readAsDataURL(f);
+  };
+  input.click();
+}
+
 /* ===================== Settings ===================== */
 let persistState = '';
 function renderSettings() {
@@ -1701,7 +1937,7 @@ function renderSettings() {
       </div>
       <h2 class="sec">Backup</h2>
       <div class="card">
-        <div class="row" data-act="backup"><div class="ic">💾</div><div class="txt"><div class="t">Export backup</div><div class="s">${db.decks.length} decks, ${db.folders.length} folders → one .json file. Save it to Files or AirDrop it.</div></div><div class="chev">›</div></div>
+        <div class="row" data-act="backup"><div class="ic">💾</div><div class="txt"><div class="t">Export backup</div><div class="s">${db.decks.length} decks, ${db.folders.length} folders, ${(db.queue && db.queue.groups || []).length} queue groups → one .json file. Save it to Files or AirDrop it.</div></div><div class="chev">›</div></div>
         <div class="row" data-act="restore"><div class="ic">📥</div><div class="txt"><div class="t">Restore / import</div><div class="s">Backup .json, or a .txt / .csv list</div></div><div class="chev">›</div></div>
       </div>
       <div class="hint">Your decks live only on this device, inside this app. Nothing is uploaded anywhere. Make a backup now and then, especially before deleting the app or clearing Safari data.</div>
@@ -1877,6 +2113,16 @@ if (location.search.includes('selftest')) {
     const tb2 = { cfg: { qCats: { math: true, body: false, simon: false, capitals: false, mine: false } }, qUsed: new Set(), qAsked: 0, qGroup: 0 };
     t('math only pool', pickTurnQuestion(tb2).cat === 'math');
     const c1 = cellColor(0, 0, 5), c5 = cellColor(0, 4, 5); t('cell shades', c1.bg === 'hsl(0 78% 82%)' && c5.bg === 'hsl(0 78% 38%)' && c1.fg !== c5.fg);
+    // --- Queue
+    const qg = { id: 'g', name: 'G', students: Array.from({ length: 20 }, (_, i) => ({ id: 's' + i, name: 'S' + i, emoji: '', color: '', photo: null })) };
+    qAssignLooks(qg); t('queue colours unique', new Set(qg.students.map(x => x.color)).size === 20 && qg.students.every(x => x.emoji));
+    qg.students[3].color = qg.students[0].color; qAssignLooks(qg); t('queue duplicate colour fixed', new Set(qg.students.map(x => x.color)).size === 20 && qg.students[0].color === Q_COLORS[0]);
+    const lv = { q: [], now: null, nowAt: 0 };
+    t('queue join/pos', qJoin(lv, 'a') && qJoin(lv, 'b') && !qJoin(lv, 'a') && qPos(lv, 'b') === 2 && qPos(lv, 'zz') === 0);
+    t('queue next/leave', qNext(lv) === 'a' && lv.now === 'a' && qPos(lv, 'b') === 1 && qLeave(lv, 'b') && !qLeave(lv, 'b') && qNext(lv) === null);
+    const qs = qSeed(); t('queue seed 2026-27', qs.groups.length === 6 && qs.groups.reduce((a, g) => a + g.students.length, 0) === 35 && qs.groups[1].students.some(x => x.name === 'Macarena') && qs.groups.every(g => new Set(g.students.map(x => x.color)).size === g.students.length));
+    t('ordinal', ordinal(1) === '1st' && ordinal(2) === '2nd' && ordinal(3) === '3rd' && ordinal(4) === '4th' && ordinal(11) === '11th' && ordinal(22) === '22nd');
+    t('normalizeQueue', normalizeQueue(null).groups.length === 6 && normalizeQueue({ groups: [{ id: 'x', name: 'X', students: [{ id: 'a', name: 'A' }] }] }).groups[0].students[0].color === Q_COLORS[0]);
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
     // --- Memory
     const mc = buildMemory(['dog | perro', 'cat | gato', 'plain', 'other'], { sets: 3, size: 2, variant: 'same' });
@@ -1902,6 +2148,8 @@ if (location.search.includes('selftest')) {
     db.settings.sound = false; const four = new Set(PRESET_DECKS.slice(0, 4).map(k => k.id));
     if (demo === 'buzz' || demo === 'buzzcard' || demo === 'buzzq') { Object.assign(gameCfg('buzz'), { categories: 4, rows: 5, teams: 3, questions: true, qTime: 10 }); startBuzz(four); if (demo !== 'buzzq') { clearInterval(buzz.timer); buzz.phase = 'board'; } if (demo === 'buzzcard') { buzz.open = { ci: 0, r: 2, answer: false, specialDone: false }; buzz.cats[0].cells[2].special = 'double'; } }
     else if (/^futaba/.test(demo)) { const np = { futaba: 4, futaba2: 2, futaba3: 3, futaba5: 5, futaba6: 6, futaba7: 7, futaba8: 8 }[demo] || 4; Object.assign(gameCfg('futaba'), { players: np, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); if (np >= 3) { fut.players[0].rank = 1; fut.players[0].score = 2; fut.players[0].delta = '+2'; fut.won = 0; fut.players[1].locked = true; fut.players[1].score = -2; fut.players[1].delta = '−2'; renderFutaba(); } }
+    else if (demo === 'queue' || demo === 'queuegroups') { const g = db.queue.groups[1]; const lv2 = qLive(g.id); if (demo === 'queue') { qJoin(lv2, g.students[4].id); qJoin(lv2, g.students[1].id); qJoin(lv2, g.students[7].id); qNext(lv2); qJoin(lv2, g.students[2].id); go('#queue/' + g.id); } else go('#queue'); }
+    else if (demo === 'queueedit') { go('#queue'); setTimeout(() => qEditGroup(db.queue.groups[0].id), 300); }
     else if (demo === 'memory') { Object.assign(gameCfg('memory'), { sets: 8, size: 2, teams: 2, variant: 'scrambled' }); startMemory(four); mem.cards[0].up = true; mem.cards[1].done = true; mem.cards[1].by = 0; mem.cards[2].done = true; mem.cards[2].by = 0; renderMemory(); }
     else { startGame([PRESET_DECKS[0].id]); if (demo === 'word') { game.phase = 'word'; nextWord(); game.endAt = Date.now() + 42000; } else game.phase = demo; renderPlay(); }
   }
