@@ -197,6 +197,12 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .fpanel{position:absolute;background:var(--card);color:var(--text);border-radius:18px;border:4px solid #fff;display:flex;flex-direction:column;padding:8px 12px 10px;gap:6px;transform-origin:center;box-sizing:border-box;transition:box-shadow .15s}
 .fpanel.locked{opacity:.45}
 .fpanel.won{box-shadow:0 0 0 6px var(--ok)}
+.fpanel.second{box-shadow:0 0 0 6px #c0c0c0}
+.fpanel.small{padding:6px 8px 8px;gap:4px}
+.fpanel.small .fopt{font-size:clamp(12px,1.4vw,18px);padding:2px 6px;overflow-wrap:normal;word-break:keep-all;line-height:1.15}
+.fpanel.small .fprompt{font-size:clamp(14px,1.8vw,22px)}
+.fhead .delta{font-style:normal;font-weight:800;margin-right:8px;padding:1px 7px;border-radius:999px;color:#fff}
+.fhead .delta.up{background:var(--ok)}.fhead .delta.down{background:var(--bad)}
 .fhead{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
 .fhead b{color:var(--text);font-size:16px}
 .fprompt{text-align:center;font-weight:800;font-size:clamp(16px,2.2vw,26px);line-height:1.1;overflow:hidden;max-height:2.3em}
@@ -224,7 +230,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.2.0';
+const APP_VERSION = '1.3.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -492,7 +498,7 @@ function renderHome() {
       <div class="games">
         <div class="gcard charades" data-nav="#setup"><div class="emoji">🎭</div><div class="n">Charades</div><div class="d">Act it out, the class guesses.</div></div>
         <div class="gcard buzz" data-nav="#buzz"><div class="emoji">🎲</div><div class="n">Yahtzee</div><div class="d">Turn question, pick a card, win points, dodge the monster.</div></div>
-        <div class="gcard futaba" data-nav="#futaba"><div class="emoji">⚡</div><div class="n">Futaba</div><div class="d">Up to 4 players around the iPad race to tap the answer.</div></div>
+        <div class="gcard futaba" data-nav="#futaba"><div class="emoji">⚡</div><div class="n">Futaba</div><div class="d">Up to 8 players around the iPad race to tap the answer.</div></div>
         <div class="gcard memory" data-nav="#memory"><div class="emoji">🃏</div><div class="n">Memory</div><div class="d">Find the pairs or trios.</div></div>
         <div class="gcard decks" data-nav="#library"><div class="emoji">🗂️</div><div class="n">Decks</div><div class="d">${plural(db.decks.length, 'deck')} of yours · ${db.folders.length} folders · ${PRESET_DECKS.length} presets</div></div>
       </div>
@@ -1035,7 +1041,7 @@ const audio = {
 /* ===================== Shared game-setup helpers ===================== */
 const GAME_DEFAULTS = {
   buzz: { lastDecks: [], categories: 4, rows: 5, teams: 2, monsters: 2, gifts: 1, doubles: 1, mode: 'turns', wrongPenalty: false, monsterEffect: 'all', questions: true, qTime: 10, qCats: { math: true, body: true, simon: true, capitals: true, mine: true }, v2: true },
-  futaba: { lastDecks: [], players: 2, mode: 'auto', options: 4, rounds: 10, promptSide: 'answer', voice: 'en-GB' },
+  futaba: { lastDecks: [], players: 2, mode: 'mix', mix: { pairs: true, listen: true, scramble: true, gaps: true }, options: 4, rounds: 10, promptSide: 'answer', voice: 'en-GB', voiceName: '' },
   memory: { lastDecks: [], sets: 6, size: 2, variant: 'same', teams: 1 },
 };
 function gameCfg(key) {
@@ -1043,6 +1049,7 @@ function gameCfg(key) {
   if (!s[key] || typeof s[key] !== 'object') s[key] = {};
   for (const k in GAME_DEFAULTS[key]) if (!(k in s[key])) s[key][k] = JSON.parse(JSON.stringify(GAME_DEFAULTS[key][k]));
   if (key === 'buzz' && !s.buzz.v2) { s.buzz.rows = 5; s.buzz.v2 = true; }
+  if (key === 'futaba' && s.futaba.mode === 'auto') s.futaba.mode = 'mix';
   return s[key];
 }
 function deckGroups() {
@@ -1082,7 +1089,7 @@ const teamNamesHtml = n => n > 1 ? Array.from({ length: n }, (_, i) => `<div cla
 const makeTeams = n => Array.from({ length: n }, (_, i) => ({ name: db.settings.teamNames[i] || `Team ${i + 1}`, score: 0 }));
 const selectedDecks = selected => allDecks().filter(k => selected.has(k.id));
 const wordsFrom = selected => cleanWords(selectedDecks(selected).flatMap(k => k.words));
-const TEAM_COLORS = ['#5b8def', '#ef5b7a', '#f5a524', '#22a06b', '#a35bef', '#1fb5c9'];
+const TEAM_COLORS = ['#5b8def', '#ef5b7a', '#f5a524', '#22a06b', '#a35bef', '#1fb5c9', '#e4572e', '#8d99ae'];
 function scoreboardHtml(teams, current) {
   return `<div class="score">${teams.map((t, i) => `<div class="${i === current ? 'lead' : ''}" style="border-bottom:4px solid ${TEAM_COLORS[i % 6]}"><div class="n">${esc(t.name)}</div><div class="v">${t.score}</div></div>`).join('')}</div>`;
 }
@@ -1328,127 +1335,203 @@ function buzzFinish(by) {
 /* ===================== Futaba (players around the iPad) ===================== */
 let fut = null;
 const FUT_MODES = { pairs: 'Pairs', listen: 'Listen', scramble: 'Scramble', gaps: 'Gaps' };
-const FUT_HELP = { pairs: 'One side of the pair is shown, players tap the other side.', listen: 'The iPad says the word out loud, players tap the word they heard.', scramble: 'The letters are mixed up, players tap the real word.', gaps: 'Some letters are missing, players tap the whole word.' };
-function futabaMode(cfg, words) {
-  if (cfg.mode !== 'auto') return cfg.mode;
-  return words.filter(hasPair).length >= cfg.options ? 'pairs' : 'listen';
+const FUT_HELP = { pairs: 'one side of the pair is shown, tap the other side', listen: 'the iPad says the word, tap the word you heard', scramble: 'the letters are mixed up, tap the real word', gaps: 'some letters are missing, tap the whole word' };
+/* Which question types a game uses. 'mix' = the ones ticked; a single mode = only that one. */
+function futabaModes(cfg, words) {
+  const pairsOk = words.filter(hasPair).length >= cfg.options;
+  if (cfg.mode !== 'mix') return cfg.mode === 'pairs' && !pairsOk ? [] : [cfg.mode];
+  const m = cfg.mix || {};
+  return Object.keys(FUT_MODES).filter(k => m[k] && (k !== 'pairs' || pairsOk));
 }
+/* ---- speech: prefer the best-quality installed voice (premium > enhanced > default > compact) ---- */
+let VOICES = [];
+function loadVoices() { try { VOICES = speechSynthesis.getVoices() || []; } catch (e) { VOICES = []; } return VOICES; }
+try { loadVoices(); speechSynthesis.addEventListener('voiceschanged', () => { loadVoices(); if (location.hash === '#futaba' && futabaRerender) futabaRerender(); }); } catch (e) {}
+const voiceLang = v => String(v.lang || '').replace('_', '-').toLowerCase();
+const voiceQuality = v => { const id = (v.voiceURI || '') + ' ' + (v.name || ''); return /premium/i.test(id) ? 3 : /enhanced/i.test(id) ? 2 : /compact|eloquence/i.test(id) ? 0 : 1; };
+function voicesFor(lang) { const l = String(lang).toLowerCase(); const same = VOICES.filter(v => voiceLang(v) === l); const list = same.length ? same : VOICES.filter(v => voiceLang(v).startsWith(l.slice(0, 2))); return list.slice().sort((a, b) => voiceQuality(b) - voiceQuality(a) || a.name.localeCompare(b.name)); }
+function bestVoice(lang, name) { const list = voicesFor(lang); if (name) { const v = list.find(x => x.name === name); if (v) return v; } return list[0] || null; }
+function speak(text, lang, name) {
+  try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text)); u.lang = lang || 'en-GB'; const v = bestVoice(lang || 'en-GB', name); if (v) u.voice = v; u.rate = 0.9; u.pitch = 1; speechSynthesis.speak(u); } catch (e) {}
+}
+let futabaRerender = null;
 function renderFutabaSetup() {
   const cfg = gameCfg('futaba'); const groups = deckGroups(); const selected = ensureSelection(cfg);
   if (!allDecks().length) { location.replace('#library'); return; }
   const render = () => {
     const words = wordsFrom(selected); const pairs = words.filter(hasPair).length;
-    const mode = futabaMode(cfg, words);
-    const usable = mode === 'pairs' ? pairs : words.length;
-    const ok = usable >= cfg.options;
+    const modes = futabaModes(cfg, words);
+    const ok = modes.length > 0 && words.length >= cfg.options;
+    const vlist = voicesFor(cfg.voice); const best = bestVoice(cfg.voice, cfg.voiceName);
+    const n = cfg.players, big = n >= 3;
     app.innerHTML = `<div class="screen">
       ${topbar('Futaba', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
       <div class="content"><div class="wrap">
-        <button class="btn big ok" data-act="start" ${ok ? '' : 'disabled'}>▶ Start · ${plural(cfg.players, 'player')} · ${FUT_MODES[mode]}</button>
-        ${ok ? '' : `<div class="hint" style="color:var(--bad)">Need at least ${cfg.options} ${mode === 'pairs' ? 'entries with pairs' : 'words'} in the selected decks.</div>`}
-        <div class="hint">Players sit around the iPad, one panel each. A prompt appears and the first player to tap the right answer on their panel scores a point. A wrong tap locks that player out for the round.</div>
+        <button class="btn big ok" data-act="start" ${ok ? '' : 'disabled'}>▶ Start · ${plural(n, 'player')}</button>
+        ${ok ? '' : `<div class="hint" style="color:var(--bad)">${modes.length ? 'Need at least ' + cfg.options + ' words in the selected decks.' : cfg.mode === 'pairs' ? 'Pairs needs at least ' + cfg.options + ' entries written as word | translation.' : 'Tick at least one question type.'}</div>`}
+        <div class="hint">Players sit around the iPad, one panel each. A question appears and everyone races to tap the right answer on their own panel.<br>
+        <b>Scoring:</b> ${big ? 'first correct +2, second correct +1, a wrong tap −2' : 'correct +1, a wrong tap −1'}. Not answering costs nothing. Scores can go below zero.</div>
         <h2 class="sec">Players</h2>
-        <div class="card">${stepHtml('players', 'Players around the iPad', '1 = practice on your own', cfg.players)}
+        <div class="card">${stepHtml('players', 'Players around the iPad', '1 = practice on your own · up to 8', n)}
           ${stepHtml('options', 'Answers to choose from', '', cfg.options)}
           <div class="field"><label>Rounds</label>${segHtml('rounds', [[5, '5'], [10, '10'], [15, '15'], [20, '20'], [0, '∞']], cfg.rounds)}</div></div>
-        <h2 class="sec">Question type</h2>
+        <h2 class="sec">Question types</h2>
         <div class="card">
-          <div class="field"><label>Mode${cfg.mode === 'auto' ? ' · auto = ' + FUT_MODES[mode] : ''}</label>${segHtml('mode', [['auto', 'Auto'], ['pairs', 'Pairs'], ['listen', 'Listen'], ['scramble', 'Scramble'], ['gaps', 'Gaps']], cfg.mode)}</div>
-          <div class="hint" style="margin:0 16px 12px">${FUT_HELP[mode]}${pairs ? '' : ' Tip: write <b>dog | perro</b> in a deck to unlock Pairs.'}</div>
-          ${mode === 'pairs' ? `<div class="field"><label>Show</label>${segHtml('promptSide', [['answer', 'translation → tap the word'], ['term', 'word → tap the translation']], cfg.promptSide)}</div>` : ''}
-          ${mode === 'listen' ? `<div class="field"><label>Voice</label>${segHtml('voice', [['en-GB', 'British'], ['en-US', 'American'], ['es-ES', 'Spanish']], cfg.voice)}</div>` : ''}
+          <div class="field"><label>Mode</label>${segHtml('mode', [['mix', 'Mix'], ['pairs', 'Pairs'], ['listen', 'Listen'], ['scramble', 'Scramble'], ['gaps', 'Gaps']], cfg.mode)}</div>
+          ${cfg.mode === 'mix' ? Object.keys(FUT_MODES).map(k => `<div class="toggle" data-mix="${k}"><div><div class="lbl">${FUT_MODES[k]}</div><div class="sub">${FUT_HELP[k]}${k === 'pairs' && pairs < cfg.options ? ' · needs ' + cfg.options + '+ entries like <b>dog | perro</b> (you have ' + pairs + ')' : ''}</div></div><div class="sw ${cfg.mix[k] ? 'on' : ''}"></div></div>`).join('')
+            : `<div class="hint" style="margin:0 16px 12px">${FUT_HELP[cfg.mode]}.${cfg.mode === 'pairs' && pairs < cfg.options ? ' Needs ' + cfg.options + '+ entries like <b>dog | perro</b>; you have ' + pairs + '.' : ''}</div>`}
+          ${modes.includes('pairs') ? `<div class="field"><label>Pairs: show</label>${segHtml('promptSide', [['answer', 'translation → tap the word'], ['term', 'word → tap the translation']], cfg.promptSide)}</div>` : ''}
         </div>
+        ${modes.includes('listen') ? `<h2 class="sec">Voice</h2>
+        <div class="card">
+          <div class="field"><label>Accent</label>${segHtml('voice', [['en-GB', 'British'], ['en-US', 'American'], ['es-ES', 'Spanish']], cfg.voice)}</div>
+          <div class="field"><label>Voice · ${vlist.length ? plural(vlist.length, 'voice') + ' installed' : 'no voices reported yet'}</label>
+            <select data-sel="voiceName"><option value="">Automatic${best ? ' · ' + esc(best.name) + (voiceQuality(best) >= 2 ? ' (high quality)' : '') : ''}</option>${vlist.map(v => `<option value="${esc(v.name)}" ${cfg.voiceName === v.name ? 'selected' : ''}>${esc(v.name)}${voiceQuality(v) >= 3 ? ' · premium' : voiceQuality(v) === 2 ? ' · enhanced' : voiceQuality(v) === 0 ? ' · basic' : ''}</option>`).join('')}</select></div>
+          <div class="field"><button class="btn sec" data-act="testvoice">🔊 Test the voice</button></div>
+          <div class="hint" style="margin:0 16px 12px">For a natural voice, install one on the iPad: Settings → Accessibility → Spoken Content → Voices → English → choose e.g. <b>Daniel (Enhanced)</b> or a <b>Premium</b> voice and download it. The app picks the best one automatically.</div>
+        </div>` : ''}
         <h2 class="sec">Decks</h2>
         ${deckPickerHtml(groups, selected)}
       </div></div></div>`;
-    bindSetup($('.screen', app), cfg, groups, selected, { players: [1, 4], options: [2, 6] }, render, () => startFutaba(selected));
+    const sc = $('.screen', app);
+    sc.addEventListener('click', e => {
+      const mx = e.target.closest('[data-mix]'); if (mx) { cfg.mix[mx.dataset.mix] = !cfg.mix[mx.dataset.mix]; saveDb(); keepScroll(render); return; }
+      const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'testvoice') { loadVoices(); speak('Hello! Touch your nose. Number seven. A yellow banana.', cfg.voice, cfg.voiceName); }
+    });
+    sc.addEventListener('change', e => { const sel = e.target.closest('[data-sel]'); if (sel) { cfg[sel.dataset.sel] = sel.value; saveDb(); } });
+    bindSetup(sc, cfg, groups, selected, { players: [1, 8], options: [2, 6] }, render, () => startFutaba(selected));
   };
+  futabaRerender = () => keepScroll(render);
   render();
 }
-function buildFutabaRounds(words, cfg, mode) {
-  const pool = mode === 'pairs' ? words.filter(hasPair) : words.slice();
-  if (pool.length < 2) return [];
-  const n = cfg.rounds || pool.length;                 // ∞ = one pass over every word, then it loops
-  const side = mode === 'pairs' && cfg.promptSide === 'term' ? 1 : 0;   // index of the part players must tap
-  const order = shuffle(pool.slice()); const rounds = [];
+function buildFutabaRounds(words, cfg, modes) {
+  if (typeof modes === 'string') modes = [modes];
+  modes = (modes || []).filter(m => m !== 'pairs' || words.filter(hasPair).length >= 2);
+  if (!modes.length || words.length < 2) return [];
+  const n = cfg.rounds || words.length;                 // ∞ = one pass over every word, then it loops
+  const order = shuffle(words.slice()); const pairWords = words.filter(hasPair);
+  const rounds = [];
   for (let i = 0; i < n; i++) {
-    const w = order[i % order.length]; const ps = parts(w);
+    const mode = modes[rnd(0, modes.length - 1)];
+    const pool = mode === 'pairs' ? pairWords : words;
+    const w = mode === 'pairs' ? pairWords[i % pairWords.length] : order[i % order.length];
+    const ps = parts(w);
+    const side = mode === 'pairs' && cfg.promptSide === 'term' ? 1 : 0;   // index of the part players must tap
     const answer = ps[side];
     const prompt = mode === 'pairs' ? ps[side === 0 ? 1 : 0] : mode === 'scramble' ? scramble(ps[0]) : mode === 'gaps' ? gapped(ps[0]) : '';
     const seen = new Set([answer.toLowerCase()]); const options = [answer];
     for (const o of shuffle(pool.filter(x => x !== w))) { const t = parts(o)[side] || parts(o)[0]; if (!seen.has(t.toLowerCase())) { seen.add(t.toLowerCase()); options.push(t); } if (options.length >= cfg.options) break; }
-    rounds.push({ prompt, answer, speak: mode === 'listen' ? ps[0] : null, options: shuffle(options) });
+    rounds.push({ mode, prompt, answer, speak: mode === 'listen' ? ps[0] : null, options: shuffle(options) });
   }
   return rounds;
 }
 function startFutaba(selected) {
-  const cfg = gameCfg('futaba'); const words = wordsFrom(selected); const mode = futabaMode(cfg, words);
-  const rounds = buildFutabaRounds(words, cfg, mode);
-  if (!rounds.length || rounds[0].options.length < 2) { toast('Not enough words for this mode'); return; }
-  fut = { rounds, i: 0, mode, cfg: { ...cfg }, players: Array.from({ length: cfg.players }, (_, i) => ({ name: 'Player ' + (i + 1), score: 0, locked: false })), won: -1, phase: 'ready', timer: null, orders: [] };
-  audio.unlock(); keepAwake(true);
+  const cfg = gameCfg('futaba'); const words = wordsFrom(selected); const modes = futabaModes(cfg, words);
+  const rounds = buildFutabaRounds(words, cfg, modes);
+  if (!rounds.length || rounds[0].options.length < 2) { toast('Not enough words for these question types'); return; }
+  fut = { rounds, i: 0, modes, cfg: JSON.parse(JSON.stringify(cfg)), players: Array.from({ length: cfg.players }, (_, i) => ({ name: 'Player ' + (i + 1), score: 0, locked: false, rank: 0, delta: '' })), won: -1, ending: false, phase: 'ready', timer: null, window: null, orders: [] };
+  audio.unlock(); keepAwake(true); loadVoices();
   if (location.hash === '#futabaplay') renderFutaba(); else { navState.depth++; go('#futabaplay'); }
 }
-function speak(text, lang) { try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text)); u.lang = lang || 'en-GB'; u.rate = 0.85; speechSynthesis.speak(u); } catch (e) {} }
 function futabaNext() {
-  const f = fut; f.i++; f.won = -1; f.players.forEach(p => p.locked = false);
+  const f = fut; clearTimeout(f.window); f.window = null; f.i++; f.won = -1; f.ending = false; f.players.forEach(p => { p.locked = false; p.rank = 0; p.delta = ''; });
   if (f.cfg.rounds && f.i >= f.rounds.length) { f.phase = 'over'; audio.horn(); renderFutaba(); return; }
   if (f.i >= f.rounds.length) f.i = 0;
   f.orders = f.players.map(() => shuffle(f.rounds[f.i].options.slice()));
   renderFutaba();
-  if (f.mode === 'listen') speak(f.rounds[f.i].speak, f.cfg.voice);
+  if (f.rounds[f.i].mode === 'listen') speak(f.rounds[f.i].speak, f.cfg.voice, f.cfg.voiceName);
 }
-function futabaPos(n, i) { return ({ 1: ['b'], 2: ['b', 't'], 3: ['b', 'l', 'r'], 4: ['b', 't', 'l', 'r'] })[n][i]; }
+function futabaEndRound() {
+  const f = fut; if (!f || f.ending) return;
+  f.ending = true; clearTimeout(f.window); f.window = null; if (f.won === -1) f.won = -2;
+  renderFutaba();
+  f.timer = setTimeout(() => { f.timer = null; futabaNext(); }, 1300);
+}
+/* Scoring: 2 players (or practice) = +1 correct, −1 wrong. 3+ players = first +2, second +1, wrong −2. */
+function futabaAnswer(pi, correct) {
+  const f = fut; if (!f || f.phase !== 'round' || f.ending) return false;
+  const pl = f.players[pi]; if (pl.locked || pl.rank) return false;
+  const big = f.players.length >= 3;
+  if (correct) {
+    if (f.won === -1) { pl.score += big ? 2 : 1; pl.rank = 1; pl.delta = big ? '+2' : '+1'; f.won = pi; audio.ding(); }
+    else if (big) { pl.score += 1; pl.rank = 2; pl.delta = '+1'; audio.ding(); }
+    else return false;
+  } else { pl.locked = true; pl.score -= big ? 2 : 1; pl.delta = big ? '−2' : '−1'; audio.buzz(); }
+  const open = f.players.filter(p => !p.locked && !p.rank).length;
+  const done = big ? (f.players.some(p => p.rank === 2) || open === 0) : (f.won !== -1 || open === 0);
+  if (done) futabaEndRound();
+  else if (f.won !== -1 && !f.window) f.window = setTimeout(futabaEndRound, 3000);   // 3 s for second place
+  return true;
+}
+/* Seats around the iPad. Above 4 players the extra seats go on the long edges (bottom/top in landscape, left/right in portrait). */
+function futabaSlots(n, landscape = window.innerWidth >= window.innerHeight) {
+  if (n <= 4) return ({ 1: ['b'], 2: ['b', 't'], 3: ['b', 'l', 'r'], 4: ['b', 't', 'l', 'r'] })[n].map(side => ({ side, i: 0, of: 1 }));
+  const counts = { b: 1, t: 1, l: 1, r: 1 }; const extra = landscape ? ['b', 't'] : ['l', 'r'];
+  for (let k = 0; k < n - 4; k++) counts[extra[k % 2]]++;
+  const slots = []; for (const side of ['b', 't', 'l', 'r']) for (let i = 0; i < counts[side]; i++) slots.push({ side, i, of: counts[side] });
+  return slots;
+}
+const futabaPos = (n, i) => futabaSlots(n)[i].side;
 function renderFutaba() {
   const f = fut; if (!f) { location.replace('#futaba'); return; }
   let html;
-  if (f.phase === 'ready') html = `<div class="play ready"><div class="ptop"><span>Futaba</span><button data-p="exit">✕ Exit</button></div><div class="center"><div class="h">${plural(f.players.length, 'player')} · ${FUT_MODES[f.mode]}</div><div class="t">${f.players.length > 1 ? 'Sit around the iPad, one panel each. First correct tap wins the round.' : 'Practice mode: tap the right answer.'}${f.mode === 'listen' ? ' Turn the volume up!' : ''}<br>${f.cfg.rounds ? plural(f.cfg.rounds, 'round') : 'Endless rounds'}</div><button class="pbtn" data-p="begin">Start</button></div></div>`;
+  const big = f.players.length >= 3;
+  if (f.phase === 'ready') html = `<div class="play ready"><div class="ptop"><span>Futaba</span><button data-p="exit">✕ Exit</button></div><div class="center"><div class="h">${plural(f.players.length, 'player')} · ${f.modes.map(m => FUT_MODES[m]).join(' + ')}</div><div class="t">${f.players.length > 1 ? 'Sit around the iPad, one panel each.' : 'Practice mode: tap the right answer.'}${f.modes.includes('listen') ? ' Turn the volume up!' : ''}<br>${big ? 'First correct +2, second +1, wrong tap −2.' : 'Correct +1, wrong tap −1.'} Not answering costs nothing.<br>${f.cfg.rounds ? plural(f.cfg.rounds, 'round') : 'Endless rounds'}</div><button class="pbtn" data-p="begin">Start</button></div></div>`;
   else if (f.phase === 'over') html = gameOverHtml('Futaba', f.players, plural(f.cfg.rounds || f.i, 'round'), 'Play again');
   else {
-    const r = f.rounds[f.i], n = f.players.length;
-    const panel = (p, i) => `<div class="fpanel pos-${futabaPos(n, i)} ${p.locked ? 'locked' : ''} ${f.won === i ? 'won' : ''}" data-panel="${i}" style="border-color:${TEAM_COLORS[i % 6]}">
-      <div class="fhead"><span>${esc(p.name)}</span><b>${p.score}</b></div>
-      <div class="fprompt">${f.mode === 'listen' ? '🔊 Listen…' : esc(r.prompt)}</div>
-      <div class="fopts cols-${f.orders[i].length > 4 ? 3 : 2}">${f.orders[i].map(o => `<button class="fopt ${f.won !== -1 && o === r.answer ? 'right' : ''}" data-opt="${esc(o)}">${esc(o)}</button>`).join('')}</div></div>`;
-    html = `<div class="play fut"><div class="fcenter"><button data-p="exit">✕</button><span>${f.cfg.rounds ? (f.i + 1) + ' / ' + f.cfg.rounds : 'Round ' + (f.i + 1)}</span>${f.mode === 'listen' ? '<button data-p="say">🔊 Again</button>' : ''}<button data-p="skip">Skip ›</button></div>${f.players.map(panel).join('')}</div>`;
+    const r = f.rounds[f.i], n = f.players.length, slots = futabaSlots(n);
+    const panel = (p, i) => `<div class="fpanel pos-${slots[i].side} ${slots[i].of > 1 ? 'small' : ''} ${p.locked ? 'locked' : ''} ${p.rank === 1 ? 'won' : p.rank === 2 ? 'second' : ''}" data-panel="${i}" style="border-color:${TEAM_COLORS[i % TEAM_COLORS.length]}">
+      <div class="fhead"><span>${esc(p.name)}${p.rank === 1 ? ' 🥇' : p.rank === 2 ? ' 🥈' : ''}</span><span>${p.delta ? `<i class="delta ${p.delta[0] === '+' ? 'up' : 'down'}">${p.delta}</i>` : ''}<b>${p.score}</b></span></div>
+      <div class="fprompt">${r.mode === 'listen' ? '🔊 Listen…' : esc(r.prompt)}</div>
+      <div class="fopts cols-${f.orders[i].length > 4 ? 3 : 2}">${f.orders[i].map(o => `<button class="fopt ${(f.ending || f.won !== -1) && o === r.answer ? 'right' : ''}" data-opt="${esc(o)}">${esc(o)}</button>`).join('')}</div></div>`;
+    html = `<div class="play fut"><div class="fcenter"><button data-p="exit">✕</button><span>${f.cfg.rounds ? (f.i + 1) + ' / ' + f.cfg.rounds : 'Round ' + (f.i + 1)}${f.won !== -1 && !f.ending && big ? ' · 🥈?' : ''}</span>${r.mode === 'listen' ? '<button data-p="say">🔊 Again</button>' : ''}<button data-p="skip">${f.won !== -1 && !f.ending ? 'Next ›' : 'Skip ›'}</button></div>${f.players.map(panel).join('')}</div>`;
   }
   app.innerHTML = html;
   layoutFutaba();
   const root = $('.play', app);
   root.addEventListener('click', async e => {
     const f2 = fut; if (!f2) return; const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
-    if (act === 'exit') { if (f2.phase !== 'round' || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) { clearTimeout(f2.timer); fut = null; keepAwake(false); try { speechSynthesis.cancel(); } catch (x) {} leaveTo('#futaba'); } }
+    if (act === 'exit') { if (f2.phase !== 'round' || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) { clearTimeout(f2.timer); clearTimeout(f2.window); fut = null; keepAwake(false); try { speechSynthesis.cancel(); } catch (x) {} leaveTo('#futaba'); } }
     if (act === 'begin') { f2.phase = 'round'; f2.i = -1; futabaNext(); }
-    if (act === 'say') speak(f2.rounds[f2.i].speak, f2.cfg.voice);
-    if (act === 'skip') { if (f2.won === -1 && !f2.timer) { f2.won = -2; renderFutaba(); f2.timer = setTimeout(() => { f2.timer = null; futabaNext(); }, 900); } }
+    if (act === 'say') speak(f2.rounds[f2.i].speak, f2.cfg.voice, f2.cfg.voiceName);
+    if (act === 'skip') futabaEndRound();
     if (act === 'again') startFutaba(new Set(gameCfg('futaba').lastDecks));
   });
   root.addEventListener('pointerdown', e => {
-    const f2 = fut; if (!f2 || f2.phase !== 'round' || f2.won !== -1) return;
+    const f2 = fut; if (!f2 || f2.phase !== 'round' || f2.ending) return;
     const btn = e.target.closest('[data-opt]'); if (!btn) return;
     e.preventDefault();
-    const pi = +btn.closest('[data-panel]').dataset.panel; const pl = f2.players[pi]; if (pl.locked) return;
-    const r = f2.rounds[f2.i];
-    if (btn.dataset.opt === r.answer) { pl.score++; f2.won = pi; audio.ding(); renderFutaba(); f2.timer = setTimeout(() => { f2.timer = null; futabaNext(); }, 1300); }
-    else {
-      pl.locked = true; audio.buzz(); btn.classList.add('wrong'); btn.closest('.fpanel').classList.add('locked');
-      if (f2.players.every(x => x.locked)) { f2.won = -2; renderFutaba(); f2.timer = setTimeout(() => { f2.timer = null; futabaNext(); }, 1300); }
-    }
+    const pi = +btn.closest('[data-panel]').dataset.panel; const pl = f2.players[pi]; if (pl.locked || pl.rank) return;
+    const correct = btn.dataset.opt === f2.rounds[f2.i].answer;
+    if (!correct) btn.classList.add('wrong');
+    if (futabaAnswer(pi, correct) && fut && fut.phase === 'round' && !fut.ending) renderFutaba();
   });
 }
 function layoutFutaba() {
   const root = $('.play.fut'); if (!root) return;
-  const W = root.clientWidth, H = root.clientHeight; const panels = $$('.fpanel', root); const n = panels.length;
-  const hasSides = n >= 3, hasTop = n === 2 || n === 4;
-  const short = Math.min(hasSides ? H * 0.34 : H * 0.42, 360), long = Math.min(hasSides ? W * 0.5 : W * 0.82, 780);
-  const sShort = Math.min(W * 0.24, 320), sLong = Math.min(hasTop ? H * 0.5 : H * 0.8, 780);
-  panels.forEach(el => {
-    const pos = el.className.match(/pos-(\w)/)[1];
-    if (n === 1) { const h = Math.min(H * 0.72, 620), w = Math.min(W * 0.9, 780); Object.assign(el.style, { width: w + 'px', height: h + 'px', left: (W - w) / 2 + 'px', top: (H - h) / 2 + 20 + 'px', transform: '' }); }
-    else if (pos === 'b' || pos === 't') Object.assign(el.style, { width: long + 'px', height: short + 'px', left: (W - long) / 2 + 'px', top: (pos === 'b' ? H - short : 0) + 'px', transform: pos === 't' ? 'rotate(180deg)' : '' });
-    else Object.assign(el.style, { width: sLong + 'px', height: sShort + 'px', top: (H - sShort) / 2 + 'px', left: (pos === 'l' ? sShort / 2 - sLong / 2 : W - sShort / 2 - sLong / 2) + 'px', transform: pos === 'l' ? 'rotate(90deg)' : 'rotate(-90deg)' });
+  const W = root.clientWidth, H = root.clientHeight; const panels = $$('.fpanel', root); const n = panels.length; if (!n) return;
+  const slots = futabaSlots(n, W >= H); const gap = 10;
+  const hasSides = slots.some(s => s.side === 'l' || s.side === 'r'), hasTop = slots.some(s => s.side === 't');
+  const rowOf = Math.max(...slots.filter(s => s.side === 'b' || s.side === 't').map(s => s.of), 1), colOf = Math.max(...slots.filter(s => s.side === 'l' || s.side === 'r').map(s => s.of), 1);
+  const short = Math.min(hasSides ? (colOf > 1 ? H * 0.24 : H * 0.34) : H * 0.42, 360);   // top/bottom panel height
+  const sShort = Math.min(rowOf > 1 ? W * 0.2 : W * 0.24, 320);                            // side panel width on screen
+  const rowLong = hasSides ? W - 2 * sShort - 2 * gap : Math.min(W * 0.82, 780);     // total width available for a row
+  const colLong = hasTop ? H - 2 * short - 2 * gap : H * 0.8;                          // total height available for a column
+  panels.forEach((el, k) => {
+    const sl = slots[k]; el.classList.toggle('small', sl.of > 1);
+    if (n === 1) { const h = Math.min(H * 0.72, 620), w = Math.min(W * 0.9, 780); Object.assign(el.style, { width: w + 'px', height: h + 'px', left: (W - w) / 2 + 'px', top: (H - h) / 2 + 20 + 'px', transform: '' }); return; }
+    if (sl.side === 'b' || sl.side === 't') {
+      const len = Math.min((rowLong - (sl.of - 1) * gap) / sl.of, 780); const start = (W - (len * sl.of + gap * (sl.of - 1))) / 2;
+      Object.assign(el.style, { width: len + 'px', height: short + 'px', left: start + sl.i * (len + gap) + 'px', top: (sl.side === 'b' ? H - short : 0) + 'px', transform: sl.side === 't' ? 'rotate(180deg)' : '' });
+    } else {
+      const len = Math.min((colLong - (sl.of - 1) * gap) / sl.of, 780); const start = (H - (len * sl.of + gap * (sl.of - 1))) / 2;
+      const cy = start + sl.i * (len + gap) + len / 2;
+      Object.assign(el.style, { width: len + 'px', height: sShort + 'px', top: cy - sShort / 2 + 'px', left: (sl.side === 'l' ? sShort / 2 - len / 2 : W - sShort / 2 - len / 2) + 'px', transform: sl.side === 'l' ? 'rotate(90deg)' : 'rotate(-90deg)' });
+    }
   });
   const c = $('.fcenter', root); if (c) { if (n === 1 || n === 3) { c.style.top = '14px'; c.style.transform = 'translate(-50%,0)'; } else { c.style.top = '50%'; c.style.transform = 'translate(-50%,-50%)'; } }
+  // shrink answer text until it fits on one or two lines instead of breaking words
+  $$('.fpanel.small .fopt, .fpanel.small .fprompt', root).forEach(el => { el.style.fontSize = ''; let fs = parseFloat(getComputedStyle(el).fontSize); let guard = 0; while (el.scrollHeight > el.clientHeight + 2 && fs > 10 && guard++ < 12) { fs -= 1; el.style.fontSize = fs + 'px'; } });
 }
 
 /* ===================== Memory (pairs or trios) ===================== */
@@ -1715,7 +1798,18 @@ if (location.search.includes('selftest')) {
     t('futaba listen', fr3.length === 5 && fr3.every(r => r.speak === r.answer && r.options.length === 3 && r.prompt === ''));
     const fr4 = buildFutabaRounds(['one','two','three','four','five'], { rounds: 2, options: 3 }, 'scramble');
     t('futaba scramble', fr4.every(r => r.prompt.length === r.answer.length && r.prompt !== r.answer));
-    t('futaba mode auto', futabaMode({ mode: 'auto', options: 4 }, fw) === 'pairs' && futabaMode({ mode: 'auto', options: 4 }, ['a','b','c','d']) === 'listen');
+    t('futaba modes mix', JSON.stringify(futabaModes({ mode: 'mix', options: 4, mix: { pairs: true, listen: true, scramble: false, gaps: true } }, fw)) === '["pairs","listen","gaps"]' && JSON.stringify(futabaModes({ mode: 'mix', options: 4, mix: { pairs: true, listen: true } }, ['a','b','c','d'])) === '["listen"]' && futabaModes({ mode: 'pairs', options: 4 }, ['a','b','c','d']).length === 0);
+    const frm = buildFutabaRounds(fw, { rounds: 30, options: 3 }, ['listen', 'scramble']);
+    t('futaba mixed rounds', frm.length === 30 && frm.every(r => (r.mode === 'listen' && r.speak) || (r.mode === 'scramble' && r.prompt)) && new Set(frm.map(r => r.mode)).size === 2);
+    t('futaba slots', JSON.stringify(futabaSlots(6, true).map(x => x.side + x.i + '/' + x.of)) === '["b0/2","b1/2","t0/2","t1/2","l0/1","r0/1"]' && futabaSlots(8, true).filter(x => x.side === 'b').length === 3 && futabaSlots(8, false).filter(x => x.side === 'l').length === 3 && futabaSlots(5, false).filter(x => x.side === 'l').length === 2 && futabaSlots(7, true).length === 7);
+    const mkFut = n => ({ rounds: [{ mode: 'scramble', prompt: 'x', answer: 'a', speak: null, options: ['a', 'b'] }], i: 0, modes: ['scramble'], cfg: { rounds: 1, voice: 'en-GB' }, players: Array.from({ length: n }, (_, i) => ({ name: 'P' + (i + 1), score: 0, locked: false, rank: 0, delta: '' })), won: -1, ending: false, phase: 'round', timer: null, window: null, orders: Array.from({ length: n }, () => ['a', 'b']) });
+    fut = mkFut(3); futabaAnswer(0, true); const w3 = !!fut.window && !fut.ending; futabaAnswer(1, false); futabaAnswer(2, true);
+    t('futaba scoring 3 players', w3 && fut.players[0].score === 2 && fut.players[1].score === -2 && fut.players[2].score === 1 && fut.ending); clearTimeout(fut.timer); clearTimeout(fut.window);
+    fut = mkFut(4); futabaAnswer(1, false); futabaAnswer(2, false); const still = !fut.ending; futabaAnswer(0, false); futabaAnswer(3, false);
+    t('futaba all wrong ends round', still && fut.ending && fut.won === -2 && fut.players.every(p => p.score === -2)); clearTimeout(fut.timer);
+    fut = mkFut(2); futabaAnswer(0, false); const open2 = !fut.ending; futabaAnswer(0, true); futabaAnswer(1, true);
+    t('futaba scoring 2 players', open2 && fut.players[0].score === -1 && fut.players[1].score === 1 && fut.ending && fut.won === 1); clearTimeout(fut.timer);
+    fut = mkFut(2); futabaAnswer(0, true); t('futaba 2p ends on first correct', fut.ending && fut.players[0].score === 1); clearTimeout(fut.timer); fut = null;
     tilt.state = 'ready'; tilt.neutral = 10; const seq = [0, -50, 5, 70, 40, 12, -60].map(tiltStep);
     t('tilt state machine', JSON.stringify(seq) === '[null,"got","next","pass",null,"next","got"]' && Math.abs(tiltPitch(0, 0) - 90) < 1e-9 && Math.abs(tiltPitch(180, 0) + 90) < 1e-9 && Math.abs(tiltPitch(90, 0)) < 1e-9);
     tilt.state = 'calib'; tilt.samples = []; [20, 22, 19, 21, 20, 23, 18, 20].forEach(tiltStep); t('tilt calibration', tilt.state === 'ready' && tilt.neutral === 20);
@@ -1754,7 +1848,7 @@ if (location.search.includes('selftest')) {
   if (demo) {
     db.settings.sound = false; const four = new Set(PRESET_DECKS.slice(0, 4).map(k => k.id));
     if (demo === 'buzz' || demo === 'buzzcard' || demo === 'buzzq') { Object.assign(gameCfg('buzz'), { categories: 4, rows: 5, teams: 3, questions: true, qTime: 10 }); startBuzz(four); if (demo !== 'buzzq') { clearInterval(buzz.timer); buzz.phase = 'board'; } if (demo === 'buzzcard') { buzz.open = { ci: 0, r: 2, answer: false, specialDone: false }; buzz.cats[0].cells[2].special = 'double'; } }
-    else if (demo === 'futaba' || demo === 'futaba2' || demo === 'futaba3') { Object.assign(gameCfg('futaba'), { players: demo === 'futaba' ? 4 : demo === 'futaba2' ? 2 : 3, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); }
+    else if (/^futaba/.test(demo)) { const np = { futaba: 4, futaba2: 2, futaba3: 3, futaba6: 6, futaba8: 8 }[demo] || 4; Object.assign(gameCfg('futaba'), { players: np, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); if (np >= 3) { fut.players[0].rank = 1; fut.players[0].score = 2; fut.players[0].delta = '+2'; fut.won = 0; fut.players[1].locked = true; fut.players[1].score = -2; fut.players[1].delta = '−2'; renderFutaba(); } }
     else if (demo === 'memory') { Object.assign(gameCfg('memory'), { sets: 8, size: 2, teams: 2, variant: 'scrambled' }); startMemory(four); mem.cards[0].up = true; mem.cards[1].done = true; mem.cards[1].by = 0; mem.cards[2].done = true; mem.cards[2].by = 0; renderMemory(); }
     else { startGame([PRESET_DECKS[0].id]); if (demo === 'word') { game.phase = 'word'; nextWord(); game.endAt = Date.now() + 42000; } else game.phase = demo; renderPlay(); }
   }

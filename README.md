@@ -15,8 +15,11 @@ Games:
   one colour per column shading darker as the points go up). A **turn question** (simple maths, "touch your…", Simon says,
   capital cities, or your own `question | answer` lines, `#group` = whole team answers, capped at 20%) with its own timer
   decides which team picks a card. Some cards hide a monster 👹 (eats points), a gift 🎁 or double points ✨.
-- **Futaba** – 1–4 players sit around the iPad, one rotated panel each; first correct tap wins the round.
-  Modes: Pairs (needs `word | translation` entries), Listen (the iPad speaks the word), Scramble, Gaps.
+- **Futaba** – 1–8 players sit around the iPad, one rotated panel each (two per side above 4); first correct tap wins the round.
+  Question types: Mix (tick any of Pairs, Listen, Scramble, Gaps) or a single type. Pairs needs `word | translation` entries;
+  Listen speaks the word with the best installed voice (install an Enhanced/Premium voice in iPad Settings → Accessibility →
+  Spoken Content → Voices). Scoring: 2 players = +1 / −1; 3+ players = first +2, second +1 (3-second window), wrong −2;
+  not answering costs nothing; negative scores allowed.
 - **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
   cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
 
