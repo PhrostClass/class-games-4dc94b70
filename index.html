@@ -187,6 +187,8 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .banswer{font-size:clamp(20px,3.5vw,34px);font-weight:700;background:rgba(0,0,0,.2);padding:10px 22px;border-radius:14px;margin-top:8px}
 .bjudge{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
 .bjudge .pbtn{margin:0;min-width:160px;padding:16px 22px;font-size:18px}
+.bjudge.full{flex-wrap:nowrap;gap:8px;padding:0 10px calc(var(--sa-b) + 10px);margin:0;width:100%}
+.bjudge.full .pbtn{flex:1;min-width:0;padding:22px 6px;font-size:clamp(15px,2vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:80px}
 .bcard .t{font-size:20px;opacity:.9}
 .tqgroup{background:#ffd166;color:#1f1f2b;padding:4px 12px;border-radius:999px;font-weight:800}
 .play.bz .timerbar{margin:2px 14px 6px}
@@ -230,7 +232,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.3.0';
+const APP_VERSION = '1.3.1';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -790,6 +792,7 @@ function startGame(deckIds) {
     turn: 0, round: 1, phase: 'ready', current: null, got: [], passed: [], endAt: 0, timer: null, count: 3, lastTick: null };
   audio.unlock();
   keepAwake(true);
+  if (db.settings.tilt && tilt.granted === null) tiltEnable();   // ask for motion access now, on the teacher's tap, not in front of the actor
   if (location.hash === '#play') renderPlay(); else { navState.depth++; go('#play'); }
 }
 function exitGame() { stopGame(); leaveTo('#setup'); }
@@ -961,7 +964,7 @@ document.addEventListener('keydown', e => {
 /* Tilt controls (Heads Up style). pitch = angle of the screen normal above horizontal:
    +90 screen faces the ceiling, 0 upright (on the forehead), -90 screen faces the floor.
    The resting angle is measured when the first word appears, so a sloping forehead does not matter. */
-const tilt = { on: false, handler: null, state: 'idle', neutral: 0, samples: [], count: 0, pitch: 0, test: null };
+const tilt = { on: false, handler: null, state: 'idle', neutral: 0, samples: [], count: 0, pitch: 0, test: null, granted: null };
 const tiltUp = (beta, gamma) => Math.cos((beta || 0) * Math.PI / 180) * Math.cos((gamma || 0) * Math.PI / 180);
 const tiltPitch = (beta, gamma) => Math.asin(Math.max(-1, Math.min(1, tiltUp(beta, gamma)))) * 180 / Math.PI;
 function tiltArm() { tilt.state = 'calib'; tilt.samples = []; }
@@ -970,8 +973,8 @@ async function tiltEnable() {
   if (!db.settings.tilt) return false;
   try {
     if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-      const r = await DeviceOrientationEvent.requestPermission();
-      if (r !== 'granted') { toast('Tilt not allowed. Use the buttons or swipe.', 3000); return false; }
+      if (tilt.granted === null) tilt.granted = (await DeviceOrientationEvent.requestPermission()) === 'granted';   // iOS asks once per launch; we never ask twice
+      if (!tilt.granted) { toast('Tilt not allowed. Use the buttons or swipe.', 3000); return false; }
     } else if (typeof DeviceOrientationEvent === 'undefined') { toast('No motion sensor on this device', 3000); return false; }
     if (!tilt.handler) { tilt.handler = onTilt; window.addEventListener('deviceorientation', tilt.handler); }
     tilt.on = true; tilt.count = 0; tiltArm(); return true;
@@ -981,16 +984,16 @@ function tiltDisable() { if (tilt.handler) window.removeEventListener('deviceori
 function tiltStep(pitch) {  // returns 'got' | 'pass' | 'next' | null
   if (tilt.state === 'calib') {
     tilt.samples.push(pitch);
-    if (tilt.samples.length >= 8) { const o = tilt.samples.slice().sort((x, y) => x - y); tilt.neutral = Math.max(-25, Math.min(40, o[o.length >> 1])); tilt.state = 'ready'; }
+    if (tilt.samples.length >= 8) { const o = tilt.samples.slice().sort((x, y) => x - y); tilt.neutral = Math.max(-25, Math.min(30, o[o.length >> 1])); tilt.state = 'ready'; }
     return null;
   }
   const d = pitch - tilt.neutral;
   if (tilt.state === 'ready') {
-    if (d < -40) { tilt.state = 'fired'; return 'got'; }
-    if (d > 40) { tilt.state = 'fired'; return db.settings.allowPass ? 'pass' : null; }
+    if (d < -35) { tilt.state = 'fired'; return 'got'; }                                   // screen towards the floor
+    if (d > 28 || pitch > 70) { tilt.state = 'fired'; return db.settings.allowPass ? 'pass' : null; }   // screen towards the ceiling
     return null;
   }
-  if (tilt.state === 'fired' && Math.abs(d) < 15) { tilt.state = 'ready'; return 'next'; }
+  if (tilt.state === 'fired' && Math.abs(d) < 12) { tilt.state = 'ready'; return 'next'; }
   return null;
 }
 function onTilt(e) {
@@ -1294,8 +1297,8 @@ function buzzQuestionHtml() {
       <div class="bcat">${q.group ? '<span class="tqgroup">👥 GROUP · the whole team answers together</span>' : (TQ_CATS[q.cat] || 'Question')}${secs ? ' · ' + secs + ' s' : ''}</div>
       <div class="bword" style="flex:1"><span>${esc(q.q)}</span></div>
       ${q.a ? (q.showA ? `<div class="banswer">${esc(q.a)}</div>` : `<button class="pbtn ghost small" data-p="qshow">Show answer</button>`) : '<div class="t" style="opacity:.75">Watch who does it first</div>'}
-      <div class="bjudge">${b.teams.map((t, i) => `<button class="pbtn" style="background:${TEAM_COLORS[i % 6]};color:#fff" data-p="qwin" data-team="${i}">${esc(t.name)} first</button>`).join('')}<button class="pbtn ghost" data-p="qskip">Nobody · next question</button></div>
-    </div></div>`;
+    </div>
+    <div class="bjudge full">${b.teams.map((t, i) => `<button class="pbtn" style="background:${TEAM_COLORS[i % 6]};color:#fff" data-p="qwin" data-team="${i}">${esc(t.name)}</button>`).join('')}<button class="pbtn ghost" data-p="qskip">Next ›</button></div></div>`;
 }
 function buzzCardHtml() {
   const b = buzz, o = b.open, x = buzzCell(), cat = b.cats[o.ci], cfg = b.cfg, team = b.teams[b.turn];
@@ -1672,7 +1675,7 @@ function renderSettings() {
       const info = $('#tiltinfo'); const saved = db.settings.tilt; db.settings.tilt = true; const ok = await tiltEnable(); db.settings.tilt = saved;
       if (!ok) { info.textContent = 'Motion access refused or not available. Delete the app from the Home Screen and add it again to be asked once more.'; return; }
       tilt.on = false; let n = 0; info.textContent = 'Waiting for motion data…';
-      tilt.test = pt => { n++; info.textContent = `pitch ${pt.toFixed(0)}°  (0 = upright, −90 = face down, +90 = face up) · ${n} readings`; };
+      tilt.test = pt => { n++; info.textContent = `pitch ${pt.toFixed(0)}°  (0 = upright, −90 = face down, +90 = face up) · ${n} readings · in a game: got it below ${(tilt.neutral - 35).toFixed(0)}°, pass above ${(tilt.neutral + 28).toFixed(0)}° once the resting angle is measured`; };
       setTimeout(() => { if (!n) info.textContent = 'No motion data received in 4 s. iOS is not sending sensor data to the app.'; }, 4000);
       setTimeout(() => { tilt.test = null; tiltDisable(); }, 30000);
     }
@@ -1810,7 +1813,7 @@ if (location.search.includes('selftest')) {
     fut = mkFut(2); futabaAnswer(0, false); const open2 = !fut.ending; futabaAnswer(0, true); futabaAnswer(1, true);
     t('futaba scoring 2 players', open2 && fut.players[0].score === -1 && fut.players[1].score === 1 && fut.ending && fut.won === 1); clearTimeout(fut.timer);
     fut = mkFut(2); futabaAnswer(0, true); t('futaba 2p ends on first correct', fut.ending && fut.players[0].score === 1); clearTimeout(fut.timer); fut = null;
-    tilt.state = 'ready'; tilt.neutral = 10; const seq = [0, -50, 5, 70, 40, 12, -60].map(tiltStep);
+    tilt.state = 'ready'; tilt.neutral = 10; const seq = [0, -50, 5, 45, 30, 12, -60].map(tiltStep);
     t('tilt state machine', JSON.stringify(seq) === '[null,"got","next","pass",null,"next","got"]' && Math.abs(tiltPitch(0, 0) - 90) < 1e-9 && Math.abs(tiltPitch(180, 0) + 90) < 1e-9 && Math.abs(tiltPitch(90, 0)) < 1e-9);
     tilt.state = 'calib'; tilt.samples = []; [20, 22, 19, 21, 20, 23, 18, 20].forEach(tiltStep); t('tilt calibration', tilt.state === 'ready' && tilt.neutral === 20);
     tilt.state = 'idle';
