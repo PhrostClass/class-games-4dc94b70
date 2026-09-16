@@ -222,7 +222,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '1.1.1';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -252,7 +252,7 @@ const PRESET_DECKS = [
 const PRESET_FOLDER = { id: 'preset', name: 'Preset decks' };
 
 /* ===================== Store ===================== */
-const DEFAULT_SETTINGS = { roundSeconds: 60, allowPass: true, avoidRepeats: true, sound: true, showPresets: true, theme: 'auto', teams: 1, teamNames: ['Team 1', 'Team 2', 'Team 3', 'Team 4'], lastDecks: [], collapsed: {} };
+const DEFAULT_SETTINGS = { roundSeconds: 60, allowPass: true, avoidRepeats: true, sound: true, tilt: true, showPresets: true, theme: 'auto', teams: 1, teamNames: ['Team 1', 'Team 2', 'Team 3', 'Team 4'], lastDecks: [], collapsed: {} };
 let db;
 function freshDb() { return { v: 1, folders: [], decks: [], settings: JSON.parse(JSON.stringify(DEFAULT_SETTINGS)) }; }
 function normalizeDb(d) {
@@ -742,6 +742,7 @@ function renderSetup() {
         <div class="card">
           <div class="toggle" data-opt="allowPass"><div><div class="lbl">Allow pass</div><div class="sub">Skipped words come back later in the round</div></div><div class="sw ${s.allowPass ? 'on' : ''}"></div></div>
           <div class="toggle" data-opt="avoidRepeats"><div><div class="lbl">No repeats between rounds</div><div class="sub">Until every word has been used</div></div><div class="sw ${s.avoidRepeats ? 'on' : ''}"></div></div>
+          <div class="toggle" data-opt="tilt"><div><div class="lbl">Tilt controls</div><div class="sub">Hold the iPad on your forehead: tilt down = got it, tilt back = pass</div></div><div class="sw ${s.tilt ? 'on' : ''}"></div></div>
           <div class="toggle" data-opt="sound"><div><div class="lbl">Sounds</div><div class="sub">Ticks in the last seconds and an end buzzer</div></div><div class="sw ${s.sound ? 'on' : ''}"></div></div>
         </div>
         <h2 class="sec">Decks to play</h2>
@@ -833,7 +834,7 @@ function beginRound() {
 }
 function goWords() {
   const g = game; clearTimeout(g.timer);
-  g.phase = 'word';
+  g.phase = 'word'; tilt.state = 'wait';
   nextWord();
   const secs = db.settings.roundSeconds;
   g.endAt = secs ? Date.now() + secs * 1000 : 0;
@@ -873,7 +874,7 @@ function renderPlay() {
   if (g.phase === 'ready') {
     html = `<div class="play ready"><div class="ptop"><span>${multi ? esc(team.name) : 'Charades'}</span>${exitBtn}</div>
       <div class="center"><div class="h">${multi ? esc(team.name) + ', get ready!' : 'Get ready!'}</div>
-      <div class="t">Give the iPad to the actor. Only they should see the screen.<br>${s.roundSeconds ? s.roundSeconds + ' seconds' : 'No time limit'} · ${nWords(g.words.length)}</div>
+      <div class="t">${s.tilt ? 'Actor: hold the iPad on your forehead, screen facing the class.<br>Tilt it <b>down</b> when they get it, tilt it <b>back</b> to pass.' : 'Give the iPad to the actor. Only they should see the screen.'}<br>${s.roundSeconds ? s.roundSeconds + ' seconds' : 'No time limit'} · ${nWords(g.words.length)}</div>
       <button class="pbtn" data-p="begin">I'm the actor · Start</button>
       ${multi ? `<div class="score" style="margin-top:28px">${g.teams.map((t, i) => `<div class="${i === g.turn ? 'lead' : ''}"><div class="n">${esc(t.name)}</div><div class="v">${t.score}</div></div>`).join('')}</div>` : ''}
       </div></div>`;
@@ -884,7 +885,7 @@ function renderPlay() {
     html = `<div class="play"><div class="ptop"><button data-p="exit">✕</button><span class="clock">${g.endAt ? fmt(left) : '∞'}</span><button data-p="endnow">End round</button></div>
       ${g.endAt ? `<div class="timerbar ${left <= 10000 ? 'hot' : ''}"><i style="width:${100 * left / total}%"></i></div>` : ''}
       <div class="word"><span>${esc(term(g.current))}</span></div>
-      <div class="sub">${multi ? esc(team.name) + ' · ' : ''}${g.got.length} ✓ · swipe right = got it${s.allowPass ? ', left = pass' : ''}</div>
+      <div class="sub">${multi ? esc(team.name) + ' · ' : ''}${g.got.length} ✓ · ${tilt.on ? 'tilt down = got it' + (s.allowPass ? ', tilt back = pass' : '') : 'swipe right = got it' + (s.allowPass ? ', left = pass' : '')}</div>
       <div class="actions">${s.allowPass ? `<button class="p" data-p="pass">Pass ↷</button>` : ''}<button class="g" data-p="got">Got it ✓</button></div></div>`;
   } else if (g.phase === 'roundEnd') {
     const nextTurn = (g.turn + 1) % g.teams.length;
@@ -911,7 +912,7 @@ function renderPlay() {
     const b = e.target.closest('[data-p]'); if (!b) return;
     const p = b.dataset.p;
     if (p === 'exit') { if (g.phase === 'over' || (g.phase === 'ready' && g.round === 1 && g.turn === 0) || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) exitGame(); }
-    if (p === 'begin') beginRound();
+    if (p === 'begin') { await tiltEnable(); if (game === g) beginRound(); }
     if (p === 'got') flashThen('good', () => markWord(true));
     if (p === 'pass') flashThen('pass', () => markWord(false));
     if (p === 'endnow') endRound();
@@ -937,12 +938,50 @@ function flashThen(cls, fn) {
   root.classList.add(cls);
   setTimeout(() => { flashing = false; fn(); if (game && game.phase === 'word') renderPlay(); }, 140);
 }
-function stopGame() { if (game) { clearInterval(game.timer); clearTimeout(game.timer); } game = null; keepAwake(false); }
+function stopGame() { if (game) { clearInterval(game.timer); clearTimeout(game.timer); } game = null; keepAwake(false); tiltDisable(); }
 document.addEventListener('keydown', e => {
   if (!game || game.phase !== 'word') return;
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); flashThen('good', () => markWord(true)); }
   if (e.key === 'ArrowLeft' && db.settings.allowPass) { e.preventDefault(); flashThen('pass', () => markWord(false)); }
 });
+
+/* Tilt controls (Heads Up style). up = vertical component of the screen normal:
+   +1 screen faces the ceiling, 0 upright (on the forehead), -1 screen faces the floor. */
+const tilt = { on: false, handler: null, state: 'idle' };
+const tiltUp = (beta, gamma) => Math.cos((beta || 0) * Math.PI / 180) * Math.cos((gamma || 0) * Math.PI / 180);
+async function tiltEnable() {
+  tilt.on = false;
+  if (!db.settings.tilt) return false;
+  try {
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+      const r = await DeviceOrientationEvent.requestPermission();
+      if (r !== 'granted') { toast('Tilt not allowed. Use the buttons or swipe.', 3000); return false; }
+    }
+    if (!tilt.handler) { tilt.handler = onTilt; window.addEventListener('deviceorientation', tilt.handler); }
+    tilt.on = true; tilt.state = 'wait'; return true;
+  } catch (e) { toast('Tilt not available on this device', 3000); return false; }
+}
+function tiltDisable() { if (tilt.handler) window.removeEventListener('deviceorientation', tilt.handler); tilt.handler = null; tilt.on = false; tilt.state = 'idle'; }
+function tiltStep(up) {  // returns 'got' | 'pass' | 'next' | null
+  if (tilt.state === 'wait') { if (Math.abs(up) < 0.3) tilt.state = 'ready'; return null; }   // must be upright first
+  if (tilt.state === 'ready') {
+    if (up < -0.55) { tilt.state = 'fired'; return 'got'; }
+    if (up > 0.55) { tilt.state = 'fired'; return db.settings.allowPass ? 'pass' : null; }
+    return null;
+  }
+  if (tilt.state === 'fired' && Math.abs(up) < 0.3) { tilt.state = 'ready'; return 'next'; }
+  return null;
+}
+function onTilt(e) {
+  if (!game || game.phase !== 'word' || !tilt.on) return;
+  const r = tiltStep(tiltUp(e.beta, e.gamma));
+  if (r === 'got' || r === 'pass') {
+    const ok = r === 'got';
+    markWord(ok);
+    if (!game || game.phase !== 'word') return;
+    const root = $('.play'); if (root) { root.classList.remove('good', 'pass'); root.classList.add(ok ? 'good' : 'pass'); const w = $('.word span'); if (w) { w.textContent = ok ? '✓ Got it!' : 'Pass'; fitWord(w); } }
+  } else if (r === 'next') renderPlay();
+}
 
 /* Keep the screen on while playing */
 let wakeLock = null;
@@ -1503,6 +1542,9 @@ if (location.search.includes('selftest')) {
     const fr4 = buildFutabaRounds(['one','two','three','four','five'], { rounds: 2, options: 3 }, 'scramble');
     t('futaba scramble', fr4.every(r => r.prompt.length === r.answer.length && r.prompt !== r.answer));
     t('futaba mode auto', futabaMode({ mode: 'auto', options: 4 }, fw) === 'pairs' && futabaMode({ mode: 'auto', options: 4 }, ['a','b','c','d']) === 'listen');
+    tilt.state = 'wait'; const seq = [tiltUp(0, 0), tiltUp(90, 0), tiltUp(160, 5), tiltUp(90, 0), tiltUp(20, 0), tiltUp(45, 0), tiltUp(90, 0), tiltUp(180, 0)].map(tiltStep);
+    t('tilt state machine', JSON.stringify(seq) === '[null,null,"got","next","pass",null,"next","got"]' && Math.abs(tiltUp(0, 0) - 1) < 1e-9 && Math.abs(tiltUp(180, 0) + 1) < 1e-9 && Math.abs(tiltUp(0, 90)) < 1e-9);
+    tilt.state = 'idle';
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
     // --- Memory
     const mc = buildMemory(['dog | perro', 'cat | gato', 'plain', 'other'], { sets: 3, size: 2, variant: 'same' });
