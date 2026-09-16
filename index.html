@@ -188,6 +188,8 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .bjudge{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
 .bjudge .pbtn{margin:0;min-width:160px;padding:16px 22px;font-size:18px}
 .bcard .t{font-size:20px;opacity:.9}
+.tqgroup{background:#ffd166;color:#1f1f2b;padding:4px 12px;border-radius:999px;font-weight:800}
+.play.bz .timerbar{margin:2px 14px 6px}
 /* futaba */
 .play.fut{background:#1f1f2b;touch-action:none}
 .fcenter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;gap:8px;align-items:center;font-weight:700;font-size:16px;z-index:2;white-space:nowrap}
@@ -222,7 +224,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.1.1';
+const APP_VERSION = '1.2.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -254,7 +256,7 @@ const PRESET_FOLDER = { id: 'preset', name: 'Preset decks' };
 /* ===================== Store ===================== */
 const DEFAULT_SETTINGS = { roundSeconds: 60, allowPass: true, avoidRepeats: true, sound: true, tilt: true, showPresets: true, theme: 'auto', teams: 1, teamNames: ['Team 1', 'Team 2', 'Team 3', 'Team 4'], lastDecks: [], collapsed: {} };
 let db;
-function freshDb() { return { v: 1, folders: [], decks: [], settings: JSON.parse(JSON.stringify(DEFAULT_SETTINGS)) }; }
+function freshDb() { return { v: 1, folders: [], decks: [], turnQuestions: [], settings: JSON.parse(JSON.stringify(DEFAULT_SETTINGS)) }; }
 function normalizeDb(d) {
   if (!d || typeof d !== 'object') return freshDb();
   d.v = 1;
@@ -264,6 +266,7 @@ function normalizeDb(d) {
     words: cleanWords(Array.isArray(k.words) ? k.words : []),
     created: k.created || Date.now(), updated: k.updated || Date.now(),
   })) : [];
+  d.turnQuestions = Array.isArray(d.turnQuestions) ? cleanWords(d.turnQuestions) : [];
   const folderIds = new Set(d.folders.map(f => f.id));
   d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
   d.settings = { ...JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), ...(d.settings || {}) };
@@ -384,6 +387,7 @@ function mergeBackup(data, replace) {
     const deck = { ...k, folderId: k.folderId ? (folderMap[k.folderId] || null) : null };
     if (ex) { Object.assign(ex, deck); } else { db.decks.push(deck); nd++; }
   }
+  if (Array.isArray(data.turnQuestions)) db.turnQuestions = cleanWords((db.turnQuestions || []).concat(data.turnQuestions));
   saveDb();
   return { decks: nd, folders: nf };
 }
@@ -449,6 +453,7 @@ function applyTheme() {
   const t = db.settings.theme;
   if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t);
 }
+function keepScroll(fn) { const c = $('.content'); const top = c ? c.scrollTop : 0; fn(); const c2 = $('.content'); if (c2 && top) c2.scrollTop = top; }
 function topbar(title, left, right) {
   return `<div class="topbar"><div class="side">${left || ''}</div><h1>${esc(title)}</h1><div class="side r">${right || ''}</div></div>`;
 }
@@ -458,6 +463,7 @@ const backBtn = (label = 'Back', fallback = '#library') => `<button class="tbtn"
 const app = $('#app');
 const navState = { depth: 0 };
 function route() {
+  if (!DEV_BYPASS && !isUnlocked()) { renderLock(); return; }
   const h = location.hash.replace(/^#\/?/, '') || 'home';
   const i = h.indexOf('/');
   const name = i < 0 ? h : h.slice(0, i);
@@ -485,7 +491,7 @@ function renderHome() {
       <div class="hero"><div class="title">Class Games</div><div class="sub">Pick a game</div></div>
       <div class="games">
         <div class="gcard charades" data-nav="#setup"><div class="emoji">🎭</div><div class="n">Charades</div><div class="d">Act it out, the class guesses.</div></div>
-        <div class="gcard buzz" data-nav="#buzz"><div class="emoji">👹</div><div class="n">Buzz Monster</div><div class="d">Category board. Pick a card, win points, dodge the monster.</div></div>
+        <div class="gcard buzz" data-nav="#buzz"><div class="emoji">🎲</div><div class="n">Yahtzee</div><div class="d">Turn question, pick a card, win points, dodge the monster.</div></div>
         <div class="gcard futaba" data-nav="#futaba"><div class="emoji">⚡</div><div class="n">Futaba</div><div class="d">Up to 4 players around the iPad race to tap the answer.</div></div>
         <div class="gcard memory" data-nav="#memory"><div class="emoji">🃏</div><div class="n">Memory</div><div class="d">Find the pairs or trios.</div></div>
         <div class="gcard decks" data-nav="#library"><div class="emoji">🗂️</div><div class="n">Decks</div><div class="d">${plural(db.decks.length, 'deck')} of yours · ${db.folders.length} folders · ${PRESET_DECKS.length} presets</div></div>
@@ -533,7 +539,7 @@ function renderLibrary() {
 }
 const GAMES = [
   { id: 'charades', name: 'Charades', emoji: '🎭', hash: '#setup', cfg: () => db.settings },
-  { id: 'buzz', name: 'Buzz Monster', emoji: '👹', hash: '#buzz', cfg: () => gameCfg('buzz') },
+  { id: 'buzz', name: 'Yahtzee', emoji: '🎲', hash: '#buzz', cfg: () => gameCfg('buzz') },
   { id: 'futaba', name: 'Futaba', emoji: '⚡', hash: '#futaba', cfg: () => gameCfg('futaba') },
   { id: 'memory', name: 'Memory', emoji: '🃏', hash: '#memory', cfg: () => gameCfg('memory') },
 ];
@@ -751,11 +757,11 @@ function renderSetup() {
       </div></div></div>`;
     const sc = $('.screen', app);
     sc.addEventListener('click', e => {
-      const t = e.target.closest('[data-time]'); if (t) { s.roundSeconds = +t.dataset.time; saveDb(); render(); return; }
-      const tm = e.target.closest('[data-team]'); if (tm) { s.teams = Math.min(4, Math.max(1, s.teams + (+tm.dataset.team))); saveDb(); render(); return; }
-      const o = e.target.closest('[data-opt]'); if (o) { s[o.dataset.opt] = !s[o.dataset.opt]; saveDb(); render(); return; }
-      const sa = e.target.closest('[data-selall]'); if (sa) { const g = groups.find(x => x.id === sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); s.lastDecks = [...selected]; saveDb(); render(); return; }
-      const d = e.target.closest('[data-deck]'); if (d) { const id = d.dataset.deck; if (selected.has(id)) selected.delete(id); else selected.add(id); s.lastDecks = [...selected]; saveDb(); render(); return; }
+      const t = e.target.closest('[data-time]'); if (t) { s.roundSeconds = +t.dataset.time; saveDb(); keepScroll(render); return; }
+      const tm = e.target.closest('[data-team]'); if (tm) { s.teams = Math.min(4, Math.max(1, s.teams + (+tm.dataset.team))); saveDb(); keepScroll(render); return; }
+      const o = e.target.closest('[data-opt]'); if (o) { s[o.dataset.opt] = !s[o.dataset.opt]; saveDb(); keepScroll(render); return; }
+      const sa = e.target.closest('[data-selall]'); if (sa) { const g = groups.find(x => x.id === sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); s.lastDecks = [...selected]; saveDb(); keepScroll(render); return; }
+      const d = e.target.closest('[data-deck]'); if (d) { const id = d.dataset.deck; if (selected.has(id)) selected.delete(id); else selected.add(id); s.lastDecks = [...selected]; saveDb(); keepScroll(render); return; }
       const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'start') startGame([...selected]);
     });
     sc.addEventListener('change', e => { const i = e.target.closest('[data-tname]'); if (i) { s.teamNames[+i.dataset.tname] = i.value.trim() || `Team ${+i.dataset.tname + 1}`; saveDb(); } });
@@ -834,7 +840,7 @@ function beginRound() {
 }
 function goWords() {
   const g = game; clearTimeout(g.timer);
-  g.phase = 'word'; tilt.state = 'wait';
+  g.phase = 'word'; if (tilt.on) tiltArm();
   nextWord();
   const secs = db.settings.roundSeconds;
   g.endAt = secs ? Date.now() + secs * 1000 : 0;
@@ -842,6 +848,7 @@ function goWords() {
   renderPlay();
   g.timer = setInterval(() => {
     if (!game || game.phase !== 'word') return;
+    const ts = $('#tiltst'); if (ts) ts.textContent = tiltStatus();
     if (g.endAt) {
       const left = Math.max(0, g.endAt - Date.now());
       updateTimer(left, secs * 1000);
@@ -885,7 +892,7 @@ function renderPlay() {
     html = `<div class="play"><div class="ptop"><button data-p="exit">✕</button><span class="clock">${g.endAt ? fmt(left) : '∞'}</span><button data-p="endnow">End round</button></div>
       ${g.endAt ? `<div class="timerbar ${left <= 10000 ? 'hot' : ''}"><i style="width:${100 * left / total}%"></i></div>` : ''}
       <div class="word"><span>${esc(term(g.current))}</span></div>
-      <div class="sub">${multi ? esc(team.name) + ' · ' : ''}${g.got.length} ✓ · ${tilt.on ? 'tilt down = got it' + (s.allowPass ? ', tilt back = pass' : '') : 'swipe right = got it' + (s.allowPass ? ', left = pass' : '')}</div>
+      <div class="sub">${multi ? esc(team.name) + ' · ' : ''}${g.got.length} ✓ · ${tilt.on ? '<span id="tiltst">' + tiltStatus() + '</span>' : 'swipe right = got it' + (s.allowPass ? ', left = pass' : '')}</div>
       <div class="actions">${s.allowPass ? `<button class="p" data-p="pass">Pass ↷</button>` : ''}<button class="g" data-p="got">Got it ✓</button></div></div>`;
   } else if (g.phase === 'roundEnd') {
     const nextTurn = (g.turn + 1) % g.teams.length;
@@ -945,10 +952,13 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft' && db.settings.allowPass) { e.preventDefault(); flashThen('pass', () => markWord(false)); }
 });
 
-/* Tilt controls (Heads Up style). up = vertical component of the screen normal:
-   +1 screen faces the ceiling, 0 upright (on the forehead), -1 screen faces the floor. */
-const tilt = { on: false, handler: null, state: 'idle' };
+/* Tilt controls (Heads Up style). pitch = angle of the screen normal above horizontal:
+   +90 screen faces the ceiling, 0 upright (on the forehead), -90 screen faces the floor.
+   The resting angle is measured when the first word appears, so a sloping forehead does not matter. */
+const tilt = { on: false, handler: null, state: 'idle', neutral: 0, samples: [], count: 0, pitch: 0, test: null };
 const tiltUp = (beta, gamma) => Math.cos((beta || 0) * Math.PI / 180) * Math.cos((gamma || 0) * Math.PI / 180);
+const tiltPitch = (beta, gamma) => Math.asin(Math.max(-1, Math.min(1, tiltUp(beta, gamma)))) * 180 / Math.PI;
+function tiltArm() { tilt.state = 'calib'; tilt.samples = []; }
 async function tiltEnable() {
   tilt.on = false;
   if (!db.settings.tilt) return false;
@@ -956,25 +966,32 @@ async function tiltEnable() {
     if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
       const r = await DeviceOrientationEvent.requestPermission();
       if (r !== 'granted') { toast('Tilt not allowed. Use the buttons or swipe.', 3000); return false; }
-    }
+    } else if (typeof DeviceOrientationEvent === 'undefined') { toast('No motion sensor on this device', 3000); return false; }
     if (!tilt.handler) { tilt.handler = onTilt; window.addEventListener('deviceorientation', tilt.handler); }
-    tilt.on = true; tilt.state = 'wait'; return true;
-  } catch (e) { toast('Tilt not available on this device', 3000); return false; }
+    tilt.on = true; tilt.count = 0; tiltArm(); return true;
+  } catch (e) { toast('Tilt not available: ' + (e && e.message || e), 4000); return false; }
 }
-function tiltDisable() { if (tilt.handler) window.removeEventListener('deviceorientation', tilt.handler); tilt.handler = null; tilt.on = false; tilt.state = 'idle'; }
-function tiltStep(up) {  // returns 'got' | 'pass' | 'next' | null
-  if (tilt.state === 'wait') { if (Math.abs(up) < 0.3) tilt.state = 'ready'; return null; }   // must be upright first
-  if (tilt.state === 'ready') {
-    if (up < -0.55) { tilt.state = 'fired'; return 'got'; }
-    if (up > 0.55) { tilt.state = 'fired'; return db.settings.allowPass ? 'pass' : null; }
+function tiltDisable() { if (tilt.handler) window.removeEventListener('deviceorientation', tilt.handler); tilt.handler = null; tilt.on = false; tilt.state = 'idle'; tilt.test = null; }
+function tiltStep(pitch) {  // returns 'got' | 'pass' | 'next' | null
+  if (tilt.state === 'calib') {
+    tilt.samples.push(pitch);
+    if (tilt.samples.length >= 8) { const o = tilt.samples.slice().sort((x, y) => x - y); tilt.neutral = Math.max(-25, Math.min(40, o[o.length >> 1])); tilt.state = 'ready'; }
     return null;
   }
-  if (tilt.state === 'fired' && Math.abs(up) < 0.3) { tilt.state = 'ready'; return 'next'; }
+  const d = pitch - tilt.neutral;
+  if (tilt.state === 'ready') {
+    if (d < -40) { tilt.state = 'fired'; return 'got'; }
+    if (d > 40) { tilt.state = 'fired'; return db.settings.allowPass ? 'pass' : null; }
+    return null;
+  }
+  if (tilt.state === 'fired' && Math.abs(d) < 15) { tilt.state = 'ready'; return 'next'; }
   return null;
 }
 function onTilt(e) {
+  tilt.count++; tilt.pitch = tiltPitch(e.beta, e.gamma);
+  if (tilt.test) { tilt.test(tilt.pitch); return; }
   if (!game || game.phase !== 'word' || !tilt.on) return;
-  const r = tiltStep(tiltUp(e.beta, e.gamma));
+  const r = tiltStep(tilt.pitch);
   if (r === 'got' || r === 'pass') {
     const ok = r === 'got';
     markWord(ok);
@@ -982,6 +999,7 @@ function onTilt(e) {
     const root = $('.play'); if (root) { root.classList.remove('good', 'pass'); root.classList.add(ok ? 'good' : 'pass'); const w = $('.word span'); if (w) { w.textContent = ok ? '✓ Got it!' : 'Pass'; fitWord(w); } }
   } else if (r === 'next') renderPlay();
 }
+const tiltStatus = () => !tilt.count ? '📐 no motion data yet' : tilt.state === 'calib' ? '📐 hold still…' : tilt.state === 'ready' ? '📐 tilt ready' : '📐 back upright for the next word';
 
 /* Keep the screen on while playing */
 let wakeLock = null;
@@ -1016,7 +1034,7 @@ const audio = {
 
 /* ===================== Shared game-setup helpers ===================== */
 const GAME_DEFAULTS = {
-  buzz: { lastDecks: [], categories: 4, rows: 4, teams: 2, monsters: 2, gifts: 1, doubles: 1, mode: 'turns', wrongPenalty: false, monsterEffect: 'all' },
+  buzz: { lastDecks: [], categories: 4, rows: 5, teams: 2, monsters: 2, gifts: 1, doubles: 1, mode: 'turns', wrongPenalty: false, monsterEffect: 'all', questions: true, qTime: 10, qCats: { math: true, body: true, simon: true, capitals: true, mine: true }, v2: true },
   futaba: { lastDecks: [], players: 2, mode: 'auto', options: 4, rounds: 10, promptSide: 'answer', voice: 'en-GB' },
   memory: { lastDecks: [], sets: 6, size: 2, variant: 'same', teams: 1 },
 };
@@ -1024,6 +1042,7 @@ function gameCfg(key) {
   const s = db.settings;
   if (!s[key] || typeof s[key] !== 'object') s[key] = {};
   for (const k in GAME_DEFAULTS[key]) if (!(k in s[key])) s[key][k] = JSON.parse(JSON.stringify(GAME_DEFAULTS[key][k]));
+  if (key === 'buzz' && !s.buzz.v2) { s.buzz.rows = 5; s.buzz.v2 = true; }
   return s[key];
 }
 function deckGroups() {
@@ -1048,12 +1067,13 @@ const segHtml = (key, opts, value) => `<div class="seg wrap">${opts.map(o => `<b
 const togHtml = (key, label, sub, on) => `<div class="toggle" data-opt="${key}"><div><div class="lbl">${label}</div>${sub ? `<div class="sub">${sub}</div>` : ''}</div><div class="sw ${on ? 'on' : ''}"></div></div>`;
 /* Binds steppers / segments / toggles / deck picker on a setup screen. limits: {key: [min, max]} */
 function bindSetup(sc, cfg, groups, selected, limits, rerender, onStart) {
+  const rr = () => keepScroll(rerender);
   sc.addEventListener('click', e => {
-    const st = e.target.closest('[data-step]'); if (st) { const k = st.dataset.step, [lo, hi] = limits[k]; cfg[k] = Math.min(hi, Math.max(lo, (+cfg[k] || 0) + (+st.dataset.d))); saveDb(); rerender(); return; }
-    const sg = e.target.closest('[data-seg]'); if (sg) { const v = sg.dataset.v; cfg[sg.dataset.seg] = /^-?\d+$/.test(v) ? +v : v; saveDb(); rerender(); return; }
-    const o = e.target.closest('[data-opt]'); if (o) { cfg[o.dataset.opt] = !cfg[o.dataset.opt]; saveDb(); rerender(); return; }
-    const sa = e.target.closest('[data-selall]'); if (sa) { const g = groups.find(x => x.id === sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); cfg.lastDecks = [...selected]; saveDb(); rerender(); return; }
-    const d = e.target.closest('[data-deck]'); if (d) { const id = d.dataset.deck; if (selected.has(id)) selected.delete(id); else selected.add(id); cfg.lastDecks = [...selected]; saveDb(); rerender(); return; }
+    const st = e.target.closest('[data-step]'); if (st) { const k = st.dataset.step, [lo, hi] = limits[k]; cfg[k] = Math.min(hi, Math.max(lo, (+cfg[k] || 0) + (+st.dataset.d))); saveDb(); rr(); return; }
+    const sg = e.target.closest('[data-seg]'); if (sg) { const v = sg.dataset.v; cfg[sg.dataset.seg] = /^-?\d+$/.test(v) ? +v : v; saveDb(); rr(); return; }
+    const o = e.target.closest('[data-opt]'); if (o) { cfg[o.dataset.opt] = !cfg[o.dataset.opt]; saveDb(); rr(); return; }
+    const sa = e.target.closest('[data-selall]'); if (sa) { const g = groups.find(x => x.id === sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); cfg.lastDecks = [...selected]; saveDb(); rr(); return; }
+    const d = e.target.closest('[data-deck]'); if (d) { const id = d.dataset.deck; if (selected.has(id)) selected.delete(id); else selected.add(id); cfg.lastDecks = [...selected]; saveDb(); rr(); return; }
     const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'start') onStart();
   });
   sc.addEventListener('change', e => { const i = e.target.closest('[data-tname]'); if (i) { db.settings.teamNames[+i.dataset.tname] = i.value.trim() || `Team ${+i.dataset.tname + 1}`; saveDb(); } });
@@ -1075,8 +1095,65 @@ function gameOverHtml(title, teams, line, againLabel) {
     <button class="pbtn" data-p="again">${esc(againLabel || 'Play again')}</button><button class="pbtn ghost" data-p="exit">Exit</button></div></div>`;
 }
 
-/* ===================== Buzz Monster (category board) ===================== */
+/* ===================== Yahtzee (category board with turn questions) ===================== */
 let buzz = null;
+const CAT_HUES = [0, 215, 135, 38, 280, 185];          // red, blue, green, orange, purple, teal — one per column
+const cellColor = (hue, r, rows) => { const L = rows > 1 ? 82 - (r / (rows - 1)) * 44 : 60; return { bg: `hsl(${hue} 78% ${L}%)`, fg: L > 60 ? '#1f1f2b' : '#fff' }; };
+/* --- Turn questions (built in) --- */
+const TQ = {
+  body: ['Touch your nose', 'Touch your left knee', 'Touch your right ear', 'Touch your elbow', 'Touch your shoulders', 'Touch your chin', 'Touch your toes', 'Touch your left foot', 'Touch your right eyebrow', 'Put your hands on your head', 'Cross your arms', 'Put one hand up', 'Touch your hair', 'Touch your back', 'Touch your desk with your elbow', 'Point to your mouth', 'Show me your thumbs', 'Touch your knees with both hands', 'Touch your right shoulder with your left hand', 'Put your hands on your hips'],
+  simon: ['Simon says: clap three times', 'Simon says: stand up', 'Simon says: sit down', 'Simon says: put both hands up', 'Simon says: show me five fingers', 'Simon says: point to the door', 'Simon says: wave hello', 'Simon says: touch the floor', 'Simon says: nod your head', 'Simon says: cover your eyes', 'Simon says: make a circle with your arms', 'Simon says: whisper "hello"', 'Simon says: hold up two fingers', 'Simon says: put your hands behind your back', 'Simon says: smile', 'Simon says: touch your ears', 'Simon says: point to the window', 'Simon says: fold your arms', 'Simon says: close your eyes', 'Simon says: pretend to sleep'],
+  capitals: [['France', 'Paris'], ['Spain', 'Madrid'], ['Italy', 'Rome'], ['the United Kingdom', 'London'], ['Germany', 'Berlin'], ['Portugal', 'Lisbon'], ['the USA', 'Washington, D.C.'], ['Japan', 'Tokyo'], ['China', 'Beijing'], ['Russia', 'Moscow'], ['Greece', 'Athens'], ['Ireland', 'Dublin'], ['the Netherlands', 'Amsterdam'], ['Egypt', 'Cairo'], ['Argentina', 'Buenos Aires'], ['Mexico', 'Mexico City'], ['Brazil', 'Brasília'], ['Canada', 'Ottawa'], ['Australia', 'Canberra'], ['Turkey', 'Ankara'], ['Austria', 'Vienna'], ['Belgium', 'Brussels'], ['Poland', 'Warsaw'], ['Sweden', 'Stockholm'], ['Norway', 'Oslo'], ['Denmark', 'Copenhagen'], ['Switzerland', 'Bern'], ['Morocco', 'Rabat'], ['India', 'New Delhi'], ['Peru', 'Lima']],
+  group: ['Everyone: touch your nose', 'Everyone: clap twice together', 'Everyone: put your hands on your head', 'All together: count from 1 to 10 in English', 'All together: say the days of the week', 'Everyone: stand up quietly, then sit down', 'Everyone: show me ten fingers', 'All together: say the months of the year', 'Everyone: touch your knees', 'All together: spell your team name', 'Everyone: point to something blue', 'All together: say the alphabet from A to J', 'Everyone: touch your ears', 'All together: count backwards from 10 to 1'],
+};
+const TQ_CATS = { math: 'Simple maths', body: 'Touch your…', simon: 'Simon says', capitals: 'Capital cities', mine: 'My turn questions' };
+const rnd = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
+function mathQuestion() {
+  const k = rnd(0, 7); let q, a;
+  if (k === 0) { const x = rnd(2, 20), y = rnd(2, 20); q = `${x} + ${y} = ?`; a = x + y; }
+  else if (k === 1) { const x = rnd(5, 30), y = rnd(1, x - 1); q = `${x} − ${y} = ?`; a = x - y; }
+  else if (k === 2) { const x = rnd(2, 9), y = rnd(2, 9); q = `${x} × ${y} = ?`; a = x * y; }
+  else if (k === 3) { const x = rnd(3, 25); q = `Double ${x}`; a = x * 2; }
+  else if (k === 4) { const x = rnd(2, 20) * 2; q = `Half of ${x}`; a = x / 2; }
+  else if (k === 5) { const x = rnd(1, 9), y = rnd(1, 9), z = rnd(1, 9); q = `${x} + ${y} + ${z} = ?`; a = x + y + z; }
+  else if (k === 6) { const x = rnd(10, 98); q = `What number comes after ${x}?`; a = x + 1; }
+  else { const x = rnd(2, 9), y = rnd(2, 9); q = `${x * y} ÷ ${x} = ?`; a = y; }
+  return { q, a: String(a), cat: 'math', group: false };
+}
+function parseTurnQuestion(line) {
+  const group = /#group\b/i.test(line); const ps = parts(line.replace(/#group\b/ig, '').trim());
+  return ps.length ? { q: ps[0], a: ps[1] || '', cat: 'mine', group } : null;
+}
+function turnQuestionPool(cfg) {
+  const on = cfg.qCats || {}; const pool = [];
+  if (on.body) TQ.body.forEach(q => pool.push({ q, a: '', cat: 'body', group: false }));
+  if (on.simon) TQ.simon.forEach(q => pool.push({ q, a: '', cat: 'simon', group: false }));
+  if (on.capitals) TQ.capitals.forEach(([c, cap]) => { pool.push({ q: `What is the capital of ${c}?`, a: cap, cat: 'capitals', group: false }); pool.push({ q: `${cap} is the capital of which country?`, a: c.replace(/^the /, 'The '), cat: 'capitals', group: false }); });
+  if (on.body || on.simon) TQ.group.forEach(q => pool.push({ q, a: '', cat: 'body', group: true }));
+  if (on.mine) (db.turnQuestions || []).map(parseTurnQuestion).filter(Boolean).forEach(x => pool.push(x));
+  return pool;
+}
+/* Picks the next turn question: no repeats until the pool is used up, group questions capped at 20% of those asked. */
+function pickTurnQuestion(b) {
+  const cfg = b.cfg; const pool = turnQuestionPool(cfg);
+  const groupOk = (b.qGroup + 1) <= Math.floor(0.2 * (b.qAsked + 1));
+  const cats = []; if (cfg.qCats.math) cats.push('math'); pool.forEach(x => { if (!cats.includes(x.cat)) cats.push(x.cat); });
+  if (!cats.length) return null;
+  let cand = pool.filter(x => !b.qUsed.has(x.q) && (groupOk || !x.group));
+  if (!cand.length && pool.length) { b.qUsed.clear(); cand = pool.filter(x => groupOk || !x.group); }
+  const cat = cats[rnd(0, cats.length - 1)];
+  let q;
+  if (cat === 'math') q = mathQuestion();
+  else {
+    const inCat = cand.filter(x => x.cat === cat);
+    const wantGroup = groupOk && Math.random() < 0.6 && inCat.some(x => x.group);
+    let list = inCat.filter(x => x.group === wantGroup); if (!list.length) list = inCat.length ? inCat : cand;
+    q = list.length ? list[rnd(0, list.length - 1)] : mathQuestion();
+  }
+  if (!q) return null;
+  b.qUsed.add(q.q); b.qAsked++; if (q.group) b.qGroup++;
+  return q;
+}
 function renderBuzzSetup() {
   const cfg = gameCfg('buzz'); const groups = deckGroups(); const selected = ensureSelection(cfg);
   if (!allDecks().length) { location.replace('#library'); return; }
@@ -1084,15 +1161,22 @@ function renderBuzzSetup() {
     const decks = selectedDecks(selected).filter(k => k.words.length);
     const cats = Math.min(cfg.categories, decks.length);
     const cells = decks.slice().sort((a, b) => b.words.length - a.words.length).slice(0, cats).reduce((a, k) => a + Math.min(cfg.rows, k.words.length), 0);
+    const nMine = (db.turnQuestions || []).length;
     app.innerHTML = `<div class="screen">
-      ${topbar('Buzz Monster', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
+      ${topbar('Yahtzee', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
       <div class="content"><div class="wrap">
         <button class="btn big ok" data-act="start" ${cats ? '' : 'disabled'}>▶ Start · ${plural(cats, 'category').replace('categorys', 'categories')} · ${plural(cells, 'card')}</button>
-        <div class="hint">Each selected deck becomes a column. Teams take turns picking a card; the word is revealed and the team says it, spells it, uses it in a sentence… you decide, then tap ✓ or ✗. Some cards hide a monster 👹, a gift 🎁 or double points ✨.</div>
+        <div class="hint">A quick <b>turn question</b> decides which team plays: the first team to answer picks a card from the board. The word is revealed, the team says it, spells it, uses it in a sentence… you decide, then tap ✓ or ✗. Some cards hide a monster 👹, a gift 🎁 or double points ✨.</div>
+        <h2 class="sec">Turn questions</h2>
+        <div class="card">
+          ${togHtml('questions', 'Ask a turn question before each pick', cfg.teams > 1 ? '' : 'Needs 2 or more teams', cfg.questions)}
+          <div class="field"><label>Time to answer</label>${segHtml('qTime', [[5, '5 s'], [10, '10 s'], [15, '15 s'], [20, '20 s'], [30, '30 s'], [0, 'No timer']], cfg.qTime)}</div>
+          ${Object.keys(TQ_CATS).map(k => `<div class="toggle" data-qcat="${k}"><div><div class="lbl">${TQ_CATS[k]}</div>${k === 'mine' ? `<div class="sub">${plural(nMine, 'question')} · tap "Edit" to add your own</div>` : k === 'body' || k === 'simon' ? '<div class="sub">Includes a few 👥 group questions (max 20%)</div>' : ''}</div>${k === 'mine' ? '<button class="tbtn" data-act="editq">Edit</button>' : ''}<div class="sw ${cfg.qCats[k] ? 'on' : ''}"></div></div>`).join('')}
+        </div>
         <h2 class="sec">Board</h2>
         <div class="card">
           ${stepHtml('categories', 'Categories shown', decks.length < cfg.categories ? 'Only ' + plural(decks.length, 'deck') + ' selected' : 'Picked at random from the selected decks', cfg.categories)}
-          ${stepHtml('rows', 'Cards per category', 'Points go up with each row: 100, 200, 300…', cfg.rows)}
+          ${stepHtml('rows', 'Cards per category', 'Worth 100 to ' + cfg.rows * 100 + ' points', cfg.rows)}
           ${stepHtml('monsters', 'Monsters 👹', 'Hidden cards that eat points', cfg.monsters)}
           ${stepHtml('gifts', 'Gifts 🎁', 'Free points, no question', cfg.gifts)}
           ${stepHtml('doubles', 'Double points ✨', '', cfg.doubles)}
@@ -1101,20 +1185,31 @@ function renderBuzzSetup() {
         <div class="card">${stepHtml('teams', 'Number of teams', '', cfg.teams)}${teamNamesHtml(cfg.teams)}</div>
         <h2 class="sec">Rules</h2>
         <div class="card">
-          <div class="field"><label>Who can answer</label>${segHtml('mode', [['turns', 'Only the team whose turn it is'], ['buzz', 'Anyone can buzz in']], cfg.mode)}</div>
+          <div class="field"><label>Who answers the card</label>${segHtml('mode', [['turns', 'The team that picked it'], ['buzz', 'Anyone can buzz in']], cfg.mode)}</div>
           <div class="field"><label>The monster takes</label>${segHtml('monsterEffect', [['all', 'All points'], ['half', 'Half'], ['card', 'The card value']], cfg.monsterEffect)}</div>
           ${togHtml('wrongPenalty', 'A wrong answer loses the points', '', cfg.wrongPenalty)}
         </div>
         <h2 class="sec">Decks (one column each)</h2>
         ${deckPickerHtml(groups, selected)}
       </div></div></div>`;
-    bindSetup($('.screen', app), cfg, groups, selected, { categories: [1, 6], rows: [2, 6], monsters: [0, 6], gifts: [0, 6], doubles: [0, 6], teams: [1, 6] }, render, () => startBuzz(selected));
+    const sc = $('.screen', app);
+    sc.addEventListener('click', e => {
+      const qc = e.target.closest('[data-qcat]'); if (qc && !e.target.closest('[data-act]')) { cfg.qCats[qc.dataset.qcat] = !cfg.qCats[qc.dataset.qcat]; saveDb(); keepScroll(render); return; }
+      const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'editq') editTurnQuestions(() => keepScroll(render));
+    });
+    bindSetup(sc, cfg, groups, selected, { categories: [1, 6], rows: [2, 5], monsters: [0, 6], gifts: [0, 6], doubles: [0, 6], teams: [1, 6] }, render, () => startBuzz(selected));
   };
   render();
 }
+function editTurnQuestions(done) {
+  const m = openSheet(`<h3>My turn questions</h3><p>One per line: <b>question | answer</b>. Add <b>#group</b> to let the whole team answer together.<br>Example: <b>What colour is a banana? | yellow</b></p>
+    <div class="card"><div class="field"><textarea id="tqtext" style="min-height:200px" autocapitalize="sentences" spellcheck="false">${esc((db.turnQuestions || []).join('\n'))}</textarea></div></div>
+    <div class="btnrow" style="margin-top:12px"><button class="btn sec" data-a="no">Cancel</button><button class="btn" data-a="yes">Save</button></div>`);
+  m.addEventListener('click', e => { const a = e.target.dataset.a; if (!a) return; if (a === 'yes') { db.turnQuestions = parseWords($('#tqtext', m).value); saveDb(); toast('Saved ' + plural(db.turnQuestions.length, 'question')); } closeSheet(m); done(); });
+}
 function buildBuzz(decks, cfg) {
   const chosen = shuffle(decks.filter(k => k.words.length)).slice(0, Math.max(1, Math.min(cfg.categories, decks.length)));
-  const cats = chosen.map(k => ({ name: k.name, cells: shuffle(k.words.slice()).slice(0, cfg.rows).map((w, i) => ({ word: w, pts: (i + 1) * 100, special: null, done: false, by: -1 })) }));
+  const cats = chosen.map((k, i) => ({ name: k.name, hue: CAT_HUES[i % CAT_HUES.length], cells: shuffle(k.words.slice()).slice(0, cfg.rows).map((w, r) => ({ word: w, pts: (r + 1) * 100, special: null, done: false, by: -1 })) }));
   const all = shuffle(cats.flatMap(c => c.cells));
   let i = 0;
   for (let n = 0; n < cfg.monsters && i < all.length; n++) all[i++].special = 'monster';
@@ -1126,23 +1221,39 @@ function startBuzz(selected) {
   const cfg = gameCfg('buzz');
   const decks = selectedDecks(selected).filter(k => k.words.length);
   if (!decks.length) { toast('Select at least one deck with words'); return; }
-  buzz = { cats: buildBuzz(decks, cfg), teams: makeTeams(cfg.teams), turn: 0, open: null, phase: 'board', cfg: { ...cfg } };
+  buzz = { cats: buildBuzz(decks, cfg), teams: makeTeams(cfg.teams), turn: 0, open: null, phase: 'board', cfg: JSON.parse(JSON.stringify(cfg)), q: null, qUsed: new Set(), qAsked: 0, qGroup: 0, timer: null };
   audio.unlock(); keepAwake(true);
+  if (buzzAsksQuestions()) buzzAsk();
   if (location.hash === '#buzzplay') renderBuzz(); else { navState.depth++; go('#buzzplay'); }
+}
+const buzzAsksQuestions = () => buzz && buzz.cfg.questions && buzz.teams.length > 1;
+function buzzAsk() {
+  const b = buzz; clearInterval(b.timer);
+  const q = pickTurnQuestion(b);
+  if (!q) { b.phase = 'board'; toast('No turn questions enabled — playing in turns'); return; }
+  const secs = b.cfg.qTime || 0;
+  b.q = { ...q, endAt: secs ? Date.now() + secs * 1000 : 0, total: secs * 1000, expired: false, showA: false };
+  b.phase = 'question';
+  if (secs) b.timer = setInterval(() => {
+    const bb = buzz; if (!bb || bb.phase !== 'question' || !bb.q) { clearInterval(b.timer); return; }
+    const left = Math.max(0, bb.q.endAt - Date.now()); updateTimer(left, bb.q.total);
+    if (left <= 0 && !bb.q.expired) { bb.q.expired = true; clearInterval(b.timer); audio.horn(); renderBuzz(); }
+  }, 100);
 }
 function buzzCell() { const o = buzz.open; return buzz.cats[o.ci].cells[o.r]; }
 function renderBuzz() {
   const b = buzz; if (!b) { location.replace('#buzz'); return; }
   const cfg = b.cfg, team = b.teams[b.turn], left = b.cats.reduce((a, c) => a + c.cells.filter(x => !x.done).length, 0);
   let html;
-  if (b.phase === 'over') html = gameOverHtml('Buzz Monster', b.teams, `${b.cats.length} categories`, 'New board');
+  if (b.phase === 'over') html = gameOverHtml('Yahtzee', b.teams, `${b.cats.length} categories`, 'New board');
+  else if (b.phase === 'question') html = buzzQuestionHtml();
   else {
     const rows = Math.max(...b.cats.map(c => c.cells.length));
     const board = `<div class="bboard" style="grid-template-columns:repeat(${b.cats.length},1fr)">
-      ${b.cats.map(c => `<div class="bhead">${esc(c.name)}</div>`).join('')}
-      ${Array.from({ length: rows }, (_, r) => b.cats.map((c, ci) => { const x = c.cells[r]; return x ? `<button class="bcell ${x.done ? 'done' : ''}" data-cell="${ci}:${r}" ${x.done ? 'disabled' : ''} style="${x.done && x.by >= 0 ? 'background:' + TEAM_COLORS[x.by % 6] : ''}">${x.done ? (x.special === 'monster' ? '👹' : x.by >= 0 ? '✓' : '✗') : x.pts}</button>` : '<div></div>'; }).join('')).join('')}
+      ${b.cats.map(c => `<div class="bhead" style="background:hsl(${c.hue} 70% 42%)">${esc(c.name)}</div>`).join('')}
+      ${Array.from({ length: rows }, (_, r) => b.cats.map((c, ci) => { const x = c.cells[r]; if (!x) return '<div></div>'; const col = cellColor(c.hue, r, rows); return `<button class="bcell ${x.done ? 'done' : ''}" data-cell="${ci}:${r}" ${x.done ? 'disabled' : ''} style="${x.done ? '' : `background:${col.bg};color:${col.fg}`}">${x.done ? (x.special === 'monster' ? '👹' : x.by >= 0 ? '<span style="color:' + TEAM_COLORS[x.by % 6] + '">✓</span>' : '✗') : x.pts}</button>`; }).join('')).join('')}
     </div>`;
-    html = `<div class="play ready bz"><div class="ptop"><button data-p="exit">✕ Exit</button><span>${b.teams.length > 1 ? esc(team.name) + (cfg.mode === 'turns' ? ' — pick a card' : ' picks') : plural(left, 'card') + ' left'}</span><button data-p="finish">End game</button></div>
+    html = `<div class="play ready bz"><div class="ptop"><button data-p="exit">✕ Exit</button><span>${b.teams.length > 1 ? esc(team.name) + ' — pick a card' : plural(left, 'card') + ' left'}</span><button data-p="finish">End game</button></div>
       ${scoreboardHtml(b.teams, b.turn)}
       ${board}
       ${b.open ? buzzCardHtml() : ''}</div>`;
@@ -1151,25 +1262,39 @@ function renderBuzz() {
   fitWord($('.bword span'));
   $('.play', app).addEventListener('click', async e => {
     const b2 = buzz; if (!b2) return;
-    const cell = e.target.closest('[data-cell]'); if (cell) { const [ci, r] = cell.dataset.cell.split(':').map(Number); b2.open = { ci, r, revealed: false, answer: false, specialDone: false }; audio.tick(true); renderBuzz(); return; }
+    const cell = e.target.closest('[data-cell]'); if (cell) { const [ci, r] = cell.dataset.cell.split(':').map(Number); b2.open = { ci, r, answer: false, specialDone: false }; audio.tick(true); renderBuzz(); return; }
     const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
-    if (act === 'exit') { if (b2.phase === 'over' || !b2.cats.some(c => c.cells.some(x => x.done)) || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) { buzz = null; keepAwake(false); leaveTo('#buzz'); } }
-    if (act === 'finish') { if (await confirmDlg('End the game now?', 'The scoreboard will be shown.', 'End game')) { b2.phase = 'over'; audio.horn(); renderBuzz(); } }
+    if (act === 'exit') { if (b2.phase === 'over' || !b2.cats.some(c => c.cells.some(x => x.done)) || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) { clearInterval(b2.timer); buzz = null; keepAwake(false); leaveTo('#buzz'); } }
+    if (act === 'finish') { if (await confirmDlg('End the game now?', 'The scoreboard will be shown.', 'End game')) { clearInterval(b2.timer); b2.phase = 'over'; audio.horn(); renderBuzz(); } }
     if (act === 'again') startBuzz(new Set(gameCfg('buzz').lastDecks));
-    if (act === 'reveal') { b2.open.revealed = true; renderBuzz(); }
     if (act === 'answer') { b2.open.answer = true; renderBuzz(); }
     if (act === 'ok') buzzResolve(+p.dataset.team, true);
     if (act === 'wrong') buzzResolve(-1, false);
     if (act === 'special') buzzSpecial();
     if (act === 'close') { b2.open = null; renderBuzz(); }
+    if (act === 'qshow') { b2.q.showA = true; renderBuzz(); }
+    if (act === 'qwin') { clearInterval(b2.timer); b2.turn = +p.dataset.team; b2.phase = 'board'; audio.ding(); renderBuzz(); }
+    if (act === 'qskip') { buzzAsk(); renderBuzz(); }
   });
+}
+function buzzQuestionHtml() {
+  const b = buzz, q = b.q, secs = b.cfg.qTime;
+  const left = q.endAt ? Math.max(0, q.endAt - Date.now()) : 0;
+  return `<div class="play ready bz"><div class="ptop"><button data-p="exit">✕ Exit</button><span>Turn question</span>${q.endAt ? `<span class="clock">${q.expired ? "Time's up!" : fmt(left)}</span>` : '<span></span>'}</div>
+    ${scoreboardHtml(b.teams, -1)}
+    ${q.endAt ? `<div class="timerbar ${left <= 3000 ? 'hot' : ''}"><i style="width:${100 * left / q.total}%"></i></div>` : ''}
+    <div class="bcard-face" style="padding-top:6px">
+      <div class="bcat">${q.group ? '<span class="tqgroup">👥 GROUP · the whole team answers together</span>' : (TQ_CATS[q.cat] || 'Question')}${secs ? ' · ' + secs + ' s' : ''}</div>
+      <div class="bword" style="flex:1"><span>${esc(q.q)}</span></div>
+      ${q.a ? (q.showA ? `<div class="banswer">${esc(q.a)}</div>` : `<button class="pbtn ghost small" data-p="qshow">Show answer</button>`) : '<div class="t" style="opacity:.75">Watch who does it first</div>'}
+      <div class="bjudge">${b.teams.map((t, i) => `<button class="pbtn" style="background:${TEAM_COLORS[i % 6]};color:#fff" data-p="qwin" data-team="${i}">${esc(t.name)} first</button>`).join('')}<button class="pbtn ghost" data-p="qskip">Nobody · next question</button></div>
+    </div></div>`;
 }
 function buzzCardHtml() {
   const b = buzz, o = b.open, x = buzzCell(), cat = b.cats[o.ci], cfg = b.cfg, team = b.teams[b.turn];
   const pts = x.special === 'double' ? x.pts * 2 : x.pts;
   let body;
-  if (!o.revealed) body = `<div class="bcard-face"><div class="bcat">${esc(cat.name)} · ${x.pts}</div><div class="bword"><span style="font-size:min(30vh,30vw)">?</span></div><button class="pbtn" data-p="reveal">Reveal</button><button class="pbtn ghost small" data-p="close">Cancel</button></div>`;
-  else if (x.special === 'monster' && !o.specialDone) body = `<div class="bcard-face"><div class="bword"><span style="font-size:min(30vh,30vw)">👹</span></div><div class="bcat" style="font-size:30px">MONSTER!</div><div class="t">${esc(team.name)} loses ${cfg.monsterEffect === 'all' ? 'all their points' : cfg.monsterEffect === 'half' ? 'half their points' : x.pts + ' points'}</div><button class="pbtn" data-p="special">Oh no…</button></div>`;
+  if (x.special === 'monster' && !o.specialDone) body = `<div class="bcard-face"><div class="bword"><span style="font-size:min(30vh,30vw)">👹</span></div><div class="bcat" style="font-size:30px">MONSTER!</div><div class="t">${esc(team.name)} loses ${cfg.monsterEffect === 'all' ? 'all their points' : cfg.monsterEffect === 'half' ? 'half their points' : x.pts + ' points'}</div><button class="pbtn" data-p="special">Oh no…</button></div>`;
   else if (x.special === 'gift' && !o.specialDone) body = `<div class="bcard-face"><div class="bword"><span style="font-size:min(30vh,30vw)">🎁</span></div><div class="bcat" style="font-size:30px">GIFT!</div><div class="t">${esc(team.name)} gets ${x.pts} points for free</div><button class="pbtn" data-p="special">Yay!</button></div>`;
   else {
     const ps = parts(x.word);
@@ -1178,9 +1303,9 @@ function buzzCardHtml() {
       : `<button class="pbtn" style="background:var(--ok);color:#fff" data-p="ok" data-team="${b.turn}">✓ Correct +${pts}</button><button class="pbtn ghost" data-p="wrong">✗ Wrong${cfg.wrongPenalty ? ' −' + pts : ''}</button>`;
     body = `<div class="bcard-face"><div class="bcat">${esc(cat.name)} · ${x.special === 'double' ? '✨ DOUBLE · ' : ''}${pts} points${b.teams.length > 1 && cfg.mode === 'turns' ? ' · ' + esc(team.name) : ''}</div><div class="bword"><span>${esc(ps[0])}</span></div>
       ${ps.length > 1 ? (o.answer ? `<div class="banswer">${esc(ps.slice(1).join(' · '))}</div>` : `<button class="pbtn ghost small" data-p="answer">Show answer</button>`) : ''}
-      <div class="bjudge">${judges}</div></div>`;
+      <div class="bjudge">${judges}</div><button class="pbtn ghost small" data-p="close" style="opacity:.7">Back to board</button></div>`;
   }
-  return `<div class="bcard">${body}</div>`;
+  return `<div class="bcard" style="background:hsl(${cat.hue} 65% 45%)">${body}</div>`;
 }
 function buzzSpecial() {
   const b = buzz, x = buzzCell(), team = b.teams[b.turn];
@@ -1195,8 +1320,8 @@ function buzzResolve(teamIdx, ok) {
 }
 function buzzFinish(by) {
   const b = buzz, x = buzzCell(); x.done = true; x.by = by; b.open = null;
-  b.turn = (b.turn + 1) % b.teams.length;
-  if (!b.cats.some(c => c.cells.some(c2 => !c2.done))) { b.phase = 'over'; audio.horn(); }
+  if (!b.cats.some(c => c.cells.some(c2 => !c2.done))) { b.phase = 'over'; audio.horn(); renderBuzz(); return; }
+  if (buzzAsksQuestions()) buzzAsk(); else b.turn = (b.turn + 1) % b.teams.length;
   renderBuzz();
 }
 
@@ -1444,6 +1569,11 @@ function renderSettings() {
         <div class="row" data-act="restore"><div class="ic">📥</div><div class="txt"><div class="t">Restore / import</div><div class="s">Backup .json, or a .txt / .csv list</div></div><div class="chev">›</div></div>
       </div>
       <div class="hint">Your decks live only on this device, inside this app. Nothing is uploaded anywhere. Make a backup now and then, especially before deleting the app or clearing Safari data.</div>
+      <h2 class="sec">Device</h2>
+      <div class="card">
+        <div class="row" data-act="tilttest"><div class="ic">📐</div><div class="txt"><div class="t">Test the tilt sensor</div><div class="s" id="tiltinfo">Tap, allow motion access, then tilt the iPad</div></div></div>
+        <div class="row" data-act="signout"><div class="ic">🔒</div><div class="txt"><div class="t">Sign out</div><div class="s">Ask for the username and password again</div></div></div>
+      </div>
       <h2 class="sec">Danger zone</h2>
       <div class="card"><div class="row" data-act="wipe"><div class="ic">🗑️</div><div class="txt"><div class="t" style="color:var(--bad)">Delete all my decks and folders</div></div></div></div>
       <div class="ver">Class Games v${APP_VERSION} · ${IS_STANDALONE ? 'installed' : 'browser'}${persistState ? ' · storage ' + persistState : ''}</div>
@@ -1454,8 +1584,52 @@ function renderSettings() {
     const a = e.target.closest('[data-act]'); if (!a) return;
     if (a.dataset.act === 'backup') { const stamp = new Date().toISOString().slice(0, 10); await shareOrDownload(exportBackup(), `class-games-backup-${stamp}.json`, 'application/json'); }
     if (a.dataset.act === 'restore') importSheet();
+    if (a.dataset.act === 'signout') { localStorage.removeItem(AUTH.key); renderLock(); }
+    if (a.dataset.act === 'tilttest') {
+      const info = $('#tiltinfo'); const saved = db.settings.tilt; db.settings.tilt = true; const ok = await tiltEnable(); db.settings.tilt = saved;
+      if (!ok) { info.textContent = 'Motion access refused or not available. Delete the app from the Home Screen and add it again to be asked once more.'; return; }
+      tilt.on = false; let n = 0; info.textContent = 'Waiting for motion data…';
+      tilt.test = pt => { n++; info.textContent = `pitch ${pt.toFixed(0)}°  (0 = upright, −90 = face down, +90 = face up) · ${n} readings`; };
+      setTimeout(() => { if (!n) info.textContent = 'No motion data received in 4 s. iOS is not sending sensor data to the app.'; }, 4000);
+      setTimeout(() => { tilt.test = null; tiltDisable(); }, 30000);
+    }
     if (a.dataset.act === 'wipe') { if (await confirmDlg('Delete everything?', 'All your decks and folders will be removed. Presets stay. This cannot be undone.', 'Delete all', true)) { db.decks = []; db.folders = []; s.lastDecks = []; saveDb(); toast('Deleted'); renderSettings(); } }
   });
+}
+
+/* ===================== Sign-in (client-side lock) ===================== */
+const AUTH = { key: 'classGames.auth', salt: 'classgames-v1', iterations: 100000, days: 30, hash: 'f5747d8cd2c8d481d370bc6798242cbae120b6ed6916bbb7c82309143862b9b2' };
+const DEV_BYPASS = /selftest|demo=|dev=/.test(location.search);
+function isUnlocked() { try { const a = JSON.parse(localStorage.getItem(AUTH.key) || 'null'); return !!(a && a.until > Date.now()); } catch (e) { return false; } }
+function setUnlocked(remember) { try { localStorage.setItem(AUTH.key, JSON.stringify({ until: Date.now() + (remember ? AUTH.days : 0.5) * 86400000 })); } catch (e) {} }
+async function checkLogin(u, p) {
+  try {
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey('raw', enc.encode(String(u).trim().toLowerCase() + ':' + p), 'PBKDF2', false, ['deriveBits']);
+    const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt: enc.encode(AUTH.salt), iterations: AUTH.iterations, hash: 'SHA-256' }, key, 256);
+    return [...new Uint8Array(bits)].map(b => b.toString(16).padStart(2, '0')).join('') === AUTH.hash;
+  } catch (e) { toast('Sign-in needs a secure (https) connection'); return false; }
+}
+function renderLock() {
+  app.innerHTML = `<div class="screen"><div class="content" style="display:flex;align-items:center;justify-content:center"><form id="lockform" class="wrap" style="max-width:420px" autocomplete="on">
+    <div class="hero" style="padding-top:10px"><div class="title">Class Games</div><div class="sub">Sign in to continue</div></div>
+    <div class="card">
+      <div class="field"><label>Username</label><input type="text" name="username" id="lu" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required></div>
+      <div class="field"><label>Password</label><input type="password" name="password" id="lp" autocomplete="current-password" required></div>
+      <div class="toggle" id="lremrow"><div><div class="lbl">Keep me signed in</div><div class="sub">On this iPad, for 30 days</div></div><div class="sw on" id="lrem"></div></div>
+    </div>
+    <div style="margin-top:14px"><button class="btn big" type="submit">Sign in</button></div>
+    <div class="hint" id="lmsg">Tip: sign in once in Safari and let it save the password. After that Face ID fills it in.</div>
+    <div class="ver">v${APP_VERSION}</div></form></div></div>`;
+  let remember = true;
+  $('#lremrow').addEventListener('click', e => { if (e.target.closest('input')) return; remember = !remember; $('#lrem').classList.toggle('on', remember); });
+  $('#lockform').addEventListener('submit', async e => {
+    e.preventDefault(); const btn = $('#lockform button[type=submit]'); btn.disabled = true; btn.textContent = 'Checking…';
+    const ok = await checkLogin($('#lu').value, $('#lp').value);
+    if (ok) { setUnlocked(remember); route(); }
+    else { btn.disabled = false; btn.textContent = 'Sign in'; const m = $('#lmsg'); m.textContent = 'Wrong username or password.'; m.style.color = 'var(--bad)'; $('#lp').value = ''; $('#lp').focus(); }
+  });
+  setTimeout(() => { const u = $('#lu'); if (u) u.focus(); }, 100);
 }
 
 /* ===================== Boot ===================== */
@@ -1542,9 +1716,20 @@ if (location.search.includes('selftest')) {
     const fr4 = buildFutabaRounds(['one','two','three','four','five'], { rounds: 2, options: 3 }, 'scramble');
     t('futaba scramble', fr4.every(r => r.prompt.length === r.answer.length && r.prompt !== r.answer));
     t('futaba mode auto', futabaMode({ mode: 'auto', options: 4 }, fw) === 'pairs' && futabaMode({ mode: 'auto', options: 4 }, ['a','b','c','d']) === 'listen');
-    tilt.state = 'wait'; const seq = [tiltUp(0, 0), tiltUp(90, 0), tiltUp(160, 5), tiltUp(90, 0), tiltUp(20, 0), tiltUp(45, 0), tiltUp(90, 0), tiltUp(180, 0)].map(tiltStep);
-    t('tilt state machine', JSON.stringify(seq) === '[null,null,"got","next","pass",null,"next","got"]' && Math.abs(tiltUp(0, 0) - 1) < 1e-9 && Math.abs(tiltUp(180, 0) + 1) < 1e-9 && Math.abs(tiltUp(0, 90)) < 1e-9);
+    tilt.state = 'ready'; tilt.neutral = 10; const seq = [0, -50, 5, 70, 40, 12, -60].map(tiltStep);
+    t('tilt state machine', JSON.stringify(seq) === '[null,"got","next","pass",null,"next","got"]' && Math.abs(tiltPitch(0, 0) - 90) < 1e-9 && Math.abs(tiltPitch(180, 0) + 90) < 1e-9 && Math.abs(tiltPitch(90, 0)) < 1e-9);
+    tilt.state = 'calib'; tilt.samples = []; [20, 22, 19, 21, 20, 23, 18, 20].forEach(tiltStep); t('tilt calibration', tilt.state === 'ready' && tilt.neutral === 20);
     tilt.state = 'idle';
+    // --- Yahtzee turn questions
+    const mq = mathQuestion(); t('math question', /\?$|^Double|^Half/.test(mq.q) && /^\d+$/.test(mq.a));
+    t('parse turn question', JSON.stringify(parseTurnQuestion('What colour is a banana? | yellow #group')) === JSON.stringify({ q: 'What colour is a banana?', a: 'yellow', cat: 'mine', group: true }));
+    const tb = { cfg: { qCats: { math: false, body: true, simon: true, capitals: true, mine: false }, qTime: 10 }, qUsed: new Set(), qAsked: 0, qGroup: 0 };
+    const asked = []; for (let i = 0; i < 40; i++) asked.push(pickTurnQuestion(tb));
+    t('turn questions no repeats', asked.every(Boolean) && new Set(asked.map(x => x.q)).size === 40);
+    t('group questions <= 20%', asked.filter(x => x.group).length <= 8 && tb.qAsked === 40);
+    const tb2 = { cfg: { qCats: { math: true, body: false, simon: false, capitals: false, mine: false } }, qUsed: new Set(), qAsked: 0, qGroup: 0 };
+    t('math only pool', pickTurnQuestion(tb2).cat === 'math');
+    const c1 = cellColor(0, 0, 5), c5 = cellColor(0, 4, 5); t('cell shades', c1.bg === 'hsl(0 78% 82%)' && c5.bg === 'hsl(0 78% 38%)' && c1.fg !== c5.fg);
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
     // --- Memory
     const mc = buildMemory(['dog | perro', 'cat | gato', 'plain', 'other'], { sets: 3, size: 2, variant: 'same' });
@@ -1568,7 +1753,7 @@ if (location.search.includes('selftest')) {
   const demo = new URLSearchParams(location.search).get('demo');
   if (demo) {
     db.settings.sound = false; const four = new Set(PRESET_DECKS.slice(0, 4).map(k => k.id));
-    if (demo === 'buzz' || demo === 'buzzcard') { Object.assign(gameCfg('buzz'), { categories: 4, rows: 4, teams: 3 }); startBuzz(four); if (demo === 'buzzcard') { buzz.open = { ci: 0, r: 2, revealed: true, specialDone: false }; buzz.cats[0].cells[2].special = 'double'; } }
+    if (demo === 'buzz' || demo === 'buzzcard' || demo === 'buzzq') { Object.assign(gameCfg('buzz'), { categories: 4, rows: 5, teams: 3, questions: true, qTime: 10 }); startBuzz(four); if (demo !== 'buzzq') { clearInterval(buzz.timer); buzz.phase = 'board'; } if (demo === 'buzzcard') { buzz.open = { ci: 0, r: 2, answer: false, specialDone: false }; buzz.cats[0].cells[2].special = 'double'; } }
     else if (demo === 'futaba' || demo === 'futaba2' || demo === 'futaba3') { Object.assign(gameCfg('futaba'), { players: demo === 'futaba' ? 4 : demo === 'futaba2' ? 2 : 3, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); }
     else if (demo === 'memory') { Object.assign(gameCfg('memory'), { sets: 8, size: 2, teams: 2, variant: 'scrambled' }); startMemory(four); mem.cards[0].up = true; mem.cards[1].done = true; mem.cards[1].by = 0; mem.cards[2].done = true; mem.cards[2].by = 0; renderMemory(); }
     else { startGame([PRESET_DECKS[0].id]); if (demo === 'word') { game.phase = 'word'; nextWord(); game.endAt = Date.now() + 42000; } else game.phase = demo; renderPlay(); }

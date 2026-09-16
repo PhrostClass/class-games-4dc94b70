@@ -11,13 +11,22 @@ optionally with a third part (`dog | perro | 🐶`). Charades only shows the fir
 Games:
 
 - **Charades** – act it out; timer, teams, pass, no-repeats, sounds.
-- **Buzz Monster** – category board: each selected deck is a column (choose how many columns and cards per column),
-  teams pick cards worth 100–600 points, some hide a monster 👹 (eats points), a gift 🎁 or double points ✨.
-  Turn-based or "anyone can buzz in"; optional penalty for wrong answers.
+- **Yahtzee** – category board: each selected deck is a column (choose how many columns and cards per column, 100–500 points,
+  one colour per column shading darker as the points go up). A **turn question** (simple maths, "touch your…", Simon says,
+  capital cities, or your own `question | answer` lines, `#group` = whole team answers, capped at 20%) with its own timer
+  decides which team picks a card. Some cards hide a monster 👹 (eats points), a gift 🎁 or double points ✨.
 - **Futaba** – 1–4 players sit around the iPad, one rotated panel each; first correct tap wins the round.
   Modes: Pairs (needs `word | translation` entries), Listen (the iPad speaks the word), Scramble, Gaps.
 - **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
   cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
+
+## Sign-in
+
+The app asks for a username and password (checked on the device against a PBKDF2 hash in `index.html`; there is no server).
+"Keep me signed in" remembers the device for 30 days; Settings → Sign out forgets it. Sign in once in Safari and let it
+save the password so Face ID autofills it in the Home Screen app. To change the password, compute a new hash:
+`python -c "import hashlib;print(hashlib.pbkdf2_hmac('sha256', b'user:password', b'classgames-v1', 100000, 32).hex())"`
+(username lower-case) and paste it into `AUTH.hash`.
 
 ## Files
 
@@ -60,5 +69,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzcard|futaba|futaba2|futaba3|memory` opens a game screen directly for screenshots.
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory` opens a game screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.
