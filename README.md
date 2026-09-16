@@ -27,6 +27,12 @@ Games:
 - **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
   cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
 
+## Classes
+
+After sign-in the app asks **which class** this is (the queue groups plus a **Home students** entry). Each class has a hub
+with **Queue** and **Games**. Every game setting (decks ticked, teams and their names, timers, question types…) is stored
+per class in `db.classSettings[classId]` and comes back exactly as last used; theme and preset visibility are global.
+
 ## Sign-in
 
 The app asks for a username and password (checked on the device against a PBKDF2 hash in `index.html`; there is no server).
@@ -76,5 +82,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups` opens a game screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.

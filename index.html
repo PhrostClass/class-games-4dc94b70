@@ -225,6 +225,13 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .mcard.up .front{transform:rotateY(0deg)}
 .mcard.done{cursor:default}
 .mcard.done .front{background:#e8fff3;box-shadow:inset 0 0 0 5px var(--tc,#22a06b)}
+/* classes */
+.classes{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.ccard{background:var(--card);border-radius:18px;padding:18px 14px;text-align:center;cursor:pointer;border:3px solid transparent;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.ccard:active{transform:scale(.97)}
+.ccard.cur{border-color:var(--accent)}
+.ccard.home{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff}.ccard.home .csub,.ccard.home .ccount{color:rgba(255,255,255,.85)}
+.cicon{font-size:42px}.cname{font-size:18px;font-weight:800;margin-top:6px}.csub{font-size:13px;color:var(--muted);margin-top:2px}.ccount{font-size:13px;color:var(--muted);margin-top:6px}
 /* queue */
 .gcard.queue{background:linear-gradient(135deg,#1e6fd9,#4f9cf7);color:#fff}.gcard.queue .d{color:rgba(255,255,255,.85)}
 .qgroups{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
@@ -276,7 +283,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.4.0';
+const APP_VERSION = '1.5.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -308,9 +315,39 @@ const PRESET_FOLDER = { id: 'preset', name: 'Preset decks' };
 /* ===================== Store ===================== */
 const DEFAULT_SETTINGS = { roundSeconds: 60, allowPass: true, avoidRepeats: true, sound: true, tilt: true, showPresets: true, theme: 'auto', teams: 1, teamNames: ['Team 1', 'Team 2', 'Team 3', 'Team 4'], lastDecks: [], collapsed: {} };
 let db;
-function freshDb() { return { v: 1, folders: [], decks: [], turnQuestions: [], settings: JSON.parse(JSON.stringify(DEFAULT_SETTINGS)) }; }
+/* Settings are stored PER CLASS (db.classSettings[classId]) so each group keeps its own decks, teams and game options.
+   A few keys are global (theme, presets, collapsed folders) and are redirected to db.global. db.settings always
+   points at the current class. */
+const GLOBAL_KEYS = ['theme', 'showPresets', 'collapsed'];
+const HOME_CLASS = 'home';
+function freshDb() { return { v: 1, folders: [], decks: [], turnQuestions: [], classSettings: {}, global: {}, currentClass: null }; }
+function normalizeSettings(sv) {
+  const cs = { ...JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), ...(sv && typeof sv === 'object' ? sv : {}) };
+  if (!Array.isArray(cs.teamNames)) cs.teamNames = [...DEFAULT_SETTINGS.teamNames];
+  while (cs.teamNames.length < 6) cs.teamNames.push('Team ' + (cs.teamNames.length + 1));
+  if (!Array.isArray(cs.lastDecks)) cs.lastDecks = [];
+  for (const k of GLOBAL_KEYS) delete cs[k];
+  return cs;
+}
+function classSettings(d, cid) {
+  cid = cid || HOME_CLASS;
+  if (!d.classSettings[cid]) d.classSettings[cid] = normalizeSettings(d.template);
+  const cs = d.classSettings[cid];
+  if (!Object.getOwnPropertyDescriptor(cs, 'theme') || !Object.getOwnPropertyDescriptor(cs, 'theme').get) {
+    for (const k of GLOBAL_KEYS) { delete cs[k]; Object.defineProperty(cs, k, { enumerable: false, configurable: true, get: () => d.global[k], set: v => { d.global[k] = v; } }); }
+  }
+  return cs;
+}
+function installDb(d) {
+  if (!Object.getOwnPropertyDescriptor(d, 'settings') || !Object.getOwnPropertyDescriptor(d, 'settings').get) {
+    delete d.settings;
+    Object.defineProperty(d, 'settings', { enumerable: false, configurable: true, get: () => classSettings(d, d.currentClass) });
+  }
+  return d;
+}
+const makeDb = raw => installDb(normalizeDb(raw));
 function normalizeDb(d) {
-  if (!d || typeof d !== 'object') return freshDb();
+  if (!d || typeof d !== 'object') d = freshDb();
   d.v = 1;
   d.folders = Array.isArray(d.folders) ? d.folders.filter(f => f && f.id && typeof f.name === 'string').map(f => ({ id: String(f.id), name: f.name })) : [];
   d.decks = Array.isArray(d.decks) ? d.decks.filter(k => k && k.id && typeof k.name === 'string').map(k => ({
@@ -322,17 +359,23 @@ function normalizeDb(d) {
   d.queue = normalizeQueue(d.queue);
   const folderIds = new Set(d.folders.map(f => f.id));
   d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
-  d.settings = { ...JSON.parse(JSON.stringify(DEFAULT_SETTINGS)), ...(d.settings || {}) };
-  if (!Array.isArray(d.settings.teamNames)) d.settings.teamNames = [...DEFAULT_SETTINGS.teamNames];
-  while (d.settings.teamNames.length < 6) d.settings.teamNames.push('Team ' + (d.settings.teamNames.length + 1));
-  if (!Array.isArray(d.settings.lastDecks)) d.settings.lastDecks = [];
-  if (!d.settings.collapsed || typeof d.settings.collapsed !== 'object') d.settings.collapsed = {};
+  const legacy = Object.getOwnPropertyDescriptor(d, 'settings') && !Object.getOwnPropertyDescriptor(d, 'settings').get && d.settings && typeof d.settings === 'object' ? d.settings : null;
+  d.global = { theme: 'auto', showPresets: true, collapsed: {}, ...(d.global && typeof d.global === 'object' ? d.global : {}) };
+  if (legacy) for (const k of GLOBAL_KEYS) if (k in legacy) d.global[k] = legacy[k];
+  if (!d.global.collapsed || typeof d.global.collapsed !== 'object') d.global.collapsed = {};
+  d.classSettings = d.classSettings && typeof d.classSettings === 'object' ? d.classSettings : {};
+  for (const cid of Object.keys(d.classSettings)) d.classSettings[cid] = normalizeSettings(d.classSettings[cid]);
+  if (legacy) d.template = normalizeSettings(legacy);              // settings from before per-class storage seed every class
+  else if (d.template) d.template = normalizeSettings(d.template);
+  if (Object.getOwnPropertyDescriptor(d, 'settings') && !Object.getOwnPropertyDescriptor(d, 'settings').get) delete d.settings;
+  d.currentClass = typeof d.currentClass === 'string' && d.currentClass ? d.currentClass : null;
   return d;
 }
 function loadDb() {
-  try { const raw = localStorage.getItem(LS_KEY); if (raw) return normalizeDb(JSON.parse(raw)); } catch (e) { console.warn('load failed', e); }
-  return normalizeDb(freshDb());
+  try { const raw = localStorage.getItem(LS_KEY); if (raw) return makeDb(JSON.parse(raw)); } catch (e) { console.warn('load failed', e); }
+  return makeDb(freshDb());
 }
+const currentClassGroup = () => (db.queue.groups.find(g => g.id === db.currentClass) || null);
 function saveDb() {
   db.savedAt = Date.now();
   try { localStorage.setItem(LS_KEY, JSON.stringify(db)); } catch (e) { toast('Could not save: ' + e.message); }
@@ -428,7 +471,7 @@ function detectImport(text, fileName) {
   return { kind: 'words', words: parseWords(t, { csvPairs }), name: baseName };
 }
 function mergeBackup(data, replace) {
-  if (replace) { db = normalizeDb(data); saveDb(); return { decks: db.decks.length, folders: db.folders.length }; }
+  if (replace) { const cid = db.currentClass; db = makeDb(data); if (!db.currentClass) db.currentClass = cid; saveDb(); return { decks: db.decks.length, folders: db.folders.length }; }
   let nd = 0, nf = 0;
   const folderMap = {};
   for (const f of data.folders) {
@@ -523,11 +566,12 @@ function route() {
   const name = i < 0 ? h : h.slice(0, i);
   const arg = i < 0 ? '' : h.slice(i + 1);
   $$('.modal').forEach(m => m.remove());
-  const screens = { home: renderHome, library: renderLibrary, deck: renderDeck, edit: renderEdit, setup: renderSetup, play: renderPlay, settings: renderSettings,
+  if (!db.currentClass && !['classes', 'settings', 'queue'].includes(name)) { location.replace('#classes'); return; }
+  const screens = { classes: renderClasses, class: renderClassHub, home: renderHome, library: renderLibrary, deck: renderDeck, edit: renderEdit, setup: renderSetup, play: renderPlay, settings: renderSettings,
     buzz: renderBuzzSetup, buzzplay: renderBuzz, futaba: renderFutabaSetup, futabaplay: renderFutaba, memory: renderMemorySetup, memoryplay: renderMemory,
     queue: a => a ? renderQueueGroup(a) : renderQueueGroups() };
   clearInterval(qTimer);
-  (screens[name] || renderHome)(arg);
+  (screens[name] || renderClasses)(arg);
 }
 function go(hash) { location.hash = hash; }
 function back(fallback = '#library') {
@@ -544,13 +588,12 @@ app.addEventListener('click', e => {
 function renderHome() {
   app.innerHTML = `<div class="screen">
     <div class="content"><div class="wrap">
-      <div class="hero"><div class="title">Class Games</div><div class="sub">Pick a game</div></div>
+      <div class="hero" style="padding-top:calc(var(--sa-t) + 10px)"><div class="title">Games</div><div class="sub">${(() => { const g = currentClassGroup(); return g ? esc(g.icon + ' ' + g.name) : ''; })()} · <a data-nav="#class" style="color:var(--accent);cursor:pointer;font-weight:600">back to class</a></div></div>
       <div class="games">
         <div class="gcard charades" data-nav="#setup"><div class="emoji">🎭</div><div class="n">Charades</div><div class="d">Act it out, the class guesses.</div></div>
         <div class="gcard buzz" data-nav="#buzz"><div class="emoji">🎲</div><div class="n">Yahtzee</div><div class="d">Turn question, pick a card, win points, dodge the monster.</div></div>
         <div class="gcard futaba" data-nav="#futaba"><div class="emoji">⚡</div><div class="n">Futaba</div><div class="d">Up to 8 players around the iPad race to tap the answer.</div></div>
         <div class="gcard memory" data-nav="#memory"><div class="emoji">🃏</div><div class="n">Memory</div><div class="d">Find the pairs or trios.</div></div>
-        <div class="gcard queue" data-nav="#queue"><div class="emoji">🎓</div><div class="n">Queue</div><div class="d">Students tap their name and sit down. You call the next one.</div></div>
         <div class="gcard decks" data-nav="#library"><div class="emoji">🗂️</div><div class="n">Decks</div><div class="d">${plural(db.decks.length, 'deck')} of yours · ${db.folders.length} folders · ${PRESET_DECKS.length} presets</div></div>
       </div>
       <div style="margin-top:22px"><button class="btn sec" data-nav="#settings">Settings & backup</button></div>
@@ -1748,8 +1791,9 @@ const Q_SEED = [
   { name: '2º ESO A', sub: 'Cambridge · Tue & Thu 13:45', icon: '🐼', students: ['Noa', 'Beltran', 'Jorge', 'Covadonga', 'Ignacio', 'Carla'] },
   { name: '5º EP Reduced (T/Th)', sub: 'English 2 Days · Tue & Thu 16:35', icon: '🐨', students: ['Felipe', 'Lucas', 'Pedro'] },
 ];
+const HOME_GROUP = () => ({ id: HOME_CLASS, name: 'Home students', sub: 'Private lessons', icon: '🏠', students: [] });
 function qSeed() {
-  return { pin: '1234', live: {}, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }) };
+  return { pin: '1234', live: {}, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }).concat([HOME_GROUP()]) };
 }
 /* Every student in a group gets a different colour (and emoji while there are enough). */
 function qAssignLooks(group) {
@@ -1768,6 +1812,7 @@ function normalizeQueue(q) {
   q.groups = q.groups.filter(g => g && g.id && typeof g.name === 'string').map(g => ({ id: String(g.id), name: g.name, sub: g.sub || '', icon: g.icon || '🎓',
     students: (Array.isArray(g.students) ? g.students : []).filter(s => s && s.id && typeof s.name === 'string').map(s => ({ id: String(s.id), name: s.name, emoji: s.emoji || '', color: s.color || '', photo: typeof s.photo === 'string' ? s.photo : null })) }));
   q.groups.forEach(qAssignLooks);
+  if (!q.groups.some(g => g.id === HOME_CLASS)) q.groups.push(HOME_GROUP());
   return q;
 }
 const qGroup = id => db.queue.groups.find(g => g.id === id) || null;
@@ -1801,7 +1846,7 @@ function renderQueueGroup(gid) {
   const now = live.now ? g.students.find(s => s.id === live.now) : null;
   const n = g.students.length, cols = n <= 4 ? 2 : n <= 9 ? 3 : n <= 16 ? 4 : 5;
   app.innerHTML = `<div class="screen">
-    ${topbar(g.icon + ' ' + g.name, backBtn('Groups', '#queue'), qTeacherBtn())}
+    ${topbar(g.icon + ' ' + g.name, gid === db.currentClass ? backBtn('Class', '#class') : backBtn('Groups', '#queue'), qTeacherBtn())}
     <div class="qbody">
       <div class="qgrid" style="grid-template-columns:repeat(${cols},1fr)">${g.students.map(s => { const p = qPos(live, s.id); return `<div class="qcard ${p ? 'inq' : ''} ${live.now === s.id ? 'now' : ''}" data-stu="${s.id}">${p ? `<div class="qpos">${ordinal(p)}</div>` : live.now === s.id ? '<div class="qpos now">📢</div>' : ''}${qAvatar(s, 'qav')}<div class="qname">${esc(s.name)}</div></div>`; }).join('') || '<div class="empty">No students in this group yet.</div>'}</div>
       <aside class="qpanel">
@@ -1899,7 +1944,7 @@ function qEditGroup(gid, onClose) {
       if (a === 'addstu') { const v = $('#qnew', m).value.trim(); if (!v) return; g.students.push({ id: uid(), name: v, emoji: '', color: '', photo: null }); qAssignLooks(g); rerender(); }
       if (a === 'paste') { closeSheet(m); qPasteList(g, () => render()); }
       if (a === 'recolor') { g.students.forEach(s => { s.color = ''; s.emoji = ''; }); qAssignLooks(g); rerender(); toast('New colours'); }
-      if (a === 'delgroup') { if (await confirmDlg('Delete "' + g.name + '"?', 'All its students are removed. This cannot be undone.', 'Delete', true)) { db.queue.groups = db.queue.groups.filter(x => x.id !== g.id); delete db.queue.live[g.id]; saveDb(); closeSheet(m); if (onClose) onClose(); else route(); } }
+      if (a === 'delgroup') { if (g.id === HOME_CLASS) { toast('Home students cannot be deleted'); return; } if (await confirmDlg('Delete "' + g.name + '"?', 'All its students are removed. This cannot be undone.', 'Delete', true)) { if (db.currentClass === g.id) db.currentClass = null; delete db.classSettings[g.id]; db.queue.groups = db.queue.groups.filter(x => x.id !== g.id); delete db.queue.live[g.id]; saveDb(); closeSheet(m); if (onClose) onClose(); else route(); } }
       if (a === 'close') { save(); closeSheet(m); if (onClose) onClose(); else route(); }
     });
   };
@@ -1922,15 +1967,52 @@ function qPickPhoto(g, sid, done) {
   input.click();
 }
 
+/* ===================== Class picker + class hub ===================== */
+function renderClasses() {
+  const gs = db.queue.groups.filter(g => g.id !== HOME_CLASS), home = db.queue.groups.find(g => g.id === HOME_CLASS) || HOME_GROUP();
+  const card = g => `<div class="ccard ${g.id === db.currentClass ? 'cur' : ''} ${g.id === HOME_CLASS ? 'home' : ''}" data-class="${g.id}"><div class="cicon">${esc(g.icon)}</div><div class="cname">${esc(g.name)}</div><div class="csub">${esc(g.sub || '')}</div><div class="ccount">${g.id === HOME_CLASS ? 'Your own students' : plural(g.students.length, 'student')}${g.id === db.currentClass ? ' · current' : ''}</div></div>`;
+  app.innerHTML = `<div class="screen">
+    ${topbar('Choose a class', '', `<button class="tbtn" data-act="teacher">⚙︎ Teacher</button>`)}
+    <div class="content"><div class="wrap">
+      <div class="hero" style="padding-top:8px"><div class="title">Class Games</div><div class="sub">Which class is this?</div></div>
+      <div class="classes">${gs.map(card).join('')}</div>
+      <h2 class="sec">Home</h2>
+      <div class="classes">${card(home)}</div>
+      <div style="margin-top:22px"><button class="btn sec" data-nav="#settings">Settings & backup</button></div>
+      <div class="ver">v${APP_VERSION}${IS_STANDALONE ? '' : ' · add to your Home Screen for the full-screen app'}</div>
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', e => {
+    const c = e.target.closest('[data-class]'); if (c) { db.currentClass = c.dataset.class; saveDb(); navState.depth++; go('#class'); return; }
+    const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'teacher') qTeacher();
+  });
+}
+function renderClassHub() {
+  const g = currentClassGroup(); if (!g) { location.replace('#classes'); return; }
+  const live = db.queue.live[g.id]; const waiting = live && live.q ? live.q.length : 0;
+  const s = db.settings; const lastDeckNames = s.lastDecks.map(id => (getDeck(id) || {}).name).filter(Boolean);
+  app.innerHTML = `<div class="screen">
+    ${topbar(g.icon + ' ' + g.name, backBtn('Classes', '#classes'), `<button class="tbtn" data-nav="#settings">Settings</button>`)}
+    <div class="content"><div class="wrap">
+      <div class="hint" style="margin:0 4px 12px">${esc(g.sub || '')}${g.sub ? ' · ' : ''}${g.id === HOME_CLASS ? 'Your own students' : plural(g.students.length, 'student')}. Everything you choose in this class (decks, teams, options) is remembered for next time.</div>
+      <div class="games">
+        <div class="gcard queue" data-nav="#queue/${g.id}"><div class="emoji">🎓</div><div class="n">Queue</div><div class="d">${waiting ? plural(waiting, 'student') + ' waiting' : 'Students tap their name and sit down.'}</div></div>
+        <div class="gcard charades" data-nav="#home"><div class="emoji">🎮</div><div class="n">Games</div><div class="d">Charades, Yahtzee, Futaba, Memory${lastDeckNames.length ? ' · last decks: ' + esc(lastDeckNames.slice(0, 2).join(', ')) + (lastDeckNames.length > 2 ? '…' : '') : ''}</div></div>
+        ${g.id === HOME_CLASS ? `<div class="gcard soon"><div class="emoji">🏠</div><div class="n">Home area</div><div class="d">Coming soon — tell me what goes here.</div></div>` : ''}
+      </div>
+    </div></div></div>`;
+}
+
 /* ===================== Settings ===================== */
 let persistState = '';
 function renderSettings() {
   const s = db.settings;
   app.innerHTML = `<div class="screen">
-    ${topbar('Settings', backBtn('Back', '#home'), '')}
+    ${topbar('Settings', backBtn('Back', db.currentClass ? '#class' : '#classes'), '')}
     <div class="content"><div class="wrap">
       <h2 class="sec">Appearance</h2>
       <div class="seg">${['auto', 'light', 'dark'].map(t => `<button data-theme="${t}" class="${s.theme === t ? 'on' : ''}">${t[0].toUpperCase() + t.slice(1)}</button>`).join('')}</div>
+      <h2 class="sec">Class</h2>
+      <div class="card"><div class="row" data-nav="#classes"><div class="ic">${esc((currentClassGroup() || { icon: '🏫' }).icon)}</div><div class="txt"><div class="t">${esc((currentClassGroup() || { name: 'No class chosen' }).name)}</div><div class="s">Decks, teams and game options are saved per class. Tap to switch.</div></div><div class="chev">›</div></div></div>
       <h2 class="sec">Library</h2>
       <div class="card">
         <div class="toggle" data-opt="showPresets"><div><div class="lbl">Show preset decks</div><div class="sub">${PRESET_DECKS.length} built-in decks</div></div><div class="sw ${s.showPresets ? 'on' : ''}"></div></div>
@@ -1998,7 +2080,7 @@ function renderLock() {
   $('#lockform').addEventListener('submit', async e => {
     e.preventDefault(); const btn = $('#lockform button[type=submit]'); btn.disabled = true; btn.textContent = 'Checking…';
     const ok = await checkLogin($('#lu').value, $('#lp').value);
-    if (ok) { setUnlocked(remember); route(); }
+    if (ok) { setUnlocked(remember); if (!db.currentClass) location.replace('#classes'); route(); }
     else { btn.disabled = false; btn.textContent = 'Sign in'; const m = $('#lmsg'); m.textContent = 'Wrong username or password.'; m.style.color = 'var(--bad)'; $('#lp').value = ''; $('#lp').focus(); }
   });
   setTimeout(() => { const u = $('#lu'); if (u) u.focus(); }, 100);
@@ -2006,8 +2088,9 @@ function renderLock() {
 
 /* ===================== Boot ===================== */
 db = loadDb();
+if (/dev=/.test(location.search) && !db.currentClass) db.currentClass = db.queue.groups[0].id;   // screenshots only
 applyTheme();
-if (!location.hash) history.replaceState(null, '', '#home');
+if (!location.hash || location.hash === '#home') history.replaceState(null, '', '#classes');
 document.addEventListener('gesturestart', e => e.preventDefault());
 document.addEventListener('dblclick', e => { if (!e.target.closest('input,textarea')) e.preventDefault(); });
 if (navigator.storage && navigator.storage.persist) { navigator.storage.persist().then(p => { persistState = p ? 'persistent' : 'best-effort'; }).catch(() => {}); }
@@ -2045,8 +2128,18 @@ if (location.search.includes('selftest')) {
     t('detect multi deck json', arr.kind === 'decks' && arr.decks.length === 2 && arr.decks[1].folderName === 'Unit 2');
     const tx = detectImport('one\ntwo\nthree', 'My List.txt');
     t('detect txt', tx.kind === 'words' && tx.words.length === 3 && tx.name === 'My List');
-    const saved = JSON.stringify(db);
-    db = freshDb();
+    const saved = JSON.stringify(db), savedClass = db.currentClass;
+    db = makeDb(freshDb());
+    // --- per-class settings
+    db.currentClass = 'A'; db.settings.roundSeconds = 45; db.settings.teamNames[0] = 'Lions'; db.settings.theme = 'dark'; gameCfg('futaba').players = 6;
+    db.currentClass = 'B'; const isoB = db.settings.roundSeconds === 60 && db.settings.teamNames[0] === 'Team 1' && gameCfg('futaba').players === 2;
+    const themeShared = db.settings.theme === 'dark' && db.global.theme === 'dark';
+    db.currentClass = 'A'; t('settings per class', isoB && themeShared && db.settings.roundSeconds === 45 && db.settings.teamNames[0] === 'Lions' && gameCfg('futaba').players === 6);
+    const rt = makeDb(JSON.parse(JSON.stringify(db))); rt.currentClass = 'A'; t('settings survive save/load', rt.settings.roundSeconds === 45 && rt.settings.theme === 'dark' && !('settings' in JSON.parse(JSON.stringify(rt))) && JSON.parse(JSON.stringify(rt)).classSettings.A.roundSeconds === 45);
+    const mig = makeDb({ settings: { roundSeconds: 90, theme: 'light', teamNames: ['Cats'] } }); mig.currentClass = 'zz';
+    t('legacy settings migrate', mig.settings.roundSeconds === 90 && mig.settings.theme === 'light' && mig.settings.teamNames[0] === 'Cats');
+    t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS));
+    db.currentClass = HOME_CLASS;
     const r1 = mergeBackup(bk.data, false); t('merge adds', r1.decks === 1 && r1.folders === 1 && db.decks[0].folderId === 'f1');
     const r2 = mergeBackup(bk.data, false); t('merge idempotent', r2.decks === 0 && db.decks.length === 1);
     t('uniqueName', uniqueName('Verbs') === 'Verbs (2)' && uniqueName('Animals') === 'Animals (2)');
@@ -2120,9 +2213,9 @@ if (location.search.includes('selftest')) {
     const lv = { q: [], now: null, nowAt: 0 };
     t('queue join/pos', qJoin(lv, 'a') && qJoin(lv, 'b') && !qJoin(lv, 'a') && qPos(lv, 'b') === 2 && qPos(lv, 'zz') === 0);
     t('queue next/leave', qNext(lv) === 'a' && lv.now === 'a' && qPos(lv, 'b') === 1 && qLeave(lv, 'b') && !qLeave(lv, 'b') && qNext(lv) === null);
-    const qs = qSeed(); t('queue seed 2026-27', qs.groups.length === 6 && qs.groups.reduce((a, g) => a + g.students.length, 0) === 35 && qs.groups[1].students.some(x => x.name === 'Macarena') && qs.groups.every(g => new Set(g.students.map(x => x.color)).size === g.students.length));
+    const qs = qSeed(); t('queue seed 2026-27', qs.groups.length === 7 && qs.groups.reduce((a, g) => a + g.students.length, 0) === 35 && qs.groups[1].students.some(x => x.name === 'Macarena') && qs.groups.every(g => new Set(g.students.map(x => x.color)).size === g.students.length));
     t('ordinal', ordinal(1) === '1st' && ordinal(2) === '2nd' && ordinal(3) === '3rd' && ordinal(4) === '4th' && ordinal(11) === '11th' && ordinal(22) === '22nd');
-    t('normalizeQueue', normalizeQueue(null).groups.length === 6 && normalizeQueue({ groups: [{ id: 'x', name: 'X', students: [{ id: 'a', name: 'A' }] }] }).groups[0].students[0].color === Q_COLORS[0]);
+    t('normalizeQueue', normalizeQueue(null).groups.length === 7 && normalizeQueue({ groups: [{ id: 'x', name: 'X', students: [{ id: 'a', name: 'A' }] }] }).groups[0].students[0].color === Q_COLORS[0]);
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
     // --- Memory
     const mc = buildMemory(['dog | perro', 'cat | gato', 'plain', 'other'], { sets: 3, size: 2, variant: 'same' });
@@ -2137,7 +2230,7 @@ if (location.search.includes('selftest')) {
     memoryFlip(s1[0].id); memoryFlip(s1[1].id); const s2 = mc.filter(c => c.set === 2); memoryFlip(s2[0].id); memoryFlip(s2[1].id);
     t('memory game over', mem.phase === 'over' && mem.teams[1].score === 2);
     mem = null;
-    game = null; db = JSON.parse(saved); saveDb();
+    game = null; db = makeDb(JSON.parse(saved)); db.currentClass = savedClass; saveDb();
   } catch (e) { results.push('FAIL exception ' + (e && e.stack || e)); }
   document.body.innerHTML = '<pre id="selftest" style="padding:20px;font:14px monospace;color:#000;background:#fff">' + results.join('\n') + '\nDONE ' + results.filter(r => r.startsWith('FAIL')).length + ' failures</pre>';
 } else {
@@ -2145,10 +2238,14 @@ if (location.search.includes('selftest')) {
   // Dev preview only: index.html?demo=word|ready|roundEnd|over jumps straight into a game screen.
   const demo = new URLSearchParams(location.search).get('demo');
   if (demo) {
+    if (!db.currentClass) db.currentClass = db.queue.groups[0].id;
     db.settings.sound = false; const four = new Set(PRESET_DECKS.slice(0, 4).map(k => k.id));
     if (demo === 'buzz' || demo === 'buzzcard' || demo === 'buzzq') { Object.assign(gameCfg('buzz'), { categories: 4, rows: 5, teams: 3, questions: true, qTime: 10 }); startBuzz(four); if (demo !== 'buzzq') { clearInterval(buzz.timer); buzz.phase = 'board'; } if (demo === 'buzzcard') { buzz.open = { ci: 0, r: 2, answer: false, specialDone: false }; buzz.cats[0].cells[2].special = 'double'; } }
     else if (/^futaba/.test(demo)) { const np = { futaba: 4, futaba2: 2, futaba3: 3, futaba5: 5, futaba6: 6, futaba7: 7, futaba8: 8 }[demo] || 4; Object.assign(gameCfg('futaba'), { players: np, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); if (np >= 3) { fut.players[0].rank = 1; fut.players[0].score = 2; fut.players[0].delta = '+2'; fut.won = 0; fut.players[1].locked = true; fut.players[1].score = -2; fut.players[1].delta = '−2'; renderFutaba(); } }
     else if (demo === 'queue' || demo === 'queuegroups') { const g = db.queue.groups[1]; const lv2 = qLive(g.id); if (demo === 'queue') { qJoin(lv2, g.students[4].id); qJoin(lv2, g.students[1].id); qJoin(lv2, g.students[7].id); qNext(lv2); qJoin(lv2, g.students[2].id); go('#queue/' + g.id); } else go('#queue'); }
+    else if (demo === 'classes') { db.currentClass = db.queue.groups[1].id; go('#classes'); }
+    else if (demo === 'classhub') { db.currentClass = db.queue.groups[1].id; go('#class'); }
+    else if (demo === 'games') { db.currentClass = db.queue.groups[1].id; go('#home'); }
     else if (demo === 'queueedit') { go('#queue'); setTimeout(() => qEditGroup(db.queue.groups[0].id), 300); }
     else if (demo === 'memory') { Object.assign(gameCfg('memory'), { sets: 8, size: 2, teams: 2, variant: 'scrambled' }); startMemory(four); mem.cards[0].up = true; mem.cards[1].done = true; mem.cards[1].by = 0; mem.cards[2].done = true; mem.cards[2].by = 0; renderMemory(); }
     else { startGame([PRESET_DECKS[0].id]); if (demo === 'word') { game.phase = 'word'; nextWord(); game.endAt = Date.now() + 42000; } else game.phase = demo; renderPlay(); }
