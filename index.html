@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Class Games</title>
+<title>Phunzies Classroom</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Class Games">
+<meta name="apple-mobile-web-app-title" content="Phunzies">
 <meta name="theme-color" content="#5b4bdb">
 <meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="manifest.webmanifest">
@@ -286,7 +286,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .ccard:active{transform:scale(.97)}
 .ccard.cur{border-color:var(--accent)}
 .ccard.home{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff}.ccard.home .csub,.ccard.home .ccount{color:rgba(255,255,255,.85)}
-.cicon{font-size:42px}.cname{font-size:18px;font-weight:800;margin-top:6px}.csub{font-size:13px;color:var(--muted);margin-top:2px}.ccount{font-size:13px;color:var(--muted);margin-top:6px}
+.cname{font-size:20px;font-weight:800;margin-top:6px}.csub{font-size:13px;color:var(--muted);margin-top:2px}.ccount{font-size:13px;color:var(--muted);margin-top:6px}
 /* queue */
 .gcard.queue{background:linear-gradient(135deg,#1e6fd9,#4f9cf7);color:#fff}.gcard.queue .d{color:rgba(255,255,255,.85)}
 .qgroups{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
@@ -338,7 +338,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.9.0';
+const APP_VERSION = '1.9.1';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -562,7 +562,7 @@ function mergeBackup(data, replace) {
   saveDb();
   return { decks: nd, folders: nf };
 }
-function exportBackup() { return JSON.stringify({ ...db, exportedAt: new Date().toISOString(), app: 'Class Games ' + APP_VERSION }, null, 2); }
+function exportBackup() { return JSON.stringify({ ...db, exportedAt: new Date().toISOString(), app: 'Phunzies Classroom ' + APP_VERSION }, null, 2); }
 const safeFile = n => String(n).replace(/[\\/:*?"<>|]/g, '_');
 const nWords = n => n + (n === 1 ? ' word' : ' words');
 
@@ -2735,11 +2735,11 @@ function qPickPhoto(g, sid, done) {
 /* ===================== Class picker + class hub ===================== */
 function renderClasses() {
   const gs = db.queue.groups.filter(g => g.id !== HOME_CLASS), home = db.queue.groups.find(g => g.id === HOME_CLASS) || HOME_GROUP();
-  const card = g => `<div class="ccard ${g.id === db.currentClass ? 'cur' : ''} ${g.id === HOME_CLASS ? 'home' : ''}" data-class="${g.id}"><div class="cicon">${esc(g.icon)}</div><div class="cname">${esc(g.name)}</div><div class="csub">${esc(g.sub || '')}</div><div class="ccount">${g.id === HOME_CLASS ? 'Your own students' : plural(g.students.length, 'student')}${g.id === db.currentClass ? ' · current' : ''}</div></div>`;
+  const card = g => `<div class="ccard ${g.id === db.currentClass ? 'cur' : ''} ${g.id === HOME_CLASS ? 'home' : ''}" data-class="${g.id}"><div class="cname">${esc(g.name)}</div><div class="csub">${esc(g.sub || '')}</div><div class="ccount">${g.id === HOME_CLASS ? 'Your own students' : plural(g.students.length, 'student')}${g.id === db.currentClass ? ' · current' : ''}</div></div>`;
   app.innerHTML = `<div class="screen">
     ${topbar('Choose a class', '', `<button class="tbtn" data-act="teacher">⚙︎ Teacher</button>`)}
     <div class="content"><div class="wrap">
-      <div class="hero" style="padding-top:8px"><div class="title">Class Games</div><div class="sub">Which class is this?</div></div>
+      <div class="hero" style="padding-top:8px"><div class="title">Phunzies Classroom</div><div class="sub">Which class is this?</div></div>
       <div class="classes">${gs.map(card).join('')}</div>
       <h2 class="sec">Home</h2>
       <div class="classes">${card(home)}</div>
@@ -2801,13 +2801,13 @@ function renderSettings() {
       </div>
       <h2 class="sec">Danger zone</h2>
       <div class="card"><div class="row" data-act="wipe"><div class="ic">🗑️</div><div class="txt"><div class="t" style="color:var(--bad)">Delete all my decks and folders</div></div></div></div>
-      <div class="ver">Class Games v${APP_VERSION} · ${IS_STANDALONE ? 'installed' : 'browser'}${persistState ? ' · storage ' + persistState : ''}</div>
+      <div class="ver">Phunzies Classroom v${APP_VERSION} · ${IS_STANDALONE ? 'installed' : 'browser'}${persistState ? ' · storage ' + persistState : ''}</div>
     </div></div></div>`;
   $('.screen', app).addEventListener('click', async e => {
     const t = e.target.closest('[data-theme]'); if (t) { s.theme = t.dataset.theme; saveDb(); applyTheme(); renderSettings(); return; }
     const o = e.target.closest('[data-opt]'); if (o) { s[o.dataset.opt] = !s[o.dataset.opt]; saveDb(); renderSettings(); return; }
     const a = e.target.closest('[data-act]'); if (!a) return;
-    if (a.dataset.act === 'backup') { const stamp = new Date().toISOString().slice(0, 10); await shareOrDownload(exportBackup(), `class-games-backup-${stamp}.json`, 'application/json'); }
+    if (a.dataset.act === 'backup') { const stamp = new Date().toISOString().slice(0, 10); await shareOrDownload(exportBackup(), `phunzies-backup-${stamp}.json`, 'application/json'); }
     if (a.dataset.act === 'restore') importSheet();
     if (a.dataset.act === 'attbot') { const v = await promptDlg('Attendance bot username', db.global.attBot || '', '@my_attendance_bot', 'Save'); if (v !== null) { db.global.attBot = v.trim().replace(/^@/, ''); saveDb(); renderSettings(); } }
     if (a.dataset.act === 'signout') { localStorage.removeItem(AUTH.key); renderLock(); }
@@ -2838,7 +2838,7 @@ async function checkLogin(u, p) {
 }
 function renderLock() {
   app.innerHTML = `<div class="screen"><div class="content" style="display:flex;align-items:center;justify-content:center"><form id="lockform" class="wrap" style="max-width:420px" autocomplete="on">
-    <div class="hero" style="padding-top:10px"><div class="title">Class Games</div><div class="sub">Sign in to continue</div></div>
+    <div class="hero" style="padding-top:10px"><div class="title">Phunzies Classroom</div><div class="sub">Sign in to continue</div></div>
     <div class="card">
       <div class="field"><label>Username</label><input type="text" name="username" id="lu" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required></div>
       <div class="field"><label>Password</label><input type="password" name="password" id="lp" autocomplete="current-password" required></div>

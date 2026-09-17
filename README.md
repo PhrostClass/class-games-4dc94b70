@@ -1,4 +1,4 @@
-# Class Games
+# Phunzies Classroom
 
 Classroom games as an installable web app for the iPad. Pure static files, no build step, no server, no accounts.
 Everything the teacher creates (decks, folders, settings) is stored **on the iPad only**, inside the app's own storage.

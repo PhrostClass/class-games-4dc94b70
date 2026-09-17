@@ -1,7 +1,7 @@
 {
-  "name": "Class Games",
-  "short_name": "Class Games",
-  "description": "Classroom games: charades with your own word decks.",
+  "name": "Phunzies Classroom",
+  "short_name": "Phunzies",
+  "description": "Phunzies Classroom: games, queue, roulette and rankings for the classroom.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
