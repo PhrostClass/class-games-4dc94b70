@@ -181,6 +181,11 @@ def build():
                 if t0 in seen_t or t0 in defs: continue
                 seen_t.add(t0); vv.append(v)
             vocab = vv
+            extra_path = os.path.join(ROOT, 'vocab_extra.json')
+            if os.path.exists(extra_path):
+                extra = json.load(open(extra_path, encoding='utf-8')).get(str(grade), {}).get(str(pos + 1), [])
+                have = {v.split(' | ')[0].lower() for v in vocab}
+                vocab += [w for w in extra if w.lower() not in have]
             verbs, grammar, review = dedupe(verbs), dedupe(grammar), dedupe(review)
             gdesc = dedupe(gdesc)
             unit = {'n': pos + 1, 'title': title, 'decks': []}
