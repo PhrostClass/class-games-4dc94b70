@@ -34,6 +34,9 @@ Games:
 - **Rankings** – before a team game a "Who is playing?" sheet assigns students to teams (or skip). At the end every
   player gets points (winning team 3, second 2, others 1; whole-class games 2), never subtracted. Rankings per game
   and overall, per class and per grade (classes whose name has the same grade number), from the class hub.
+- **Absences** – per class, tap who is missing today (or yesterday). Builds the Attendance app's Telegram message
+  ("Ana, Luis (4)", group number from Settings → Groups of that app) and opens Telegram with it ready to send
+  (bot username in Settings → Attendance). Absent students are skipped by the roulette and the team picker.
 - **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
   cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
 
@@ -92,5 +95,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover|absences` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.

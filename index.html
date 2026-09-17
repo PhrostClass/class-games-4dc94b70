@@ -236,6 +236,8 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .keys{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:760px}
 .key{width:clamp(38px,7vmin,60px);height:clamp(38px,7vmin,60px);border:0;border-radius:10px;background:#fff;color:#1f1f2b;font:inherit;font-weight:800;font-size:clamp(16px,3vmin,24px);cursor:pointer}
 .key.hit{background:#4ade80}.key.miss{background:#ef4444;color:#fff}.key[disabled]{opacity:.5}
+.gcard.absent{background:linear-gradient(135deg,#7c2d12,#f97316);color:#fff}.gcard.absent .d{color:rgba(255,255,255,.9)}
+.qcard.absent{border-color:var(--bad);opacity:.75}.ptchip.absent{opacity:.45;text-decoration:line-through}
 .gcard.rank{background:linear-gradient(135deg,#a16207,#facc15);color:#fff}.gcard.rank .d{color:rgba(255,255,255,.9)}
 .ptteams{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:10px}.ptteam{color:#fff;font-weight:800;padding:4px 12px;border-radius:999px;font-size:14px}
 .ptchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-height:40vh;overflow-y:auto}.ptchip{cursor:pointer;font-size:17px;padding:9px 14px}.ptchip b{margin-right:2px}
@@ -336,7 +338,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.8.0';
+const APP_VERSION = '1.9.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -386,7 +388,7 @@ let db;
 /* Settings are stored PER CLASS (db.classSettings[classId]) so each group keeps its own decks, teams and game options.
    A few keys are global (theme, presets, collapsed folders) and are redirected to db.global. db.settings always
    points at the current class. */
-const GLOBAL_KEYS = ['theme', 'showPresets', 'showTextbooks', 'collapsed'];
+const GLOBAL_KEYS = ['theme', 'showPresets', 'showTextbooks', 'collapsed', 'attBot'];
 const HOME_CLASS = 'home';
 function freshDb() { return { v: 1, folders: [], decks: [], turnQuestions: [], classSettings: {}, global: {}, currentClass: null }; }
 function normalizeSettings(sv) {
@@ -426,6 +428,7 @@ function normalizeDb(d) {
   d.turnQuestions = Array.isArray(d.turnQuestions) ? cleanWords(d.turnQuestions) : [];
   d.results = Array.isArray(d.results) ? d.results.filter(r => r && r.cls && Array.isArray(r.teams)) : [];
   if (!d.roulette || typeof d.roulette !== 'object') d.roulette = {};
+  if (!d.absences || typeof d.absences !== 'object') d.absences = {};
   d.queue = normalizeQueue(d.queue);
   const folderIds = new Set(d.folders.map(f => f.id));
   d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
@@ -642,7 +645,7 @@ function route() {
     buzz: renderBuzzSetup, buzzplay: renderBuzz, futaba: renderFutabaSetup, futabaplay: renderFutaba, memory: renderMemorySetup, memoryplay: renderMemory,
     queue: a => a ? renderQueueGroup(a) : renderQueueGroups(),
     quiz: renderQuizSetup, quizplay: renderQuiz, ttt: renderTttSetup, tttplay: renderTtt, bam: renderBamSetup, bamplay: renderBam,
-    snakes: renderSnkSetup, snakesplay: renderSnk, hangman: renderHangSetup, hangmanplay: renderHang, roulette: renderRoulette, timer: renderTimer, rankings: renderRankings };
+    snakes: renderSnkSetup, snakesplay: renderSnk, hangman: renderHangSetup, hangmanplay: renderHang, roulette: renderRoulette, timer: renderTimer, rankings: renderRankings, absences: renderAbsences };
   clearInterval(qTimer);
   (screens[name] || renderClasses)(arg);
 }
@@ -2288,7 +2291,8 @@ let rouSpin = null;
 function renderRoulette() {
   const g = currentClassGroup(); if (!g) { location.replace('#classes'); return; }
   const st = rouState(g.id); const studs = g.students;
-  const remaining = studs.filter(s => !st.picked.includes(s.id) && !st.excluded.includes(s.id));
+  const absentToday = absencesFor(g.id);
+  const remaining = studs.filter(s => !st.picked.includes(s.id) && !st.excluded.includes(s.id) && !absentToday.includes(s.id));
   const seg = remaining.length ? 360 / remaining.length : 360;
   const wheel = remaining.map((s, i) => { const a0 = i * seg, a1 = (i + 1) * seg; const rad = a => (a - 90) * Math.PI / 180; const x1 = 50 + 50 * Math.cos(rad(a0)), y1 = 50 + 50 * Math.sin(rad(a0)), x2 = 50 + 50 * Math.cos(rad(a1)), y2 = 50 + 50 * Math.sin(rad(a1)); const mid = (a0 + a1) / 2; const tx = 50 + 33 * Math.cos(rad(mid)), ty = 50 + 33 * Math.sin(rad(mid));
     return `<path d="M50 50 L${x1} ${y1} A50 50 0 ${seg > 180 ? 1 : 0} 1 ${x2} ${y2} Z" fill="${s.color}" stroke="#fff" stroke-width=".6"/><text x="${tx}" y="${ty}" transform="rotate(${mid} ${tx} ${ty})" font-size="${remaining.length > 12 ? 3.2 : remaining.length > 8 ? 4 : 5}" fill="#fff" font-weight="800" text-anchor="middle" dominant-baseline="middle">${esc(s.name.length > 12 ? s.name.slice(0, 11) + '…' : s.name)}</text>`; }).join('');
@@ -2304,7 +2308,7 @@ function renderRoulette() {
       <div class="rouside">
         <div class="rouresult ${last ? 'show' : ''}">${last ? qAvatar(last, 'qnowav') + `<div class="qnowname">${esc(last.name)}</div>` : '<div class="qnowname" style="opacity:.6">Tap Spin</div>'}</div>
         <div class="qhead"><span>Still to pick</span><span class="qbadge">${remaining.length}</span></div>
-        <div class="rouchips">${studs.map(s => `<span class="chip rouchip ${st.picked.includes(s.id) ? 'picked' : ''} ${st.excluded.includes(s.id) ? 'absent' : ''}" data-stu="${s.id}">${esc(s.name)}${st.excluded.includes(s.id) ? ' · absent' : st.picked.includes(s.id) ? ' ✓' : ''}</span>`).join('') || '<span class="hint">No students in this class yet. Add them in Queue → Teacher.</span>'}</div>
+        <div class="rouchips">${studs.map(s => `<span class="chip rouchip ${st.picked.includes(s.id) ? 'picked' : ''} ${st.excluded.includes(s.id) || absentToday.includes(s.id) ? 'absent' : ''}" data-stu="${s.id}">${esc(s.name)}${absentToday.includes(s.id) ? ' · absent today' : st.excluded.includes(s.id) ? ' · out' : st.picked.includes(s.id) ? ' ✓' : ''}</span>`).join('') || '<span class="hint">No students in this class yet. Add them in Queue → Teacher.</span>'}</div>
         <div class="hint">Tap a name to mark them absent (or back). Picked students are not chosen again until you reset.</div>
       </div>
     </div></div>`;
@@ -2433,12 +2437,13 @@ function withParticipants(obj, gameId, title, teamNames, go) {
     <div class="ptchips" id="ptchips"></div>
     <div class="btnrow" style="margin-top:12px"><button class="btn sec" data-a="auto">Everyone, by turns</button><button class="btn sec" data-a="clear">Clear</button></div>
     <div class="btnrow" style="margin-top:10px"><button class="btn sec" data-a="skip">Play without students</button><button class="btn" data-a="start">Start</button></div>`);
-  const draw = () => { $('#ptchips', m).innerHTML = g.students.map(s => { const t = assign[s.id]; return `<span class="chip ptchip ${t !== undefined ? 'on' : ''}" data-s="${s.id}" style="${t !== undefined ? 'background:' + TEAM_COLORS[t % 8] + ';border-color:' + TEAM_COLORS[t % 8] + ';color:#fff' : ''}">${t !== undefined && n > 1 ? '<b>' + (t + 1) + '</b> ' : ''}${esc(s.name)}</span>`; }).join(''); };
+  const absent = absencesFor(g.id);
+  const draw = () => { $('#ptchips', m).innerHTML = g.students.map(s => { const t = assign[s.id]; const ab = absent.includes(s.id); return `<span class="chip ptchip ${t !== undefined ? 'on' : ''} ${ab ? 'absent' : ''}" data-s="${s.id}" style="${t !== undefined ? 'background:' + TEAM_COLORS[t % 8] + ';border-color:' + TEAM_COLORS[t % 8] + ';color:#fff' : ''}">${t !== undefined && n > 1 ? '<b>' + (t + 1) + '</b> ' : ''}${esc(s.name)}${ab && t === undefined ? ' · absent' : ''}</span>`; }).join(''); };
   draw();
   m.addEventListener('click', e => {
     const c = e.target.closest('[data-s]'); if (c) { const id = c.dataset.s; if (assign[id] === undefined) assign[id] = 0; else if (assign[id] + 1 < n) assign[id]++; else delete assign[id]; draw(); return; }
     const a = e.target.dataset.a; if (!a) return;
-    if (a === 'auto') { shuffle(g.students.slice()).forEach((s, i) => { assign[s.id] = i % n; }); draw(); return; }
+    if (a === 'auto') { shuffle(g.students.filter(s => !absent.includes(s.id))).forEach((s, i) => { assign[s.id] = i % n; }); draw(); return; }
     if (a === 'clear') { for (const k in assign) delete assign[k]; draw(); return; }
     closeSheet(m);
     if (a === 'start') { const parts = teamNames.map(() => []); for (const [sid, t] of Object.entries(assign)) parts[t].push(sid); if (parts.some(p => p.length)) activeGame.participants = parts; }
@@ -2499,22 +2504,61 @@ function resultBoxHtml(teams) {
     <div class="bjudge" style="margin-top:8px"><button class="pbtn ghost small" data-nav="#rankings/scope=class&game=${activeGame.id}">🏆 ${esc(g ? g.name : 'Class')} ranking</button><button class="pbtn ghost small" data-nav="#rankings/scope=grade&game=${activeGame.id}">Grade ranking</button></div></div>`;
 }
 
+/* ===================== Absences → Attendance app (via Telegram) ===================== */
+/* The Attendance app on the PC reads Telegram messages like "Ana, Luis (3)" = absent today in group 3.
+   The iPad builds that message and opens Telegram with it; the teacher taps Send. Absences are also kept
+   here so the roulette and the "who is playing" sheet leave absent students out. */
+const todayKey = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+function absencesFor(gid, day) { if (!db.absences || typeof db.absences !== 'object') db.absences = {}; if (!db.absences[gid]) db.absences[gid] = {}; return db.absences[gid][day || todayKey()] || []; }
+function setAbsences(gid, day, ids) { absencesFor(gid, day); db.absences[gid][day] = ids; saveDb(); }
+const isAbsentToday = (gid, sid) => absencesFor(gid).includes(sid);
+function absenceMessage(g, ids, day) {
+  const names = g.students.filter(s => ids.includes(s.id)).map(s => s.name);
+  if (!names.length) return '';
+  const when = day === todayKey() ? '' : (day === yesterdayKey() ? 'ayer: ' : day.slice(8, 10) + '/' + day.slice(5, 7) + '/' + day.slice(0, 4) + ': ');
+  return when + names.join(', ') + (g.att ? ' (' + g.att + ')' : '');
+}
+function yesterdayKey() { const d = new Date(); d.setDate(d.getDate() - 1); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function renderAbsences(arg) {
+  const g = currentClassGroup(); if (!g) { location.replace('#classes'); return; }
+  const day = (arg || '').match(/^\d{4}-\d{2}-\d{2}$/) ? arg : todayKey();
+  const ids = absencesFor(g.id, day); const msg = absenceMessage(g, ids, day); const bot = (db.global.attBot || '').replace(/^@/, '');
+  const dayLabel = day === todayKey() ? 'Today' : day === yesterdayKey() ? 'Yesterday' : day;
+  app.innerHTML = `<div class="screen">
+    ${topbar('Absences', backBtn('Class', '#class'), `<button class="tbtn" data-act="day">${dayLabel} ▾</button>`)}
+    <div class="content"><div class="wrap">
+      <div class="hint" style="margin:0 4px 12px">${esc(g.icon + ' ' + g.name)} · ${dayLabel}. Tap the students who are missing, then send the message to the attendance bot. Absent students are left out of the roulette and of team selection.</div>
+      <div class="qgrid abs" style="grid-template-columns:repeat(${g.students.length <= 4 ? 2 : g.students.length <= 9 ? 3 : 4},1fr)">${g.students.map(s => `<div class="qcard ${ids.includes(s.id) ? 'absent' : ''}" data-stu="${s.id}">${qAvatar(s, 'qav')}<div class="qname">${esc(s.name)}</div>${ids.includes(s.id) ? '<div class="qpos" style="background:var(--bad)">absent</div>' : ''}</div>`).join('') || '<div class="empty">No students in this class.</div>'}</div>
+      <div class="card" style="margin-top:14px"><div class="field"><label>Message for the attendance bot${g.att ? ' · group ' + g.att : ' · <span style="color:var(--bad)">this class has no attendance group number</span>'}</label><div style="font-size:18px;font-weight:700;min-height:26px">${esc(msg) || '<span style="opacity:.5">nobody absent</span>'}</div></div></div>
+      <div class="btnrow" style="margin-top:12px"><button class="btn" data-act="send" ${msg && bot ? '' : 'disabled'}>📨 Send in Telegram</button><button class="btn sec" data-act="copy" ${msg ? '' : 'disabled'}>Copy</button></div>
+      <div class="hint">${bot ? 'Opens Telegram with the message ready for @' + esc(bot) + '. Tap Send there; the PC marks the absences on the school portal at its next run.' : 'Set the attendance bot username in Settings to send with one tap. Until then, copy the message and paste it into the bot chat.'}</div>
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', async e => {
+    const c = e.target.closest('[data-stu]'); if (c) { const id = c.dataset.stu; const cur = absencesFor(g.id, day); setAbsences(g.id, day, cur.includes(id) ? cur.filter(x => x !== id) : cur.concat([id])); renderAbsences(day); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'day') { const v = await chooseDlg('Which day?', [{ label: 'Today', value: todayKey() }, { label: 'Yesterday', value: yesterdayKey() }]); if (v) location.replace('#absences/' + v); }
+    if (a.dataset.act === 'copy') copyText(msg);
+    if (a.dataset.act === 'send') { const url = 'https://t.me/' + bot + '?text=' + encodeURIComponent(msg); window.open(url, '_blank'); toast('Tap Send in Telegram'); }
+  });
+}
 /* ===================== Queue (students tap their name and sit down; the teacher calls the next one) ===================== */
 const Q_EMOJIS = ['😊', '😎', '🤩', '🥳', '😄', '🤓', '😃', '🌟', '🎉', '🦸', '🐱', '🐶', '🦊', '🐼', '🐸', '🦄', '🐯', '🐨'];
 const Q_ICONS = ['🦁', '🐯', '🦊', '🐻', '🐼', '🐨', '🦄', '🐸', '🦋', '🌈', '⭐', '🚀', '🎨', '🎵', '🏆', '📚', '🌺', '🍎'];
 const Q_COLORS = ['#4f6ef7', '#ff7043', '#26c6a0', '#ab47bc', '#ec407a', '#ffa726', '#66bb6a', '#ef5350', '#7e57c2', '#29b6f6', '#8d6e63', '#26a69a', '#c0ca33', '#5c6bc0', '#f06292', '#00acc1'];
 /* This year's groups (from Desktop\Alumnos 2026-27.pdf, 2026-27) */
 const Q_SEED = [
-  { name: '5º EP A', sub: 'Cambridge · Mon & Wed 12:55', icon: '🦁', students: ['Candela', 'Bosco', 'Juan', 'Jose Ignacio', 'Clara', 'Jon', 'Guillermo'] },
-  { name: '2 EP', sub: 'English 2 Days · Mon & Wed 13:45', icon: '🐯', students: ['Martina', 'Alaia', 'Elena', 'Natalia', 'Macarena', 'Lola', 'Olivia', 'Mikel', 'Alejandra', 'Manuela'] },
-  { name: '5º EP Reduced (M/W)', sub: 'English 2 Days · Mon & Wed 16:35', icon: '🦊', students: ['Cayetana', 'Claudia', 'Mikel'] },
-  { name: '1 ESO A', sub: 'Cambridge · Tue & Thu 12:55', icon: '🐻', students: ['Pablo', 'Carmen', 'Arrieta', 'Lucia', 'Martin', 'Juan Nicolas'] },
-  { name: '2º ESO A', sub: 'Cambridge · Tue & Thu 13:45', icon: '🐼', students: ['Noa', 'Beltran', 'Jorge', 'Covadonga', 'Ignacio', 'Carla'] },
-  { name: '5º EP Reduced (T/Th)', sub: 'English 2 Days · Tue & Thu 16:35', icon: '🐨', students: ['Felipe', 'Lucas', 'Pedro'] },
+  { name: '5º EP A', sub: 'Cambridge · Mon & Wed 12:55', icon: '🦁', att: 3, students: ['Candela', 'Bosco', 'Juan', 'Jose Ignacio', 'Clara', 'Jon', 'Guillermo'] },
+  { name: '2 EP', sub: 'English 2 Days · Mon & Wed 13:45', icon: '🐯', att: 4, students: ['Martina', 'Alaia', 'Elena', 'Natalia', 'Macarena', 'Lola', 'Olivia', 'Mikel', 'Alejandra', 'Manuela'] },
+  { name: '5º EP Reduced (M/W)', sub: 'English 2 Days · Mon & Wed 16:35', icon: '🦊', att: 5, students: ['Cayetana', 'Claudia', 'Mikel'] },
+  { name: '1 ESO A', sub: 'Cambridge · Tue & Thu 12:55', icon: '🐻', att: 1, students: ['Pablo', 'Carmen', 'Arrieta', 'Lucia', 'Martin', 'Juan Nicolas'] },
+  { name: '2º ESO A', sub: 'Cambridge · Tue & Thu 13:45', icon: '🐼', att: 2, students: ['Noa', 'Beltran', 'Jorge', 'Covadonga', 'Ignacio', 'Carla'] },
+  { name: '5º EP Reduced (T/Th)', sub: 'English 2 Days · Tue & Thu 16:35', icon: '🐨', att: 6, students: ['Felipe', 'Lucas', 'Pedro'] },
 ];
+/* group number used by the Attendance app ("Ana, Luis (3)"), by class name */
+const ATT_BY_NAME = Object.fromEntries(Q_SEED.map(g => [g.name, g.att]));
 const HOME_GROUP = () => ({ id: HOME_CLASS, name: 'Home students', sub: 'Private lessons', icon: '🏠', students: [] });
 function qSeed() {
-  return { pin: '1234', live: {}, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }).concat([HOME_GROUP()]) };
+  return { pin: '1234', live: {}, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, att: g.att, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }).concat([HOME_GROUP()]) };
 }
 /* Every student in a group gets a different colour (and emoji while there are enough). */
 function qAssignLooks(group) {
@@ -2530,7 +2574,7 @@ function normalizeQueue(q) {
   if (!q || typeof q !== 'object' || !Array.isArray(q.groups)) return qSeed();
   q.pin = /^\d{4}$/.test(String(q.pin || '')) ? String(q.pin) : '1234';
   q.live = q.live && typeof q.live === 'object' ? q.live : {};
-  q.groups = q.groups.filter(g => g && g.id && typeof g.name === 'string').map(g => ({ id: String(g.id), name: g.name, sub: g.sub || '', icon: g.icon || '🎓',
+  q.groups = q.groups.filter(g => g && g.id && typeof g.name === 'string').map(g => ({ id: String(g.id), name: g.name, sub: g.sub || '', icon: g.icon || '🎓', att: g.att || ATT_BY_NAME[g.name] || 0,
     students: (Array.isArray(g.students) ? g.students : []).filter(s => s && s.id && typeof s.name === 'string').map(s => ({ id: String(s.id), name: s.name, emoji: s.emoji || '', color: s.color || '', photo: typeof s.photo === 'string' ? s.photo : null })) }));
   q.groups.forEach(qAssignLooks);
   if (!q.groups.some(g => g.id === HOME_CLASS)) q.groups.push(HOME_GROUP());
@@ -2718,6 +2762,7 @@ function renderClassHub() {
       <div class="games">
         <div class="gcard queue" data-nav="#queue/${g.id}"><div class="emoji">🎓</div><div class="n">Queue</div><div class="d">${waiting ? plural(waiting, 'student') + ' waiting' : 'Students tap their name and sit down.'}</div></div>
         <div class="gcard roulette" data-nav="#roulette"><div class="emoji">🎯</div><div class="n">Roulette</div><div class="d">Pick a student at random${g.students.length ? ' · ' + plural(g.students.length, 'student') : ''}.</div></div>
+        <div class="gcard absent" data-nav="#absences"><div class="emoji">📋</div><div class="n">Absences</div><div class="d">${(() => { const n = absencesFor(g.id).length; return n ? plural(n, 'student') + ' absent today' : 'Mark who is missing and send it to the attendance bot.'; })()}</div></div>
         <div class="gcard rank" data-nav="#rankings"><div class="emoji">🏆</div><div class="n">Rankings</div><div class="d">${(() => { const n = (db.results || []).filter(r => r.cls === g.id).length; return n ? plural(n, 'game') + ' recorded' : 'Points from the games, per class and per grade.'; })()}</div></div>
         <div class="gcard charades" data-nav="#home"><div class="emoji">🎮</div><div class="n">Games</div><div class="d">Charades, Yahtzee, Futaba, Memory${lastDeckNames.length ? ' · last decks: ' + esc(lastDeckNames.slice(0, 2).join(', ')) + (lastDeckNames.length > 2 ? '…' : '') : ''}</div></div>
         ${g.id === HOME_CLASS ? `<div class="gcard soon"><div class="emoji">🏠</div><div class="n">Home area</div><div class="d">Coming soon — tell me what goes here.</div></div>` : ''}
@@ -2747,6 +2792,8 @@ function renderSettings() {
         <div class="row" data-act="restore"><div class="ic">📥</div><div class="txt"><div class="t">Restore / import</div><div class="s">Backup .json, or a .txt / .csv list</div></div><div class="chev">›</div></div>
       </div>
       <div class="hint">Your decks live only on this device, inside this app. Nothing is uploaded anywhere. Make a backup now and then, especially before deleting the app or clearing Safari data.</div>
+      <h2 class="sec">Attendance</h2>
+      <div class="card"><div class="row" data-act="attbot"><div class="ic">📨</div><div class="txt"><div class="t">Attendance bot: ${db.global.attBot ? '@' + esc(String(db.global.attBot).replace(/^@/, '')) : 'not set'}</div><div class="s">Telegram username of the bot the Attendance app reads. Absences are sent to it as "Ana, Luis (3)".</div></div><div class="chev">›</div></div></div>
       <h2 class="sec">Device</h2>
       <div class="card">
         <div class="row" data-act="tilttest"><div class="ic">📐</div><div class="txt"><div class="t">Test the tilt sensor</div><div class="s" id="tiltinfo">Tap, allow motion access, then tilt the iPad</div></div></div>
@@ -2762,6 +2809,7 @@ function renderSettings() {
     const a = e.target.closest('[data-act]'); if (!a) return;
     if (a.dataset.act === 'backup') { const stamp = new Date().toISOString().slice(0, 10); await shareOrDownload(exportBackup(), `class-games-backup-${stamp}.json`, 'application/json'); }
     if (a.dataset.act === 'restore') importSheet();
+    if (a.dataset.act === 'attbot') { const v = await promptDlg('Attendance bot username', db.global.attBot || '', '@my_attendance_bot', 'Save'); if (v !== null) { db.global.attBot = v.trim().replace(/^@/, ''); saveDb(); renderSettings(); } }
     if (a.dataset.act === 'signout') { localStorage.removeItem(AUTH.key); renderLock(); }
     if (a.dataset.act === 'tilttest') {
       const info = $('#tiltinfo'); const saved = db.settings.tilt; db.settings.tilt = true; const ok = await tiltEnable(); db.settings.tilt = saved;
@@ -2879,6 +2927,11 @@ if (location.search.includes('selftest')) {
     const rk = rankings('class'); const rkg = rankings('grade', 'quiz');
     t('rankings aggregate', rk[0].name === 'Ana' && rk[0].pts === 5 && rk[0].games === 2 && rk.find(x => x.name === 'Cai').pts === 3 && rkg.length === 3 && rkg[0].pts === 3 && rankings('class', 'hangman').length === 0);
     db.queue.groups = db.queue.groups.filter(x => x.id !== 'gx'); db.results = []; activeGame = null;
+    db.queue.groups.push({ id: 'ga', name: '5º EP A', att: 3, sub: '', icon: '', students: [{ id: 'x1', name: 'Ana' }, { id: 'x2', name: 'Luis' }] });
+    setAbsences('ga', todayKey(), ['x1', 'x2']);
+    t('absence message', absenceMessage(db.queue.groups.find(x => x.id === 'ga'), ['x1', 'x2'], todayKey()) === 'Ana, Luis (3)' && absenceMessage(db.queue.groups.find(x => x.id === 'ga'), ['x2'], yesterdayKey()) === 'ayer: Luis (3)' && isAbsentToday('ga', 'x1') && !isAbsentToday('ga', 'zz'));
+    t('attendance numbers seeded', qSeed().groups.find(x => x.name === '2 EP').att === 4 && normalizeQueue({ groups: [{ id: 'q', name: '1 ESO A', students: [] }] }).groups[0].att === 1);
+    db.queue.groups = db.queue.groups.filter(x => x.id !== 'ga'); delete db.absences.ga;
     t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS));
     db.currentClass = HOME_CLASS;
     const r1 = mergeBackup(bk.data, false); t('merge adds', r1.decks === 1 && r1.folders === 1 && db.decks[0].folderId === 'f1');
@@ -2993,6 +3046,7 @@ if (location.search.includes('selftest')) {
     else if (demo === 'hangman') { Object.assign(gameCfg('hangman'), { teams: 2, rounds: 5 }); startHang(four); hang.guessed = new Set(['E', 'A', 'Z', 'Q', 'X']); hang.wrong = 3; renderHang(); }
     else if (demo === 'roulette') { db.currentClass = db.queue.groups[1].id; const st = rouState(db.currentClass); st.picked = [db.queue.groups[1].students[0].id]; st.excluded = [db.queue.groups[1].students[3].id]; go('#roulette'); }
     else if (demo === 'timer') { go('#timer'); }
+    else if (demo === 'absences') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; setAbsences(gg.id, todayKey(), [gg.students[2].id, gg.students[6].id]); db.global.attBot = 'attendance_bot'; go('#absences'); }
     else if (demo === 'players') { db.currentClass = db.queue.groups[1].id; Object.assign(gameCfg('quiz'), { teams: 3 }); startQuiz(four); }
     else if (demo === 'rankings') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; db.results = [{ ts: Date.now() - 86400000, cls: gg.id, clsName: gg.name, grade: 2, game: 'quiz', title: 'Quiz Show', teams: [{ name: 'Team 1', score: 500, rank: 1, pts: 3, students: [gg.students[0].id, gg.students[1].id] }, { name: 'Team 2', score: 300, rank: 2, pts: 2, students: [gg.students[2].id, gg.students[3].id] }] }, { ts: Date.now(), cls: gg.id, clsName: gg.name, grade: 2, game: 'ttt', title: 'Tic-tac-toe', teams: [{ name: 'X', score: 1, rank: 1, pts: 3, students: [gg.students[2].id] }, { name: 'O', score: 0, rank: 2, pts: 2, students: [gg.students[0].id, gg.students[5].id] }] }]; go('#rankings'); }
     else if (demo === 'gameover') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; Object.assign(gameCfg('quiz'), { teams: 2 }); activeGame = null; quiz = { cfg: gameCfg('quiz'), pool: { items: [], i: 0 }, n: 5, i: 6, teams: [{ name: 'Team 1', score: 400 }, { name: 'Team 2', score: 250 }], phase: 'over', st: null, timer: null, got: new Set(), first: -1 }; activeGame = { id: 'quiz', title: 'Quiz Show', obj: quiz, participants: [[gg.students[0].id, gg.students[1].id], [gg.students[2].id]], recorded: false }; go('#quizplay'); }
