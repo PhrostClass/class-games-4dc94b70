@@ -1,2 +1,10 @@
 .DS_Store
 Thumbs.db
+# textbook harvest: raw data, browser profile with cookies, PDFs and credentials stay local
+tools/milton_data/
+tools/milton_out/
+tools/milton_profile/
+tools/pdf/
+tools/milton_secrets.json
+tools/harvest.log
+tools/__pycache__/

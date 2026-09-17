@@ -283,7 +283,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.5.0';
+const APP_VERSION = '1.6.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -311,6 +311,21 @@ const PRESET_DECKS = [
   { id: 'preset_holidays', name: 'Halloween & Christmas', emoji: '🎃', words: ['pumpkin','skeleton','witch','vampire','ghost','spider web','bat','haunted house','trick or treat','mummy','black cat','Santa Claus','reindeer','snowman','Christmas tree','present','elf','sleigh','stocking','candy cane','gingerbread man','fireplace','chimney','snowball fight','carol singers','turkey','crackers','mistletoe','angel','star'] },
 ];
 const PRESET_FOLDER = { id: 'preset', name: 'Preset decks' };
+/* Textbook decks (Time Travellers, one folder per grade) come from textbooks.json, built by tools/build_decks.py */
+let TEXTBOOK_FOLDERS = [];
+const TB_EMOJI = { vocab: '📖', grammar: '✏️', verbs: '🔁', review: '✅' };
+function buildTextbookFolders(data) {
+  return ((data && data.books) || []).map(b => ({ id: 'tb_' + b.id, name: b.name, grade: b.grade,
+    decks: (b.units || []).flatMap(u => (u.decks || []).map(d => ({ id: `tb_${b.id}_u${u.n}_${d.kind}`, name: d.name, desc: d.desc || '', emoji: TB_EMOJI[d.kind] || '📚', words: cleanWords(d.words || []), unit: u.n, kind: d.kind, folderId: 'tb_' + b.id }))) }));
+}
+async function loadTextbooks() {
+  try { const r = await fetch('./textbooks.json', { cache: 'default' }); if (r.ok) TEXTBOOK_FOLDERS = buildTextbookFolders(await r.json()); } catch (e) { console.warn('textbooks.json not loaded', e); }
+}
+const textbookDecks = () => db.global.showTextbooks === false ? [] : TEXTBOOK_FOLDERS.flatMap(f => f.decks);
+/* Grade of the current class (from its name: "5º EP A", "2 EP") — used to open that grade's textbook folder by default */
+function classGrade() { const g = currentClassGroup(); const m = g && g.name.match(/(\d)\s*º?\s*(EP|PRIM)/i); return m ? +m[1] : null; }
+function collapsedByDefault(key) { return key.startsWith('tb_') && key !== 'tb_tt' + classGrade(); }
+function isCollapsed(key) { const c = db.global.collapsed || {}; return key in c ? !!c[key] : collapsedByDefault(key); }
 
 /* ===================== Store ===================== */
 const DEFAULT_SETTINGS = { roundSeconds: 60, allowPass: true, avoidRepeats: true, sound: true, tilt: true, showPresets: true, theme: 'auto', teams: 1, teamNames: ['Team 1', 'Team 2', 'Team 3', 'Team 4'], lastDecks: [], collapsed: {} };
@@ -318,7 +333,7 @@ let db;
 /* Settings are stored PER CLASS (db.classSettings[classId]) so each group keeps its own decks, teams and game options.
    A few keys are global (theme, presets, collapsed folders) and are redirected to db.global. db.settings always
    points at the current class. */
-const GLOBAL_KEYS = ['theme', 'showPresets', 'collapsed'];
+const GLOBAL_KEYS = ['theme', 'showPresets', 'showTextbooks', 'collapsed'];
 const HOME_CLASS = 'home';
 function freshDb() { return { v: 1, folders: [], decks: [], turnQuestions: [], classSettings: {}, global: {}, currentClass: null }; }
 function normalizeSettings(sv) {
@@ -360,7 +375,7 @@ function normalizeDb(d) {
   const folderIds = new Set(d.folders.map(f => f.id));
   d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
   const legacy = Object.getOwnPropertyDescriptor(d, 'settings') && !Object.getOwnPropertyDescriptor(d, 'settings').get && d.settings && typeof d.settings === 'object' ? d.settings : null;
-  d.global = { theme: 'auto', showPresets: true, collapsed: {}, ...(d.global && typeof d.global === 'object' ? d.global : {}) };
+  d.global = { theme: 'auto', showPresets: true, showTextbooks: true, collapsed: {}, ...(d.global && typeof d.global === 'object' ? d.global : {}) };
   if (legacy) for (const k of GLOBAL_KEYS) if (k in legacy) d.global[k] = legacy[k];
   if (!d.global.collapsed || typeof d.global.collapsed !== 'object') d.global.collapsed = {};
   d.classSettings = d.classSettings && typeof d.classSettings === 'object' ? d.classSettings : {};
@@ -424,10 +439,10 @@ function gapped(word) {
   return w.split('').map((c, i) => hide.has(i) ? '_' : c).join('');
 }
 const plural = (n, s) => n + ' ' + s + (n === 1 ? '' : 's');
-const allDecks = () => db.settings.showPresets ? db.decks.concat(PRESET_DECKS) : db.decks;
-const getDeck = id => db.decks.find(k => k.id === id) || PRESET_DECKS.find(k => k.id === id) || null;
-const isPreset = k => !!(k && k.id && String(k.id).startsWith('preset_'));
-const getFolder = id => id === 'preset' ? PRESET_FOLDER : db.folders.find(f => f.id === id) || null;
+const allDecks = () => db.decks.concat(db.settings.showPresets ? PRESET_DECKS : []).concat(textbookDecks());
+const getDeck = id => db.decks.find(k => k.id === id) || PRESET_DECKS.find(k => k.id === id) || (String(id).startsWith('tb_') ? TEXTBOOK_FOLDERS.flatMap(f => f.decks).find(k => k.id === id) : null) || null;
+const isPreset = k => !!(k && k.id && /^(preset_|tb_)/.test(String(k.id)));
+const getFolder = id => id === 'preset' ? PRESET_FOLDER : (String(id).startsWith('tb_') ? TEXTBOOK_FOLDERS.find(f => f.id === id) || null : db.folders.find(f => f.id === id) || null);
 const sortByName = a => a.slice().sort((x, y) => x.name.localeCompare(y.name, undefined, { sensitivity: 'base' }));
 function foldersSorted() { return sortByName(db.folders); }
 function decksInFolder(fid) { return sortByName(db.decks.filter(k => (k.folderId || null) === (fid || null))); }
@@ -605,7 +620,7 @@ function renderLibrary() {
   const s = db.settings;
   const folderBlock = (fid, name, decks, isPresetF) => {
     const key = fid || 'none';
-    const collapsed = !!s.collapsed[key];
+    const collapsed = isCollapsed(key);
     const menu = (isPresetF || !fid) ? '' : `<button class="tbtn" data-fmenu="${fid}">•••</button>`;
     const rows = decks.map(k => `<div class="row" data-nav="#deck/${k.id}"><div class="ic">${esc(k.emoji || (isPresetF ? '📚' : '🗂️'))}</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}</div></div><div class="chev">›</div></div>`).join('');
     return `<div class="folderhead" data-collapse="${key}"><span class="tri">${collapsed ? '▶' : '▼'}</span><div class="name">${esc(name)}</div><span class="cnt">${decks.length}</span>${menu}</div>
@@ -621,6 +636,7 @@ function renderLibrary() {
     for (const f of folders) body += folderBlock(f.id, f.name, decksInFolder(f.id), false);
   }
   if (s.showPresets) body += folderBlock('preset', 'Preset decks', PRESET_DECKS, true);
+  if (db.global.showTextbooks !== false) for (const f of TEXTBOOK_FOLDERS) body += folderBlock(f.id, f.name, f.decks, true);
   app.innerHTML = `<div class="screen">
     ${topbar('Decks', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#settings">Settings</button>`)}
     <div class="content"><div class="wrap">
@@ -630,7 +646,7 @@ function renderLibrary() {
     </div></div></div>`;
   $('.screen', app).addEventListener('click', async e => {
     const fm = e.target.closest('[data-fmenu]'); if (fm) { folderMenu(fm.dataset.fmenu); return; }
-    const c = e.target.closest('[data-collapse]'); if (c) { const k = c.dataset.collapse; s.collapsed[k] = !s.collapsed[k]; saveDb(); renderLibrary(); return; }
+    const c = e.target.closest('[data-collapse]'); if (c) { const k = c.dataset.collapse; s.collapsed[k] = !isCollapsed(k); saveDb(); keepScroll(renderLibrary); return; }
     const a = e.target.closest('[data-act]'); if (!a) return;
     if (a.dataset.act === 'newfolder') { const n = await promptDlg('New folder', '', 'Folder name', 'Create'); if (n && n.trim()) { addFolder(n); renderLibrary(); } }
     if (a.dataset.act === 'import') importSheet();
@@ -666,11 +682,12 @@ function renderDeck(id) {
   const k = getDeck(id);
   if (!k) { location.replace('#library'); return; }
   const preset = isPreset(k);
-  const folder = preset ? PRESET_FOLDER : getFolder(k.folderId);
+  const folder = preset && !String(k.id).startsWith('tb_') ? PRESET_FOLDER : getFolder(k.folderId);
   app.innerHTML = `<div class="screen">
     ${topbar(k.name, backBtn(), preset ? '' : `<button class="tbtn" data-nav="#edit/${k.id}">Edit</button>`)}
     <div class="content"><div class="wrap">
       <div class="hint" style="margin:0 4px 12px">${folder ? '📁 ' + esc(folder.name) + ' · ' : ''}${nWords(k.words.length)}${preset ? ' · preset (copy it to edit)' : ''}</div>
+      ${k.desc ? `<div class="hint" style="margin:0 4px 12px;color:var(--text)">${esc(k.desc)}</div>` : ''}
       <button class="btn big" data-act="play">▶ Play this deck</button>
       <div class="btnrow" style="margin-top:10px">
         ${preset ? `<button class="btn sec" data-act="copy">Copy to my decks</button>` : `<button class="btn sec" data-act="move">Move</button><button class="btn sec" data-act="dup">Duplicate</button>`}
@@ -825,10 +842,7 @@ function renderSetup() {
   s.lastDecks = s.lastDecks.filter(id => validIds.has(id));
   if (!s.lastDecks.length) s.lastDecks = [all[0].id];
   const selected = new Set(s.lastDecks);
-  const groups = [];
-  const unfiled = decksInFolder(null); if (unfiled.length) groups.push({ id: 'none', name: 'My decks', decks: unfiled });
-  for (const f of foldersSorted()) { const d = decksInFolder(f.id); if (d.length) groups.push({ id: f.id, name: f.name, decks: d }); }
-  if (s.showPresets) groups.push({ id: 'preset', name: 'Preset decks', decks: PRESET_DECKS });
+  const groups = deckGroups();
   const times = [30, 45, 60, 90, 120, 0];
   const render = () => {
     const total = all.filter(k => selected.has(k.id)).reduce((a, k) => a + k.words.length, 0);
@@ -852,11 +866,11 @@ function renderSetup() {
           <div class="toggle" data-opt="sound"><div><div class="lbl">Sounds</div><div class="sub">Ticks in the last seconds and an end buzzer</div></div><div class="sw ${s.sound ? 'on' : ''}"></div></div>
         </div>
         <h2 class="sec">Decks to play</h2>
-        ${groups.map(g => `<div class="folderhead"><div class="name">${esc(g.name)}</div><button class="tbtn" data-selall="${g.id}">${g.decks.every(k => selected.has(k.id)) ? 'None' : 'All'}</button></div>
-          <div class="card">${g.decks.map(k => `<div class="row" data-deck="${k.id}"><div class="check ${selected.has(k.id) ? 'on' : ''}">✓</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}</div></div></div>`).join('')}</div>`).join('')}
+        ${deckPickerHtml(groups, selected)}
       </div></div></div>`;
     const sc = $('.screen', app);
     sc.addEventListener('click', e => {
+      const pc = e.target.closest('[data-pickcollapse]'); if (pc) { togglePickCollapse(pc.dataset.pickcollapse); keepScroll(render); return; }
       const t = e.target.closest('[data-time]'); if (t) { s.roundSeconds = +t.dataset.time; saveDb(); keepScroll(render); return; }
       const tm = e.target.closest('[data-team]'); if (tm) { s.teams = Math.min(4, Math.max(1, s.teams + (+tm.dataset.team))); saveDb(); keepScroll(render); return; }
       const o = e.target.closest('[data-opt]'); if (o) { s[o.dataset.opt] = !s[o.dataset.opt]; saveDb(); keepScroll(render); return; }
@@ -1152,6 +1166,7 @@ function deckGroups() {
   const unfiled = decksInFolder(null); if (unfiled.length) groups.push({ id: 'none', name: 'My decks', decks: unfiled });
   for (const f of foldersSorted()) { const d = decksInFolder(f.id); if (d.length) groups.push({ id: f.id, name: f.name, decks: d }); }
   if (db.settings.showPresets) groups.push({ id: 'preset', name: 'Preset decks', decks: PRESET_DECKS });
+  if (db.global.showTextbooks !== false) for (const f of TEXTBOOK_FOLDERS) groups.push({ id: f.id, name: f.name, decks: f.decks, collapsible: true });
   return groups;
 }
 function ensureSelection(cfg) {
@@ -1161,9 +1176,10 @@ function ensureSelection(cfg) {
   return new Set(cfg.lastDecks);
 }
 function deckPickerHtml(groups, selected) {
-  return groups.map(g => `<div class="folderhead"><div class="name">${esc(g.name)}</div><button class="tbtn" data-selall="${g.id}">${g.decks.every(k => selected.has(k.id)) ? 'None' : 'All'}</button></div>
-    <div class="card">${g.decks.map(k => `<div class="row" data-deck="${k.id}"><div class="check ${selected.has(k.id) ? 'on' : ''}">✓</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}${k.words.some(hasPair) ? ' · ' + k.words.filter(hasPair).length + ' with pairs' : ''}</div></div></div>`).join('')}</div>`).join('');
+  return groups.map(g => { const col = g.collapsible && isCollapsed('pick_' + g.id); const nsel = g.decks.filter(k => selected.has(k.id)).length; return `<div class="folderhead">${g.collapsible ? `<span class="tri" data-pickcollapse="${g.id}">${col ? '▶' : '▼'}</span>` : ''}<div class="name" ${g.collapsible ? `data-pickcollapse="${g.id}"` : ''}>${esc(g.name)}${nsel && col ? ` <span class="cnt">· ${nsel} selected</span>` : ''}</div>${col ? '' : `<button class="tbtn" data-selall="${g.id}">${g.decks.every(k => selected.has(k.id)) ? 'None' : 'All'}</button>`}</div>
+    ${col ? '' : `<div class="card">${g.decks.map(k => `<div class="row" data-deck="${k.id}"><div class="check ${selected.has(k.id) ? 'on' : ''}">✓</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}${k.words.some(hasPair) ? ' · ' + k.words.filter(hasPair).length + ' with pairs' : ''}</div></div></div>`).join('')}</div>`}`; }).join('');
 }
+function togglePickCollapse(id) { const k = 'pick_' + id; db.global.collapsed[k] = !isCollapsed(k); saveDb(); }
 const stepHtml = (key, label, sub, value) => `<div class="toggle" style="cursor:default"><div><div class="lbl">${label}</div>${sub ? `<div class="sub">${sub}</div>` : ''}</div><div class="stepper"><button data-step="${key}" data-d="-1">−</button><span>${value}</span><button data-step="${key}" data-d="1">+</button></div></div>`;
 const segHtml = (key, opts, value) => `<div class="seg wrap">${opts.map(o => `<button data-seg="${key}" data-v="${esc(o[0])}" class="${String(value) === String(o[0]) ? 'on' : ''}">${esc(o[1])}</button>`).join('')}</div>`;
 const togHtml = (key, label, sub, on) => `<div class="toggle" data-opt="${key}"><div><div class="lbl">${label}</div>${sub ? `<div class="sub">${sub}</div>` : ''}</div><div class="sw ${on ? 'on' : ''}"></div></div>`;
@@ -1171,6 +1187,7 @@ const togHtml = (key, label, sub, on) => `<div class="toggle" data-opt="${key}">
 function bindSetup(sc, cfg, groups, selected, limits, rerender, onStart) {
   const rr = () => keepScroll(rerender);
   sc.addEventListener('click', e => {
+    const pc = e.target.closest('[data-pickcollapse]'); if (pc) { togglePickCollapse(pc.dataset.pickcollapse); rr(); return; }
     const st = e.target.closest('[data-step]'); if (st) { const k = st.dataset.step, [lo, hi] = limits[k]; cfg[k] = Math.min(hi, Math.max(lo, (+cfg[k] || 0) + (+st.dataset.d))); saveDb(); rr(); return; }
     const sg = e.target.closest('[data-seg]'); if (sg) { const v = sg.dataset.v; cfg[sg.dataset.seg] = /^-?\d+$/.test(v) ? +v : v; saveDb(); rr(); return; }
     const o = e.target.closest('[data-opt]'); if (o) { cfg[o.dataset.opt] = !cfg[o.dataset.opt]; saveDb(); rr(); return; }
@@ -2016,6 +2033,7 @@ function renderSettings() {
       <h2 class="sec">Library</h2>
       <div class="card">
         <div class="toggle" data-opt="showPresets"><div><div class="lbl">Show preset decks</div><div class="sub">${PRESET_DECKS.length} built-in decks</div></div><div class="sw ${s.showPresets ? 'on' : ''}"></div></div>
+        <div class="toggle" data-opt="showTextbooks"><div><div class="lbl">Show textbook decks</div><div class="sub">Time Travellers · ${TEXTBOOK_FOLDERS.length} books · ${TEXTBOOK_FOLDERS.reduce((a, f) => a + f.decks.length, 0)} decks (vocabulary, grammar, irregular verbs, review per unit)</div></div><div class="sw ${db.global.showTextbooks !== false ? 'on' : ''}"></div></div>
       </div>
       <h2 class="sec">Backup</h2>
       <div class="card">
@@ -2138,6 +2156,11 @@ if (location.search.includes('selftest')) {
     const rt = makeDb(JSON.parse(JSON.stringify(db))); rt.currentClass = 'A'; t('settings survive save/load', rt.settings.roundSeconds === 45 && rt.settings.theme === 'dark' && !('settings' in JSON.parse(JSON.stringify(rt))) && JSON.parse(JSON.stringify(rt)).classSettings.A.roundSeconds === 45);
     const mig = makeDb({ settings: { roundSeconds: 90, theme: 'light', teamNames: ['Cats'] } }); mig.currentClass = 'zz';
     t('legacy settings migrate', mig.settings.roundSeconds === 90 && mig.settings.theme === 'light' && mig.settings.teamNames[0] === 'Cats');
+    const tbf = buildTextbookFolders({ books: [{ id: 'tt9', name: 'TT 9', grade: 9, units: [{ n: 1, title: 'X', decks: [{ kind: 'vocab', name: 'U1 Vocabulary · X', desc: 'd', words: ['a | b', 'a | b', 'c'] }, { kind: 'verbs', name: 'U1 Irregular verbs · X', words: ['go | went | gone'] }] }] }] });
+    t('textbook folders', tbf.length === 1 && tbf[0].id === 'tb_tt9' && tbf[0].decks.length === 2 && tbf[0].decks[0].id === 'tb_tt9_u1_vocab' && tbf[0].decks[0].words.length === 2 && tbf[0].decks[1].emoji === '🔁');
+    db.queue.groups.push({ id: 'g5', name: '5º EP A', sub: '', icon: '', students: [] }); db.currentClass = 'g5';
+    t('class grade + default collapse', classGrade() === 5 && collapsedByDefault('tb_tt2') && !collapsedByDefault('tb_tt5') && !collapsedByDefault('preset'));
+    db.queue.groups = db.queue.groups.filter(g => g.id !== 'g5');
     t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS));
     db.currentClass = HOME_CLASS;
     const r1 = mergeBackup(bk.data, false); t('merge adds', r1.decks === 1 && r1.folders === 1 && db.decks[0].folderId === 'f1');
@@ -2233,7 +2256,7 @@ if (location.search.includes('selftest')) {
     game = null; db = makeDb(JSON.parse(saved)); db.currentClass = savedClass; saveDb();
   } catch (e) { results.push('FAIL exception ' + (e && e.stack || e)); }
   document.body.innerHTML = '<pre id="selftest" style="padding:20px;font:14px monospace;color:#000;background:#fff">' + results.join('\n') + '\nDONE ' + results.filter(r => r.startsWith('FAIL')).length + ' failures</pre>';
-} else {
+} else loadTextbooks().finally(() => {
   route();
   // Dev preview only: index.html?demo=word|ready|roundEnd|over jumps straight into a game screen.
   const demo = new URLSearchParams(location.search).get('demo');
@@ -2250,7 +2273,7 @@ if (location.search.includes('selftest')) {
     else if (demo === 'memory') { Object.assign(gameCfg('memory'), { sets: 8, size: 2, teams: 2, variant: 'scrambled' }); startMemory(four); mem.cards[0].up = true; mem.cards[1].done = true; mem.cards[1].by = 0; mem.cards[2].done = true; mem.cards[2].by = 0; renderMemory(); }
     else { startGame([PRESET_DECKS[0].id]); if (demo === 'word') { game.phase = 'word'; nextWord(); game.endAt = Date.now() + 42000; } else game.phase = demo; renderPlay(); }
   }
-}
+});
 </script>
 </body>
 </html>

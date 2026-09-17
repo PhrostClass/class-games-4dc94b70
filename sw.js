@@ -1,7 +1,7 @@
 /* Class Games service worker. Bump VERSION on every deploy (deploy.ps1 does it). */
-const VERSION = '1.5.0';
+const VERSION = '1.6.0';
 const CACHE = 'classgames-' + VERSION;
-const SHELL = ['./', './index.html', './manifest.webmanifest',
+const SHELL = ['./', './index.html', './manifest.webmanifest', './textbooks.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
