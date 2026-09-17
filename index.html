@@ -191,6 +191,59 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .bjudge.full .pbtn{flex:1;min-width:0;padding:22px 6px;font-size:clamp(15px,2vw,22px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:80px}
 .bcard .t{font-size:20px;opacity:.9}
 .tqgroup{background:#ffd166;color:#1f1f2b;padding:4px 12px;border-radius:999px;font-weight:800}
+/* new games */
+.gcard.quiz{background:linear-gradient(135deg,#46178f,#7b2cbf);color:#fff}.gcard.quiz .d{color:rgba(255,255,255,.85)}
+.gcard.ttt{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff}.gcard.ttt .d{color:rgba(255,255,255,.85)}
+.gcard.bam{background:linear-gradient(135deg,#b45309,#f59e0b);color:#fff}.gcard.bam .d{color:rgba(255,255,255,.85)}
+.gcard.snakes{background:linear-gradient(135deg,#166534,#4ade80);color:#fff}.gcard.snakes .d{color:rgba(255,255,255,.85)}
+.gcard.hangman{background:linear-gradient(135deg,#7f1d1d,#ef4444);color:#fff}.gcard.hangman .d{color:rgba(255,255,255,.85)}
+.gcard.roulette{background:linear-gradient(135deg,#be185d,#f472b6);color:#fff}.gcard.roulette .d{color:rgba(255,255,255,.85)}
+.gcard.timer{background:linear-gradient(135deg,#374151,#6b7280);color:#fff}.gcard.timer .d{color:rgba(255,255,255,.85)}
+.qopts{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:900px;margin:8px auto;flex:1;min-height:0}
+.qopt{border-radius:14px;color:#fff;font-weight:800;font-size:clamp(16px,3vw,30px);display:flex;align-items:center;gap:12px;padding:10px 16px;min-height:64px;text-align:left}
+.qopt .sym{font-size:1.2em;opacity:.9}.qopt.dim{opacity:.25}.qopt.right{box-shadow:0 0 0 5px #fff}
+.qcard .bword span{overflow-wrap:anywhere}
+.tboard{flex:1;display:grid;gap:8px;padding:8px 14px 8px;grid-auto-rows:minmax(0,1fr);min-height:0;max-width:calc(100vh - 200px);width:100%;margin:0 auto}
+.tcell{border:0;border-radius:14px;background:#fff;color:#1f1f2b;font:inherit;font-weight:900;font-size:clamp(20px,5vmin,64px);cursor:pointer;min-height:0}
+.tcell.taken{background:rgba(255,255,255,.12)}.tcell.win{background:#ffd166;color:#1f1f2b!important}
+.sboardwrap{position:relative;flex:1;min-height:0;width:100%;max-width:calc(100vh - 210px);margin:0 auto;padding:4px 14px}
+.sboard{display:grid;gap:3px;height:100%;grid-auto-rows:minmax(0,1fr)}
+.scell{background:rgba(255,255,255,.1);border-radius:6px;position:relative;min-height:0;overflow:hidden}
+.scell.lad{background:rgba(74,222,128,.28)}.scell.snk{background:rgba(239,68,68,.28)}.scell.end{background:#ffd166;color:#1f1f2b}
+.scell .num{position:absolute;top:2px;left:4px;font-size:clamp(9px,1.6vmin,14px);font-weight:700;opacity:.8}
+.scell .tag{position:absolute;bottom:2px;right:3px;font-size:clamp(8px,1.4vmin,12px);font-weight:800}
+.scell .toks{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:2px;flex-wrap:wrap}
+.scell .tok{width:clamp(14px,3vmin,26px);height:clamp(14px,3vmin,26px);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:clamp(9px,1.8vmin,14px);font-weight:900;color:#fff;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.slines{position:absolute;inset:4px 14px;width:calc(100% - 28px);height:calc(100% - 8px);pointer-events:none}
+.slines line{stroke-width:1.2;stroke-linecap:round;opacity:.85}.slines line.l{stroke:#4ade80}.slines line.s{stroke:#ef4444;stroke-dasharray:2 1.2}
+.dice{width:120px;height:120px;border-radius:24px;background:#fff;color:#1f1f2b;font-size:72px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:10px auto;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.dice.rolling{animation:shake .12s infinite}
+@keyframes shake{0%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}100%{transform:rotate(-8deg)}}
+.rou{flex:1;display:flex;gap:14px;padding:10px calc(var(--sa-r) + 14px) calc(var(--sa-b) + 14px) calc(var(--sa-l) + 14px);min-height:0}
+.rouwheelwrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-width:0;position:relative}
+.rouwheel{width:min(70vh,100%);max-width:640px;aspect-ratio:1;border-radius:50%;box-shadow:0 0 0 6px var(--card),0 8px 30px rgba(0,0,0,.3)}
+.roupointer{font-size:34px;line-height:1;color:var(--warn);margin-bottom:-22px;z-index:2;text-shadow:0 2px 4px rgba(0,0,0,.4)}
+.roubtn{max-width:320px}
+.rouside{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;min-height:0;overflow-y:auto}
+.rouresult{background:linear-gradient(135deg,#be185d,#f472b6);color:#fff;border-radius:16px;padding:14px;text-align:center;opacity:.5}.rouresult.show{opacity:1}
+.rouresult .qnowav{width:84px;height:84px;font-size:40px}.rouresult .qnowname{font-size:26px}
+.rouchips{display:flex;flex-wrap:wrap;gap:6px}.rouchip{cursor:pointer}.rouchip.picked{opacity:.5;text-decoration:line-through}.rouchip.absent{background:var(--bad);color:#fff;border-color:var(--bad)}
+@media (orientation:portrait){.rou{flex-direction:column}.rouside{width:auto;max-height:36%}}
+.hmbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:8px 16px;min-height:0}
+.gallows{width:min(34vh,240px);height:min(34vh,240px);stroke:#fff;stroke-width:4;fill:none;stroke-linecap:round}
+.hmword{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.hmword span{display:inline-block;min-width:1.1em;font-size:clamp(24px,6vmin,56px);font-weight:900;border-bottom:4px solid rgba(255,255,255,.5);text-align:center;line-height:1.2}
+.hmword span.blank{color:transparent}.hmword.won span{color:#4ade80}.hmword.lost span{color:#ef4444}
+.keys{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:760px}
+.key{width:clamp(38px,7vmin,60px);height:clamp(38px,7vmin,60px);border:0;border-radius:10px;background:#fff;color:#1f1f2b;font:inherit;font-weight:800;font-size:clamp(16px,3vmin,24px);cursor:pointer}
+.key.hit{background:#4ade80}.key.miss{background:#ef4444;color:#fff}.key[disabled]{opacity:.5}
+.gcard.rank{background:linear-gradient(135deg,#a16207,#facc15);color:#fff}.gcard.rank .d{color:rgba(255,255,255,.9)}
+.ptteams{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:10px}.ptteam{color:#fff;font-weight:800;padding:4px 12px;border-radius:999px;font-size:14px}
+.ptchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-height:40vh;overflow-y:auto}.ptchip{cursor:pointer;font-size:17px;padding:9px 14px}.ptchip b{margin-right:2px}
+.rk{width:30px;text-align:center;font-weight:900;color:var(--muted)}.rk.top1{color:#facc15}.rk.top2{color:#c0c0c0}.rk.top3{color:#cd7f32}
+.rpts{font-weight:900;font-size:20px;min-width:40px;text-align:right}
+.resbox{background:rgba(255,255,255,.12);border-radius:16px;padding:12px 16px;margin:6px 0 10px;max-width:640px;width:100%}
+.resttl{font-weight:800;margin-bottom:6px}.reslist{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:15px;opacity:.95}
+.bigtime{font-size:clamp(80px,26vw,240px);font-weight:900;font-variant-numeric:tabular-nums;line-height:1;margin-bottom:18px}
 .play.bz .timerbar{margin:2px 14px 6px}
 /* futaba */
 .play.fut{background:#1f1f2b;touch-action:none}
@@ -283,7 +336,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.6.1';
+const APP_VERSION = '1.8.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -371,6 +424,8 @@ function normalizeDb(d) {
     created: k.created || Date.now(), updated: k.updated || Date.now(),
   })) : [];
   d.turnQuestions = Array.isArray(d.turnQuestions) ? cleanWords(d.turnQuestions) : [];
+  d.results = Array.isArray(d.results) ? d.results.filter(r => r && r.cls && Array.isArray(r.teams)) : [];
+  if (!d.roulette || typeof d.roulette !== 'object') d.roulette = {};
   d.queue = normalizeQueue(d.queue);
   const folderIds = new Set(d.folders.map(f => f.id));
   d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
@@ -499,6 +554,7 @@ function mergeBackup(data, replace) {
     if (ex) { Object.assign(ex, deck); } else { db.decks.push(deck); nd++; }
   }
   if (Array.isArray(data.turnQuestions)) db.turnQuestions = cleanWords((db.turnQuestions || []).concat(data.turnQuestions));
+  if (Array.isArray(data.results)) { const have = new Set(db.results.map(r => r.ts)); db.results = db.results.concat(data.results.filter(r => r && !have.has(r.ts))).sort((a, b) => a.ts - b.ts); }
   if (data.queue && Array.isArray(data.queue.groups)) { db.queue = normalizeQueue(db.queue); for (const g of data.queue.groups) if (!db.queue.groups.some(x => x.id === g.id)) db.queue.groups.push(g); db.queue = normalizeQueue(db.queue); }
   saveDb();
   return { decks: nd, folders: nf };
@@ -584,7 +640,9 @@ function route() {
   if (!db.currentClass && !['classes', 'settings', 'queue'].includes(name)) { location.replace('#classes'); return; }
   const screens = { classes: renderClasses, class: renderClassHub, home: renderHome, library: renderLibrary, deck: renderDeck, edit: renderEdit, setup: renderSetup, play: renderPlay, settings: renderSettings,
     buzz: renderBuzzSetup, buzzplay: renderBuzz, futaba: renderFutabaSetup, futabaplay: renderFutaba, memory: renderMemorySetup, memoryplay: renderMemory,
-    queue: a => a ? renderQueueGroup(a) : renderQueueGroups() };
+    queue: a => a ? renderQueueGroup(a) : renderQueueGroups(),
+    quiz: renderQuizSetup, quizplay: renderQuiz, ttt: renderTttSetup, tttplay: renderTtt, bam: renderBamSetup, bamplay: renderBam,
+    snakes: renderSnkSetup, snakesplay: renderSnk, hangman: renderHangSetup, hangmanplay: renderHang, roulette: renderRoulette, timer: renderTimer, rankings: renderRankings };
   clearInterval(qTimer);
   (screens[name] || renderClasses)(arg);
 }
@@ -609,6 +667,14 @@ function renderHome() {
         <div class="gcard buzz" data-nav="#buzz"><div class="emoji">🎲</div><div class="n">Yahtzee</div><div class="d">Turn question, pick a card, win points, dodge the monster.</div></div>
         <div class="gcard futaba" data-nav="#futaba"><div class="emoji">⚡</div><div class="n">Futaba</div><div class="d">Up to 8 players around the iPad race to tap the answer.</div></div>
         <div class="gcard memory" data-nav="#memory"><div class="emoji">🃏</div><div class="n">Memory</div><div class="d">Find the pairs or trios.</div></div>
+        <div class="gcard quiz" data-nav="#quiz"><div class="emoji">📺</div><div class="n">Quiz Show</div><div class="d">Four coloured answers on screen, teams answer, points and speed bonus.</div></div>
+        <div class="gcard ttt" data-nav="#ttt"><div class="emoji">❌</div><div class="n">Tic-tac-toe</div><div class="d">Answer to place your mark. 3×3 to 6×6, 2 to 4 teams.</div></div>
+        <div class="gcard bam" data-nav="#bam"><div class="emoji">🎴</div><div class="n">Baamboozle</div><div class="d">Pick a card, answer, win points or a power-up.</div></div>
+        <div class="gcard snakes" data-nav="#snakes"><div class="emoji">🐍</div><div class="n">Snakes & Ladders</div><div class="d">Answer, roll the dice, climb ladders, dodge snakes.</div></div>
+        <div class="gcard hangman" data-nav="#hangman"><div class="emoji">🪢</div><div class="n">Hangman</div><div class="d">Guess the word letter by letter.</div></div>
+        <div class="gcard roulette" data-nav="#roulette"><div class="emoji">🎯</div><div class="n">Roulette</div><div class="d">Pick a student at random, no repeats.</div></div>
+        <div class="gcard timer" data-nav="#timer"><div class="emoji">⏱️</div><div class="n">Timer</div><div class="d">Big countdown or stopwatch.</div></div>
+        <div class="gcard rank" data-nav="#rankings"><div class="emoji">🏆</div><div class="n">Rankings</div><div class="d">Class and grade leaderboards.</div></div>
         <div class="gcard decks" data-nav="#library"><div class="emoji">🗂️</div><div class="n">Decks</div><div class="d">${plural(db.decks.length, 'deck')} of yours · ${db.folders.length} folders · ${PRESET_DECKS.length} presets</div></div>
       </div>
       <div style="margin-top:22px"><button class="btn sec" data-nav="#settings">Settings & backup</button></div>
@@ -658,6 +724,11 @@ const GAMES = [
   { id: 'buzz', name: 'Yahtzee', emoji: '🎲', hash: '#buzz', cfg: () => gameCfg('buzz') },
   { id: 'futaba', name: 'Futaba', emoji: '⚡', hash: '#futaba', cfg: () => gameCfg('futaba') },
   { id: 'memory', name: 'Memory', emoji: '🃏', hash: '#memory', cfg: () => gameCfg('memory') },
+  { id: 'quiz', name: 'Quiz Show', emoji: '📺', hash: '#quiz', cfg: () => gameCfg('quiz') },
+  { id: 'ttt', name: 'Tic-tac-toe', emoji: '❌', hash: '#ttt', cfg: () => gameCfg('ttt') },
+  { id: 'bam', name: 'Baamboozle', emoji: '🃏', hash: '#bam', cfg: () => gameCfg('bam') },
+  { id: 'snakes', name: 'Snakes & Ladders', emoji: '🐍', hash: '#snakes', cfg: () => gameCfg('snakes') },
+  { id: 'hangman', name: 'Hangman', emoji: '🪢', hash: '#hangman', cfg: () => gameCfg('hangman') },
 ];
 async function pickGame(deckIds) {
   const g = await chooseDlg(deckIds ? 'Play this deck in…' : 'Which game?', GAMES.map(x => ({ label: x.emoji + '  ' + x.name, value: x.id })));
@@ -899,7 +970,7 @@ function startGame(deckIds) {
   audio.unlock();
   keepAwake(true);
   if (db.settings.tilt && tilt.granted === null) tiltEnable();   // ask for motion access now, on the teacher's tap, not in front of the actor
-  if (location.hash === '#play') renderPlay(); else { navState.depth++; go('#play'); }
+  withParticipants(game, 'charades', 'Charades', game.teams.map(t => t.name), () => { if (location.hash === '#play') renderPlay(); else { navState.depth++; go('#play'); } });
 }
 function exitGame() { stopGame(); leaveTo('#setup'); }
 /* Leave a play screen: back to the previous screen (normally the game's setup) */
@@ -1025,6 +1096,7 @@ function renderPlay() {
       <div class="center"><div class="h">${multi ? (winners.length === 1 ? '🏆 ' + esc(winners[0].name) + ' wins!' : '🤝 It\'s a tie!') : '🎉 Well done!'}</div>
       <div class="score">${g.teams.map(t => `<div class="${t.score === best && multi ? 'lead' : ''}"><div class="n">${multi ? esc(t.name) : 'Total'}</div><div class="v">${t.score}</div></div>`).join('')}</div>
       <div class="t">${g.round} round${g.round > 1 ? 's' : ''} · ${nWords(g.words.length)} in play</div>
+      ${resultBoxHtml(g.teams)}
       <button class="pbtn" data-p="again">Play again</button><button class="pbtn ghost" data-p="exit">Back to decks</button></div></div>`;
   }
   app.innerHTML = html;
@@ -1126,7 +1198,7 @@ async function keepAwake(on) {
 }
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && game && location.hash === '#play') keepAwake(true); });
 window.addEventListener('hashchange', () => {
-  const playing = /^#(play|buzzplay|futabaplay|memoryplay)$/.test(location.hash);
+  const playing = /^#(play|buzzplay|futabaplay|memoryplay|quizplay|tttplay|bamplay|snakesplay|hangmanplay)$/.test(location.hash);
   keepAwake(playing);
   if (!playing) { try { speechSynthesis.cancel(); } catch (e) {} }
   if (!playing && game) { if (game.phase === 'word' || game.phase === 'countdown') { clearInterval(game.timer); clearTimeout(game.timer); game.phase = 'ready'; game.pool = game.queue.concat(game.pool); game.queue = []; game.current = null; } }
@@ -1152,6 +1224,11 @@ const GAME_DEFAULTS = {
   buzz: { lastDecks: [], categories: 4, rows: 5, teams: 2, monsters: 2, gifts: 1, doubles: 1, mode: 'turns', wrongPenalty: false, monsterEffect: 'all', questions: true, qTime: 10, qCats: { math: true, body: true, simon: true, capitals: true, mine: true }, v2: true },
   futaba: { lastDecks: [], players: 2, mode: 'mix', mix: { pairs: true, listen: true, scramble: true, gaps: true }, options: 4, rounds: 10, promptSide: 'answer', voice: 'en-GB', voiceName: '' },
   memory: { lastDecks: [], sets: 6, size: 2, variant: 'same', teams: 1 },
+  quiz: { lastDecks: [], rounds: 10, qTime: 20, side: 'answer', plain: 'scramble', showOpts: true, speedBonus: true, teams: 2 },
+  ttt: { lastDecks: [], size: 3, line: 3, qTime: 20, side: 'answer', plain: 'scramble', showOpts: false, steal: true, teams: 2 },
+  bam: { lastDecks: [], cards: 20, powers: 5, qTime: 20, side: 'answer', plain: 'scramble', showOpts: false, teams: 2 },
+  snakes: { lastDecks: [], size: 8, qTime: 20, side: 'answer', plain: 'scramble', showOpts: false, exact: false, teams: 2 },
+  hangman: { lastDecks: [], rounds: 5, hint: true, teams: 1 },
 };
 function gameCfg(key) {
   const s = db.settings;
@@ -1211,6 +1288,7 @@ function gameOverHtml(title, teams, line, againLabel) {
     <div class="center"><div class="h">${multi ? (winners.length === 1 ? '🏆 ' + esc(winners[0].name) + ' wins!' : '🤝 It\'s a tie!') : '🎉 Well done!'}</div>
     <div class="score">${teams.map(t => `<div class="${t.score === best && multi ? 'lead' : ''}"><div class="n">${multi ? esc(t.name) : 'Score'}</div><div class="v">${t.score}</div></div>`).join('')}</div>
     <div class="t">${esc(line)}</div>
+    ${resultBoxHtml(teams)}
     <button class="pbtn" data-p="again">${esc(againLabel || 'Play again')}</button><button class="pbtn ghost" data-p="exit">Exit</button></div></div>`;
 }
 
@@ -1343,7 +1421,7 @@ function startBuzz(selected) {
   buzz = { cats: buildBuzz(decks, cfg), teams: makeTeams(cfg.teams), turn: 0, open: null, phase: 'board', cfg: JSON.parse(JSON.stringify(cfg)), q: null, qUsed: new Set(), qAsked: 0, qGroup: 0, timer: null };
   audio.unlock(); keepAwake(true);
   if (buzzAsksQuestions()) buzzAsk();
-  if (location.hash === '#buzzplay') renderBuzz(); else { navState.depth++; go('#buzzplay'); }
+  withParticipants(buzz, 'buzz', 'Yahtzee', buzz.teams.map(t => t.name), () => { if (location.hash === '#buzzplay') renderBuzz(); else { navState.depth++; go('#buzzplay'); } });
 }
 const buzzAsksQuestions = () => buzz && buzz.cfg.questions && buzz.teams.length > 1;
 function buzzAsk() {
@@ -1543,7 +1621,7 @@ function startFutaba(selected) {
   if (!rounds.length || rounds[0].options.length < 2) { toast('Not enough words for these question types'); return; }
   fut = { rounds, i: 0, modes, cfg: JSON.parse(JSON.stringify(cfg)), players: Array.from({ length: cfg.players }, (_, i) => ({ name: 'Player ' + (i + 1), score: 0, locked: false, rank: 0, delta: '' })), won: -1, ending: false, phase: 'ready', timer: null, window: null, orders: [] };
   audio.unlock(); keepAwake(true); loadVoices();
-  if (location.hash === '#futabaplay') renderFutaba(); else { navState.depth++; go('#futabaplay'); }
+  withParticipants(fut, 'futaba', 'Futaba', fut.players.map(t => t.name), () => { if (location.hash === '#futabaplay') renderFutaba(); else { navState.depth++; go('#futabaplay'); } });
 }
 function futabaNext() {
   const f = fut; clearTimeout(f.window); f.window = null; f.i++; f.won = -1; f.ending = false; f.players.forEach(p => { p.locked = false; p.rank = 0; p.delta = ''; });
@@ -1742,7 +1820,7 @@ function startMemory(selected) {
   if (words.length < 2) { toast('Need at least 2 words'); return; }
   mem = { cards: buildMemory(words, { ...cfg, sets: Math.min(cfg.sets, words.length) }), size: cfg.size, teams: makeTeams(cfg.teams), turn: 0, open: [], lock: false, moves: 0, phase: 'board', timer: null };
   audio.unlock(); keepAwake(true);
-  if (location.hash === '#memoryplay') renderMemory(); else { navState.depth++; go('#memoryplay'); }
+  withParticipants(mem, 'memory', 'Memory', mem.teams.map(t => t.name), () => { if (location.hash === '#memoryplay') renderMemory(); else { navState.depth++; go('#memoryplay'); } });
 }
 const memStatus = m => m.teams.length > 1 ? m.teams[m.turn].name + "'s turn" : plural(m.cards.filter(c => !c.done).length / m.size, 'set') + ' left';
 function renderMemory() {
@@ -1794,6 +1872,632 @@ function layoutMemory() {
   $$('.mcard .front span', board).forEach(span => { const len = Math.max(3, span.textContent.length); const longest = Math.max(...span.textContent.split(' ').map(w => w.length), 3); span.style.fontSize = Math.max(12, Math.min((cw - 18) / (Math.max(longest, Math.min(len, 12) * 0.8) * 0.62), 46)) + 'px'; });
 }
 window.addEventListener('resize', () => { layoutFutaba(); layoutMemory(); });
+
+/* ===================== Question engine (Quiz Show, Tic-tac-toe, Baamboozle, Snakes & Ladders) ===================== */
+/* Turns deck entries into questions. Pairs "term | answer" ask one side and expect the other; plain words are
+   unscrambled / spelled / put in a sentence; verb trios ask for the past forms. */
+const PLAIN_MODES = { scramble: 'Unscramble the word', spell: 'Spell the word', sentence: 'Use the word in a sentence', translate: 'Say it in Spanish', define: 'Explain the word' };
+function makeQuestions(words, cfg) {
+  const side = cfg.side === 'term' ? 1 : 0;             // 0: show the term, answer is part 2; 1: show part 2, answer is the term
+  const pool = shuffle(words.slice());
+  const pairs = pool.filter(hasPair), plain = pool.filter(w => !hasPair(w));
+  const qs = [];
+  for (const w of pool) {
+    const ps = parts(w);
+    if (ps.length >= 3 && cfg.verbs !== false && /^[a-z]+$/i.test(ps[0]) && ps.slice(1).every(x => /^[a-z ,]+$/i.test(x))) {
+      const others = shuffle(pairs.filter(x => x !== w && parts(x).length >= 3)).slice(0, 3).map(x => parts(x)[1] + ', ' + parts(x)[2]);
+      qs.push({ q: 'Past simple and past participle of: ' + ps[0], a: ps[1] + ', ' + ps[2], options: shuffle([ps[1] + ', ' + ps[2]].concat(others)), kind: 'verb' });
+    } else if (ps.length >= 2) {
+      const q = side ? ps[1] : ps[0], a = side ? ps[0] : ps[1];
+      const others = shuffle(pairs.filter(x => x !== w)).map(x => side ? parts(x)[0] : parts(x)[1]).filter(o => o && o.toLowerCase() !== a.toLowerCase());
+      const seen = new Set([a.toLowerCase()]); const opts = [a];
+      for (const o of others) { if (!seen.has(o.toLowerCase())) { seen.add(o.toLowerCase()); opts.push(o); } if (opts.length >= 4) break; }
+      qs.push({ q, a, options: shuffle(opts), kind: 'pair' });
+    } else {
+      const mode = cfg.plain || 'scramble'; const word = ps[0];
+      const others = shuffle(plain.filter(x => x !== w)).map(term).slice(0, 3);
+      if (mode === 'scramble') qs.push({ q: 'Unscramble: ' + scramble(word).toUpperCase(), a: word, options: shuffle([word].concat(others)), kind: 'plain' });
+      else if (mode === 'spell') qs.push({ q: 'Spell: ' + word, a: word.toUpperCase().split('').join(' '), options: null, kind: 'plain' });
+      else if (mode === 'sentence') qs.push({ q: 'Use it in a sentence: ' + word, a: word, options: null, kind: 'plain' });
+      else if (mode === 'translate') qs.push({ q: 'In Spanish: ' + word, a: '(teacher decides)', options: null, kind: 'plain' });
+      else qs.push({ q: 'Explain: ' + word, a: word, options: null, kind: 'plain' });
+    }
+  }
+  return qs;
+}
+function questionPool(selected, cfg) { const words = wordsFrom(selected); return { items: makeQuestions(words, cfg), i: 0, words }; }
+function nextQ(pool) { if (!pool.items.length) return null; if (pool.i >= pool.items.length) { pool.items = shuffle(pool.items); pool.i = 0; } return pool.items[pool.i++]; }
+const OPT_STYLE = [['#e21b3c', '▲'], ['#1368ce', '◆'], ['#d89e00', '●'], ['#26890c', '■']];
+/* Full-screen question card. st = {q, showA, endAt, total, expired, chosen}. judges = html for the buttons row. */
+function questionCardHtml(st, header, judges, hue) {
+  const q = st.q, left = st.endAt ? Math.max(0, st.endAt - Date.now()) : 0;
+  return `<div class="bcard qcard" style="background:${hue || 'var(--accent)'}">
+    <div class="ptop"><span>${header}</span>${st.endAt ? `<span class="clock">${st.expired ? "Time's up!" : fmt(left)}</span>` : '<span></span>'}</div>
+    ${st.endAt ? `<div class="timerbar ${left <= 3000 ? 'hot' : ''}"><i style="width:${100 * left / st.total}%"></i></div>` : ''}
+    <div class="bcard-face" style="padding-top:4px">
+      <div class="bword" style="flex:${q.options && st.showOpts ? '0 0 auto' : 1};min-height:${q.options && st.showOpts ? '18vh' : '0'}"><span style="font-size:min(9vh,7vw)">${esc(q.q)}</span></div>
+      ${q.options && st.showOpts ? `<div class="qopts">${q.options.map((o, i) => `<div class="qopt ${st.showA ? (o === q.a ? 'right' : 'dim') : ''}" style="background:${OPT_STYLE[i % 4][0]}"><span class="sym">${OPT_STYLE[i % 4][1]}</span><span>${esc(o)}</span></div>`).join('')}</div>` : ''}
+      ${st.showA ? `<div class="banswer">${esc(q.a)}</div>` : `<button class="pbtn ghost small" data-p="showa">Show answer</button>`}
+      <div class="bjudge">${judges}</div>
+    </div></div>`;
+}
+function startQTimer(obj, secs, onTick, onEnd) {
+  clearInterval(obj.timer);
+  if (!secs) { obj.st.endAt = 0; return; }
+  obj.st.endAt = Date.now() + secs * 1000; obj.st.total = secs * 1000; obj.st.expired = false;
+  obj.timer = setInterval(() => { const left = Math.max(0, obj.st.endAt - Date.now()); onTick(left); if (left <= 0 && !obj.st.expired) { obj.st.expired = true; clearInterval(obj.timer); audio.horn(); onEnd(); } }, 100);
+}
+const teamJudgeButtons = (teams, current, mode) => mode === 'buzz'
+  ? teams.map((t, i) => `<button class="pbtn" style="background:${TEAM_COLORS[i % TEAM_COLORS.length]};color:#fff" data-p="ok" data-team="${i}">${esc(t.name)} ✓</button>`).join('') + `<button class="pbtn ghost" data-p="wrong">Nobody</button>`
+  : `<button class="pbtn" style="background:var(--ok);color:#fff" data-p="ok" data-team="${current}">✓ Correct</button><button class="pbtn ghost" data-p="wrong">✗ Wrong</button>`;
+
+/* ===================== Quiz Show (Kahoot-style, one screen, teams answer with colours) ===================== */
+let quiz = null;
+function renderQuizSetup() {
+  const cfg = gameCfg('quiz'); const groups = deckGroups(); const selected = ensureSelection(cfg);
+  if (!allDecks().length) { location.replace('#library'); return; }
+  const render = () => {
+    const words = wordsFrom(selected); const pairs = words.filter(hasPair).length;
+    app.innerHTML = `<div class="screen">
+      ${topbar('Quiz Show', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
+      <div class="content"><div class="wrap">
+        <button class="btn big ok" data-act="start" ${words.length >= 4 ? '' : 'disabled'}>▶ Start · ${plural(Math.min(cfg.rounds || words.length, words.length), 'question')}</button>
+        <div class="hint">A question with four coloured answers on the big screen. Teams answer by holding up a colour, shouting or writing it down. When the time is up, tap every team that got it right. First correct answers can earn a speed bonus.</div>
+        <h2 class="sec">Questions</h2>
+        <div class="card">
+          <div class="field"><label>Questions per game</label>${segHtml('rounds', [[5, '5'], [10, '10'], [15, '15'], [20, '20'], [0, 'All']], cfg.rounds)}</div>
+          <div class="field"><label>Time to answer</label>${segHtml('qTime', [[10, '10 s'], [20, '20 s'], [30, '30 s'], [60, '60 s'], [0, 'No timer']], cfg.qTime)}</div>
+          <div class="field"><label>Pairs: show</label>${segHtml('side', [['answer', 'the word → answer the translation/definition'], ['term', 'the definition → answer the word']], cfg.side)}</div>
+          <div class="field"><label>Words without a pair</label>${segHtml('plain', Object.entries(PLAIN_MODES), cfg.plain)}</div>
+          ${togHtml('showOpts', 'Show four answer options', 'Off = open question, the teacher judges the answer', cfg.showOpts)}
+          ${togHtml('speedBonus', 'Speed bonus', 'First team to get it right gets +50', cfg.speedBonus)}
+        </div>
+        <h2 class="sec">Teams</h2>
+        <div class="card">${stepHtml('teams', 'Number of teams', '', cfg.teams)}${teamNamesHtml(cfg.teams)}</div>
+        <h2 class="sec">Decks</h2>
+        ${deckPickerHtml(groups, selected)}
+      </div></div></div>`;
+    bindSetup($('.screen', app), cfg, groups, selected, { teams: [1, 6] }, render, () => startQuiz(selected));
+  };
+  render();
+}
+function startQuiz(selected) {
+  const cfg = gameCfg('quiz'); const pool = questionPool(selected, cfg);
+  if (pool.items.length < 1) { toast('No questions in the selected decks'); return; }
+  const n = cfg.rounds ? Math.min(cfg.rounds, pool.items.length) : pool.items.length;
+  quiz = { cfg: JSON.parse(JSON.stringify(cfg)), pool, n, i: 0, teams: makeTeams(cfg.teams), phase: 'ready', st: null, timer: null, got: new Set(), first: -1 };
+  audio.unlock(); keepAwake(true);
+  withParticipants(quiz, 'quiz', 'Quiz Show', quiz.teams.map(t => t.name), () => { if (location.hash === '#quizplay') renderQuiz(); else { navState.depth++; go('#quizplay'); } });
+}
+function quizAsk() {
+  const z = quiz; z.i++; z.got = new Set(); z.first = -1;
+  if (z.i > z.n) { z.phase = 'over'; audio.horn(); renderQuiz(); return; }
+  z.st = { q: nextQ(z.pool), showA: false, showOpts: z.cfg.showOpts, endAt: 0 }; z.phase = 'question';
+  renderQuiz();
+  startQTimer(z, z.cfg.qTime, left => updateTimer(left, z.st.total), () => renderQuiz());
+}
+function renderQuiz() {
+  const z = quiz; if (!z) { location.replace('#quiz'); return; }
+  let html;
+  if (z.phase === 'ready') html = `<div class="play ready"><div class="ptop"><span>Quiz Show</span><button data-p="exit">✕ Exit</button></div><div class="center"><div class="h">${plural(z.n, 'question')} · ${plural(z.teams.length, 'team')}</div><div class="t">100 points per correct answer${z.cfg.speedBonus ? ', +50 for the fastest team' : ''}.<br>After each question tap the teams that got it right.</div><button class="pbtn" data-p="begin">Start</button></div></div>`;
+  else if (z.phase === 'over') html = gameOverHtml('Quiz Show', z.teams, plural(z.n, 'question'), 'Play again');
+  else if (z.phase === 'question') {
+    const judges = z.teams.map((t, i) => `<button class="pbtn ${z.got.has(i) ? '' : 'ghost'}" style="${z.got.has(i) ? 'background:' + TEAM_COLORS[i % 8] + ';color:#fff' : ''}" data-p="got" data-team="${i}">${z.got.has(i) ? '✓ ' : ''}${esc(t.name)}${z.first === i ? ' ⚡' : ''}</button>`).join('') + `<button class="pbtn" data-p="next">Next ›</button>`;
+    html = `<div class="play ready"><div class="ptop"><button data-p="exit">✕ Exit</button><span>Question ${z.i} / ${z.n}</span><span></span></div>${scoreboardHtml(z.teams, -1)}${questionCardHtml(z.st, `Question ${z.i} / ${z.n}`, judges, 'var(--accent)')}</div>`;
+  } else if (z.phase === 'board') html = `<div class="play ready"><div class="ptop"><button data-p="exit">✕ Exit</button><span>Scores after question ${z.i}</span><span></span></div><div class="center">${scoreboardHtml(z.teams, -1)}<button class="pbtn" data-p="ask">${z.i >= z.n ? 'Final results' : 'Next question ›'}</button></div></div>`;
+  app.innerHTML = html;
+  const w = $('.bword span'); if (w && !(z.st && z.st.showOpts)) fitWord(w);
+  $('.play', app).addEventListener('click', async e => {
+    const z2 = quiz; if (!z2) return; const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
+    if (act === 'exit') { if (z2.phase === 'over' || z2.phase === 'ready' || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) { clearInterval(z2.timer); quiz = null; keepAwake(false); leaveTo('#quiz'); } }
+    if (act === 'begin' || act === 'ask') quizAsk();
+    if (act === 'showa') { z2.st.showA = true; clearInterval(z2.timer); renderQuiz(); }
+    if (act === 'got') { const i = +p.dataset.team; if (z2.got.has(i)) { z2.got.delete(i); if (z2.first === i) z2.first = -1; } else { z2.got.add(i); if (z2.first === -1) z2.first = i; } audio.tick(true); renderQuiz(); }
+    if (act === 'next') { clearInterval(z2.timer); z2.got.forEach(i => { z2.teams[i].score += 100 + (z2.cfg.speedBonus && z2.first === i ? 50 : 0); }); if (z2.got.size) audio.ding(); z2.phase = 'board'; renderQuiz(); }
+    if (act === 'again') startQuiz(new Set(gameCfg('quiz').lastDecks));
+  });
+}
+
+/* ===================== Tic-tac-toe with questions (3x3 to 6x6, 2-4 players) ===================== */
+let ttt = null;
+const TTT_MARKS = ['X', 'O', '△', '□'];
+function renderTttSetup() {
+  const cfg = gameCfg('ttt'); const groups = deckGroups(); const selected = ensureSelection(cfg);
+  if (!allDecks().length) { location.replace('#library'); return; }
+  const render = () => {
+    const words = wordsFrom(selected);
+    app.innerHTML = `<div class="screen">
+      ${topbar('Tic-tac-toe', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
+      <div class="content"><div class="wrap">
+        <button class="btn big ok" data-act="start" ${words.length ? '' : 'disabled'}>▶ Start · ${cfg.size}×${cfg.size} · ${plural(cfg.teams, 'team')}</button>
+        <div class="hint">Teams take turns: pick a numbered square, answer the question. Correct = the square gets your mark. ${cfg.line} in a row wins.</div>
+        <h2 class="sec">Board</h2>
+        <div class="card">
+          <div class="field"><label>Grid</label>${segHtml('size', [[3, '3×3'], [4, '4×4'], [5, '5×5'], [6, '6×6']], cfg.size)}</div>
+          <div class="field"><label>In a row to win</label>${segHtml('line', [[3, '3'], [4, '4'], [5, '5']].filter(o => o[0] <= cfg.size), Math.min(cfg.line, cfg.size))}</div>
+          <div class="field"><label>Time to answer</label>${segHtml('qTime', [[10, '10 s'], [20, '20 s'], [30, '30 s'], [60, '60 s'], [0, 'No timer']], cfg.qTime)}</div>
+          <div class="field"><label>Pairs: show</label>${segHtml('side', [['answer', 'the word'], ['term', 'the definition / translation']], cfg.side)}</div>
+          <div class="field"><label>Words without a pair</label>${segHtml('plain', Object.entries(PLAIN_MODES), cfg.plain)}</div>
+          ${togHtml('showOpts', 'Show answer options', '', cfg.showOpts)}
+          ${togHtml('steal', 'Wrong answer: the next team may steal the square', 'They answer the same question', cfg.steal)}
+        </div>
+        <h2 class="sec">Teams</h2>
+        <div class="card">${stepHtml('teams', 'Teams (X, O, △, □)', '', cfg.teams)}${teamNamesHtml(cfg.teams)}</div>
+        <h2 class="sec">Decks</h2>
+        ${deckPickerHtml(groups, selected)}
+      </div></div></div>`;
+    bindSetup($('.screen', app), cfg, groups, selected, { teams: [2, 4] }, render, () => startTtt(selected));
+  };
+  render();
+}
+function startTtt(selected) {
+  const cfg = gameCfg('ttt'); const pool = questionPool(selected, cfg);
+  if (!pool.items.length) { toast('No questions in the selected decks'); return; }
+  const n = cfg.size;
+  ttt = { cfg: JSON.parse(JSON.stringify(cfg)), pool, n, line: Math.min(cfg.line, n), cells: Array(n * n).fill(-1), teams: makeTeams(cfg.teams), turn: 0, open: null, st: null, timer: null, phase: 'board', winner: -1, stealing: false };
+  audio.unlock(); keepAwake(true);
+  withParticipants(ttt, 'ttt', 'Tic-tac-toe', ttt.teams.map(t => t.name), () => { if (location.hash === '#tttplay') renderTtt(); else { navState.depth++; go('#tttplay'); } });
+}
+function tttWinner(cells, n, k) {
+  const at = (r, c) => (r < 0 || c < 0 || r >= n || c >= n) ? -2 : cells[r * n + c];
+  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) {
+    const v = at(r, c); if (v < 0) continue;
+    for (const [dr, dc] of [[0, 1], [1, 0], [1, 1], [1, -1]]) { let ok = true; for (let s = 1; s < k; s++) if (at(r + dr * s, c + dc * s) !== v) { ok = false; break; } if (ok) return { team: v, cells: Array.from({ length: k }, (_, s) => (r + dr * s) * n + c + dc * s) }; }
+  }
+  return null;
+}
+function renderTtt() {
+  const t = ttt; if (!t) { location.replace('#ttt'); return; }
+  const n = t.n, team = t.teams[t.turn];
+  let html;
+  if (t.phase === 'over') html = gameOverHtml('Tic-tac-toe', t.teams, t.winner >= 0 ? t.teams[t.winner].name + ' made ' + t.line + ' in a row' : 'Board full — no line', 'New board');
+  else {
+    const win = t.winLine || [];
+    html = `<div class="play ready tt"><div class="ptop"><button data-p="exit">✕ Exit</button><span>${esc(team.name)} (${TTT_MARKS[t.turn]}) — pick a square</span><button data-p="finish">End game</button></div>
+      <div class="score">${t.teams.map((x, i) => `<div class="${i === t.turn ? 'lead' : ''}" style="border-bottom:4px solid ${TEAM_COLORS[i % 8]}"><div class="n">${esc(x.name)}</div><div class="v">${TTT_MARKS[i]}</div></div>`).join('')}</div>
+      <div class="tboard" style="grid-template-columns:repeat(${n},1fr)">${t.cells.map((v, i) => `<button class="tcell ${v >= 0 ? 'taken' : ''} ${win.includes(i) ? 'win' : ''}" data-cell="${i}" ${v >= 0 ? 'disabled' : ''} style="${v >= 0 ? 'color:' + TEAM_COLORS[v % 8] : ''}">${v >= 0 ? TTT_MARKS[v] : i + 1}</button>`).join('')}</div>
+      ${t.open !== null ? questionCardHtml(t.st, `Square ${t.open + 1} · ${esc(team.name)}${t.stealing ? ' steals?' : ''}`, `<button class="pbtn" style="background:var(--ok);color:#fff" data-p="ok">✓ Correct — place ${TTT_MARKS[t.turn]}</button><button class="pbtn ghost" data-p="wrong">✗ Wrong</button>`, TEAM_COLORS[t.turn % 8]) : ''}</div>`;
+  }
+  app.innerHTML = html;
+  const w = $('.bword span'); if (w && !(t.st && t.st.showOpts)) fitWord(w);
+  $('.play', app).addEventListener('click', async e => {
+    const t2 = ttt; if (!t2) return;
+    const cell = e.target.closest('[data-cell]'); if (cell && t2.open === null) { t2.open = +cell.dataset.cell; t2.st = { q: nextQ(t2.pool), showA: false, showOpts: t2.cfg.showOpts, endAt: 0 }; renderTtt(); startQTimer(t2, t2.cfg.qTime, left => updateTimer(left, t2.st.total), () => renderTtt()); return; }
+    const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
+    if (act === 'exit') { if (t2.phase === 'over' || !t2.cells.some(v => v >= 0) || await confirmDlg('Leave the game?', '', 'Leave', true)) { clearInterval(t2.timer); ttt = null; keepAwake(false); leaveTo('#ttt'); } }
+    if (act === 'showa') { t2.st.showA = true; clearInterval(t2.timer); renderTtt(); }
+    if (act === 'finish') { t2.phase = 'over'; renderTtt(); }
+    if (act === 'again') startTtt(new Set(gameCfg('ttt').lastDecks));
+    if (act === 'ok' || act === 'wrong') {
+      clearInterval(t2.timer);
+      if (act === 'ok') {
+        t2.cells[t2.open] = t2.turn; audio.ding(); t2.open = null; t2.stealing = false;
+        const w = tttWinner(t2.cells, t2.n, t2.line);
+        if (w) { t2.winLine = w.cells; t2.winner = w.team; t2.teams[w.team].score += 1; renderTtt(); audio.horn(); setTimeout(() => { if (ttt === t2) { t2.phase = 'over'; renderTtt(); } }, 1600); return; }
+        if (t2.cells.every(v => v >= 0)) { t2.phase = 'over'; renderTtt(); return; }
+        t2.turn = (t2.turn + 1) % t2.teams.length; renderTtt();
+      } else {
+        audio.buzz();
+        if (t2.cfg.steal && !t2.stealing && t2.teams.length > 1) { t2.stealing = true; t2.turn = (t2.turn + 1) % t2.teams.length; t2.st.showA = false; renderTtt(); startQTimer(t2, t2.cfg.qTime, left => updateTimer(left, t2.st.total), () => renderTtt()); }
+        else { t2.open = null; t2.stealing = false; t2.turn = (t2.turn + 1) % t2.teams.length; renderTtt(); }
+      }
+    }
+  });
+}
+
+/* ===================== Baamboozle-style board (numbered cards, points and power-ups) ===================== */
+let bam = null;
+const BAM_POWERS = [
+  { id: 'bonus', icon: '🎁', name: 'Bonus!', text: '+15 points, no question' },
+  { id: 'double', icon: '✨', name: 'Double!', text: 'This question is worth double' },
+  { id: 'swap', icon: '🔄', name: 'Swap!', text: 'Swap your points with another team' },
+  { id: 'steal', icon: '🦹', name: 'Steal!', text: 'Take 10 points from another team' },
+  { id: 'boom', icon: '💥', name: 'Boom!', text: 'Lose 10 points' },
+];
+function renderBamSetup() {
+  const cfg = gameCfg('bam'); const groups = deckGroups(); const selected = ensureSelection(cfg);
+  if (!allDecks().length) { location.replace('#library'); return; }
+  const render = () => {
+    const words = wordsFrom(selected);
+    app.innerHTML = `<div class="screen">
+      ${topbar('Baamboozle', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
+      <div class="content"><div class="wrap">
+        <button class="btn big ok" data-act="start" ${words.length ? '' : 'disabled'}>▶ Start · ${cfg.cards} cards · ${plural(cfg.teams, 'team')}</button>
+        <div class="hint">Teams take turns picking a numbered card. Answer the question to win the card's points (5 to 25). Some cards hide a power-up: bonus, double, swap, steal or boom.</div>
+        <h2 class="sec">Board</h2>
+        <div class="card">
+          <div class="field"><label>Cards</label>${segHtml('cards', [[12, '12'], [16, '16'], [20, '20'], [25, '25'], [30, '30']], cfg.cards)}</div>
+          ${stepHtml('powers', 'Power-up cards', 'Hidden among the cards', cfg.powers)}
+          <div class="field"><label>Time to answer</label>${segHtml('qTime', [[10, '10 s'], [20, '20 s'], [30, '30 s'], [60, '60 s'], [0, 'No timer']], cfg.qTime)}</div>
+          <div class="field"><label>Pairs: show</label>${segHtml('side', [['answer', 'the word'], ['term', 'the definition / translation']], cfg.side)}</div>
+          <div class="field"><label>Words without a pair</label>${segHtml('plain', Object.entries(PLAIN_MODES), cfg.plain)}</div>
+          ${togHtml('showOpts', 'Show answer options', '', cfg.showOpts)}
+        </div>
+        <h2 class="sec">Teams</h2>
+        <div class="card">${stepHtml('teams', 'Number of teams', '', cfg.teams)}${teamNamesHtml(cfg.teams)}</div>
+        <h2 class="sec">Decks</h2>
+        ${deckPickerHtml(groups, selected)}
+      </div></div></div>`;
+    bindSetup($('.screen', app), cfg, groups, selected, { teams: [1, 6], powers: [0, 10] }, render, () => startBam(selected));
+  };
+  render();
+}
+function startBam(selected) {
+  const cfg = gameCfg('bam'); const pool = questionPool(selected, cfg);
+  if (!pool.items.length) { toast('No questions in the selected decks'); return; }
+  const cards = Array.from({ length: cfg.cards }, (_, i) => ({ n: i + 1, pts: [5, 10, 15, 20, 25][rnd(0, 4)], power: null, done: false, by: -1 }));
+  shuffle(cards.slice()).slice(0, Math.min(cfg.powers, cards.length)).forEach((c, i) => { c.power = BAM_POWERS[i % BAM_POWERS.length].id; });
+  bam = { cfg: JSON.parse(JSON.stringify(cfg)), pool, cards, teams: makeTeams(cfg.teams), turn: 0, open: null, st: null, timer: null, phase: 'board' };
+  audio.unlock(); keepAwake(true);
+  withParticipants(bam, 'bam', 'Baamboozle', bam.teams.map(t => t.name), () => { if (location.hash === '#bamplay') renderBam(); else { navState.depth++; go('#bamplay'); } });
+}
+function renderBam() {
+  const b = bam; if (!b) { location.replace('#bam'); return; }
+  const team = b.teams[b.turn];
+  let html;
+  if (b.phase === 'over') html = gameOverHtml('Baamboozle', b.teams, plural(b.cards.filter(c => c.done).length, 'card') + ' played', 'New board');
+  else {
+    const cols = b.cards.length <= 12 ? 4 : b.cards.length <= 20 ? 5 : 6;
+    let overlay = '';
+    if (b.open !== null) {
+      const c = b.cards[b.open]; const pw = c.power && BAM_POWERS.find(x => x.id === c.power);
+      if (pw && !b.powerDone) {
+        const needTarget = pw.id === 'swap' || pw.id === 'steal';
+        overlay = `<div class="bcard" style="background:${TEAM_COLORS[b.turn % 8]}"><div class="bcard-face"><div class="bword"><span style="font-size:min(30vh,30vw)">${pw.icon}</span></div><div class="bcat" style="font-size:30px">${pw.name}</div><div class="t">${esc(team.name)}: ${pw.text}</div>
+          <div class="bjudge">${needTarget && b.teams.length > 1 ? b.teams.map((t, i) => i === b.turn ? '' : `<button class="pbtn" style="background:${TEAM_COLORS[i % 8]};color:#fff" data-p="power" data-team="${i}">${esc(t.name)}</button>`).join('') : `<button class="pbtn" data-p="power">OK</button>`}</div></div></div>`;
+      } else {
+        const pts = c.pts * (c.power === 'double' ? 2 : 1);
+        overlay = questionCardHtml(b.st, `Card ${c.n} · ${pts} points · ${esc(team.name)}`, `<button class="pbtn" style="background:var(--ok);color:#fff" data-p="ok">✓ Correct +${pts}</button><button class="pbtn ghost" data-p="wrong">✗ Wrong</button>`, TEAM_COLORS[b.turn % 8]);
+      }
+    }
+    html = `<div class="play ready bz"><div class="ptop"><button data-p="exit">✕ Exit</button><span>${esc(team.name)} — pick a card</span><button data-p="finish">End game</button></div>
+      ${scoreboardHtml(b.teams, b.turn)}
+      <div class="bboard" style="grid-template-columns:repeat(${cols},1fr)">${b.cards.map((c, i) => `<button class="bcell ${c.done ? 'done' : ''}" data-card="${i}" ${c.done ? 'disabled' : ''} style="${c.done ? '' : 'background:hsl(' + ((i * 47) % 360) + ' 70% 55%);color:#fff'}">${c.done ? (c.power ? BAM_POWERS.find(x => x.id === c.power).icon : c.by >= 0 ? '<span style="color:' + TEAM_COLORS[c.by % 8] + '">✓ ' + c.pts + '</span>' : '✗') : c.n}</button>`).join('')}</div>${overlay}</div>`;
+  }
+  app.innerHTML = html;
+  const w = $('.bword span'); if (w && !(b.st && b.st.showOpts) && !(b.open !== null && b.cards[b.open].power && !b.powerDone)) fitWord(w);
+  $('.play', app).addEventListener('click', async e => {
+    const b2 = bam; if (!b2) return;
+    const card = e.target.closest('[data-card]'); if (card && b2.open === null) { b2.open = +card.dataset.card; b2.powerDone = false; const c = b2.cards[b2.open]; audio.tick(true); if (c.power && c.power !== 'double') { renderBam(); return; } b2.powerDone = c.power === 'double'; b2.st = { q: nextQ(b2.pool), showA: false, showOpts: b2.cfg.showOpts, endAt: 0 }; renderBam(); startQTimer(b2, b2.cfg.qTime, left => updateTimer(left, b2.st.total), () => renderBam()); return; }
+    const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
+    if (act === 'exit') { if (b2.phase === 'over' || !b2.cards.some(c => c.done) || await confirmDlg('Leave the game?', '', 'Leave', true)) { clearInterval(b2.timer); bam = null; keepAwake(false); leaveTo('#bam'); } }
+    if (act === 'finish') { if (await confirmDlg('End the game now?', '', 'End game')) { b2.phase = 'over'; audio.horn(); renderBam(); } }
+    if (act === 'again') startBam(new Set(gameCfg('bam').lastDecks));
+    if (act === 'showa') { b2.st.showA = true; clearInterval(b2.timer); renderBam(); }
+    if (act === 'power') {
+      const c = b2.cards[b2.open], team = b2.teams[b2.turn], other = p.dataset.team !== undefined ? b2.teams[+p.dataset.team] : null;
+      if (c.power === 'bonus') { team.score += 15; audio.ding(); }
+      if (c.power === 'boom') { team.score = Math.max(0, team.score - 10); audio.buzz(); }
+      if (c.power === 'swap' && other) { const s = team.score; team.score = other.score; other.score = s; audio.ding(); }
+      if (c.power === 'steal' && other) { const s = Math.min(10, other.score); other.score -= s; team.score += s; audio.ding(); }
+      bamFinish(c, b2.turn);
+    }
+    if (act === 'ok' || act === 'wrong') {
+      clearInterval(b2.timer); const c = b2.cards[b2.open];
+      if (act === 'ok') { b2.teams[b2.turn].score += c.pts * (c.power === 'double' ? 2 : 1); audio.ding(); bamFinish(c, b2.turn); } else { audio.buzz(); bamFinish(c, -1); }
+    }
+  });
+}
+function bamFinish(c, by) {
+  const b = bam; c.done = true; c.by = by; b.open = null; b.st = null;
+  if (b.cards.every(x => x.done)) { b.phase = 'over'; audio.horn(); renderBam(); return; }
+  b.turn = (b.turn + 1) % b.teams.length; renderBam();
+}
+
+/* ===================== Snakes & Ladders with questions ===================== */
+let snk = null;
+const SNK_BOARDS = {
+  6: { ladders: { 3: 22, 5: 8, 11: 26, 20: 29 }, snakes: { 17: 4, 19: 7, 27: 1, 34: 23 } },
+  8: { ladders: { 2: 23, 6: 17, 14: 35, 27: 46, 38: 58, 49: 62 }, snakes: { 13: 3, 24: 10, 33: 20, 43: 30, 55: 41, 61: 48 } },
+  10: { ladders: { 1: 38, 4: 14, 9: 31, 21: 42, 28: 84, 36: 44, 51: 67, 71: 91, 80: 100 }, snakes: { 16: 6, 47: 26, 49: 11, 56: 53, 62: 19, 64: 60, 87: 24, 93: 73, 95: 75, 98: 78 } },
+};
+/* square s (1..n²) -> {col,row} with row 0 at the TOP of the board (serpentine from the bottom-left) */
+function snkPos(s, n) { const r = Math.floor((s - 1) / n); const c = r % 2 === 0 ? (s - 1) % n : n - 1 - ((s - 1) % n); return { col: c, row: n - 1 - r }; }
+function renderSnkSetup() {
+  const cfg = gameCfg('snakes'); const groups = deckGroups(); const selected = ensureSelection(cfg);
+  if (!allDecks().length) { location.replace('#library'); return; }
+  const render = () => {
+    const words = wordsFrom(selected);
+    app.innerHTML = `<div class="screen">
+      ${topbar('Snakes & Ladders', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
+      <div class="content"><div class="wrap">
+        <button class="btn big ok" data-act="start" ${words.length ? '' : 'disabled'}>▶ Start · ${cfg.size}×${cfg.size} · ${plural(cfg.teams, 'team')}</button>
+        <div class="hint">On your turn answer a question. Correct = roll the dice and move. Ladders take you up, snakes take you down. First team to reach the last square wins.</div>
+        <h2 class="sec">Board</h2>
+        <div class="card">
+          <div class="field"><label>Size</label>${segHtml('size', [[6, '6×6 · quick'], [8, '8×8'], [10, '10×10 · classic']], cfg.size)}</div>
+          <div class="field"><label>Time to answer</label>${segHtml('qTime', [[10, '10 s'], [20, '20 s'], [30, '30 s'], [60, '60 s'], [0, 'No timer']], cfg.qTime)}</div>
+          <div class="field"><label>Pairs: show</label>${segHtml('side', [['answer', 'the word'], ['term', 'the definition / translation']], cfg.side)}</div>
+          <div class="field"><label>Words without a pair</label>${segHtml('plain', Object.entries(PLAIN_MODES), cfg.plain)}</div>
+          ${togHtml('showOpts', 'Show answer options', '', cfg.showOpts)}
+          ${togHtml('exact', 'Need the exact number to finish', 'Off = reaching the end is enough', cfg.exact)}
+        </div>
+        <h2 class="sec">Teams</h2>
+        <div class="card">${stepHtml('teams', 'Number of teams', '', cfg.teams)}${teamNamesHtml(cfg.teams)}</div>
+        <h2 class="sec">Decks</h2>
+        ${deckPickerHtml(groups, selected)}
+      </div></div></div>`;
+    bindSetup($('.screen', app), cfg, groups, selected, { teams: [1, 4] }, render, () => startSnk(selected));
+  };
+  render();
+}
+function startSnk(selected) {
+  const cfg = gameCfg('snakes'); const pool = questionPool(selected, cfg);
+  if (!pool.items.length) { toast('No questions in the selected decks'); return; }
+  snk = { cfg: JSON.parse(JSON.stringify(cfg)), pool, n: cfg.size, board: SNK_BOARDS[cfg.size], teams: makeTeams(cfg.teams).map(t => ({ ...t, pos: 0 })), turn: 0, phase: 'board', st: null, timer: null, dice: 0, msg: '' };
+  audio.unlock(); keepAwake(true);
+  withParticipants(snk, 'snakes', 'Snakes & Ladders', snk.teams.map(t => t.name), () => { if (location.hash === '#snakesplay') renderSnk(); else { navState.depth++; go('#snakesplay'); } });
+}
+function snkBoardHtml(s) {
+  const n = s.n, N = n * n, cells = [];
+  for (let row = 0; row < n; row++) for (let col = 0; col < n; col++) {
+    const r = n - 1 - row; const sq = r * n + (r % 2 === 0 ? col : n - 1 - col) + 1;
+    const lad = s.board.ladders[sq], sn = s.board.snakes[sq];
+    const toks = s.teams.map((t, i) => t.pos === sq ? `<i class="tok" style="background:${TEAM_COLORS[i % 8]}">${i + 1}</i>` : '').join('');
+    cells.push(`<div class="scell ${lad ? 'lad' : ''} ${sn ? 'snk' : ''} ${sq === N ? 'end' : ''}"><span class="num">${sq}</span>${lad ? `<span class="tag up">🪜 ${lad}</span>` : sn ? `<span class="tag down">🐍 ${sn}</span>` : ''}<span class="toks">${toks}</span></div>`);
+  }
+  const line = (a, b, cls) => { const A = snkPos(a, n), B = snkPos(b, n); const x1 = (A.col + 0.5) / n * 100, y1 = (A.row + 0.5) / n * 100, x2 = (B.col + 0.5) / n * 100, y2 = (B.row + 0.5) / n * 100; return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${cls}"/>`; };
+  const svg = `<svg class="slines" viewBox="0 0 100 100" preserveAspectRatio="none">${Object.entries(s.board.ladders).map(([a, b]) => line(+a, +b, 'l')).join('')}${Object.entries(s.board.snakes).map(([a, b]) => line(+a, +b, 's')).join('')}</svg>`;
+  return `<div class="sboardwrap"><div class="sboard" style="grid-template-columns:repeat(${n},1fr)">${cells.join('')}</div>${svg}</div>`;
+}
+function renderSnk() {
+  const s = snk; if (!s) { location.replace('#snakes'); return; }
+  const team = s.teams[s.turn], N = s.n * s.n;
+  let html;
+  if (s.phase === 'over') html = gameOverHtml('Snakes & Ladders', s.teams.map(t => ({ name: t.name, score: t.pos })), 'Squares reached', 'New game');
+  else {
+    let overlay = '';
+    if (s.phase === 'question') overlay = questionCardHtml(s.st, esc(team.name) + ' · square ' + team.pos, `<button class="pbtn" style="background:var(--ok);color:#fff" data-p="ok">✓ Correct — roll!</button><button class="pbtn ghost" data-p="wrong">✗ Wrong</button>`, TEAM_COLORS[s.turn % 8]);
+    if (s.phase === 'roll') overlay = `<div class="bcard" style="background:${TEAM_COLORS[s.turn % 8]}"><div class="bcard-face"><div class="bcat">${esc(team.name)} · on ${team.pos}</div><div class="dice ${s.rolling ? 'rolling' : ''}">${s.dice || '?'}</div><div class="t" style="min-height:2em">${esc(s.msg)}</div><div class="bjudge">${s.dice ? `<button class="pbtn" data-p="done">Next team ›</button>` : `<button class="pbtn" data-p="roll">🎲 Roll the dice</button>`}</div></div></div>`;
+    html = `<div class="play ready sl"><div class="ptop"><button data-p="exit">✕ Exit</button><span>${esc(team.name)}'s turn</span><button data-p="finish">End game</button></div>
+      <div class="score">${s.teams.map((t, i) => `<div class="${i === s.turn ? 'lead' : ''}" style="border-bottom:4px solid ${TEAM_COLORS[i % 8]}"><div class="n">${esc(t.name)}</div><div class="v">${t.pos}</div></div>`).join('')}</div>
+      ${snkBoardHtml(s)}
+      <div class="bjudge full" style="padding-bottom:calc(var(--sa-b) + 8px)"><button class="pbtn" data-p="ask">❓ ${esc(team.name)}: answer a question</button></div>${overlay}</div>`;
+  }
+  app.innerHTML = html;
+  const w = $('.bword span'); if (w && !(s.st && s.st.showOpts)) fitWord(w);
+  $('.play', app).addEventListener('click', async e => {
+    const s2 = snk; if (!s2) return; const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
+    if (act === 'exit') { if (s2.phase === 'over' || !s2.teams.some(t => t.pos) || await confirmDlg('Leave the game?', '', 'Leave', true)) { clearInterval(s2.timer); snk = null; keepAwake(false); leaveTo('#snakes'); } }
+    if (act === 'finish') { s2.phase = 'over'; renderSnk(); }
+    if (act === 'again') startSnk(new Set(gameCfg('snakes').lastDecks));
+    if (act === 'ask') { s2.st = { q: nextQ(s2.pool), showA: false, showOpts: s2.cfg.showOpts, endAt: 0 }; s2.phase = 'question'; renderSnk(); startQTimer(s2, s2.cfg.qTime, left => updateTimer(left, s2.st.total), () => renderSnk()); }
+    if (act === 'showa') { s2.st.showA = true; clearInterval(s2.timer); renderSnk(); }
+    if (act === 'wrong') { clearInterval(s2.timer); audio.buzz(); s2.phase = 'board'; s2.turn = (s2.turn + 1) % s2.teams.length; renderSnk(); }
+    if (act === 'ok') { clearInterval(s2.timer); audio.ding(); s2.phase = 'roll'; s2.dice = 0; s2.msg = ''; renderSnk(); }
+    if (act === 'roll') {
+      s2.rolling = true; renderSnk(); let k = 0;
+      const iv = setInterval(() => { const d = $('.dice'); if (d) d.textContent = rnd(1, 6); audio.tick(true); if (++k >= 10) { clearInterval(iv); s2.rolling = false; s2.dice = rnd(1, 6); snkMove(s2); } }, 90);
+    }
+    if (act === 'done') { s2.phase = 'board'; s2.turn = (s2.turn + 1) % s2.teams.length; renderSnk(); }
+  });
+}
+function snkMove(s) {
+  const team = s.teams[s.turn], N = s.n * s.n; let to = team.pos + s.dice; let msg = `${team.name} rolled a ${s.dice}: ${team.pos} → ${Math.min(to, N)}`;
+  if (to > N) { if (s.cfg.exact) { msg = `${team.name} rolled a ${s.dice} — too many, stay on ${team.pos}`; to = team.pos; } else to = N; }
+  if (s.board.ladders[to]) { msg += ` — 🪜 ladder up to ${s.board.ladders[to]}!`; to = s.board.ladders[to]; audio.ding(); }
+  else if (s.board.snakes[to]) { msg += ` — 🐍 snake down to ${s.board.snakes[to]}!`; to = s.board.snakes[to]; audio.buzz(); }
+  team.pos = to; s.msg = msg;
+  if (to === N) { team.score += 1; s.msg += ' 🏆 Winner!'; renderSnk(); audio.horn(); setTimeout(() => { if (snk === s) { s.phase = 'over'; renderSnk(); } }, 2200); return; }
+  renderSnk();
+}
+
+/* ===================== Roulette: pick a random student (no repeats until everyone has had a turn) ===================== */
+function rouState(gid) { if (!db.roulette || typeof db.roulette !== 'object') db.roulette = {}; if (!db.roulette[gid]) db.roulette[gid] = { picked: [], excluded: [] }; return db.roulette[gid]; }
+let rouSpin = null;
+function renderRoulette() {
+  const g = currentClassGroup(); if (!g) { location.replace('#classes'); return; }
+  const st = rouState(g.id); const studs = g.students;
+  const remaining = studs.filter(s => !st.picked.includes(s.id) && !st.excluded.includes(s.id));
+  const seg = remaining.length ? 360 / remaining.length : 360;
+  const wheel = remaining.map((s, i) => { const a0 = i * seg, a1 = (i + 1) * seg; const rad = a => (a - 90) * Math.PI / 180; const x1 = 50 + 50 * Math.cos(rad(a0)), y1 = 50 + 50 * Math.sin(rad(a0)), x2 = 50 + 50 * Math.cos(rad(a1)), y2 = 50 + 50 * Math.sin(rad(a1)); const mid = (a0 + a1) / 2; const tx = 50 + 33 * Math.cos(rad(mid)), ty = 50 + 33 * Math.sin(rad(mid));
+    return `<path d="M50 50 L${x1} ${y1} A50 50 0 ${seg > 180 ? 1 : 0} 1 ${x2} ${y2} Z" fill="${s.color}" stroke="#fff" stroke-width=".6"/><text x="${tx}" y="${ty}" transform="rotate(${mid} ${tx} ${ty})" font-size="${remaining.length > 12 ? 3.2 : remaining.length > 8 ? 4 : 5}" fill="#fff" font-weight="800" text-anchor="middle" dominant-baseline="middle">${esc(s.name.length > 12 ? s.name.slice(0, 11) + '…' : s.name)}</text>`; }).join('');
+  const last = rouSpin && rouSpin.gid === g.id && rouSpin.last ? studs.find(s => s.id === rouSpin.last) : null;
+  app.innerHTML = `<div class="screen">
+    ${topbar('Roulette', backBtn('Class', '#class'), `<button class="tbtn" data-act="reset">Reset</button>`)}
+    <div class="rou">
+      <div class="rouwheelwrap">
+        <div class="roupointer">▼</div>
+        <svg class="rouwheel" viewBox="0 0 100 100" style="transform:rotate(${rouSpin && rouSpin.gid === g.id ? rouSpin.angle : 0}deg)">${wheel || '<circle cx="50" cy="50" r="50" fill="#555"/>'}</svg>
+        <button class="btn big roubtn" data-act="spin" ${remaining.length ? '' : 'disabled'}>${remaining.length ? '🎯 Spin' : 'Everyone has been picked'}</button>
+      </div>
+      <div class="rouside">
+        <div class="rouresult ${last ? 'show' : ''}">${last ? qAvatar(last, 'qnowav') + `<div class="qnowname">${esc(last.name)}</div>` : '<div class="qnowname" style="opacity:.6">Tap Spin</div>'}</div>
+        <div class="qhead"><span>Still to pick</span><span class="qbadge">${remaining.length}</span></div>
+        <div class="rouchips">${studs.map(s => `<span class="chip rouchip ${st.picked.includes(s.id) ? 'picked' : ''} ${st.excluded.includes(s.id) ? 'absent' : ''}" data-stu="${s.id}">${esc(s.name)}${st.excluded.includes(s.id) ? ' · absent' : st.picked.includes(s.id) ? ' ✓' : ''}</span>`).join('') || '<span class="hint">No students in this class yet. Add them in Queue → Teacher.</span>'}</div>
+        <div class="hint">Tap a name to mark them absent (or back). Picked students are not chosen again until you reset.</div>
+      </div>
+    </div></div>`;
+  $('.screen', app).addEventListener('click', async e => {
+    const chip = e.target.closest('[data-stu]'); if (chip) { const id = chip.dataset.stu; if (st.excluded.includes(id)) st.excluded = st.excluded.filter(x => x !== id); else { st.excluded.push(id); st.picked = st.picked.filter(x => x !== id); } saveDb(); renderRoulette(); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'reset') { if (await confirmDlg('Start again?', 'Everyone can be picked again. Absent marks are kept.', 'Reset')) { st.picked = []; saveDb(); rouSpin = null; renderRoulette(); } }
+    if (a.dataset.act === 'spin') {
+      if (!remaining.length) return;
+      const idx = rnd(0, remaining.length - 1); const chosen = remaining[idx];
+      const base = rouSpin && rouSpin.gid === g.id ? rouSpin.angle : 0;
+      const target = 360 * (5 + rnd(0, 2)) + (360 - (idx * seg + seg / 2)); // pointer at the top: rotate so the chosen segment's middle lands there
+      const angle = base - (base % 360) + target;
+      rouSpin = { gid: g.id, angle, last: null }; audio.unlock();
+      const svg = $('.rouwheel'); svg.style.transition = 'transform 4s cubic-bezier(.17,.67,.12,1)'; svg.style.transform = `rotate(${angle}deg)`;
+      $('.roubtn').disabled = true; let ticks = 0; const tk = setInterval(() => { audio.tick(true); if (++ticks > 30) clearInterval(tk); }, 130);
+      setTimeout(() => { clearInterval(tk); st.picked.push(chosen.id); rouSpin.last = chosen.id; saveDb(); audio.ding(); speak(chosen.name, 'es-ES'); renderRoulette(); }, 4200);
+    }
+  });
+}
+
+/* ===================== Hangman ===================== */
+let hang = null;
+function renderHangSetup() {
+  const cfg = gameCfg('hangman'); const groups = deckGroups(); const selected = ensureSelection(cfg);
+  if (!allDecks().length) { location.replace('#library'); return; }
+  const render = () => {
+    const words = wordsFrom(selected);
+    app.innerHTML = `<div class="screen">
+      ${topbar('Hangman', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#library">Decks</button>`)}
+      <div class="content"><div class="wrap">
+        <button class="btn big ok" data-act="start" ${words.length ? '' : 'disabled'}>▶ Start · ${plural(cfg.rounds, 'word')} · ${plural(cfg.teams, 'team')}</button>
+        <div class="hint">Guess the word letter by letter. Teams take turns saying a letter; a wrong letter draws part of the hangman. The team that completes the word wins the lives left as points.</div>
+        <h2 class="sec">Game</h2>
+        <div class="card">
+          <div class="field"><label>Words per game</label>${segHtml('rounds', [[3, '3'], [5, '5'], [8, '8'], [10, '10']], cfg.rounds)}</div>
+          ${togHtml('hint', 'Show a hint', 'The translation / definition when the word has one', cfg.hint)}
+          ${stepHtml('teams', 'Teams', '1 = whole class', cfg.teams)}${teamNamesHtml(cfg.teams)}
+        </div>
+        <h2 class="sec">Decks</h2>
+        ${deckPickerHtml(groups, selected)}
+      </div></div></div>`;
+    bindSetup($('.screen', app), cfg, groups, selected, { teams: [1, 4] }, render, () => startHang(selected));
+  };
+  render();
+}
+function startHang(selected) {
+  const cfg = gameCfg('hangman'); const words = shuffle(wordsFrom(selected).filter(w => /^[a-z][a-z' -]{1,20}$/i.test(term(w))));
+  if (!words.length) { toast('No suitable words (letters only, up to 21 characters)'); return; }
+  hang = { cfg: JSON.parse(JSON.stringify(cfg)), words, i: -1, teams: makeTeams(cfg.teams), turn: 0, phase: 'word', word: '', hint: '', guessed: new Set(), wrong: 0, timer: null };
+  hangNext();
+  audio.unlock(); keepAwake(true);
+  withParticipants(hang, 'hangman', 'Hangman', hang.teams.map(t => t.name), () => { if (location.hash === '#hangmanplay') renderHang(); else { navState.depth++; go('#hangmanplay'); } });
+}
+function hangNext() { const h = hang; h.i++; if (h.i >= Math.min(h.cfg.rounds, h.words.length)) { h.phase = 'over'; return; } const w = h.words[h.i]; h.word = term(w); h.hint = parts(w)[1] || ''; h.guessed = new Set(); h.wrong = 0; h.phase = 'word'; h.solved = false; }
+const HANG_PARTS = ['<circle cx="60" cy="24" r="8"/>', '<line x1="60" y1="32" x2="60" y2="58"/>', '<line x1="60" y1="40" x2="45" y2="52"/>', '<line x1="60" y1="40" x2="75" y2="52"/>', '<line x1="60" y1="58" x2="48" y2="76"/>', '<line x1="60" y1="58" x2="72" y2="76"/>', '<line x1="20" y1="10" x2="60" y2="10"/><line x1="60" y1="10" x2="60" y2="16"/>', '<line x1="20" y1="90" x2="20" y2="10"/><line x1="8" y1="90" x2="32" y2="90"/>'];
+function renderHang() {
+  const h = hang; if (!h) { location.replace('#hangman'); return; }
+  let html;
+  if (h.phase === 'over') html = gameOverHtml('Hangman', h.teams, plural(h.i, 'word'), 'Play again');
+  else {
+    const letters = h.word.toUpperCase().split('').map(ch => /[A-Z]/.test(ch) ? (h.guessed.has(ch) || h.solved || h.wrong >= 8 ? ch : '_') : ch);
+    const order = [7, 6, 0, 1, 2, 3, 4, 5];  // gallows first, then the man
+    const drawn = order.slice(0, h.wrong).map(i => HANG_PARTS[i]).join('');
+    const done = h.solved || h.wrong >= 8;
+    html = `<div class="play ready hm"><div class="ptop"><button data-p="exit">✕ Exit</button><span>Word ${h.i + 1} / ${Math.min(h.cfg.rounds, h.words.length)}${h.teams.length > 1 ? ' · ' + esc(h.teams[h.turn].name) : ''}</span><span class="clock">${8 - h.wrong} ❤</span></div>
+      ${h.teams.length > 1 ? scoreboardHtml(h.teams, h.turn) : ''}
+      <div class="hmbody">
+        <svg class="gallows" viewBox="0 0 100 100">${drawn}</svg>
+        <div class="hmword ${done ? (h.solved ? 'won' : 'lost') : ''}">${letters.map(l => `<span class="${l === '_' ? 'blank' : ''}">${l}</span>`).join('')}</div>
+        ${h.cfg.hint && h.hint ? `<div class="t" style="opacity:.8">Hint: ${esc(h.hint)}</div>` : ''}
+        ${done ? `<div class="t" style="font-size:22px;font-weight:800">${h.solved ? '🎉 ' + (h.teams.length > 1 ? esc(h.teams[h.turn].name) + ' gets ' + (8 - h.wrong) : 'Solved with ' + (8 - h.wrong) + ' lives left') : '💀 The word was ' + esc(h.word)}</div><button class="pbtn" data-p="next">Next word ›</button>`
+          : `<div class="keys">${'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(ch => `<button class="key ${h.guessed.has(ch) ? (h.word.toUpperCase().includes(ch) ? 'hit' : 'miss') : ''}" data-key="${ch}" ${h.guessed.has(ch) ? 'disabled' : ''}>${ch}</button>`).join('')}</div>`}
+      </div></div>`;
+  }
+  app.innerHTML = html;
+  $('.play', app).addEventListener('click', async e => {
+    const h2 = hang; if (!h2) return;
+    const k = e.target.closest('[data-key]');
+    if (k && !h2.solved && h2.wrong < 8) {
+      const ch = k.dataset.key; h2.guessed.add(ch);
+      if (h2.word.toUpperCase().includes(ch)) { audio.tick(true); if (h2.word.toUpperCase().split('').every(c => !/[A-Z]/.test(c) || h2.guessed.has(c))) { h2.solved = true; h2.teams[h2.turn].score += 8 - h2.wrong; audio.ding(); } }
+      else { h2.wrong++; audio.buzz(); if (h2.wrong >= 8) audio.horn(); else if (h2.teams.length > 1) h2.turn = (h2.turn + 1) % h2.teams.length; }
+      renderHang(); return;
+    }
+    const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
+    if (act === 'exit') { if (h2.phase === 'over' || await confirmDlg('Leave the game?', '', 'Leave', true)) { hang = null; keepAwake(false); leaveTo('#hangman'); } }
+    if (act === 'next') { if (h2.teams.length > 1) h2.turn = (h2.turn + 1) % h2.teams.length; hangNext(); renderHang(); }
+    if (act === 'again') startHang(new Set(gameCfg('hangman').lastDecks));
+  });
+}
+
+/* ===================== Timer (countdown / stopwatch) ===================== */
+let tmr = { mode: 'down', total: 300000, left: 300000, running: false, at: 0, iv: null, elapsed: 0 };
+function renderTimer() {
+  const t = tmr;
+  const ms = t.mode === 'down' ? t.left : t.elapsed; const s = Math.max(0, Math.ceil(ms / 1000)); const txt = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+  app.innerHTML = `<div class="screen"><div class="play ready tm ${t.mode === 'down' && t.left <= 0 ? 'good' : ''}"><div class="ptop"><button data-nav="back" data-fallback="#home">✕ Close</button><span>${t.mode === 'down' ? 'Countdown' : 'Stopwatch'}</span><button data-p="mode">${t.mode === 'down' ? 'Stopwatch' : 'Countdown'}</button></div>
+    <div class="center"><div class="bigtime">${txt}</div>
+      ${t.mode === 'down' ? `<div class="seg" style="max-width:520px;width:100%">${[1, 2, 3, 5, 10, 15].map(m => `<button data-set="${m}" class="${t.total === m * 60000 ? 'on' : ''}">${m} min</button>`).join('')}</div>` : ''}
+      <div class="bjudge" style="margin-top:18px"><button class="pbtn" data-p="startstop">${t.running ? '⏸ Pause' : '▶ Start'}</button><button class="pbtn ghost" data-p="reset">↺ Reset</button></div>
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', e => {
+    const st = e.target.closest('[data-set]'); if (st) { tmrStop(); t.total = +st.dataset.set * 60000; t.left = t.total; renderTimer(); return; }
+    const p = e.target.closest('[data-p]'); if (!p) return;
+    if (p.dataset.p === 'mode') { tmrStop(); t.mode = t.mode === 'down' ? 'up' : 'down'; t.left = t.total; t.elapsed = 0; renderTimer(); }
+    if (p.dataset.p === 'reset') { tmrStop(); t.left = t.total; t.elapsed = 0; renderTimer(); }
+    if (p.dataset.p === 'startstop') { if (t.running) tmrStop(); else { audio.unlock(); t.running = true; t.at = Date.now(); keepAwake(true); t.iv = setInterval(() => { const now = Date.now(); const d = now - t.at; t.at = now; if (t.mode === 'down') { t.left -= d; if (t.left <= 0) { t.left = 0; tmrStop(); audio.horn(); setTimeout(() => audio.horn(), 700); } } else t.elapsed += d; const el = $('.bigtime'); if (el) { const ms2 = t.mode === 'down' ? t.left : t.elapsed; const s2 = Math.max(0, Math.ceil(ms2 / 1000)); el.textContent = `${Math.floor(s2 / 60)}:${String(s2 % 60).padStart(2, '0')}`; if (t.mode === 'down' && t.left <= 0) renderTimer(); } }, 200); } renderTimer(); }
+  });
+}
+function tmrStop() { clearInterval(tmr.iv); tmr.iv = null; tmr.running = false; }
+
+/* ===================== Players & rankings ===================== */
+/* Before a game starts, the teacher can say which students are on which team (or skip). When the game ends,
+   every student who played gets points: 3 for the winning team, 2 for second, 1 for everyone else who played
+   (a single-team game gives everyone 2). Ties share the better rank. Points are only ever added. */
+let activeGame = null;   // { id, title, obj, participants: [[studentIds per team]], recorded }
+const RESULT_POINTS = rank => rank === 1 ? 3 : rank === 2 ? 2 : 1;
+function withParticipants(obj, gameId, title, teamNames, go) {
+  activeGame = { id: gameId, title, obj, participants: null, recorded: false };
+  const g = currentClassGroup();
+  if (!g || !g.students.length) { go(); return; }
+  const n = teamNames.length; const assign = {};
+  const m = openSheet(`<h3>Who is playing?</h3><p>Tap a name to put them in a team${n > 1 ? ' (tap again for the next team)' : ''}. Leave absent students unmarked. Points go to the students who play.</p>
+    <div class="ptteams">${teamNames.map((t, i) => `<span class="ptteam" style="background:${TEAM_COLORS[i % 8]}">${i + 1} · ${esc(t)}</span>`).join('')}</div>
+    <div class="ptchips" id="ptchips"></div>
+    <div class="btnrow" style="margin-top:12px"><button class="btn sec" data-a="auto">Everyone, by turns</button><button class="btn sec" data-a="clear">Clear</button></div>
+    <div class="btnrow" style="margin-top:10px"><button class="btn sec" data-a="skip">Play without students</button><button class="btn" data-a="start">Start</button></div>`);
+  const draw = () => { $('#ptchips', m).innerHTML = g.students.map(s => { const t = assign[s.id]; return `<span class="chip ptchip ${t !== undefined ? 'on' : ''}" data-s="${s.id}" style="${t !== undefined ? 'background:' + TEAM_COLORS[t % 8] + ';border-color:' + TEAM_COLORS[t % 8] + ';color:#fff' : ''}">${t !== undefined && n > 1 ? '<b>' + (t + 1) + '</b> ' : ''}${esc(s.name)}</span>`; }).join(''); };
+  draw();
+  m.addEventListener('click', e => {
+    const c = e.target.closest('[data-s]'); if (c) { const id = c.dataset.s; if (assign[id] === undefined) assign[id] = 0; else if (assign[id] + 1 < n) assign[id]++; else delete assign[id]; draw(); return; }
+    const a = e.target.dataset.a; if (!a) return;
+    if (a === 'auto') { shuffle(g.students.slice()).forEach((s, i) => { assign[s.id] = i % n; }); draw(); return; }
+    if (a === 'clear') { for (const k in assign) delete assign[k]; draw(); return; }
+    closeSheet(m);
+    if (a === 'start') { const parts = teamNames.map(() => []); for (const [sid, t] of Object.entries(assign)) parts[t].push(sid); if (parts.some(p => p.length)) activeGame.participants = parts; }
+    go();
+  });
+}
+function recordResult(teams) {
+  const ag = activeGame; if (!ag || ag.recorded || !ag.participants) return null;
+  ag.recorded = true;
+  const g = currentClassGroup(); if (!g) return null;
+  const order = teams.map((t, i) => ({ i, score: t.score })).sort((a, b) => b.score - a.score);
+  const ranks = {}; order.forEach((o, k) => { ranks[o.i] = k > 0 && o.score === order[k - 1].score ? ranks[order[k - 1].i] : k + 1; });
+  const res = { ts: Date.now(), cls: g.id, clsName: g.name, grade: classGrade(), game: ag.id, title: ag.title, teams: teams.map((t, i) => ({ name: t.name, score: t.score, rank: teams.length > 1 ? ranks[i] : 1, pts: teams.length > 1 ? RESULT_POINTS(ranks[i]) : 2, students: ag.participants[i] || [] })) };
+  if (!Array.isArray(db.results)) db.results = [];
+  db.results.push(res); if (db.results.length > 2000) db.results = db.results.slice(-2000);
+  saveDb(); return res;
+}
+function studentName(sid) { for (const g of db.queue.groups) { const s = g.students.find(x => x.id === sid); if (s) return { s, g }; } return null; }
+function rankings(scope, gameId) {
+  const g = currentClassGroup(); if (!g) return [];
+  const grade = classGrade();
+  const rows = (db.results || []).filter(r => (scope === 'grade' ? (grade != null && r.grade === grade) : r.cls === g.id) && (!gameId || r.game === gameId));
+  const acc = {};
+  for (const r of rows) for (const t of r.teams) for (const sid of t.students) { const a = acc[sid] || (acc[sid] = { sid, pts: 0, games: 0, wins: 0 }); a.pts += t.pts; a.games++; if (t.rank === 1 && r.teams.length > 1) a.wins++; }
+  return Object.values(acc).map(a => { const f = studentName(a.sid); return { ...a, name: f ? f.s.name : '?', cls: f ? f.g.name : '', stu: f ? f.s : null }; }).sort((a, b) => b.pts - a.pts || b.wins - a.wins || a.games - b.games || a.name.localeCompare(b.name));
+}
+function rankingListHtml(list, showClass) {
+  if (!list.length) return '<div class="empty">No results yet. Choose the students before a game and finish it to see the ranking.</div>';
+  return `<div class="card">${list.map((r, i) => `<div class="row static"><div class="rk ${i < 3 ? 'top' + (i + 1) : ''}">${i + 1}</div>${r.stu ? qAvatar(r.stu, 'qmini big') : '<div class="qmini big"></div>'}<div class="txt"><div class="t">${esc(r.name)}${showClass ? ` <span class="s">· ${esc(r.cls)}</span>` : ''}</div><div class="s">${plural(r.games, 'game')}${r.wins ? ' · ' + plural(r.wins, 'win') : ''}</div></div><div class="rpts">${r.pts}</div></div>`).join('')}</div>`;
+}
+function renderRankings(arg) {
+  const g = currentClassGroup(); if (!g) { location.replace('#classes'); return; }
+  const q = new URLSearchParams(arg || ''); const scope = q.get('scope') === 'grade' ? 'grade' : 'class'; const gameId = q.get('game') || '';
+  const games = [['', 'All games']].concat(GAMES.map(x => [x.id, x.emoji + ' ' + x.name]));
+  const list = rankings(scope, gameId); const grade = classGrade();
+  app.innerHTML = `<div class="screen">
+    ${topbar('Rankings', backBtn('Class', '#class'), '')}
+    <div class="content"><div class="wrap">
+      <div class="seg"><button data-scope="class" class="${scope === 'class' ? 'on' : ''}">${esc(g.icon + ' ' + g.name)}</button><button data-scope="grade" class="${scope === 'grade' ? 'on' : ''}" ${grade == null ? 'disabled' : ''}>${grade != null ? 'Whole grade ' + grade : 'No grade'}</button></div>
+      <div class="chips" style="padding:10px 0">${games.map(([id, n]) => `<span class="chip ${gameId === id ? 'on' : ''}" data-game="${id}" style="cursor:pointer;${gameId === id ? 'background:var(--accent);color:#fff;border-color:var(--accent)' : ''}">${esc(n)}</span>`).join('')}</div>
+      ${rankingListHtml(list, scope === 'grade')}
+      <div class="hint">3 points for the winning team, 2 for second, 1 for playing. Whole-class games give 2 to everyone who played. Points never go down.</div>
+      ${(db.results || []).length ? `<h2 class="sec">Recent games</h2><div class="card">${(db.results || []).filter(r => scope === 'grade' ? r.grade === grade : r.cls === g.id).slice(-8).reverse().map(r => `<div class="row static"><div class="txt"><div class="t">${esc(r.title)} · ${esc(r.clsName)}</div><div class="s">${new Date(r.ts).toLocaleDateString()} · ${r.teams.map(t => esc(t.name) + ' ' + t.score).join(' · ')}</div></div></div>`).join('')}</div>` : ''}
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', e => {
+    const sc = e.target.closest('[data-scope]'); if (sc && !sc.disabled) { location.replace('#rankings/scope=' + sc.dataset.scope + '&game=' + gameId); return; }
+    const gm = e.target.closest('[data-game]'); if (gm) { location.replace('#rankings/scope=' + scope + '&game=' + gm.dataset.game); }
+  });
+}
+/* Result box shown on game-over screens */
+function resultBoxHtml(teams) {
+  const res = recordResult(teams);
+  if (!activeGame || !activeGame.participants) return '';
+  const g = currentClassGroup(); const list = rankings('class', activeGame.id).slice(0, 5);
+  const r = res || (db.results || []).slice().reverse().find(x => x.game === activeGame.id);
+  return `<div class="resbox"><div class="resttl">🏅 Points added${r ? ': ' + r.teams.filter(t => t.students.length).map(t => esc(t.name) + ' +' + t.pts).join(' · ') : ''}</div>
+    <div class="reslist">${list.map((x, i) => `<span>${i + 1}. ${esc(x.name)} <b>${x.pts}</b></span>`).join('')}</div>
+    <div class="bjudge" style="margin-top:8px"><button class="pbtn ghost small" data-nav="#rankings/scope=class&game=${activeGame.id}">🏆 ${esc(g ? g.name : 'Class')} ranking</button><button class="pbtn ghost small" data-nav="#rankings/scope=grade&game=${activeGame.id}">Grade ranking</button></div></div>`;
+}
 
 /* ===================== Queue (students tap their name and sit down; the teacher calls the next one) ===================== */
 const Q_EMOJIS = ['😊', '😎', '🤩', '🥳', '😄', '🤓', '😃', '🌟', '🎉', '🦸', '🐱', '🐶', '🦊', '🐼', '🐸', '🦄', '🐯', '🐨'];
@@ -2013,6 +2717,8 @@ function renderClassHub() {
       <div class="hint" style="margin:0 4px 12px">${esc(g.sub || '')}${g.sub ? ' · ' : ''}${g.id === HOME_CLASS ? 'Your own students' : plural(g.students.length, 'student')}. Everything you choose in this class (decks, teams, options) is remembered for next time.</div>
       <div class="games">
         <div class="gcard queue" data-nav="#queue/${g.id}"><div class="emoji">🎓</div><div class="n">Queue</div><div class="d">${waiting ? plural(waiting, 'student') + ' waiting' : 'Students tap their name and sit down.'}</div></div>
+        <div class="gcard roulette" data-nav="#roulette"><div class="emoji">🎯</div><div class="n">Roulette</div><div class="d">Pick a student at random${g.students.length ? ' · ' + plural(g.students.length, 'student') : ''}.</div></div>
+        <div class="gcard rank" data-nav="#rankings"><div class="emoji">🏆</div><div class="n">Rankings</div><div class="d">${(() => { const n = (db.results || []).filter(r => r.cls === g.id).length; return n ? plural(n, 'game') + ' recorded' : 'Points from the games, per class and per grade.'; })()}</div></div>
         <div class="gcard charades" data-nav="#home"><div class="emoji">🎮</div><div class="n">Games</div><div class="d">Charades, Yahtzee, Futaba, Memory${lastDeckNames.length ? ' · last decks: ' + esc(lastDeckNames.slice(0, 2).join(', ')) + (lastDeckNames.length > 2 ? '…' : '') : ''}</div></div>
         ${g.id === HOME_CLASS ? `<div class="gcard soon"><div class="emoji">🏠</div><div class="n">Home area</div><div class="d">Coming soon — tell me what goes here.</div></div>` : ''}
       </div>
@@ -2161,6 +2867,18 @@ if (location.search.includes('selftest')) {
     db.queue.groups.push({ id: 'g5', name: '5º EP A', sub: '', icon: '', students: [] }); db.currentClass = 'g5';
     t('class grade + default collapse', classGrade() === 5 && collapsedByDefault('tb_tt2') && !collapsedByDefault('tb_tt5') && !collapsedByDefault('preset'));
     db.queue.groups = db.queue.groups.filter(g => g.id !== 'g5');
+    const mq2 = makeQuestions(['dog | perro', 'cat | gato', 'cow | vaca', 'pig | cerdo', 'go | went | gone', 'plain'], { side: 'answer', plain: 'scramble' });
+    t('question engine', mq2.length === 6 && mq2.filter(x => x.kind === 'pair').every(x => x.options.length === 4 && x.options.includes(x.a)) && mq2.find(x => x.kind === 'verb').a === 'went, gone' && mq2.find(x => x.kind === 'plain').a === 'plain');
+    t('ttt winner', tttWinner([0, 0, 0, -1, 1, 1, -1, -1, -1], 3, 3).team === 0 && tttWinner([0, 1, 0, 1, 0, 1, 1, 0, -1], 3, 3) === null && tttWinner([1, -1, -1, -1, 1, -1, -1, -1, 1], 3, 3).team === 1 && tttWinner([-1, -1, 2, -1, 2, -1, 2, -1, -1], 3, 3).team === 2);
+    t('snakes positions', JSON.stringify(snkPos(1, 10)) === '{"col":0,"row":9}' && JSON.stringify(snkPos(11, 10)) === '{"col":9,"row":8}' && JSON.stringify(snkPos(100, 10)) === '{"col":0,"row":0}' && Object.keys(SNK_BOARDS).length === 3);
+    db.results = []; db.queue.groups.push({ id: 'gx', name: '5º EP X', sub: '', icon: '', students: [{ id: 'sa', name: 'Ana' }, { id: 'sb', name: 'Bea' }, { id: 'sc', name: 'Cai' }] }); db.currentClass = 'gx';
+    activeGame = { id: 'quiz', title: 'Quiz Show', obj: {}, participants: [['sa'], ['sb'], ['sc']], recorded: false };
+    const rr = recordResult([{ name: 'A', score: 300 }, { name: 'B', score: 300 }, { name: 'C', score: 100 }]);
+    t('results: ranks and points', rr.teams[0].rank === 1 && rr.teams[1].rank === 1 && rr.teams[2].rank === 3 && rr.teams[0].pts === 3 && rr.teams[1].pts === 3 && rr.teams[2].pts === 1 && recordResult([]) === null);
+    activeGame = { id: 'memory', title: 'Memory', obj: {}, participants: [['sa', 'sc']], recorded: false }; recordResult([{ name: 'All', score: 5 }]);
+    const rk = rankings('class'); const rkg = rankings('grade', 'quiz');
+    t('rankings aggregate', rk[0].name === 'Ana' && rk[0].pts === 5 && rk[0].games === 2 && rk.find(x => x.name === 'Cai').pts === 3 && rkg.length === 3 && rkg[0].pts === 3 && rankings('class', 'hangman').length === 0);
+    db.queue.groups = db.queue.groups.filter(x => x.id !== 'gx'); db.results = []; activeGame = null;
     t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS));
     db.currentClass = HOME_CLASS;
     const r1 = mergeBackup(bk.data, false); t('merge adds', r1.decks === 1 && r1.folders === 1 && db.decks[0].folderId === 'f1');
@@ -2266,6 +2984,18 @@ if (location.search.includes('selftest')) {
     if (demo === 'buzz' || demo === 'buzzcard' || demo === 'buzzq') { Object.assign(gameCfg('buzz'), { categories: 4, rows: 5, teams: 3, questions: true, qTime: 10 }); startBuzz(four); if (demo !== 'buzzq') { clearInterval(buzz.timer); buzz.phase = 'board'; } if (demo === 'buzzcard') { buzz.open = { ci: 0, r: 2, answer: false, specialDone: false }; buzz.cats[0].cells[2].special = 'double'; } }
     else if (/^futaba/.test(demo)) { const np = { futaba: 4, futaba2: 2, futaba3: 3, futaba5: 5, futaba6: 6, futaba7: 7, futaba8: 8 }[demo] || 4; Object.assign(gameCfg('futaba'), { players: np, mode: 'scramble', options: 4 }); startFutaba(four); fut.phase = 'round'; fut.i = -1; futabaNext(); if (np >= 3) { fut.players[0].rank = 1; fut.players[0].score = 2; fut.players[0].delta = '+2'; fut.won = 0; fut.players[1].locked = true; fut.players[1].score = -2; fut.players[1].delta = '−2'; renderFutaba(); } }
     else if (demo === 'queue' || demo === 'queuegroups') { const g = db.queue.groups[1]; const lv2 = qLive(g.id); if (demo === 'queue') { qJoin(lv2, g.students[4].id); qJoin(lv2, g.students[1].id); qJoin(lv2, g.students[7].id); qNext(lv2); qJoin(lv2, g.students[2].id); go('#queue/' + g.id); } else go('#queue'); }
+    else if (demo === 'quiz') { Object.assign(gameCfg('quiz'), { teams: 3, qTime: 20, showOpts: true }); startQuiz(four); quiz.phase = 'question'; quiz.i = 1; quiz.st = { q: quiz.pool.items[0], showA: false, showOpts: true, endAt: Date.now() + 15000, total: 20000 }; renderQuiz(); }
+    else if (demo === 'ttt') { Object.assign(gameCfg('ttt'), { teams: 3, size: 4, line: 3 }); startTtt(four); ttt.cells[0] = 0; ttt.cells[5] = 1; ttt.cells[10] = 2; renderTtt(); }
+    else if (demo === 'tttq') { Object.assign(gameCfg('ttt'), { teams: 2, size: 3 }); startTtt(four); ttt.open = 4; ttt.st = { q: ttt.pool.items[0], showA: true, showOpts: false, endAt: 0 }; renderTtt(); }
+    else if (demo === 'bam') { Object.assign(gameCfg('bam'), { teams: 2, cards: 20, powers: 5 }); startBam(four); bam.cards[2].done = true; bam.cards[2].by = 0; bam.cards[7].done = true; bam.cards[7].by = -1; renderBam(); }
+    else if (demo === 'snakes') { Object.assign(gameCfg('snakes'), { teams: 3, size: 10 }); startSnk(four); snk.teams[0].pos = 14; snk.teams[1].pos = 27; snk.teams[2].pos = 5; renderSnk(); }
+    else if (demo === 'snakes8') { Object.assign(gameCfg('snakes'), { teams: 2, size: 8 }); startSnk(four); snk.teams[0].pos = 22; snk.teams[1].pos = 40; snk.phase = 'roll'; snk.dice = 4; snk.msg = 'Team 1 rolled a 4: 18 → 22'; renderSnk(); }
+    else if (demo === 'hangman') { Object.assign(gameCfg('hangman'), { teams: 2, rounds: 5 }); startHang(four); hang.guessed = new Set(['E', 'A', 'Z', 'Q', 'X']); hang.wrong = 3; renderHang(); }
+    else if (demo === 'roulette') { db.currentClass = db.queue.groups[1].id; const st = rouState(db.currentClass); st.picked = [db.queue.groups[1].students[0].id]; st.excluded = [db.queue.groups[1].students[3].id]; go('#roulette'); }
+    else if (demo === 'timer') { go('#timer'); }
+    else if (demo === 'players') { db.currentClass = db.queue.groups[1].id; Object.assign(gameCfg('quiz'), { teams: 3 }); startQuiz(four); }
+    else if (demo === 'rankings') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; db.results = [{ ts: Date.now() - 86400000, cls: gg.id, clsName: gg.name, grade: 2, game: 'quiz', title: 'Quiz Show', teams: [{ name: 'Team 1', score: 500, rank: 1, pts: 3, students: [gg.students[0].id, gg.students[1].id] }, { name: 'Team 2', score: 300, rank: 2, pts: 2, students: [gg.students[2].id, gg.students[3].id] }] }, { ts: Date.now(), cls: gg.id, clsName: gg.name, grade: 2, game: 'ttt', title: 'Tic-tac-toe', teams: [{ name: 'X', score: 1, rank: 1, pts: 3, students: [gg.students[2].id] }, { name: 'O', score: 0, rank: 2, pts: 2, students: [gg.students[0].id, gg.students[5].id] }] }]; go('#rankings'); }
+    else if (demo === 'gameover') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; Object.assign(gameCfg('quiz'), { teams: 2 }); activeGame = null; quiz = { cfg: gameCfg('quiz'), pool: { items: [], i: 0 }, n: 5, i: 6, teams: [{ name: 'Team 1', score: 400 }, { name: 'Team 2', score: 250 }], phase: 'over', st: null, timer: null, got: new Set(), first: -1 }; activeGame = { id: 'quiz', title: 'Quiz Show', obj: quiz, participants: [[gg.students[0].id, gg.students[1].id], [gg.students[2].id]], recorded: false }; go('#quizplay'); }
     else if (demo === 'classes') { db.currentClass = db.queue.groups[1].id; go('#classes'); }
     else if (demo === 'classhub') { db.currentClass = db.queue.groups[1].id; go('#class'); }
     else if (demo === 'games') { db.currentClass = db.queue.groups[1].id; go('#home'); }

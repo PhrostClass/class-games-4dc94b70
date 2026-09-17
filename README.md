@@ -24,6 +24,16 @@ Games:
   queue and sits down; the teacher taps "Call next" and the iPad says the name in Spanish. Each student has a unique colour,
   an emoji or a photo; queue position is shown on the card and waiting time in the list. Teacher panel behind a 4-digit PIN
   (default 1234): groups, students, paste a list, photos, re-colour, change PIN. The live queue survives closing the app.
+- **Quiz Show** (Kahoot-style) – question + four coloured answers on the big screen, timer, tap the teams that got it right, 100 pts + speed bonus.
+- **Tic-tac-toe** – 3×3 to 6×6, 2–4 teams (X O △ □), answer a question to place a mark, optional steal on a wrong answer.
+- **Baamboozle** – 12–30 numbered cards worth 5–25 points, hidden power-ups (bonus, double, swap, steal, boom).
+- **Snakes & Ladders** – 6×6 / 8×8 / 10×10 board, answer to roll the dice, ladders and snakes drawn on the board.
+- **Hangman** – letters keyboard, 8 lives, hint from the pair, teams alternate letters.
+- **Roulette** – spinning wheel of the class's students (photos/emoji), no repeats until reset, tap a name to mark absent.
+- **Timer** – big countdown (1–15 min presets) or stopwatch with an alarm.
+- **Rankings** – before a team game a "Who is playing?" sheet assigns students to teams (or skip). At the end every
+  player gets points (winning team 3, second 2, others 1; whole-class games 2), never subtracted. Rankings per game
+  and overall, per class and per grade (classes whose name has the same grade number), from the class hub.
 - **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
   cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
 
@@ -82,5 +92,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.
