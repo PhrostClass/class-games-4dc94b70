@@ -338,7 +338,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.9.1';
+const APP_VERSION = '1.9.2';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -2556,9 +2556,10 @@ const Q_SEED = [
 ];
 /* group number used by the Attendance app ("Ana, Luis (3)"), by class name */
 const ATT_BY_NAME = Object.fromEntries(Q_SEED.map(g => [g.name, g.att]));
-const HOME_GROUP = () => ({ id: HOME_CLASS, name: 'Home students', sub: 'Private lessons', icon: '🏠', students: [] });
+const HOME_STUDENTS = ['Iñigo', 'Manu', 'Nacho', 'Juan', 'Beltran', 'Jorge', 'Adrián', 'Adriana', 'Sara', 'Jaime'];
+const HOME_GROUP = () => { const g = { id: HOME_CLASS, name: 'Home students', sub: 'Private lessons', icon: '🏠', students: HOME_STUDENTS.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(g); return g; };
 function qSeed() {
-  return { pin: '1234', live: {}, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, att: g.att, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }).concat([HOME_GROUP()]) };
+  return { pin: '1234', live: {}, homeSeeded: true, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, att: g.att, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }).concat([HOME_GROUP()]) };
 }
 /* Every student in a group gets a different colour (and emoji while there are enough). */
 function qAssignLooks(group) {
@@ -2578,6 +2579,11 @@ function normalizeQueue(q) {
     students: (Array.isArray(g.students) ? g.students : []).filter(s => s && s.id && typeof s.name === 'string').map(s => ({ id: String(s.id), name: s.name, emoji: s.emoji || '', color: s.color || '', photo: typeof s.photo === 'string' ? s.photo : null })) }));
   q.groups.forEach(qAssignLooks);
   if (!q.groups.some(g => g.id === HOME_CLASS)) q.groups.push(HOME_GROUP());
+  if (!q.homeSeeded) {   // one-time: fill the Home students group on installs that already had it empty
+    const home = q.groups.find(g => g.id === HOME_CLASS); const have = new Set(home.students.map(s => s.name.toLowerCase()));
+    HOME_STUDENTS.filter(n => !have.has(n.toLowerCase())).forEach(n => home.students.push({ id: uid(), name: n, emoji: '', color: '', photo: null }));
+    qAssignLooks(home); q.homeSeeded = true;
+  }
   return q;
 }
 const qGroup = id => db.queue.groups.find(g => g.id === id) || null;
@@ -2932,7 +2938,7 @@ if (location.search.includes('selftest')) {
     t('absence message', absenceMessage(db.queue.groups.find(x => x.id === 'ga'), ['x1', 'x2'], todayKey()) === 'Ana, Luis (3)' && absenceMessage(db.queue.groups.find(x => x.id === 'ga'), ['x2'], yesterdayKey()) === 'ayer: Luis (3)' && isAbsentToday('ga', 'x1') && !isAbsentToday('ga', 'zz'));
     t('attendance numbers seeded', qSeed().groups.find(x => x.name === '2 EP').att === 4 && normalizeQueue({ groups: [{ id: 'q', name: '1 ESO A', students: [] }] }).groups[0].att === 1);
     db.queue.groups = db.queue.groups.filter(x => x.id !== 'ga'); delete db.absences.ga;
-    t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS));
+    t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [{ id: 'home', name: 'Home students', students: [{ id: 'k', name: 'Sara' }] }] }).groups.find(g => g.id === 'home').students.length === 10 && new Set(normalizeQueue({ groups: [] }).groups.find(g => g.id === 'home').students.map(s => s.color)).size === 10);
     db.currentClass = HOME_CLASS;
     const r1 = mergeBackup(bk.data, false); t('merge adds', r1.decks === 1 && r1.folders === 1 && db.decks[0].folderId === 'f1');
     const r2 = mergeBackup(bk.data, false); t('merge idempotent', r2.decks === 0 && db.decks.length === 1);
@@ -3007,7 +3013,7 @@ if (location.search.includes('selftest')) {
     const lv = { q: [], now: null, nowAt: 0 };
     t('queue join/pos', qJoin(lv, 'a') && qJoin(lv, 'b') && !qJoin(lv, 'a') && qPos(lv, 'b') === 2 && qPos(lv, 'zz') === 0);
     t('queue next/leave', qNext(lv) === 'a' && lv.now === 'a' && qPos(lv, 'b') === 1 && qLeave(lv, 'b') && !qLeave(lv, 'b') && qNext(lv) === null);
-    const qs = qSeed(); t('queue seed 2026-27', qs.groups.length === 7 && qs.groups.reduce((a, g) => a + g.students.length, 0) === 35 && qs.groups[1].students.some(x => x.name === 'Macarena') && qs.groups.every(g => new Set(g.students.map(x => x.color)).size === g.students.length));
+    const qs = qSeed(); t('queue seed 2026-27', qs.groups.length === 7 && qs.groups.reduce((a, g) => a + g.students.length, 0) === 45 && qs.groups[1].students.some(x => x.name === 'Macarena') && qs.groups.every(g => new Set(g.students.map(x => x.color)).size === g.students.length));
     t('ordinal', ordinal(1) === '1st' && ordinal(2) === '2nd' && ordinal(3) === '3rd' && ordinal(4) === '4th' && ordinal(11) === '11th' && ordinal(22) === '22nd');
     t('normalizeQueue', normalizeQueue(null).groups.length === 7 && normalizeQueue({ groups: [{ id: 'x', name: 'X', students: [{ id: 'a', name: 'A' }] }] }).groups[0].students[0].color === Q_COLORS[0]);
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
