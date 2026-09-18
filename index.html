@@ -371,7 +371,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.12.0';
+const APP_VERSION = '1.12.1';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -671,6 +671,8 @@ function topbar(title, left, right) {
 const backBtn = (label = 'Back', fallback = '#library') => `<button class="tbtn" data-nav="back" data-fallback="${fallback}">‹ ${esc(label)}</button>`;
 
 /* ===================== Router ===================== */
+let pendingReload = false;   // a new version is installed and waits for a harmless moment (a menu screen) to load
+const SAFE_TO_RELOAD = () => /^#?\/?(classes|class|students|home|library|settings|rankings|pet|study)?$/.test(location.hash) && !$('.modal');
 const app = $('#app');
 const navState = { depth: 0 };
 function route() {
@@ -680,6 +682,7 @@ function route() {
   const name = i < 0 ? h : h.slice(0, i);
   const arg = i < 0 ? '' : h.slice(i + 1);
   $$('.modal').forEach(m => m.remove());
+  if (pendingReload && SAFE_TO_RELOAD()) { pendingReload = false; location.reload(); return; }
   if (!db.currentClass && !['classes', 'settings', 'queue'].includes(name)) { location.replace('#classes'); return; }
   const screens = { classes: renderClasses, class: renderClassHub, home: renderHome, library: renderLibrary, deck: renderDeck, edit: renderEdit, setup: renderSetup, play: renderPlay, settings: renderSettings,
     buzz: renderBuzzSetup, buzzplay: renderBuzz, futaba: renderFutabaSetup, futabaplay: renderFutaba, memory: renderMemorySetup, memoryplay: renderMemory,
@@ -3346,9 +3349,14 @@ if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then(reg => {
       reg.addEventListener('updatefound', () => {
         const nw = reg.installing;
-        if (nw) nw.addEventListener('statechange', () => { if (nw.state === 'installed' && navigator.serviceWorker.controller) toast('Update downloaded. Close and reopen the app to use it.', 4000); });
+        if (nw) nw.addEventListener('statechange', () => { if (nw.state === 'installed' && navigator.serviceWorker.controller && !SAFE_TO_RELOAD()) toast('Update downloaded. It loads when you go back to the menu.', 4000); });
       });
+      // An installed iPad app is usually resumed, not relaunched: look for a new version every time it comes to the front.
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') reg.update().catch(() => {}); });
     }).catch(() => {});
+    // The new service worker takes over at once (skipWaiting + claim): reload into the new version, but never in the middle of a game or an exercise.
+    const hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', () => { if (!hadController) return; if (SAFE_TO_RELOAD()) location.reload(); else pendingReload = true; });
   });
 }
 

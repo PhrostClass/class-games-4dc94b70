@@ -1,5 +1,5 @@
 /* Phunzies Classroom service worker. Bump VERSION on every deploy (deploy.ps1 does it). */
-const VERSION = '1.12.0';
+const VERSION = '1.12.1';
 const CACHE = 'classgames-' + VERSION;
 const SHELL = ['./', './index.html', './manifest.webmanifest', './textbooks.json', './pet.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
@@ -30,7 +30,8 @@ self.addEventListener('fetch', e => {
       try {
         const ctrl = new AbortController();
         const t = setTimeout(() => ctrl.abort(), 4000);
-        const res = await fetch(req, { signal: ctrl.signal });
+        // no-store: GitHub Pages lets the browser keep index.html for 10 minutes, which hid fresh deploys
+        const res = await fetch(req.url, { signal: ctrl.signal, cache: 'no-store', credentials: 'same-origin' });
         clearTimeout(t);
         if (cacheable(req, res)) {
           const copy = res.clone();
