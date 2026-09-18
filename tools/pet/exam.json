@@ -1,0 +1,198 @@
+{
+  "reading": [
+    {
+      "id": "r1", "part": 1, "title": "Part 1 · Short messages and notices",
+      "intro": "Read each short text. What does it say? Choose A, B or C. Tip: the right answer says the same thing in different words. An option that repeats words from the text is often the trap.",
+      "items": [
+        { "text": "SPORTS HALL\nThe hall is closed on Thursday morning for cleaning. Basketball practice will take place on the outdoor court instead.", "q": "What should basketball players know?", "opts": ["Their practice on Thursday has been cancelled.", "They should go to a different place on Thursday.", "The outdoor court will be cleaned on Thursday."], "a": 1, "why": "'take place on the outdoor court instead' = a different place. Practice is not cancelled, and it is the hall that is being cleaned." },
+        { "text": "Mia, I've got your maths book. You left it at my place yesterday. I can't bring it to school tomorrow because I've got a dentist's appointment, so shall I drop it at yours tonight? Dan", "q": "Why has Dan written this message?", "opts": ["to ask Mia to come and collect her book", "to explain why he was not at school", "to offer to return something this evening"], "a": 2, "why": "'shall I drop it at yours tonight?' is an offer. The dentist is tomorrow, not an explanation of a past absence." },
+        { "text": "COUGH MEDICINE\nOnce opened, keep in the fridge and use within 10 days.", "q": "What does the label say?", "opts": ["After opening the bottle, store it somewhere cold.", "Do not open the bottle for ten days.", "Finish the medicine before putting it in the fridge."], "a": 0, "why": "'Once opened' = after opening; 'keep in the fridge' = store it somewhere cold." },
+        { "text": "To: all students\nThe photography club will now meet on Wednesdays rather than Mondays, starting next week. We are staying in Room 12. New members are still welcome. Just turn up!", "q": "What is changing?", "opts": ["the day when the club meets", "the room where the club meets", "the rule about who can join"], "a": 0, "why": "'Wednesdays rather than Mondays' = a new day. The room stays the same and new members are still welcome." },
+        { "text": "T-SHIRT OFFER\nBuy two and get a third half price. Ends Sunday. Not available online.", "q": "What do customers need to know?", "opts": ["The offer starts on Sunday.", "They will get three T-shirts for the price of two.", "They must visit the shop to get this discount."], "a": 2, "why": "'Not available online' = only in the shop. The third T-shirt is half price, not free, and the offer ends on Sunday." }
+      ]
+    },
+    {
+      "id": "r2", "part": 2, "title": "Part 2 · Matching people and activities",
+      "intro": "Five people want to start a new free-time activity. Read the eight descriptions and choose the best one for each person. Tip: underline the two or three things each person needs. The right text must match ALL of them.",
+      "bank": [
+        { "k": "A", "t": "World Kitchen. Join us on Tuesday or Thursday evenings and learn dishes from Asia and South America. Many of our recipes are meat-free and all ingredients are provided." },
+        { "k": "B", "t": "Weekend Chefs. Our Saturday classes teach traditional baking, from bread to meat pies. Bring your own ingredients and take home everything you make." },
+        { "k": "C", "t": "River Paddlers. Kayaking every Sunday for people who have never tried it before. Boats, helmets and life jackets are included in the price." },
+        { "k": "D", "t": "Peak Climbers. We climb real rock every weekend. This group is for experienced climbers only, and members must bring their own ropes and shoes." },
+        { "k": "E", "t": "Focus Club. New to photography? Learn what all the buttons on your camera do. Six Monday lessons, and no experience is needed." },
+        { "k": "F", "t": "Through the Lens. A club for photographers who already know the basics and want to go further. At the end of each term members show their best pictures at an exhibition in the town library." },
+        { "k": "G", "t": "Park Runners Youth. For ages 13 to 18. We meet at 9 am every Saturday for a run around the park, then have a drink together in the café. It is free!" },
+        { "k": "H", "t": "Strings Together. Guitar and ukulele lessons in groups of no more than four. Prices are low and we can lend you an instrument for the first term." }
+      ],
+      "items": [
+        { "q": "Lucía wants to learn to cook food from other countries. She is a vegetarian and she is only free on weekday evenings.", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 0, "why": "A: other countries (Asia, South America), meat-free recipes, Tuesday or Thursday evenings. B is on Saturdays and uses meat." },
+        { "q": "Marco would like to do something outdoors at the weekend. He is a complete beginner and has no equipment.", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 2, "why": "C: Sundays, for people who have never tried, equipment included. D is only for experienced climbers with their own equipment." },
+        { "q": "Aisha has taken photos for years. She wants to improve and she would love other people to see her pictures.", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 5, "why": "F: for people who know the basics, with a public exhibition. E is for beginners." },
+        { "q": "Tom, 15, wants to get fit and meet people of his own age. He is free on Saturday mornings and does not want to pay.", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 6, "why": "G: ages 13 to 18, Saturday 9 am, social time afterwards, free." },
+        { "q": "Elena wants to learn a musical instrument. She does not own one, cannot spend much and dislikes big classes.", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 7, "why": "H: small groups (max four), low prices, instruments lent." }
+      ]
+    },
+    {
+      "id": "r3", "part": 3, "title": "Part 3 · Long text with questions",
+      "intro": "Read the text and answer the questions. Tip: the questions follow the order of the text. The last question is usually about the whole text.",
+      "text": "BIKES WITH A PAST\nSixteen-year-old Noah Rey talks about his unusual hobby.\n\nMost of my friends spend their weekends playing video games. I spend mine in my grandfather's garage, covered in oil. Two years ago I found a rusty old bicycle next to the bins in our street. I only took it home because I felt sorry for it. I had no idea what I was doing, but my grandfather, who used to be a mechanic, showed me how to take it apart and clean every piece.\n\nThat first bike took me four months, mainly because I kept making mistakes. I put the chain on backwards twice. When it was finally ready, I expected to feel proud. In fact, what I felt was sad, because the project was over. So I started looking for another one.\n\nSince then I have repaired eleven bikes. People now leave them outside our door. I sell some of them cheaply to students, and the money goes on tools and paint. Last month a local shop offered me a Saturday job. I thought about it for a long time, but I said no. I am afraid that if fixing bikes becomes work, it will stop being fun.\n\nMy parents were worried at first that my school marks would go down. Actually, the opposite has happened. I have learned to be patient and to finish what I start, and my teachers have noticed.",
+      "items": [
+        { "q": "Why did Noah take the first bicycle home?", "opts": ["He wanted to learn a new skill.", "His grandfather asked him to.", "He thought it was a pity to leave it there.", "He needed a bike to get to school."], "a": 2, "why": "'I only took it home because I felt sorry for it.'" },
+        { "q": "The first bike took a long time because", "opts": ["Noah often did things wrong.", "his grandfather was too busy to help.", "it was difficult to find the parts.", "he could only work at weekends."], "a": 0, "why": "'mainly because I kept making mistakes'" },
+        { "q": "How did Noah feel when the first bike was finished?", "opts": ["proud of what he had done", "unhappy that there was nothing left to do", "surprised that it worked", "tired of repairing things"], "a": 1, "why": "He EXPECTED to feel proud, but 'what I felt was sad, because the project was over'." },
+        { "q": "Why did Noah turn down the job at the shop?", "opts": ["The pay was too low.", "He did not have enough free time.", "His parents did not like the idea.", "He thought he might enjoy his hobby less."], "a": 3, "why": "'if fixing bikes becomes work, it will stop being fun'" },
+        { "q": "What would Noah probably say about his hobby?", "opts": ["It has made me a lot of money, which is why I do it.", "It has taught me things that help me in other parts of my life.", "I would like to stop, but too many people need my help.", "It was fun at first, but now it feels like a job."], "a": 1, "why": "Last paragraph: he has learned to be patient and to finish things, and his teachers have noticed." }
+      ]
+    },
+    {
+      "id": "r4", "part": 4, "title": "Part 4 · Missing sentences",
+      "intro": "Five sentences have been removed from the text. Choose the best sentence (A to H) for each gap. There are three extra sentences. Tip: look at the words just before and after the gap: pronouns (it, they, this), linking words (however, so) and time words.",
+      "text": "A NIGHT AT THE MUSEUM\n\nFor my fourteenth birthday, my aunt gave me a very strange present: a ticket to spend a night at the Natural History Museum. (1) ___ However, she told me to wait and see.\n\nWe arrived at seven in the evening with our sleeping bags. There were about fifty other children there. (2) ___ Ours was called 'the Dinosaurs', which seemed like a good sign.\n\nFirst we did a treasure hunt with torches in the dark. Then a scientist showed us real insects under a microscope. (3) ___ I had never seen anything so ugly and so beautiful at the same time.\n\nAt midnight we put our sleeping bags on the floor of the main hall, right under the skeleton of a huge whale. (4) ___ I lay there for hours looking up at it.\n\nIn the morning we had breakfast in the café before the museum opened to the public. (5) ___ I have already asked my aunt if we can go again next year.",
+      "bank": [
+        { "k": "A", "t": "The best one was the eye of a fly, which looked like a football made of glass." },
+        { "k": "B", "t": "To be honest, I thought museums were boring and I was a bit disappointed." },
+        { "k": "C", "t": "It was difficult to fall asleep with that enormous shape above me." },
+        { "k": "D", "t": "The staff divided us into five teams and gave each one a name." },
+        { "k": "E", "t": "That is why I decided to go home early." },
+        { "k": "F", "t": "It felt special to be there while the building was still empty and quiet." },
+        { "k": "G", "t": "My aunt had forgotten to bring the tickets." },
+        { "k": "H", "t": "They cost more than I had expected." }
+      ],
+      "items": [
+        { "q": "Gap 1", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 1, "why": "'However, she told me to wait and see' needs a negative idea before it: he was disappointed." },
+        { "q": "Gap 2", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 3, "why": "'Ours was called...' refers back to the teams and their names." },
+        { "q": "Gap 3", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 0, "why": "'The best one' = the best insect under the microscope; the next sentence describes it as ugly and beautiful." },
+        { "q": "Gap 4", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 2, "why": "'that enormous shape above me' = the whale skeleton; 'I lay there for hours' continues the idea of not sleeping." },
+        { "q": "Gap 5", "opts": ["A", "B", "C", "D", "E", "F", "G", "H"], "a": 5, "why": "'before the museum opened to the public' matches 'the building was still empty and quiet'." }
+      ]
+    },
+    {
+      "id": "r5a", "part": 5, "title": "Part 5 · Choose the word (text 1)",
+      "intro": "Choose the correct word for each gap. Tip: this part tests vocabulary. Look at the words around the gap: is there a preposition after it? Does the word usually go with that noun?",
+      "text": "THE LONGEST WALK\n\nLast summer my uncle (1) ___ a walk of 800 kilometres across the north of Spain. He had wanted to do it for years, but he had never (2) ___ to find the time. He carried everything he needed in a small backpack and (3) ___ each night in simple hostels. The hardest part, he says, was not the distance but the (4) ___ : it rained for nine days without stopping. He (5) ___ people from more than twenty countries, and he still keeps in (6) ___ with some of them.",
+      "items": [
+        { "q": "Gap 1", "opts": ["completed", "succeeded", "arrived", "passed"], "a": 0, "why": "complete a walk. 'succeeded' needs 'in + -ing'; 'arrived' needs 'at/in'." },
+        { "q": "Gap 2", "opts": ["achieved", "managed", "reached", "got"], "a": 1, "why": "manage TO do something. The others are not followed by 'to find' with this meaning." },
+        { "q": "Gap 3", "opts": ["lived", "remained", "stayed", "kept"], "a": 2, "why": "stay in a hostel / hotel (for a short time)." },
+        { "q": "Gap 4", "opts": ["climate", "weather", "season", "temperature"], "a": 1, "why": "Weather = what happens on particular days (rain). Climate is the general pattern of a place." },
+        { "q": "Gap 5", "opts": ["knew", "introduced", "met", "found"], "a": 2, "why": "meet people = see them for the first time. 'Knew' is a false friend of 'conocer' here." },
+        { "q": "Gap 6", "opts": ["touch", "message", "relation", "connection"], "a": 0, "why": "keep in touch with = seguir en contacto con." }
+      ]
+    },
+    {
+      "id": "r5b", "part": 5, "title": "Part 5 · Choose the word (text 2)",
+      "intro": "Choose the correct word for each gap.",
+      "text": "OUR SCHOOL GARDEN\n\nTwo years ago, the piece of land behind our school was full of rubbish. Then our science teacher (1) ___ that we turn it into a garden. At first nobody was very (2) ___ on the idea, but she persuaded us to try. We (3) ___ money by selling cakes, and a local company gave us tools. Now we (4) ___ tomatoes, beans and herbs, and the school canteen uses them. Looking after the garden takes (5) ___ a lot of our free time, but nobody complains. It has (6) ___ a real difference to our school.",
+      "items": [
+        { "q": "Gap 1", "opts": ["said", "suggested", "told", "advised"], "a": 1, "why": "suggest THAT somebody does something. 'told' and 'advised' need a person: told us / advised us." },
+        { "q": "Gap 2", "opts": ["interested", "excited", "keen", "fond"], "a": 2, "why": "keen ON. (interested IN, excited ABOUT, fond OF)" },
+        { "q": "Gap 3", "opts": ["raised", "rose", "won", "earned by"], "a": 0, "why": "raise money = recaudar dinero. 'Rise' never has an object." },
+        { "q": "Gap 4", "opts": ["grow up", "increase", "bring up", "grow"], "a": 3, "why": "grow vegetables. 'Grow up' is for children becoming adults." },
+        { "q": "Gap 5", "opts": ["off", "up", "over", "in"], "a": 1, "why": "take up time/space = ocupar." },
+        { "q": "Gap 6", "opts": ["done", "had", "made", "put"], "a": 2, "why": "make a difference." }
+      ]
+    }
+  ],
+  "listening": [
+    {
+      "id": "l1", "part": 1, "title": "Part 1 · Short recordings",
+      "intro": "You will hear five short recordings. Read the question and the three options FIRST, then press Play. In the exam you hear everything twice. Tip: all three options are usually mentioned. Listen for the one that answers the question.",
+      "items": [
+        { "script": [ { "v": "F", "t": "Did you get anything for Dad's birthday?" }, { "v": "M", "t": "Well, I looked at some ties, but he's got hundreds. Then I saw a lovely wallet, but it was far too expensive. In the end I got him that book about mountains he keeps talking about." }, { "v": "F", "t": "Good choice. He'll love it." } ], "q": "What did the boy buy for his father?", "opts": ["a tie", "a wallet", "a book"], "a": 2, "why": "Ties: 'he's got hundreds'. Wallet: 'far too expensive'. 'In the end I got him that book.'" },
+        { "script": [ { "v": "M", "t": "Hi Sara, it's Ben. About tomorrow: the film starts at quarter past seven, not half past six as I told you. So let's meet outside the cinema at seven. That gives us fifteen minutes to buy popcorn. See you then!" } ], "q": "What time will they meet?", "opts": ["6.30", "7.00", "7.15"], "a": 1, "why": "6.30 was the wrong time he gave before; 7.15 is when the film starts; they MEET at seven." },
+        { "script": [ { "v": "F", "t": "And now the weather for tomorrow. The morning will start cold and foggy, so take care on the roads. By lunchtime the fog will have gone and we can expect sunshine for the rest of the day. The rain we promised you will not arrive until Thursday." } ], "q": "What will the weather be like tomorrow afternoon?", "opts": ["foggy", "sunny", "rainy"], "a": 1, "why": "Fog is only in the morning; rain arrives on Thursday; 'sunshine for the rest of the day'." },
+        { "script": [ { "v": "M", "t": "How was your trip to the coast? Did you drive?" }, { "v": "F", "t": "We were going to, but the car broke down the day before. There's no train station there, so in the end we took the coach. It was actually really comfortable." } ], "q": "How did the woman travel to the coast?", "opts": ["by car", "by train", "by coach"], "a": 2, "why": "The car broke down, there is no station, 'in the end we took the coach'." },
+        { "script": [ { "v": "F", "t": "Excuse me, is there a chemist's near here?" }, { "v": "M", "t": "Yes. Go straight on past the bank, and turn left at the traffic lights. It's next to the post office, opposite the park." }, { "v": "F", "t": "Left at the lights. Thanks very much." } ], "q": "Where is the chemist's?", "opts": ["next to the bank", "next to the post office", "inside the park"], "a": 1, "why": "You walk PAST the bank. It is 'next to the post office, opposite the park'." }
+      ]
+    },
+    {
+      "id": "l2", "part": 2, "title": "Part 2 · Short conversations",
+      "intro": "You will hear four short conversations. These questions are about opinions and feelings, so the answer is not one word you hear. Tip: listen for 'but', 'actually', 'to be honest'. The real opinion usually comes after them.",
+      "items": [
+        { "script": [ { "v": "F", "t": "So what did you think of the new sports centre?" }, { "v": "M", "t": "Well, everyone told me it was expensive, but the price seemed fine to me. And the pool is fantastic. The only thing is, it took me forty minutes to get there, and I had to change buses twice." }, { "v": "F", "t": "Oh, that's a pity." } ], "q": "What does the boy dislike about the sports centre?", "opts": ["how much it costs", "how far away it is", "how small the pool is"], "a": 1, "why": "The price 'seemed fine', the pool is 'fantastic'. 'The only thing is' introduces the problem: the journey." },
+        { "script": [ { "v": "M", "t": "Have you finished the history project?" }, { "v": "F", "t": "Nearly. To be honest, I thought it would be really boring, but once I started reading about the castle, I couldn't stop. I even went to see it on Sunday." }, { "v": "M", "t": "Wow. I still haven't started mine." } ], "q": "How does the girl feel about the project?", "opts": ["She found it more interesting than she expected.", "She is worried that she will not finish it.", "She thinks it is too much work."], "a": 0, "why": "'I thought it would be really boring, BUT... I couldn't stop.'" },
+        { "script": [ { "v": "F", "t": "Are you coming to Jake's party on Saturday?" }, { "v": "M", "t": "I'd love to, but my cousins are visiting from Ireland and Mum wants me at home. I asked if I could go for just an hour, and she said no." }, { "v": "F", "t": "That's a shame. I'll tell Jake." } ], "q": "Why can't the boy go to the party?", "opts": ["He has to travel to Ireland.", "He has not been invited.", "He has to stay with his family."], "a": 2, "why": "His cousins are coming FROM Ireland, and his mum wants him at home." },
+        { "script": [ { "v": "M", "t": "I'm thinking of buying these headphones. What do you think?" }, { "v": "F", "t": "They look great, and the sound is amazing. But have you read the reviews? Lots of people say they break after a few months. If I were you, I'd keep looking." } ], "q": "What does the girl advise the boy to do?", "opts": ["buy the headphones now", "wait for a lower price", "look for different headphones"], "a": 2, "why": "'If I were you, I'd keep looking' = do not buy these, look for others. She never mentions the price." }
+      ]
+    },
+    {
+      "id": "l3a", "part": 3, "title": "Part 3 · Complete the notes (1)",
+      "intro": "You will hear a teacher giving information about a school trip. Write one or two words, a number, a date or a time in each gap. Tip: read the notes first and decide what KIND of word is missing (a day? a price? a place?). The answers come in order.",
+      "script": [ { "v": "F", "t": "Good morning, everyone. I want to give you some details about our trip to the Science Museum. We are going on Wednesday the twelfth of March. Please be at the school gate by eight fifteen, because the coach leaves at half past eight and it will not wait for anyone." }, { "v": "F", "t": "The trip costs fourteen pounds. That includes the coach and your ticket, but it does not include lunch, so you must bring a packed lunch with you. In the morning we will visit the space exhibition, and in the afternoon there is a workshop about robots, which I am sure you will enjoy." }, { "v": "F", "t": "You do not need to wear your uniform, but please wear comfortable shoes, because we will be walking a lot. Finally, I need the permission form, signed by your parents, by Friday. Give it to Mr Dalton. That is D, A, L, T, O, N. Thank you." } ],
+      "items": [
+        { "q": "Date of the trip: Wednesday ___ March", "ans": ["12", "12th", "twelfth", "the 12th", "the twelfth"], "why": "'Wednesday the twelfth of March'" },
+        { "q": "The coach leaves at ___", "ans": ["8.30", "8:30", "half past eight", "eight thirty", "08.30", "08:30"], "why": "8.15 is when students must be at the gate. The coach LEAVES at half past eight." },
+        { "q": "Price: £ ___", "ans": ["14", "fourteen", "14.00"], "why": "fourteen (14), not forty (40). Listen for the stress: fourTEEN." },
+        { "q": "Students must bring a ___", "ans": ["packed lunch", "lunch"], "why": "'it does not include lunch, so you must bring a packed lunch'" },
+        { "q": "Afternoon workshop about ___", "ans": ["robots", "robot"], "why": "Space is the morning exhibition. The afternoon workshop is about robots." },
+        { "q": "Give the form to Mr ___", "ans": ["dalton"], "why": "Spelt out: D-A-L-T-O-N. Practise the alphabet: A /ei/, E /i:/, I /ai/." }
+      ]
+    },
+    {
+      "id": "l3b", "part": 3, "title": "Part 3 · Complete the notes (2)",
+      "intro": "You will hear a man talking on the radio about a photography competition for young people. Complete the notes.",
+      "script": [ { "v": "M", "t": "If you are between eleven and seventeen and you love taking photos, listen carefully. Our young photographer competition is back. Last year the subject was animals. This year we want your best pictures of water. It could be the sea, the rain, or even a glass on your kitchen table." }, { "v": "M", "t": "You can send up to three photos. Please do not post them to us. Upload them on our website before the thirtieth of April. The winner will receive a new camera, and the second prize is a one-day course with a professional photographer." }, { "v": "M", "t": "The best twenty pictures will be shown in an exhibition at the city library during the month of June. If you have any questions, call us on oh one six three, four double five, nine seven two. Good luck!" } ],
+      "items": [
+        { "q": "This year's subject: ___", "ans": ["water"], "why": "Animals was LAST year. 'This year we want your best pictures of water.'" },
+        { "q": "Maximum number of photos: ___", "ans": ["3", "three"], "why": "'up to three photos'" },
+        { "q": "Send photos by: ___ April", "ans": ["30", "30th", "thirtieth", "the 30th", "the thirtieth"], "why": "thirtieth (30th), not thirteenth (13th)." },
+        { "q": "First prize: a ___", "ans": ["camera", "new camera"], "why": "The course is the SECOND prize." },
+        { "q": "Exhibition at the city ___", "ans": ["library"], "why": "'an exhibition at the city library'. Remember: library = biblioteca." },
+        { "q": "Phone: 0163 ___", "ans": ["455972", "455 972", "4 55 972", "4559 72"], "why": "'four double five, nine seven two' = 455 972. 'Double five' = 55." }
+      ]
+    },
+    {
+      "id": "l4", "part": 4, "title": "Part 4 · Interview",
+      "intro": "You will hear an interview with a young chef called Maya Ford. Read all six questions first. Tip: the questions follow the order of the interview, and each question starts when the interviewer asks something new.",
+      "script": [ { "v": "M", "t": "Today I am talking to Maya Ford, who at only nineteen is already working as a chef in a top restaurant. Maya, when did you start cooking?" }, { "v": "F", "t": "People think I learned from my mum, but she hates cooking! It was my neighbour, an old Italian lady. I used to go to her flat after school, and she let me help her make pasta. I was about eight." }, { "v": "M", "t": "And what was your first job in a kitchen like?" }, { "v": "F", "t": "Hard! I was sixteen and I worked at weekends. I did not mind washing hundreds of plates, and the heat was fine. What I found really difficult was the speed. Everyone was shouting and running, and I was always too slow." }, { "v": "M", "t": "What do you enjoy most about your work now?" }, { "v": "F", "t": "The money is not great, to be honest, and I almost never meet the customers. For me, it is creating new dishes. When the head chef puts one of my ideas on the menu, that is the best feeling in the world." }, { "v": "M", "t": "Is there anything you do not like?" }, { "v": "F", "t": "The hours. I finish after midnight, so I hardly ever see my friends. They have stopped inviting me to things, which makes me a bit sad." }, { "v": "M", "t": "What advice would you give to young people who want to be chefs?" }, { "v": "F", "t": "A lot of people say you must go to an expensive cookery school. I did not. My advice is to get a job in a real kitchen, any kitchen, as early as you can. You learn more in a month there than in a year of classes." }, { "v": "M", "t": "And finally, what are your plans?" }, { "v": "F", "t": "Everybody expects me to say I want my own restaurant. Maybe one day. But first I am going to spend a year in Japan. I have already bought the ticket. I want to learn how they prepare fish there." } ],
+      "items": [
+        { "q": "Who taught Maya to cook?", "opts": ["her mother", "a neighbour", "a teacher at school"], "a": 1, "why": "Her mum 'hates cooking'. 'It was my neighbour, an old Italian lady.'" },
+        { "q": "What was the hardest thing about her first job?", "opts": ["washing so many plates", "the heat in the kitchen", "having to work fast"], "a": 2, "why": "She 'did not mind' the plates and the heat 'was fine'. 'What I found really difficult was the speed.'" },
+        { "q": "What does Maya like most about her job now?", "opts": ["inventing new dishes", "the money she earns", "meeting the customers"], "a": 0, "why": "'creating new dishes' = inventing. The money 'is not great' and she almost never meets customers." },
+        { "q": "What is the disadvantage of her job?", "opts": ["She has to get up very early.", "She has little time for her friends.", "She does not get on with the head chef."], "a": 1, "why": "She finishes after midnight and hardly ever sees her friends." },
+        { "q": "What does Maya advise young people to do?", "opts": ["go to a good cookery school", "practise at home every day", "start working in a kitchen as soon as possible"], "a": 2, "why": "'get a job in a real kitchen... as early as you can'. She did NOT go to cookery school." },
+        { "q": "What is Maya going to do next?", "opts": ["open her own restaurant", "work abroad for a year", "write a book about fish"], "a": 1, "why": "'first I am going to spend a year in Japan'. The restaurant is only 'maybe one day'." }
+      ]
+    }
+  ],
+  "guide": [
+    { "title": "Reading Part 6: what it is", "points": [
+      "A short text (an email, a message, a short article) with 6 gaps. There are NO options: you write ONE word in each gap. 6 marks.",
+      "It tests grammar words, not difficult vocabulary. About nine gaps in ten are one of these: articles (a, an, the), prepositions (in, on, at, of, for, to, with), auxiliary verbs (is, was, have, been, do, will, would), pronouns (it, there, them, which, who), quantifiers (much, many, few, some, any, every), linking words (because, although, but, so, if, when, than, as) and small words from phrasal verbs and fixed phrases (look forward TO, at LEAST, instead OF).",
+      "Spelling must be correct. Contractions (don't, isn't) count as two words, so they are never the answer."
+    ] },
+    { "title": "Reading Part 6: the method (5 steps)", "points": [
+      "1. Read the whole text quickly first, without writing. You need to know what it is about and whether it is past, present or future.",
+      "2. For each gap, read the WHOLE sentence, not only the three words around the gap. Look at what comes AFTER the gap as well as before.",
+      "3. Ask: what KIND of word is missing? Before a noun: article, quantifier or possessive (a, the, some, my). Before a past participle (given, made, been): an auxiliary (was, has, be). After an adjective or verb: probably a preposition (good AT, depend ON). Between two ideas: a linking word. After a noun plus comma: a relative pronoun (who, which, where, whose).",
+      "4. Write the word, then read the sentence again 'aloud in your head'. Does it sound right? Is the verb singular or plural? Is the tense the same as the rest of the text?",
+      "5. Never leave a gap empty. If you have no idea, write the most common small word that fits the kind of word you need (the, of, to, it, was)."
+    ] },
+    { "title": "Reading Part 6: typical traps for Spanish speakers", "points": [
+      "Subjects cannot disappear in English: '___ is important to...' = IT; '___ are many people' = THERE.",
+      "Prepositions that are different from Spanish: depend ON, married TO, think ABOUT/OF, arrive AT/IN (never 'to'), on foot, by car, at the weekend, in the morning but on Monday morning, good AT, interested IN, keen ON.",
+      "for / since / ago: FOR six months, SINCE 2019, six months AGO.",
+      "so / such: SO tired, SUCH a good film, so MANY people, so MUCH time.",
+      "Comparisons: bigger THAN, as big AS, the same AS, THE best.",
+      "make / do, and other common verbs: make a mistake, make friends, make a decision, do homework, do sport, take a photo, take part, have a shower, it TAKES ten minutes.",
+      "who / which / where / whose: after a comma never use 'that'.",
+      "used TO live, look forward TO seeing, would LIKE to, had BETTER go, would RATHER stay."
+    ] },
+    { "title": "Listening: how to get better", "points": [
+      "Before each recording you have time. USE IT: read the questions, underline key words and think of other ways to say the options. The recording will almost never use the same words as the correct option.",
+      "In Parts 1, 2 and 4 all the options are usually mentioned. Wrong options are rejected ('too expensive', 'we were going to, but...') or belong to another time or person. Listen for the change of direction: but, actually, in the end, instead, to be honest, the only thing is.",
+      "You hear everything twice. First time: choose an answer. Second time: check it, and prove to yourself why the other two are wrong.",
+      "Part 3 (notes): decide what kind of word is missing before you listen. Train numbers (14 / 40, 13th / 30th), times, dates, prices and spelling of names. Write what you hear: usually one or two words. Small spelling mistakes in difficult words are accepted, but spelt-out names and easy words must be right.",
+      "If you miss an answer, forget it and go on. Losing one mark is fine; losing three because you were still thinking about it is not.",
+      "Daily training, 10 minutes: one dictation sentence set in this app, plus a short video or podcast in English with English subtitles. First listen without text, then with the text, then again without it."
+    ] },
+    { "title": "The other reading parts in one line each", "points": [
+      "Part 1 (5 short notices and messages): ask 'who is writing to whom, and why?'. The answer says the same thing in other words.",
+      "Part 2 (match 5 people with 8 texts): underline each person's two or three needs. The right text matches all of them; the traps match only one or two.",
+      "Part 3 (long text, 5 questions with 4 options): the questions follow the text in order. Find the exact line that proves the answer. Careful with what the writer EXPECTED and what really happened.",
+      "Part 4 (5 missing sentences, 8 options): look for links: pronouns (it, they, this, one), linking words (however, so, that is why) and time words.",
+      "Part 5 (choose 1 of 4 words, 6 gaps): it tests vocabulary and collocations. Look at the preposition after the gap and the noun that goes with the verb.",
+      "Timing for the whole Reading paper (45 minutes): about 7 minutes per part, and 3 minutes to check that every answer is on the answer sheet."
+    ] }
+  ]
+}

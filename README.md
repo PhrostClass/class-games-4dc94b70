@@ -43,6 +43,16 @@ Games:
 - **Absences** – per class, tap who is missing today (or yesterday). Builds the Attendance app's Telegram message
   ("Ana, Luis (4)", group number from Settings → Groups of that app) and opens Telegram with it ready to send
   (bot username in Settings → Attendance). Absent students are skipped by the roulette and the team picker.
+- **Study** – Anki-style flashcards with spaced repetition for any deck (Again / Hard / Good / Easy, learning steps of
+  1 and 10 minutes, then days; new cards per day; optional answer → English direction). Progress is stored per student
+  (`db.study.cards["<class>:<student>"]`), chosen with "Who is studying?".
+- **Exam prep · B1 Preliminary (PET)** – `pet.json` (built by `tools/build_pet.py` from `tools/pet/*.txt` + `exam.json`):
+  Reading Part 6 trainer (24 open-cloze texts with an explanation for every gap, 138 one-gap sentences by type, weak-point
+  tracking), a taster of Reading Parts 1-5, Listening Parts 1-4 read aloud by the iPad voices (two voices, slower / exam
+  speed, script after checking), dictation, a method guide, and the 384 hardest words of the official vocabulary list
+  (August 2025 edition) as English → Spanish (Spain) cards with an example sentence in both languages. Only the headwords
+  come from the list; every text, question, sentence and tip was written for this app. The same build writes a printable
+  pack and an Anki import file to `Desktop\Carlos Polo - PET`.
 - **Memory** – pairs (2 cards) or trios (3 cards); pick how many sets are on the board; with pairs in the deck the
   cards show word / translation; otherwise the other card shows the same word, mixed-up letters or missing letters. 1–4 teams.
 
@@ -101,5 +111,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover|absences` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover|absences|pet|petcloze|petclozelist|petdrills|petdrill|petread|petlisten|petlisten4|petdict|petguide|study|studyback|studysetup` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.

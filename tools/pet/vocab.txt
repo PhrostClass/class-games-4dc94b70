@@ -1,0 +1,405 @@
+# B1 Preliminary hardest words for Spanish speakers. Headwords chosen from the official Cambridge B1 Preliminary
+# vocabulary list (August 2025 edition); translations (Spanish from Spain) and example sentences written for this app.
+# word (pos) || traducción || Frase en español || English sentence
+
+## False friends and easily confused words
+sensible (adj) || sensato, prudente || Es una chica muy sensata y nunca hace tonterías. || She's a very sensible girl and never does silly things.
+embarrassed (adj) || avergonzado, cortado || Me sentí muy avergonzado cuando me caí delante de todos. || I felt really embarrassed when I fell over in front of everyone.
+embarrassing (adj) || embarazoso, que da vergüenza || Fue muy embarazoso olvidar su nombre. || It was really embarrassing to forget her name.
+carpet (n) || moqueta, alfombra || El perro ha manchado la moqueta del salón. || The dog has made the living room carpet dirty.
+lecture (n) || clase magistral, conferencia || La clase de historia de hoy ha durado dos horas. || Today's history lecture lasted two hours.
+lecturer (n) || profesor universitario || Mi tía es profesora de universidad en Salamanca. || My aunt is a university lecturer in Salamanca.
+pupil (n) || alumno || Hay veinticinco alumnos en mi clase. || There are twenty-five pupils in my class.
+chemist (n) || farmacéutico, farmacia || Pregunta al farmacéutico qué puedes tomar para la tos. || Ask the chemist what you can take for your cough.
+costume (n) || disfraz, traje típico || Llevó un disfraz de pirata a la fiesta. || He wore a pirate costume to the party.
+diary (n) || agenda, diario || Apunto todos mis exámenes en la agenda. || I write all my exams down in my diary.
+advertisement (n) || anuncio || Vi un anuncio de ese móvil en la tele. || I saw an advertisement for that phone on TV.
+advert (n) || anuncio || Hay demasiados anuncios en este canal. || There are too many adverts on this channel.
+advertise (v) || anunciar, hacer publicidad || La empresa anuncia sus productos en internet. || The company advertises its products online.
+advise (v) || aconsejar || El médico me aconsejó que descansara más. || The doctor advised me to rest more.
+attend (v) || asistir a || Más de cien personas asistieron a la reunión. || More than a hundred people attended the meeting.
+assist (v) || ayudar || Un guía nos ayudó con las maletas. || A guide assisted us with our suitcases.
+realise (v) || darse cuenta de || No me di cuenta de que era tan tarde. || I didn't realise it was so late.
+recognise (v) || reconocer || No te reconocí con ese corte de pelo. || I didn't recognise you with that haircut.
+remind (v) || recordar algo a alguien || Recuérdame que llame a la abuela. || Remind me to phone Grandma.
+argue (v) || discutir || Mis hermanos discuten por el mando de la tele. || My brothers argue about the TV remote.
+suppose (v) || suponer || Supongo que llegará tarde, como siempre. || I suppose he'll be late, as usual.
+introduce (v) || presentar a alguien || Te voy a presentar a mi prima. || I'm going to introduce you to my cousin.
+retire (v) || jubilarse || Mi abuelo se jubiló a los sesenta y cinco años. || My grandfather retired at sixty-five.
+revise (v) || repasar || Tengo que repasar para el examen del viernes. || I have to revise for Friday's exam.
+revision (n) || repaso || Hice el repaso de matemáticas con un amigo. || I did my maths revision with a friend.
+qualification (n) || título, titulación || Necesitas un título para ese trabajo. || You need a qualification for that job.
+occupation (n) || profesión, ocupación || Escriba su nombre y su profesión, por favor. || Please write your name and occupation.
+tense (n) || tiempo verbal || Este verbo está en tiempo pasado. || This verb is in the past tense.
+interval (n) || descanso, intermedio || Compramos un helado en el descanso de la obra. || We bought an ice cream in the interval of the play.
+stamp (n) || sello || Necesito un sello para esta postal. || I need a stamp for this postcard.
+parcel (n) || paquete || Ha llegado un paquete para ti. || A parcel has arrived for you.
+receipt (n) || tique, recibo || Guarda el tique por si quieres devolverlo. || Keep the receipt in case you want to return it.
+prescription (n) || receta médica || El médico me dio una receta para el jarabe. || The doctor gave me a prescription for the cough medicine.
+fare (n) || precio del billete, tarifa || El precio del billete de autobús ha subido otra vez. || The bus fare has gone up again.
+bargain (n) || ganga, chollo || Estas zapatillas fueron un chollo en las rebajas. || These trainers were a bargain in the sales.
+refund (n) || reembolso, devolución del dinero || Pedí que me devolvieran el dinero porque la camisa estaba rota. || I asked for a refund because the shirt was torn.
+purse (n) || monedero || Guardo las monedas en el monedero. || I keep my coins in my purse.
+wallet (n) || cartera || Me dejé la cartera en casa y no pude pagar. || I left my wallet at home and couldn't pay.
+customs (n) || aduana || Tuvimos que abrir la maleta en la aduana. || We had to open our suitcase at customs.
+accommodation (n) || alojamiento || El alojamiento en Londres es carísimo. || Accommodation in London is really expensive.
+luggage (n) || equipaje || No lleves demasiado equipaje. || Don't take too much luggage.
+scenery (n) || paisaje || El paisaje de Asturias es precioso. || The scenery in Asturias is beautiful.
+countryside (n) || campo || Mis abuelos viven en el campo, lejos de la ciudad. || My grandparents live in the countryside, far from the city.
+nowadays (adv) || hoy en día || Hoy en día casi todo el mundo tiene móvil. || Nowadays almost everyone has a mobile phone.
+lately (adv) || últimamente || Últimamente duermo fatal. || I've been sleeping really badly lately.
+hardly (adv) || apenas, casi no || Apenas tengo tiempo libre entre semana. || I hardly have any free time during the week.
+fairly (adv) || bastante || La película fue bastante buena, pero un poco larga. || The film was fairly good, but a bit long.
+altogether (adv) || en total, del todo || En total somos doce para cenar. || There are twelve of us for dinner altogether.
+afterwards (adv) || después, luego || Fuimos al cine y después cenamos una pizza. || We went to the cinema and had a pizza afterwards.
+meanwhile (adv) || mientras tanto || Pon la mesa y, mientras tanto, yo hago la ensalada. || Lay the table and, meanwhile, I'll make the salad.
+shortly (adv) || dentro de poco, en breve || El tren saldrá en breve. || The train will leave shortly.
+aloud (adv) || en voz alta || Lee el texto en voz alta, por favor. || Read the text aloud, please.
+abroad (adv) || en el extranjero || Quiero estudiar un año en el extranjero. || I want to study abroad for a year.
+indoors (adv) || dentro, bajo techo || Como llovía, jugamos dentro. || As it was raining, we played indoors.
+outdoors (adv) || al aire libre || En verano cenamos al aire libre. || In summer we have dinner outdoors.
+backwards (adv) || hacia atrás || Dio un paso hacia atrás y se cayó a la piscina. || He took a step backwards and fell into the pool.
+underneath (prep) || debajo de || Encontré las llaves debajo del sofá. || I found the keys underneath the sofa.
+beside (prep) || al lado de || Siéntate a mi lado. || Sit beside me.
+among (prep) || entre (varios) || Hay una casa pequeña entre los árboles. || There's a small house among the trees.
+in spite of (prep phr) || a pesar de || Salimos a pasear a pesar de la lluvia. || We went for a walk in spite of the rain.
+
+## Phrasal verbs
+deal with (phr v) || ocuparse de, tratar con || Yo me ocupo de las entradas y tú de la comida. || I'll deal with the tickets and you deal with the food.
+look forward to (phr v) || tener muchas ganas de || Tengo muchas ganas de verte este verano. || I'm looking forward to seeing you this summer.
+get on with (phr v) || llevarse bien con || Me llevo muy bien con mis compañeros de clase. || I get on really well with my classmates.
+get rid of (phr v) || deshacerse de, tirar || Voy a deshacerme de estos juguetes viejos. || I'm going to get rid of these old toys.
+run out (phr v) || quedarse sin, acabarse || Nos hemos quedado sin leche. || We've run out of milk.
+give up (phr v) || dejar de, rendirse || Mi padre dejó de fumar hace dos años. || My dad gave up smoking two years ago.
+give in (phr v) || ceder, rendirse || Al final mis padres cedieron y me compraron el perro. || In the end my parents gave in and bought me the dog.
+give back (phr v) || devolver || Devuélveme el boli cuando termines. || Give me my pen back when you finish.
+give out (phr v) || repartir || La profesora repartió los exámenes. || The teacher gave out the exam papers.
+hand in (phr v) || entregar || Tenemos que entregar la redacción el lunes. || We have to hand in the essay on Monday.
+hand out (phr v) || repartir || ¿Puedes repartir estas fotocopias? || Can you hand out these photocopies?
+put off (phr v) || aplazar, posponer || Han aplazado el partido por la lluvia. || They've put off the match because of the rain.
+put up (phr v) || colgar, levantar, subir || Hemos colgado un póster en la pared. || We've put up a poster on the wall.
+put through (phr v) || pasar (una llamada) || Un momento, le paso con el director. || One moment, I'll put you through to the manager.
+put out (phr v) || apagar (un fuego) || Los bomberos apagaron el incendio en una hora. || The firefighters put out the fire in an hour.
+put away (phr v) || guardar, recoger || Guarda la ropa en el armario. || Put your clothes away in the wardrobe.
+set off (phr v) || salir, ponerse en marcha || Salimos a las seis para evitar el atasco. || We set off at six to avoid the traffic.
+set up (phr v) || montar, fundar || Mi hermana montó su propia empresa. || My sister set up her own company.
+take up (phr v) || empezar (una afición) || He empezado a jugar al pádel este año. || I've taken up padel this year.
+take off (phr v) || despegar, quitarse (ropa) || El avión despegó con una hora de retraso. || The plane took off an hour late.
+turn down (phr v) || rechazar, bajar (el volumen) || Rechazó el trabajo porque estaba muy lejos. || She turned down the job because it was too far away.
+turn up (phr v) || aparecer, presentarse || Se presentó en la fiesta sin avisar. || He turned up at the party without telling anyone.
+turn into (phr v) || convertirse en || La oruga se convierte en mariposa. || The caterpillar turns into a butterfly.
+break down (phr v) || averiarse || El coche se averió en mitad de la autopista. || The car broke down in the middle of the motorway.
+break in (phr v) || entrar a robar || Entraron a robar mientras estábamos de vacaciones. || Someone broke in while we were on holiday.
+break up (phr v) || romper (una pareja), empezar las vacaciones || Rompieron después de tres años juntos. || They broke up after three years together.
+split up (phr v) || separarse || Sus padres se separaron cuando era pequeño. || His parents split up when he was little.
+bring up (phr v) || criar, educar || A mi madre la criaron sus abuelos. || My mum was brought up by her grandparents.
+grow up (phr v) || crecer, criarse || Me crie en un pueblo de Toledo. || I grew up in a village in Toledo.
+carry on (phr v) || seguir, continuar || Sigue recto hasta el semáforo. || Carry on straight ahead until the traffic lights.
+carry out (phr v) || llevar a cabo || Los alumnos llevaron a cabo un experimento. || The students carried out an experiment.
+find out (phr v) || enterarse de, averiguar || Me enteré de la noticia por la radio. || I found out the news on the radio.
+work out (phr v) || resolver, calcular, hacer ejercicio || No consigo resolver este problema de mates. || I can't work out this maths problem.
+look after (phr v) || cuidar de || Cuido de mi hermano pequeño los sábados. || I look after my little brother on Saturdays.
+look up (phr v) || buscar (una palabra, un dato) || Busca la palabra en el diccionario. || Look the word up in the dictionary.
+look out (phr v) || tener cuidado || ¡Cuidado! Viene un coche. || Look out! There's a car coming.
+hold up (phr v) || retrasar || Un accidente nos retrasó más de una hora. || An accident held us up for over an hour.
+keep up (phr v) || seguir el ritmo || Andas muy rápido, no puedo seguirte el ritmo. || You walk too fast, I can't keep up with you.
+keep on (phr v) || seguir haciendo algo || Siguió hablando aunque nadie escuchaba. || He kept on talking although nobody was listening.
+end up (phr v) || acabar, terminar || Nos perdimos y acabamos en otro pueblo. || We got lost and ended up in another village.
+hang out (phr v) || pasar el rato, quedar || Los viernes quedo con mis amigos en el parque. || On Fridays I hang out with my friends in the park.
+hang up (phr v) || colgar (el teléfono) || No cuelgues, que todavía no he terminado. || Don't hang up, I haven't finished yet.
+go off (phr v) || sonar (una alarma), estropearse (comida) || El despertador sonó a las siete. || The alarm clock went off at seven.
+wear out (phr v) || gastar, desgastar || He gastado las zapatillas de tanto correr. || I've worn out my trainers from running so much.
+fill in (phr v) || rellenar || Rellene este formulario con sus datos. || Fill in this form with your details.
+cross out (phr v) || tachar || Tacha la respuesta incorrecta. || Cross out the wrong answer.
+knock down (phr v) || derribar, atropellar || Van a derribar el cine antiguo. || They're going to knock down the old cinema.
+throw away (phr v) || tirar a la basura || No tires esas cajas, que las necesito. || Don't throw those boxes away, I need them.
+tidy up (phr v) || ordenar, recoger || Recoge tu cuarto antes de salir. || Tidy up your room before you go out.
+wash up (phr v) || fregar los platos || Yo cocino y tú friegas. || I'll cook and you wash up.
+try on (phr v) || probarse (ropa) || ¿Puedo probarme estos vaqueros? || Can I try on these jeans?
+check in (phr v) || facturar, registrarse || Tenemos que facturar dos horas antes del vuelo. || We have to check in two hours before the flight.
+chill out (phr v) || relajarse || Después del examen solo quiero relajarme. || After the exam I just want to chill out.
+call for (phr v) || pasar a buscar a alguien || Paso a buscarte a las ocho. || I'll call for you at eight.
+stay behind (phr v) || quedarse (después de clase) || Tuve que quedarme después de clase para terminar el trabajo. || I had to stay behind after class to finish my work.
+base on (phr v) || basar en || La película está basada en una historia real. || The film is based on a true story.
+depend on (v) || depender de || Depende del tiempo que haga mañana. || It depends on the weather tomorrow.
+rely on (v) || contar con, fiarse de || Puedes contar conmigo para lo que necesites. || You can rely on me for anything you need.
+consist of (v) || consistir en, constar de || El examen consta de cuatro partes. || The exam consists of four parts.
+
+## Verbs
+fetch (v) || ir a por, traer || ¿Puedes ir a por mi chaqueta al coche? || Can you fetch my jacket from the car?
+lend (v) || prestar, dejar || ¿Me dejas cinco euros hasta mañana? || Can you lend me five euros until tomorrow?
+borrow (v) || pedir prestado, coger prestado || ¿Puedo cogerte prestada la bici? || Can I borrow your bike?
+owe (v) || deber (dinero) || Te debo diez euros de la cena. || I owe you ten euros for dinner.
+mend (v) || arreglar, reparar || Mi abuelo me arregló la silla rota. || My grandad mended the broken chair for me.
+spill (v) || derramar, tirar (un líquido) || He tirado el café encima del teclado. || I've spilt coffee on the keyboard.
+pour (v) || servir, echar (un líquido) || Échame un poco de agua, por favor. || Pour me some water, please.
+stir (v) || remover || Remueve la salsa para que no se pegue. || Stir the sauce so that it doesn't stick.
+peel (v) || pelar || Pela las patatas y córtalas en trozos. || Peel the potatoes and cut them into pieces.
+boil (v) || hervir, cocer || Cuece la pasta durante diez minutos. || Boil the pasta for ten minutes.
+bake (v) || hornear, hacer al horno || Mi madre hace una tarta al horno cada domingo. || My mum bakes a cake every Sunday.
+fry (v) || freír || Fríe la cebolla a fuego lento. || Fry the onion over a low heat.
+fold (v) || doblar || Dobla el papel por la mitad. || Fold the paper in half.
+fasten (v) || abrochar || Abróchense los cinturones, por favor. || Please fasten your seat belts.
+attach (v) || adjuntar, sujetar || Te adjunto las fotos en este correo. || I've attached the photos to this email.
+sew (v) || coser || Mi abuela me enseñó a coser un botón. || My grandma taught me to sew on a button.
+knit (v) || hacer punto, tejer || Mi tía me hizo una bufanda de punto. || My aunt knitted me a scarf.
+bury (v) || enterrar || El perro enterró el hueso en el jardín. || The dog buried the bone in the garden.
+weigh (v) || pesar || La maleta pesa más de veinte kilos. || The suitcase weighs over twenty kilos.
+float (v) || flotar || La madera flota en el agua. || Wood floats on water.
+dive (v) || tirarse de cabeza, bucear || Se tiró de cabeza a la piscina. || She dived into the swimming pool.
+freeze (v) || congelar(se), helarse || El lago se hiela todos los inviernos. || The lake freezes every winter.
+shine (v) || brillar || Hoy brilla el sol y no hay nubes. || The sun is shining today and there are no clouds.
+bleed (v) || sangrar || Me sangra la nariz. || My nose is bleeding.
+injure (v) || lesionar, herir || Se lesionó la rodilla jugando al fútbol. || He injured his knee playing football.
+shave (v) || afeitarse || Mi padre se afeita todas las mañanas. || My dad shaves every morning.
+clap (v) || aplaudir || El público aplaudió durante cinco minutos. || The audience clapped for five minutes.
+greet (v) || saludar, recibir || Nos recibió en la puerta con una sonrisa. || She greeted us at the door with a smile.
+glance (v) || echar un vistazo || Echó un vistazo al reloj y salió corriendo. || He glanced at his watch and ran out.
+warn (v) || avisar, advertir || Nos avisaron de que el camino era peligroso. || They warned us that the path was dangerous.
+persuade (v) || convencer || La convencí para que viniera con nosotros. || I persuaded her to come with us.
+insist (v) || insistir || Insistió en pagar la cuenta. || He insisted on paying the bill.
+intend (v) || tener la intención de, pensar || Pienso estudiar Medicina. || I intend to study medicine.
+approve (v) || aprobar, estar de acuerdo con || Mis padres no aprueban que salga entre semana. || My parents don't approve of me going out during the week.
+complain (v) || quejarse || Los vecinos se quejaron del ruido. || The neighbours complained about the noise.
+apologise (v) || pedir perdón, disculparse || Le pedí perdón por llegar tarde. || I apologised for being late.
+forgive (v) || perdonar || Perdóname, no quería hacerte daño. || Forgive me, I didn't mean to hurt you.
+annoy (v) || molestar, fastidiar || Me molesta que la gente hable en el cine. || It annoys me when people talk in the cinema.
+disturb (v) || molestar, interrumpir || No molestes a papá, que está trabajando. || Don't disturb Dad, he's working.
+bother (v) || molestar(se) || Perdona que te moleste, ¿tienes hora? || Sorry to bother you, have you got the time?
+frighten (v) || asustar || Ese ruido asustó al bebé. || That noise frightened the baby.
+disappoint (v) || decepcionar || No quiero decepcionar a mis padres. || I don't want to disappoint my parents.
+spoil (v) || estropear, mimar || La lluvia nos estropeó la excursión. || The rain spoilt our trip.
+cheat (v) || hacer trampas, copiar || Lo pillaron copiando en el examen. || He was caught cheating in the exam.
+punish (v) || castigar || Lo castigaron sin móvil una semana. || He was punished with no phone for a week.
+behave (v) || portarse || Los niños se portaron muy bien en el restaurante. || The children behaved very well in the restaurant.
+manage (v) || conseguir, arreglárselas || Conseguí terminar el trabajo a tiempo. || I managed to finish the project on time.
+succeed (v) || tener éxito, conseguir || Por fin consiguió aprobar el carné de conducir. || She finally succeeded in passing her driving test.
+afford (v) || poder permitirse || No puedo permitirme un ordenador nuevo. || I can't afford a new computer.
+earn (v) || ganar (dinero trabajando) || Gana mil euros al mes como camarero. || He earns a thousand euros a month as a waiter.
+hire (v) || alquilar, contratar || Alquilamos unas bicis para recorrer la isla. || We hired some bikes to go round the island.
+employ (v) || emplear, dar trabajo || La fábrica da trabajo a doscientas personas. || The factory employs two hundred people.
+postpone (v) || aplazar || Han aplazado el concierto hasta mayo. || The concert has been postponed until May.
+depart (v) || salir (transporte) || El tren sale del andén cuatro. || The train departs from platform four.
+surround (v) || rodear || El pueblo está rodeado de montañas. || The village is surrounded by mountains.
+recover (v) || recuperarse || Tardó un mes en recuperarse de la operación. || It took him a month to recover from the operation.
+breathe (v) || respirar || Respira hondo y tranquilízate. || Breathe deeply and calm down.
+slip (v) || resbalarse || Me resbalé en el hielo y me hice daño. || I slipped on the ice and hurt myself.
+tear (v) || romper, rasgar || Rompió la carta en mil pedazos. || She tore the letter into a thousand pieces.
+grab (v) || agarrar, coger rápido || Cogió la mochila y salió corriendo. || He grabbed his backpack and ran out.
+drag (v) || arrastrar || Arrastré la maleta por toda la estación. || I dragged my suitcase all over the station.
+rob (v) || atracar, robar (a alguien o un sitio) || Ayer atracaron el banco de mi calle. || The bank in my street was robbed yesterday.
+steal (v) || robar (algo) || Me robaron el móvil en el metro. || My phone was stolen on the underground.
+hitchhike (v) || hacer autostop || De joven, mi padre viajó por Francia haciendo autostop. || When he was young, my dad hitchhiked around France.
+sunbathe (v) || tomar el sol || Nos pasamos la mañana tomando el sol en la playa. || We spent the morning sunbathing on the beach.
+enquire (v) || preguntar, pedir información || Llamé para preguntar por el horario de los trenes. || I phoned to enquire about the train times.
+
+## Adjectives
+keen (adj) || aficionado, entusiasta || Es muy aficionado a la fotografía. || He's very keen on photography.
+fond (adj) || (ser) muy de, tener cariño a || Le tengo mucho cariño a mi profesora de primaria. || I'm very fond of my primary school teacher.
+sore (adj) || dolorido, irritado || Tengo la garganta irritada de tanto gritar. || I've got a sore throat from shouting so much.
+steep (adj) || empinado || La calle es tan empinada que cuesta subirla en bici. || The street is so steep that it's hard to cycle up it.
+dull (adj) || aburrido, apagado || Fue un día gris y aburrido. || It was a grey, dull day.
+neat (adj) || ordenado, pulcro || Tiene una letra muy clara y ordenada. || She has very neat handwriting.
+tidy (adj) || ordenado || Mi hermana siempre tiene el cuarto ordenado. || My sister's room is always tidy.
+untidy (adj) || desordenado || Tu mesa está muy desordenada. || Your desk is very untidy.
+messy (adj) || desordenado, sucio || La cocina estaba hecha un desastre después de la fiesta. || The kitchen was really messy after the party.
+cosy (adj) || acogedor || Es un piso pequeño pero muy acogedor. || It's a small flat but it's very cosy.
+mild (adj) || suave, templado || En Málaga los inviernos son suaves. || Winters are mild in Malaga.
+freezing (adj) || helado, que hace un frío que pela || Cierra la ventana, que hace un frío que pela. || Close the window, it's freezing.
+foggy (adj) || con niebla || Conduce despacio, que hay mucha niebla. || Drive slowly, it's very foggy.
+pale (adj) || pálido, claro || Estás muy pálido, ¿te encuentras bien? || You look very pale, are you feeling all right?
+bald (adj) || calvo || Mi tío se quedó calvo a los treinta. || My uncle went bald at thirty.
+curly (adj) || rizado || Tiene el pelo largo y rizado. || She has long, curly hair.
+slim (adj) || delgado || Es alto y delgado, como su padre. || He's tall and slim, like his father.
+deaf (adj) || sordo || Mi abuelo está un poco sordo y hay que hablarle alto. || My grandad is a bit deaf, so you have to speak loudly.
+elderly (adj) || mayor, anciano || Ayudó a una señora mayor a cruzar la calle. || He helped an elderly lady to cross the road.
+unwell (adj) || indispuesto, enfermo || Se encontraba mal y se fue a casa. || She felt unwell and went home.
+unfit (adj) || en baja forma || Estoy en baja forma, tengo que hacer más deporte. || I'm unfit, I need to do more sport.
+exhausted (adj) || agotado || Después de la carrera estaba agotada. || After the race she was exhausted.
+sleepy (adj) || con sueño, adormilado || Siempre tengo sueño después de comer. || I always feel sleepy after lunch.
+awake (adj) || despierto || Estuve despierto hasta las tres de la mañana. || I was awake until three in the morning.
+thirsty (adj) || con sed || Tengo mucha sed, ¿hay agua fría? || I'm really thirsty, is there any cold water?
+anxious (adj) || preocupado, inquieto || Está preocupada por los resultados del examen. || She's anxious about her exam results.
+relieved (adj) || aliviado || Me quedé aliviado cuando encontré el pasaporte. || I was relieved when I found my passport.
+delighted (adj) || encantado, contentísimo || Están encantados con su nueva casa. || They're delighted with their new house.
+amazed (adj) || asombrado || Me quedé asombrado de lo bien que canta. || I was amazed at how well she sings.
+ashamed (adj) || avergonzado (por algo malo) || Se sentía avergonzado de haber mentido. || He felt ashamed of having lied.
+frightened (adj) || asustado || A mi hermana le dan miedo las arañas. || My sister is frightened of spiders.
+terrified (adj) || aterrorizado || Me aterroriza volar. || I'm terrified of flying.
+annoyed (adj) || molesto, enfadado || Estaba molesta porque nadie la había avisado. || She was annoyed because nobody had told her.
+jealous (adj) || celoso, envidioso || Tiene celos de su hermano pequeño. || He's jealous of his little brother.
+miserable (adj) || muy triste, deprimente || Se sentía muy triste lejos de su familia. || She felt miserable far from her family.
+hopeless (adj) || negado, sin remedio || Soy un negado para la cocina. || I'm hopeless at cooking.
+careless (adj) || descuidado || Fue un error por descuido. || It was a careless mistake.
+cheerful (adj) || alegre || Siempre está alegre, incluso los lunes. || He's always cheerful, even on Mondays.
+easygoing (adj) || tranquilo, de trato fácil || Mi jefe es muy tranquilo y nunca se enfada. || My boss is very easygoing and never gets angry.
+bossy (adj) || mandón || Mi hermana mayor es muy mandona. || My older sister is very bossy.
+selfish (adj) || egoísta || No seas egoísta y comparte las patatas. || Don't be selfish, share the crisps.
+unkind (adj) || poco amable, cruel || Fue muy poco amable con el chico nuevo. || She was very unkind to the new boy.
+rude (adj) || maleducado, grosero || Es de mala educación hablar con la boca llena. || It's rude to speak with your mouth full.
+polite (adj) || educado, cortés || Es un chico muy educado y siempre da las gracias. || He's a very polite boy and always says thank you.
+gentle (adj) || suave, delicado || Sé delicado con el gatito, que es muy pequeño. || Be gentle with the kitten, it's very small.
+shy (adj) || tímido || De pequeña era muy tímida. || She was very shy as a child.
+lively (adj) || animado || Es un barrio muy animado por la noche. || It's a very lively neighbourhood at night.
+crowded (adj) || abarrotado, lleno de gente || El metro va abarrotado a las ocho. || The underground is crowded at eight o'clock.
+convenient (adj) || práctico, que viene bien || ¿Te viene bien quedar a las cinco? || Is five o'clock convenient for you?
+suitable (adj) || adecuado, apropiado || Esta película no es adecuada para niños. || This film isn't suitable for children.
+reliable (adj) || fiable, de confianza || Mi coche es viejo pero muy fiable. || My car is old but very reliable.
+spare (adj) || de sobra, libre || ¿Qué haces en tu tiempo libre? || What do you do in your spare time?
+loose (adj) || suelto, holgado || Estos pantalones me quedan holgados. || These trousers are loose on me.
+rough (adj) || áspero, agitado, aproximado || El mar estaba muy agitado y cancelaron el ferri. || The sea was very rough and the ferry was cancelled.
+smooth (adj) || liso, suave || Esta crema te deja la piel muy suave. || This cream leaves your skin very smooth.
+sharp (adj) || afilado || Cuidado, ese cuchillo está muy afilado. || Be careful, that knife is very sharp.
+sticky (adj) || pegajoso || Tengo las manos pegajosas del helado. || My hands are sticky from the ice cream.
+sour (adj) || ácido, agrio || La leche sabe agria, no te la bebas. || The milk tastes sour, don't drink it.
+tasty (adj) || sabroso, rico || La sopa de tu madre está muy rica. || Your mum's soup is very tasty.
+raw (adj) || crudo || No me gusta el pescado crudo. || I don't like raw fish.
+old-fashioned (adj) || anticuado, pasado de moda || Mi abuela lleva unas gafas muy anticuadas. || My grandma wears very old-fashioned glasses.
+stylish (adj) || elegante, con estilo || Siempre va muy elegante al trabajo. || She always looks very stylish at work.
+inexpensive (adj) || económico, barato || Buscamos un hotel económico cerca del centro. || We're looking for an inexpensive hotel near the centre.
+unemployed (adj) || en paro, desempleado || Mi primo lleva seis meses en paro. || My cousin has been unemployed for six months.
+marvellous (adj) || maravilloso || Pasamos unas vacaciones maravillosas en Menorca. || We had a marvellous holiday in Menorca.
+terrific (adj) || estupendo, genial || ¡Has hecho un trabajo estupendo! || You've done a terrific job!
+unforgettable (adj) || inolvidable || Fue un viaje inolvidable. || It was an unforgettable trip.
+tiring (adj) || cansado, agotador || Ha sido un día muy cansado. || It's been a very tiring day.
+confusing (adj) || confuso, lioso || Las instrucciones eran muy liosas. || The instructions were very confusing.
+
+## Nouns: home and daily life
+cupboard (n) || armario (de cocina) || Los vasos están en el armario de arriba. || The glasses are in the top cupboard.
+wardrobe (n) || armario (de ropa) || Ya no me cabe más ropa en el armario. || I can't fit any more clothes in my wardrobe.
+chest of drawers (n) || cómoda || Guardo los calcetines en la cómoda. || I keep my socks in the chest of drawers.
+drawer (n) || cajón || Las tijeras están en el primer cajón. || The scissors are in the top drawer.
+shelf (n) || estante, balda || Pon los libros en el estante de arriba. || Put the books on the top shelf.
+kettle (n) || hervidor de agua || Pon el hervidor, que voy a hacer té. || Put the kettle on, I'm going to make tea.
+saucepan (n) || cazo, cacerola || Calienta la leche en un cazo. || Heat the milk in a saucepan.
+frying pan (n) || sartén || Necesitas una sartén grande para la tortilla. || You need a big frying pan for the omelette.
+jug (n) || jarra || Hay una jarra de agua en la mesa. || There's a jug of water on the table.
+mug (n) || taza grande || Me regalaron una taza con mi nombre. || I was given a mug with my name on it.
+cooker (n) || cocina (el aparato) || Tenemos una cocina de gas. || We have a gas cooker.
+freezer (n) || congelador || Hay helado en el congelador. || There's ice cream in the freezer.
+bulb (n) || bombilla || Hay que cambiar la bombilla del baño. || We need to change the bulb in the bathroom.
+plug (n) || enchufe (clavija), tapón || El enchufe del cargador está roto. || The plug on the charger is broken.
+torch (n) || linterna || Llévate una linterna a la acampada. || Take a torch on the camping trip.
+duvet (n) || edredón nórdico || En invierno duermo con un edredón gordo. || In winter I sleep with a thick duvet.
+pillow (n) || almohada || No puedo dormir sin mi almohada. || I can't sleep without my pillow.
+cushion (n) || cojín || El gato duerme encima de un cojín. || The cat sleeps on a cushion.
+blanket (n) || manta || Coge una manta si tienes frío. || Take a blanket if you're cold.
+towel (n) || toalla || No te olvides la toalla para la playa. || Don't forget your beach towel.
+rug (n) || alfombra (pequeña) || Hay una alfombra roja delante de la chimenea. || There's a red rug in front of the fireplace.
+ceiling (n) || techo (interior) || Hay una mancha de humedad en el techo. || There's a damp mark on the ceiling.
+ladder (n) || escalera de mano || Necesito una escalera para llegar al tejado. || I need a ladder to reach the roof.
+dustbin (n) || cubo de basura || Saca el cubo de basura antes de acostarte. || Put the dustbin out before you go to bed.
+rubbish (n) || basura || ¿Puedes bajar la basura? || Can you take the rubbish out?
+litter (n) || basura (en la calle) || No tires basura al suelo. || Don't drop litter on the ground.
+housework (n) || tareas de la casa || En mi casa repartimos las tareas entre todos. || In my house we share the housework.
+ironing (n) || la plancha (tarea) || Odio planchar, es lo peor de las tareas de casa. || I hate doing the ironing, it's the worst part of the housework.
+laundry (n) || colada, ropa sucia || Pongo la colada los sábados. || I do the laundry on Saturdays.
+fortnight (n) || quincena, dos semanas || Nos vamos de vacaciones dos semanas. || We're going on holiday for a fortnight.
+timetable (n) || horario || Mira el horario para ver cuándo sale el autobús. || Check the timetable to see when the bus leaves.
+handwriting (n) || letra (de una persona) || No entiendo tu letra. || I can't read your handwriting.
+noticeboard (n) || tablón de anuncios || Las notas están en el tablón de anuncios. || The marks are on the noticeboard.
+headteacher (n) || director de colegio || La directora quiere hablar con tus padres. || The headteacher wants to speak to your parents.
+canteen (n) || comedor, cantina || Como en el comedor del instituto. || I have lunch in the school canteen.
+
+## Nouns: clothes and body
+tights (n) || medias, leotardos || Llevaba una falda con medias negras. || She was wearing a skirt with black tights.
+tracksuit (n) || chándal || Los martes voy al cole en chándal. || On Tuesdays I go to school in a tracksuit.
+jumper (n) || jersey || Ponte un jersey, que hace frío. || Put a jumper on, it's cold.
+scarf (n) || bufanda, pañuelo || Se me ha olvidado la bufanda en el autobús. || I've left my scarf on the bus.
+glove (n) || guante || He perdido un guante. || I've lost a glove.
+sleeve (n) || manga || Esta camisa tiene las mangas demasiado largas. || The sleeves on this shirt are too long.
+collar (n) || cuello (de camisa), collar (de perro) || Tienes el cuello de la camisa mal puesto. || Your shirt collar isn't straight.
+raincoat (n) || chubasquero, gabardina || Llévate el chubasquero por si llueve. || Take your raincoat in case it rains.
+handkerchief (n) || pañuelo (de bolsillo) || Sacó un pañuelo y se secó las lágrimas. || She took out a handkerchief and dried her tears.
+jewellery (n) || joyas || Guarda las joyas en una caja pequeña. || She keeps her jewellery in a small box.
+necklace (n) || collar || Le regalé un collar de plata. || I gave her a silver necklace.
+wool (n) || lana || Este jersey es de lana y pica un poco. || This jumper is made of wool and it's a bit itchy.
+ankle (n) || tobillo || Me torcí el tobillo bajando las escaleras. || I twisted my ankle going down the stairs.
+elbow (n) || codo || Se dio un golpe en el codo con la puerta. || He hit his elbow on the door.
+heel (n) || talón, tacón || Estos zapatos me hacen daño en el talón. || These shoes hurt my heel.
+thumb (n) || pulgar || Me he cortado el pulgar con un papel. || I've cut my thumb on a piece of paper.
+chin (n) || barbilla || Tiene una cicatriz en la barbilla. || He has a scar on his chin.
+cheek (n) || mejilla || Le dio un beso en la mejilla. || She gave him a kiss on the cheek.
+beard (n) || barba || Mi hermano se ha dejado barba. || My brother has grown a beard.
+moustache (n) || bigote || Mi abuelo siempre ha llevado bigote. || My grandad has always had a moustache.
+ache (n) || dolor (continuo) || Tengo un dolor en la espalda desde ayer. || I've had an ache in my back since yesterday.
+cough (n) || tos || Tengo mucha tos por las noches. || I've got a bad cough at night.
+flu (n) || gripe || No fui a clase porque tenía gripe. || I didn't go to school because I had flu.
+bandage (n) || venda || La enfermera me puso una venda en la muñeca. || The nurse put a bandage on my wrist.
+pill (n) || pastilla || Tómate una pastilla después de cada comida. || Take one pill after each meal.
+wheelchair (n) || silla de ruedas || El museo tiene acceso para sillas de ruedas. || The museum has wheelchair access.
+
+## Nouns: town, travel and transport
+pavement (n) || acera || No vayas en bici por la acera. || Don't ride your bike on the pavement.
+pedestrian (n) || peatón || Esta calle es solo para peatones. || This street is for pedestrians only.
+roundabout (n) || rotonda || En la rotonda, coge la segunda salida. || At the roundabout, take the second exit.
+crossroads (n) || cruce || Gira a la izquierda en el cruce. || Turn left at the crossroads.
+signpost (n) || señal, poste indicador || Sigue las señales hasta la playa. || Follow the signposts to the beach.
+motorway (n) || autopista || Hubo un atasco enorme en la autopista. || There was a huge traffic jam on the motorway.
+lorry (n) || camión || Un camión bloqueaba la calle. || A lorry was blocking the street.
+tyre (n) || neumático, rueda || Se nos pinchó una rueda de camino al aeropuerto. || We got a flat tyre on the way to the airport.
+brake (n) || freno || Los frenos de mi bici no funcionan bien. || The brakes on my bike don't work properly.
+windscreen (n) || parabrisas || Una piedra rompió el parabrisas. || A stone broke the windscreen.
+handlebars (n) || manillar || Agarra bien el manillar con las dos manos. || Hold the handlebars firmly with both hands.
+petrol (n) || gasolina || Tenemos que echar gasolina antes de salir. || We need to get some petrol before we leave.
+harbour (n) || puerto || Hay muchos barcos de pesca en el puerto. || There are lots of fishing boats in the harbour.
+cashpoint (n) || cajero automático || Tengo que sacar dinero del cajero. || I need to get some money out of the cashpoint.
+checkout (n) || caja (del supermercado) || Había mucha cola en la caja. || There was a long queue at the checkout.
+queue (n) || cola, fila || Hicimos una hora de cola para entrar. || We stood in a queue for an hour to get in.
+stall (n) || puesto (de mercado) || Compro la fruta en un puesto del mercado. || I buy my fruit at a market stall.
+butcher (n) || carnicero || El carnicero de mi barrio tiene una carne muy buena. || The butcher in my neighbourhood has very good meat.
+campsite (n) || camping || Nos alojamos en un camping junto al río. || We stayed at a campsite by the river.
+cottage (n) || casita de campo || Alquilamos una casita de campo en Gales. || We rented a cottage in Wales.
+hut (n) || cabaña, refugio || Pasamos la noche en un refugio de montaña. || We spent the night in a mountain hut.
+sightseeing (n) || turismo, visitar monumentos || Dedicamos el primer día a hacer turismo por Roma. || We spent the first day sightseeing in Rome.
+guidebook (n) || guía (libro) || Compré una guía de Lisboa antes del viaje. || I bought a guidebook to Lisbon before the trip.
+boarding pass (n) || tarjeta de embarque || Enseñe su tarjeta de embarque, por favor. || Please show your boarding pass.
+refreshments (n) || refrigerio, bebidas y algo de picar || Habrá bebidas y algo de picar después de la charla. || There will be refreshments after the talk.
+takeaway (n) || comida para llevar || Esta noche pedimos comida china para llevar. || We're getting a Chinese takeaway tonight.
+leisure (n) || ocio || ¿Qué haces en tu tiempo de ocio? || What do you do in your leisure time?
+foreigner (n) || extranjero (persona) || Muchos extranjeros visitan Madrid cada año. || Lots of foreigners visit Madrid every year.
+colleague (n) || compañero de trabajo || Salgo a comer con mis compañeros de trabajo. || I go out for lunch with my colleagues.
+nephew (n) || sobrino || Mi sobrino acaba de cumplir dos años. || My nephew has just turned two.
+niece (n) || sobrina || Mi sobrina empieza el colegio este año. || My niece starts school this year.
+bride (n) || novia (en la boda) || La novia llegó media hora tarde a la iglesia. || The bride arrived at the church half an hour late.
+groom (n) || novio (en la boda) || El novio estaba muy nervioso. || The groom was very nervous.
+thief (n) || ladrón || La policía detuvo al ladrón en la estación. || The police arrested the thief at the station.
+
+## Nouns: nature and weather
+breeze (n) || brisa || Por la tarde sopla una brisa muy agradable. || There's a lovely breeze in the afternoon.
+gale (n) || vendaval, temporal || El vendaval tiró varios árboles. || The gale blew down several trees.
+thunderstorm (n) || tormenta (con truenos) || Anoche hubo una tormenta tremenda. || There was a terrible thunderstorm last night.
+fog (n) || niebla || El aeropuerto cerró por la niebla. || The airport closed because of the fog.
+shade (n) || sombra || Vamos a sentarnos a la sombra. || Let's sit in the shade.
+sunrise (n) || amanecer || Nos levantamos pronto para ver el amanecer. || We got up early to watch the sunrise.
+cliff (n) || acantilado || No te acerques al borde del acantilado. || Don't go near the edge of the cliff.
+cave (n) || cueva || Visitamos unas cuevas prehistóricas en Cantabria. || We visited some prehistoric caves in Cantabria.
+waterfall (n) || cascada || Nos bañamos debajo de una cascada. || We swam under a waterfall.
+crop (n) || cosecha, cultivo || La sequía ha estropeado la cosecha. || The drought has ruined the crops.
+cattle (n) || ganado (vacas) || En el norte hay mucho ganado. || There are a lot of cattle in the north.
+calf (n) || ternero || La vaca tuvo un ternero anoche. || The cow had a calf last night.
+lamb (n) || cordero || En Navidad comemos cordero asado. || We eat roast lamb at Christmas.
+nest (n) || nido || Hay un nido en el árbol del jardín. || There's a nest in the tree in the garden.
+fur (n) || pelo (de animal), piel || Mi gato tiene el pelo muy suave. || My cat has very soft fur.
+
+## Nouns: food
+flour (n) || harina || Necesitas harina, huevos y azúcar. || You need flour, eggs and sugar.
+garlic (n) || ajo || Añade dos dientes de ajo. || Add two cloves of garlic.
+cucumber (n) || pepino || El gazpacho lleva pepino. || Gazpacho has cucumber in it.
+lettuce (n) || lechuga || Lava bien la lechuga. || Wash the lettuce well.
+cabbage (n) || col, repollo || No me gusta nada la col. || I don't like cabbage at all.
+mushroom (n) || champiñón, seta || Quiero una pizza de champiñones. || I'd like a mushroom pizza.
+pea (n) || guisante || De pequeño odiaba los guisantes. || I hated peas when I was little.
+bean (n) || judía, alubia || Hoy hay judías con chorizo. || Today we're having beans with chorizo.
+grape (n) || uva || En Nochevieja comemos doce uvas. || On New Year's Eve we eat twelve grapes.
+peach (n) || melocotón || Estos melocotones están muy dulces. || These peaches are very sweet.
+pear (n) || pera || ¿Quieres una pera o una manzana? || Would you like a pear or an apple?
+pineapple (n) || piña || No me gusta la piña en la pizza. || I don't like pineapple on pizza.
+cod (n) || bacalao || En Portugal comimos mucho bacalao. || We ate a lot of cod in Portugal.
+herb (n) || hierba aromática || Cultivo hierbas aromáticas en el balcón. || I grow herbs on my balcony.
+slice (n) || rebanada, loncha, trozo || ¿Quieres otro trozo de tarta? || Would you like another slice of cake?
+jar (n) || tarro, bote || Compra un bote de mermelada. || Buy a jar of jam.
+tin (n) || lata || Abre una lata de atún. || Open a tin of tuna.
+packet (n) || paquete, bolsa (pequeña) || Me comí una bolsa de patatas fritas. || I ate a packet of crisps.
+flavour (n) || sabor || ¿De qué sabor quieres el helado? || What flavour ice cream would you like?
+supper (n) || cena (ligera) || Tomamos una cena ligera antes de acostarnos. || We had a light supper before bed.

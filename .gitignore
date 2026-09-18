@@ -10,3 +10,5 @@ tools/harvest.log
 tools/__pycache__/
 tools/prepare_ocr/
 tools/prepare_crops/
+tools/pet/*.pdf
+tools/pet/headwords_ranked.json

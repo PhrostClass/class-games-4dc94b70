@@ -1,0 +1,159 @@
+# One-gap sentences for Part 6 training, written for this app.  cat | sentence with ___ | answers | note
+
+# ---- articles
+art | My mother is ___ engineer. | an | a/an + job; an before a vowel sound
+art | This is ___ best pizza I have ever eaten. | the | the + superlative
+art | I go to the gym three times ___ week. | a | three times a week
+art | We had ___ great time at the party. | a | have a great time
+art | Can you play ___ guitar? | the | play the + instrument
+art | What ___ beautiful house! | a | What a + adjective + singular noun!
+art | She lives on ___ second floor. | the | the + first, second, third...
+art | It takes half ___ hour to get there. | an | half an hour
+art | He is in ___ hurry, so he cannot stop. | a | be in a hurry
+art | Who was ___ first person to walk on the moon? | the | the first / the last / the only
+art | I have ___ headache, so I am going to bed. | a | have a headache / a cold / a cough
+art | We met at ___ same school. | the | the same
+
+# ---- prepositions
+prep | I am not very good ___ maths. | at | good AT / bad AT
+prep | She is afraid ___ spiders. | of | afraid OF
+prep | Thank you ___ helping me. | for | thank you FOR + -ing
+prep | My birthday is ___ 5 June. | on | on + date / day
+prep | We arrived ___ the airport two hours early. | at | arrive AT a place (arrive IN a city)
+prep | He has lived here ___ 2019. | since | since + starting point
+prep | Are you interested ___ history? | in | interested IN
+prep | I am tired ___ waiting for the bus. | of | tired OF + -ing
+prep | It depends ___ the weather. | on | depend ON
+prep | She apologised ___ being late. | for | apologise FOR
+prep | This song reminds me ___ my holidays. | of | remind somebody OF something
+prep | I will see you ___ the weekend. | at/on | at the weekend (British), on the weekend (American)
+prep | He is married ___ a doctor. | to | married TO (not "with")
+prep | I have been waiting ___ two hours. | for | for + period of time
+prep | We went there ___ foot. | on | on foot (but by car, by bus)
+prep | What are you laughing ___? | at | laugh AT
+prep | The film is based ___ a true story. | on | based ON
+prep | She is different ___ her sister. | from/to | different FROM
+
+# ---- auxiliary verbs and modals
+aux | I ___ never been to Paris. | have | present perfect: have + past participle
+aux | What ___ you doing at eight o'clock last night? | were | past continuous question
+aux | This castle ___ built in 1450. | was | past passive
+aux | ___ your brother like football? | does | present simple question, he/she/it
+aux | I ___ not see you at the party yesterday. | did | past simple negative
+aux | She ___ been learning English for five years. | has | present perfect continuous
+aux | You ___ not have to come if you are busy. | do | do not have to = no obligation
+aux | If I ___ rich, I would buy a boat. | were/was | second conditional
+aux | I would ___ to book a table for two. | like/love | would like to
+aux | English ___ spoken all over the world. | is | present passive
+aux | We used ___ live in a small village. | to | used to + infinitive
+aux | When I got home, my parents ___ already gone to bed. | had | past perfect
+aux | You had ___ take an umbrella. It looks like rain. | better | had better + infinitive
+aux | I am ___ to visit my aunt next weekend. | going | be going to
+aux | ___ you mind opening the window? | would/do | Would you mind + -ing?
+aux | He ___ be at home. His car is outside. | must | must = I am sure
+
+# ---- pronouns, it and there
+pron | ___ is a bank at the end of the street. | there | There is + singular
+pron | ___ is important to drink a lot of water. | it | It is + adjective + to...
+pron | I made this cake ___. Nobody helped me. | myself | reflexive pronoun
+pron | Is this bag yours or ___? It has her name on it. | hers | possessive pronoun
+pron | ___ was raining when we left. | it | weather: it
+pron | I cannot find my keys ___. | anywhere | not ... anywhere
+pron | Would you like ___ to drink? | something/anything | offers: something
+pron | There was ___ at home, so I left a note. | nobody/no-one | nobody + affirmative verb
+pron | ___ does this word mean? | what | What does ... mean?
+pron | ___ long does the journey take? | how | How long...?
+pron | They enjoyed ___ at the concert. | themselves | enjoy yourself
+pron | I do not know ___ bag this is. | whose | whose = de quién
+
+# ---- relative pronouns
+rel | The man ___ lives next door is a pilot. | who/that | people: who / that
+rel | This is the book ___ I told you about. | that/which | things: that / which
+rel | That is the hotel ___ we stayed last year. | where | place + subject + verb
+rel | The girl ___ bike was stolen called the police. | whose | possession
+rel | My uncle, ___ lives in Bilbao, is visiting us. | who | after a comma: who (not that)
+rel | I will never forget the day ___ we met. | when/that | time: when
+rel | Madrid, ___ is the capital of Spain, is very hot in summer. | which | after a comma: which (not that)
+rel | That is the reason ___ I was late. | why | the reason why
+rel | He failed the exam, ___ surprised everybody. | which | comma + which = the whole idea
+rel | Is that the boy ___ you met at the camp? | who/that/whom | people, object of the verb
+rel | I have two brothers, both of ___ play tennis. | whom | both of whom (people)
+rel | She showed me the photos ___ she took in London. | that/which | things
+
+# ---- quantifiers and determiners
+quant | How ___ money have you got? | much | much + uncountable
+quant | How ___ students are there in your class? | many | many + plural
+quant | There are only a ___ biscuits left. | few | a few + plural
+quant | Could I have a ___ more milk, please? | little/bit | a little + uncountable
+quant | I have not got ___ brothers or sisters. | any | not ... any
+quant | ___ of my parents are teachers. | both | both of = two people
+quant | He was ___ tired that he fell asleep on the sofa. | so | so + adjective + that
+quant | It was ___ a boring film that we left early. | such | such a + adjective + noun
+quant | There is not ___ room in the car for everyone. | enough | not enough + noun
+quant | ___ student has to bring a dictionary. | every/each | every / each + singular
+quant | I have seen that film a ___ of times. | couple/lot/number | a couple of
+quant | Neither ___ us could answer the question. | of | neither OF us
+quant | I do not like this one. Can I see ___ one? | another | another + singular
+quant | Some people like tea, while ___ prefer coffee. | others | some ... others
+
+# ---- linking words
+conj | I stayed at home ___ I was ill. | because/as/since | reason
+conj | ___ it was raining, we went for a walk. | although/though | contrast, with subject + verb
+conj | I will phone you ___ I arrive. | when/if/once | future time clause + present simple
+conj | You will not pass ___ you study harder. | unless | unless = if not
+conj | He speaks French as well ___ English. | as | as well as = además de
+conj | Wait here ___ I come back. | until/till | until
+conj | She was cooking ___ I was doing my homework. | while/when/as | two long actions: while
+conj | I was tired, ___ I went to bed early. | so | result
+conj | Take a coat in ___ it gets cold. | case | in case = por si
+conj | I like both tennis ___ football. | and | both ... and
+conj | You can have either tea ___ coffee. | or | either ... or
+conj | I do not know ___ he is coming or not. | whether/if | whether ... or not
+conj | ___ of the rain, the match was cancelled. | because | because of + noun
+conj | In ___ of the rain, we enjoyed the trip. | spite | in spite of + noun
+
+# ---- phrasal verbs and fixed phrases
+phr | I am looking forward ___ seeing you. | to | look forward TO + -ing
+phr | She takes ___ in the school play every year. | part | take part in = participar
+phr | Can you look ___ my cat while I am away? | after | look after = cuidar
+phr | He gave ___ smoking last year. | up | give up = dejar de
+phr | I get ___ very well with my sister. | on/along | get on with = llevarse bien
+phr | We have run ___ of bread. | out | run out of = quedarse sin
+phr | Please fill ___ this form. | in/out | fill in a form
+phr | First ___ all, I would like to thank you. | of | first of all
+phr | I have not seen him for ___ least a year. | at | at least
+phr | ___ the end, we decided to stay at home. | in | in the end = al final
+phr | I did it ___ my own. | on | on my own = yo solo
+phr | By the ___, have you seen Tom today? | way | by the way = por cierto
+phr | I found ___ that the shop was closed. | out | find out = descubrir, enterarse
+phr | It is up ___ you. I do not mind. | to | it is up to you = tú decides
+phr | I picked my sister ___ from the station. | up | pick up = recoger
+phr | ___ fact, I have never eaten sushi. | in | in fact = de hecho
+
+# ---- comparisons
+comp | This exam was easier ___ the last one. | than | comparative + than
+comp | He is not as tall ___ his brother. | as | as ... as
+comp | It is the ___ interesting book I have ever read. | most/least | the most + long adjective
+comp | The ___ you practise, the better you get. | more | the more ..., the better ...
+comp | My phone is the same ___ yours. | as | the same AS
+comp | This is ___ better than I expected. | much/far/even | much + comparative
+comp | She sings ___ well as a professional. | as | as well as
+comp | It was the ___ day of my life. I lost everything. | worst | superlative of bad
+comp | He looks ___ his father. | like | look like = parecerse a
+comp | Today is a bit colder ___ yesterday. | than | comparative + than
+comp | I would prefer tea rather ___ coffee. | than | rather than
+comp | This is one of the ___ expensive cities in Europe. | most/least | one of the most
+
+# ---- verb collocations
+verb | I always ___ my homework after dinner. | do | do homework
+verb | Try not to ___ any mistakes. | make | make a mistake
+verb | Shall we ___ a break? | take/have | take a break
+verb | It ___ me an hour to get to school. | takes/took | it takes + time
+verb | I ___ a shower every morning. | have/take | have a shower
+verb | Can you ___ me a favour? | do | do a favour
+verb | We ___ friends on the first day of school. | made/became | make friends
+verb | You should ___ attention in class. | pay | pay attention
+verb | She ___ angry when I told her. | got/was/became/felt | get angry
+verb | I have to ___ a decision soon. | make/take | make a decision
+verb | Let's ___ a party on Friday. | have/throw | have a party
+verb | He ___ care of his little brother. | takes/took | take care of

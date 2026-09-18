@@ -1,0 +1,75 @@
+# B1 Preliminary Reading Part 6 (open cloze) practice texts, written for this app.
+# A gap is {{answer/alternative # category # optional note}}.
+# Categories: art prep aux pron rel quant conj phr comp verb
+
+# My new hobby
+Last year I started going climbing {{with # prep}} my cousin. At first I was afraid {{of # prep # afraid OF + -ing}} falling, but the instructors, {{who # rel # after a comma, for people: who (never "that")}} are all very experienced, helped me a lot. Now I go to the climbing centre twice {{a # art # twice a week, once a month, three times a year}} week. It is the {{most # comp # the most + long adjective}} exciting sport I have ever tried. If you {{are # aux # present continuous: are thinking}} thinking of trying it, book a beginner's class first!
+
+# An email to my host family
+Dear Mr and Mrs Brown, thank you for your email. I am really looking forward {{to # phr # look forward TO + -ing}} staying with you in July. I have never been to England {{before # phr # never ... before}}, so I am a little nervous. My plane arrives {{at # prep # at + clock time}} half past three on Saturday afternoon. Could you tell me {{how # pron # how to get = the way to get}} to get from the airport to your house? I do not eat meat, but please do not worry {{about # prep # worry ABOUT}} my meals, because I love fish and vegetables. I hope {{to # aux # hope TO + infinitive}} hear from you soon.
+
+# The school trip
+Next Friday our class is going on a trip to the science museum. It is one of {{the # art # one of THE + superlative}} best museums in the country. We {{will/shall # aux # future}} travel by coach, and the journey takes about {{an # art # an hour (silent h)}} hour. Everybody must bring a packed lunch because there is {{no # quant # there is no café = there isn't a café}} café in the museum. Students {{who/that # rel # people: who / that}} want to buy souvenirs should bring some money. We will not be back at school {{until/till/before # conj # not ... until}} five o'clock, so please tell your parents.
+
+# A day at the beach
+It was such {{a # art # such a + adjective + singular noun}} hot day yesterday that we decided to go to the beach. There were so {{many # quant # so many + plural noun}} people that we could hardly find a place to sit. My brother, {{whose # rel # whose = possession (his swimming)}} swimming is much better than mine, swam out to a small island. I stayed near the shore {{because/as/since # conj # reason}} I am not a strong swimmer. {{In/During # prep # in the afternoon}} the afternoon we played volleyball {{until/till # conj}} it got dark.
+
+# Learning to cook
+I have been interested {{in # prep # interested IN}} cooking since I was a child. My grandmother, who used {{to # aux # used TO + infinitive (past habit)}} be a chef, taught me how to make bread. These days I cook dinner for my family {{at # phr # at least = como mínimo}} least twice a week. I am not as good {{as # comp # as + adjective + AS}} my grandmother yet, but I am getting better. Last month I {{was # aux # past passive: was given}} given a cookery book for my birthday, and I have already tried most {{of # quant # most OF the / some OF the / all OF the}} the recipes.
+
+# Moving house
+Two months {{ago # phr # period + ago}} my family moved to a small town near the coast. I did not want to leave my old school, but I have made some good friends {{since # prep # since then = desde entonces}} then. Our new house is much bigger {{than # comp # comparative + THAN}} the old one, and I no longer have to share a bedroom {{with # prep # share something WITH somebody}} my sister. The park opposite our house, {{where # rel # place + subject + verb: where}} I walk the dog every evening, is beautiful. It only {{takes # verb # it takes (me) five minutes to...}} me five minutes to walk to school.
+
+# The history of the bicycle
+The bicycle {{was # aux # past passive: was invented}} invented about two hundred years ago. The first bicycles had no pedals, {{so # conj # result}} riders had to push them along with their feet. They were made {{of # prep # made OF wood (you can still see the material)}} wood and were very uncomfortable. Today, bicycles are used all {{over/around/round/across # phr # all over the world}} the world. In some cities there are more bicycles {{than # comp}} cars. Cycling is good for your health, and it is also good {{for # prep # good FOR}} the environment.
+
+# My best friend
+I met my best friend Laura {{when/while # conj}} we were both five years old. We have known {{each/one # pron # each other = el uno al otro}} other for ten years now. {{Although/Though/While # conj # contrast inside one sentence}} we are very different, we hardly ever argue. She is keen {{on # prep # keen ON}} sport, while I prefer reading. Neither of {{us # pron # neither of us / both of us / some of us}} likes getting up early, though! Next year she is moving to another city, and I know I am going to miss {{her # pron # object pronoun}} a lot.
+
+# My Saturday job
+I have {{a # art # first mention, singular: a}} Saturday job in a bakery. I have worked there {{for # prep # for + period (six months); since + starting point}} six months. I start at seven, so I {{have # aux # have to = obligation}} to get up very early. The work is quite hard, but the other people {{who/that # rel}} work there are friendly. I do not earn {{much/enough # quant # much + uncountable (money)}} money, but I am saving up to buy a guitar. I have not told my parents about the guitar {{yet # phr # not ... yet (at the end)}}!
+
+# The weather in Scotland
+People often ask me what the weather is {{like # phr # What is it like? = ¿Cómo es?}} in Scotland. Well, it rains quite a {{lot/bit # quant # quite a lot}}, especially in autumn. In winter it can be very cold, and sometimes there is so much snow {{that # conj # so ... that (result)}} schools have to close. Summers are usually warm, but you should always carry {{an # art # an + vowel sound}} umbrella, just {{in # phr # just in case = por si acaso}} case. {{If/When # conj}} you visit us, bring a coat!
+
+# A film review
+Last night I went to see the new superhero film. I had {{been # aux # past perfect continuous: had been waiting}} waiting for months to see it, so I was very excited. Unfortunately, it was not {{as # comp # not as good as}} good as I expected. The story was so complicated {{that # conj # so + adjective + that}} I could not follow it, and it was one of {{the # art # one of the + superlative}} longest films I have ever seen. {{What # pron # What I liked most was... = Lo que más me gustó}} I liked most was the music. I would not recommend it {{unless # conj # unless = if ... not}} you are a big fan of superheroes.
+
+# Sleep
+Teenagers need about nine hours of sleep {{every/each/a/per # quant # nine hours a night / every night}} night, but most of {{them # pron # most of them}} get much less. One reason is that they spend too {{much # quant # too much + uncountable (time)}} time looking at screens before bed. Experts say you should turn {{off # phr # turn off = apagar}} your phone an hour before you go to sleep. It is also a good idea to go to bed at {{the # art # the same}} same time every day. If you still cannot sleep, try reading a book {{instead # phr # instead of = en lugar de}} of watching videos.
+
+# Helping at the animal shelter
+Every Saturday morning I help {{at/in # prep}} an animal shelter. The shelter looks {{after # phr # look after = cuidar}} dogs and cats that have {{been # aux # present perfect passive: have been abandoned}} abandoned by their owners. My job is to take the dogs {{for # phr # take the dog for a walk}} a walk and to clean their beds. It is hard work, but I enjoy {{it # pron # enjoy needs an object: enjoy it}} because I love animals. I would like to {{become/be # verb}} a vet when I finish school.
+
+# The lost phone
+Last week something strange happened {{to # prep # happen TO somebody}} me. I was sitting on the bus {{when # conj # past continuous + when + past simple}} I realised that my phone was not in my pocket. I looked everywhere, but I could not find it {{anywhere # pron # not ... anywhere}}. I got {{off # phr # get off the bus}} the bus and walked back to the café {{where # rel}} I had had lunch. Luckily, the waiter had found it under a table. I was {{so # conj # so + adjective + that}} happy that I gave him a hug!
+
+# School uniform
+In my country, most students {{have # aux # have to = obligation}} to wear a uniform. Some people think uniforms are a good idea {{because/as/since # conj}} everybody looks the same. Others believe that students should be allowed {{to # aux # be allowed TO + infinitive}} choose their own clothes. Personally, I do not mind wearing one. It saves time in the morning, and I do not have to worry {{about # prep}} what to wear. {{On # phr # on the other hand = por otro lado}} the other hand, our uniform is not very comfortable, especially {{in/during # prep # in (the) summer}} summer.
+
+# The new sports centre
+Our new sports centre opened {{in # prep # in + month / year}} March. It has two swimming pools, one of {{which # rel # one of which (things), one of whom (people)}} is only for children. Members can use the gym {{as # comp # as often as}} often as they like. {{There # pron # There is / There are}} are classes every evening, including yoga and dance. You do not need to book, but you should arrive {{at # phr # at least}} least ten minutes early. For {{more/further # quant # for more information}} information, visit our website.
+
+# Travelling by train
+I have always preferred travelling {{by # prep # by train, by car, by plane (but: on foot)}} train. It may be slower than flying, but you can see {{the # art}} countryside through the window. Last summer my friends and I {{spent # verb # spend time + -ing}} two weeks travelling around Italy. We visited six cities, and {{each/every # quant # each one / every one}} one was different. The only problem was that some trains were late, so we {{had # aux # had to = past obligation}} to wait for hours. It was {{such # quant # such a + adjective + noun ... that}} a great holiday that we want to do it again next year.
+
+# Thinking about a pet
+{{Have # aux # present perfect question: Have you ever...?}} you ever thought about getting a pet? Before you do, there are a {{few # quant # a few + plural noun}} things you should know. First, pets cost {{a # quant # a lot of}} lot of money. Second, a dog needs to {{be # aux # passive infinitive: to be taken}} taken for a walk at least twice a day, even when {{it # pron # it is raining (weather: it)}} is raining. Finally, you cannot just leave your pet alone when you go {{on # prep # go ON holiday}} holiday.
+
+# The concert
+I have just bought tickets {{for # prep # tickets FOR a concert}} my favourite band's concert. They {{are # aux # present continuous for a fixed future plan}} playing at the stadium on 5 May. I have been a fan {{since # conj # since + starting point}} I was twelve, but I have never seen them live. The tickets were expensive, so I had to borrow some money {{from # prep # borrow FROM / lend TO}} my sister. I will pay her {{back # phr # pay back = devolver el dinero}} next month. I am so excited {{that # conj}} I cannot sleep!
+
+# Learning languages
+Learning a language is not easy, but there are many things you can do to improve. One of {{them/these # pron # one of them}} is to watch films in the language you {{are # aux}} learning. Try {{not # aux # try not to + infinitive}} to read the subtitles all the time. It is also useful to write down new words in {{a # art}} notebook and look at them {{as # comp # as often as possible}} often as possible. Most importantly, do not be afraid of {{making # verb # make mistakes (not "do"); after a preposition: -ing}} mistakes.
+
+# Party invitation
+Hi Sam, I am having a party {{on # prep # on + day}} Saturday to celebrate the end of the exams. It starts at eight, but you can come earlier {{if # conj # if you like = si quieres}} you like. You do not need to bring {{any # quant # not ... any}} food, but it would be great if you {{could # aux # it would be great if you could...}} bring some music. By the way, {{do # aux # present simple question: do you know...?}} you know Anna's new phone number? I would like to invite her as {{well # phr # as well = también (at the end)}}.
+
+# The story of chocolate
+Chocolate is made {{from # prep # made FROM (the material changes completely)}} the seeds of the cacao tree. Hundreds of years ago, people in Central America {{used # aux # used to + infinitive}} to drink it with spices. It {{was # aux # past passive}} brought to Europe by Spanish explorers, and sugar was added to make it sweeter. At first, only rich people could buy it {{because/as/since # conj}} it was so expensive. Today millions of tons {{are # aux # present passive, plural}} eaten every year. Doctors say that a small amount of dark chocolate may even {{be # aux # modal + be}} good for you.
+
+# Summer camp
+This summer I am going to work {{as # prep # work AS a + job}} a monitor at a summer camp. I will be responsible {{for # prep # responsible FOR}} a group of ten children. I have never done {{anything # pron # never ... anything}} like this before, so I am a bit nervous. We will sleep in tents, {{which # rel # comma + which = refers to the whole idea}} sounds like fun. The camp is in the mountains, far {{from # prep # far FROM}} the nearest town, and {{there # pron # there is no...}} is no internet.
+
+# Breakfast
+Many teenagers skip breakfast because they would {{rather # phr # would rather + infinitive = prefer}} stay in bed a little longer. This is a mistake. If you do not eat {{anything # pron # not ... anything}} in the morning, you will find it hard {{to # aux # find it hard TO + infinitive}} concentrate in class. You do not need to spend a long time cooking. {{A # art}} bowl of cereal or some toast is enough. Try to drink water instead {{of # phr # instead OF}} sugary drinks, and do not eat {{too/so # quant # too many + plural}} many sweets.

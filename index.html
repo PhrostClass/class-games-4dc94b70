@@ -332,13 +332,46 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .pinpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:260px;margin:0 auto}.pinpad button{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;font:inherit;font-size:22px;font-weight:800;color:var(--text);cursor:pointer}.pinpad button.del{font-size:16px;color:var(--muted)}
 @media (orientation:portrait){.qbody{flex-direction:column}.qpanel{width:auto;max-height:42%}}
 .ver{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}
+.gcard.exam{background:linear-gradient(135deg,#1d4ed8,#38bdf8);color:#fff}.gcard.exam .d{color:rgba(255,255,255,.88)}
+.gcard.study{background:linear-gradient(135deg,#334155,#64748b);color:#fff}.gcard.study .d{color:rgba(255,255,255,.85)}
+.pet-text{font-size:19px;line-height:2.15;background:var(--card);border-radius:16px;padding:16px 20px;white-space:pre-line}
+.pet-text.big{font-size:24px;line-height:2.2;padding:26px 22px}
+.gapw{white-space:nowrap}.gapw sup{font-size:11px;color:var(--muted);margin-right:2px}
+.gapin{font:inherit;font-weight:700;color:var(--accent);background:var(--card2);border:0;border-bottom:3px solid var(--accent);border-radius:8px 8px 0 0;padding:2px 6px;text-align:center;outline:none;width:5.2em;max-width:60vw;-webkit-appearance:none}
+.gapin.wide{display:block;width:100%;max-width:340px;text-align:left;font-size:18px;padding:9px 12px;margin-top:8px}
+.gapin.ok{border-color:var(--ok);color:var(--ok);opacity:1;-webkit-text-fill-color:var(--ok)}.gapin.no{border-color:var(--bad);color:var(--bad);text-decoration:line-through;opacity:1;-webkit-text-fill-color:var(--bad)}
+.fix{color:var(--ok);font-weight:800;margin-left:6px}
+.cattag{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:2px 9px;vertical-align:middle}
+.petscore{font-size:44px;font-weight:800;text-align:center;margin:16px 0 10px}
+.exq{background:var(--card);border-radius:16px;padding:14px 16px;margin-top:12px}
+.exq .qt{font-size:17px;font-weight:600;margin:4px 0 8px;line-height:1.4}.exq .blank{display:inline-block;width:70px;border-bottom:2px solid var(--muted)}
+.notice{border:2px solid var(--line);border-radius:12px;padding:12px 14px;white-space:pre-line;font-size:16px;line-height:1.45;background:var(--card2);margin-bottom:8px}
+.opt{display:block;width:100%;text-align:left;font:inherit;font-size:16px;color:var(--text);background:var(--card2);border:2px solid var(--line);border-radius:12px;padding:11px 13px;margin-top:7px;cursor:pointer;line-height:1.35}
+.opt b{color:var(--accent);margin-right:6px}.opt.sel{border-color:var(--accent);background:var(--card)}
+.opt.ok{border-color:var(--ok);background:rgba(34,160,107,.14)}.opt.no{border-color:var(--bad);background:rgba(229,72,77,.12)}
+.optrow{display:flex;flex-wrap:wrap;gap:7px}.opt.letter{width:auto;min-width:48px;text-align:center;font-weight:700;margin-top:0}
+.why{font-size:14px;color:var(--muted);margin-top:9px;line-height:1.4}
+.playbtn{margin-bottom:8px}.btnrow .playbtn{margin-bottom:0}.playbtn.on{background:var(--accent);color:#fff}
+.statline{display:flex;gap:8px;margin:12px 0}.statline>div{flex:1;background:var(--card);border-radius:14px;padding:10px 6px;text-align:center}
+.statline b{display:block;font-size:24px;font-weight:800}.statline span{font-size:12px;color:var(--muted)}.statline.small b{font-size:19px}
+.flash{background:var(--card);border-radius:22px;padding:30px 22px;min-height:300px;display:flex;flex-direction:column;justify-content:center;text-align:center;margin-bottom:14px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.flash hr{border:0;border-top:1px solid var(--line);margin:20px 0;width:100%}
+.fword{font-size:38px;font-weight:800;line-height:1.15}.fpos{font-size:15px;font-weight:500;color:var(--muted)}
+.fans{font-size:28px;font-weight:700;color:var(--accent);line-height:1.25}
+.fex{font-size:18px;line-height:1.45;margin-top:14px}.fex.en{color:var(--muted);font-style:italic;margin-top:6px}
+.ftap{color:var(--muted);font-size:14px;margin-top:24px}
+.spk{border:0;background:transparent;font-size:20px;cursor:pointer;padding:2px 6px;vertical-align:middle}
+.grade{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.gbtn{border:0;border-radius:14px;padding:13px 4px;font:inherit;color:#fff;cursor:pointer}.gbtn b{display:block;font-size:17px}.gbtn span{font-size:12px;opacity:.9}
+.gbtn.bad{background:var(--bad)}.gbtn.warn{background:#d97706}.gbtn.ok{background:var(--ok)}.gbtn.easy{background:#2f7de1}.gbtn:active{filter:brightness(.9)}
+.dok{color:var(--ok);font-weight:600}.dno{color:var(--bad);font-weight:800;text-decoration:underline}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.10.0';
+const APP_VERSION = '1.11.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -375,6 +408,7 @@ function buildTextbookFolders(data) {
 }
 async function loadTextbooks() {
   try { const r = await fetch('./textbooks.json', { cache: 'default' }); if (r.ok) TEXTBOOK_FOLDERS = buildTextbookFolders(await r.json()); } catch (e) { console.warn('textbooks.json not loaded', e); }
+  try { const r = await fetch('./pet.json', { cache: 'default' }); if (r.ok) installPet(await r.json()); } catch (e) { console.warn('pet.json not loaded', e); }
 }
 const textbookDecks = () => db.global.showTextbooks === false ? [] : TEXTBOOK_FOLDERS.flatMap(f => f.decks);
 /* Grade of the current class (from its name: "5º EP A", "2 EP") — used to open that grade's textbook folder by default */
@@ -429,6 +463,8 @@ function normalizeDb(d) {
   d.results = Array.isArray(d.results) ? d.results.filter(r => r && r.cls && Array.isArray(r.teams)) : [];
   if (!d.roulette || typeof d.roulette !== 'object') d.roulette = {};
   if (!d.absences || typeof d.absences !== 'object') d.absences = {};
+  if (!d.study || typeof d.study !== 'object') d.study = {};
+  for (const f of ['who', 'cards', 'meta', 'pet']) if (!d.study[f] || typeof d.study[f] !== 'object') d.study[f] = {};
   d.queue = normalizeQueue(d.queue);
   const folderIds = new Set(d.folders.map(f => f.id));
   d.decks.forEach(k => { if (k.folderId && !folderIds.has(k.folderId)) k.folderId = null; });
@@ -645,7 +681,8 @@ function route() {
     buzz: renderBuzzSetup, buzzplay: renderBuzz, futaba: renderFutabaSetup, futabaplay: renderFutaba, memory: renderMemorySetup, memoryplay: renderMemory,
     queue: a => a ? renderQueueGroup(a) : renderQueueGroups(),
     quiz: renderQuizSetup, quizplay: renderQuiz, ttt: renderTttSetup, tttplay: renderTtt, bam: renderBamSetup, bamplay: renderBam,
-    snakes: renderSnkSetup, snakesplay: renderSnk, hangman: renderHangSetup, hangmanplay: renderHang, roulette: renderRoulette, timer: renderTimer, rankings: renderRankings, absences: renderAbsences };
+    snakes: renderSnkSetup, snakesplay: renderSnk, hangman: renderHangSetup, hangmanplay: renderHang, roulette: renderRoulette, timer: renderTimer, rankings: renderRankings, absences: renderAbsences,
+    study: renderStudySetup, studyplay: renderStudy, pet: renderPet };
   clearInterval(qTimer);
   (screens[name] || renderClasses)(arg);
 }
@@ -1232,6 +1269,7 @@ const GAME_DEFAULTS = {
   bam: { lastDecks: [], cards: 20, powers: 5, qTime: 20, side: 'answer', plain: 'scramble', showOpts: false, teams: 2 },
   snakes: { lastDecks: [], size: 8, qTime: 20, side: 'answer', plain: 'scramble', showOpts: false, exact: false, teams: 2 },
   hangman: { lastDecks: [], rounds: 5, hint: true, teams: 1 },
+  study: { lastDecks: [], newPerDay: 20, dir: 'fwd', autoSpeak: true, rate: 0.95 },
 };
 function gameCfg(key) {
   const s = db.settings;
@@ -2556,10 +2594,11 @@ const Q_SEED = [
 ];
 /* group number used by the Attendance app ("Ana, Luis (3)"), by class name */
 const ATT_BY_NAME = Object.fromEntries(Q_SEED.map(g => [g.name, g.att]));
-const HOME_STUDENTS = ['Iñigo', 'Manu', 'Nacho', 'Juan', 'Beltran', 'Jorge', 'Adrián', 'Adriana', 'Sara', 'Jaime'];
+const HOME_STUDENTS = ['Iñigo', 'Manu', 'Nacho', 'Juan', 'Beltran', 'Jorge', 'Adrián', 'Adriana', 'Sara', 'Jaime', 'Carlos Polo'];
+const HOME_ADDED_LATER = ['Carlos Polo'];   // added after the first seeding: pushed once into existing installs
 const HOME_GROUP = () => { const g = { id: HOME_CLASS, name: 'Home students', sub: 'Private lessons', icon: '🏠', students: HOME_STUDENTS.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(g); return g; };
 function qSeed() {
-  return { pin: '1234', live: {}, homeSeeded: true, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, att: g.att, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }).concat([HOME_GROUP()]) };
+  return { pin: '1234', live: {}, homeSeeded: true, homeSeeded2: true, groups: Q_SEED.map(g => { const gr = { id: uid(), name: g.name, sub: g.sub, icon: g.icon, att: g.att, students: g.students.map(n => ({ id: uid(), name: n, emoji: '', color: '', photo: null })) }; qAssignLooks(gr); return gr; }).concat([HOME_GROUP()]) };
 }
 /* Every student in a group gets a different colour (and emoji while there are enough). */
 function qAssignLooks(group) {
@@ -2582,7 +2621,12 @@ function normalizeQueue(q) {
   if (!q.homeSeeded) {   // one-time: fill the Home students group on installs that already had it empty
     const home = q.groups.find(g => g.id === HOME_CLASS); const have = new Set(home.students.map(s => s.name.toLowerCase()));
     HOME_STUDENTS.filter(n => !have.has(n.toLowerCase())).forEach(n => home.students.push({ id: uid(), name: n, emoji: '', color: '', photo: null }));
-    qAssignLooks(home); q.homeSeeded = true;
+    qAssignLooks(home); q.homeSeeded = true; q.homeSeeded2 = true;
+  }
+  if (!q.homeSeeded2) {
+    const home = q.groups.find(g => g.id === HOME_CLASS); const have = new Set(home.students.map(s => s.name.toLowerCase()));
+    HOME_ADDED_LATER.filter(n => !have.has(n.toLowerCase())).forEach(n => home.students.push({ id: uid(), name: n, emoji: '', color: '', photo: null }));
+    qAssignLooks(home); q.homeSeeded2 = true;
   }
   return q;
 }
@@ -2771,9 +2815,394 @@ function renderClassHub() {
         <div class="gcard absent" data-nav="#absences"><div class="emoji">📋</div><div class="n">Absences</div><div class="d">${(() => { const n = absencesFor(g.id).length; return n ? plural(n, 'student') + ' absent today' : 'Mark who is missing and send it to the attendance bot.'; })()}</div></div>
         <div class="gcard rank" data-nav="#rankings"><div class="emoji">🏆</div><div class="n">Rankings</div><div class="d">${(() => { const n = (db.results || []).filter(r => r.cls === g.id).length; return n ? plural(n, 'game') + ' recorded' : 'Points from the games, per class and per grade.'; })()}</div></div>
         <div class="gcard charades" data-nav="#home"><div class="emoji">🎮</div><div class="n">Games</div><div class="d">Charades, Yahtzee, Futaba, Memory${lastDeckNames.length ? ' · last decks: ' + esc(lastDeckNames.slice(0, 2).join(', ')) + (lastDeckNames.length > 2 ? '…' : '') : ''}</div></div>
-        ${g.id === HOME_CLASS ? `<div class="gcard soon"><div class="emoji">🏠</div><div class="n">Home area</div><div class="d">Coming soon — tell me what goes here.</div></div>` : ''}
+        <div class="gcard study" data-nav="#study"><div class="emoji">🧠</div><div class="n">Study</div><div class="d">Flashcards with spaced repetition, progress per student.</div></div>
+        <div class="gcard exam" data-nav="#pet"><div class="emoji">🎓</div><div class="n">Exam prep</div><div class="d">B1 Preliminary (PET): Part 6 trainer, listening, hardest words.</div></div>
       </div>
     </div></div></div>`;
+}
+
+/* ===================== Study: spaced-repetition flashcards (Anki style) ===================== */
+/* Progress is kept per student: db.study.cards["<classId>:<studentId|all>"]["<deck>|<term>"] = { s, i, e, d, n, l }
+   s = step (0,1 learning · 2 review), i = interval in days, e = ease, d = due (ms), n = answers, l = lapses. */
+const SRS_MIN = 60000, SRS_DAY = 86400000;
+const dayStart = now => { const d = new Date(now); d.setHours(0, 0, 0, 0); return d.getTime(); };
+const srsNew = () => ({ s: 0, i: 0, e: 2.5, d: 0, n: 0, l: 0 });
+function srsGrade(c0, g, now) {   // g: 0 again · 1 hard · 2 good · 3 easy
+  const c = { ...c0 }; c.n++;
+  if (c.s < 2) {
+    if (g === 0) { c.s = 0; c.d = now + SRS_MIN; }
+    else if (g === 1) c.d = now + 6 * SRS_MIN;
+    else if (g === 2) { c.s++; if (c.s >= 2) { c.i = Math.max(1, c.i); c.d = dayStart(now) + c.i * SRS_DAY; } else c.d = now + 10 * SRS_MIN; }
+    else { c.s = 2; c.i = Math.max(4, c.i); c.d = dayStart(now) + c.i * SRS_DAY; }
+  } else {
+    if (g === 0) { c.l++; c.e = Math.max(1.3, c.e - 0.2); c.i = Math.max(1, Math.round(c.i * 0.5)); c.s = 1; c.d = now + SRS_MIN; }
+    else {
+      if (g === 1) { c.e = Math.max(1.3, c.e - 0.15); c.i = Math.max(c.i + 1, Math.round(c.i * 1.2)); }
+      else if (g === 2) c.i = Math.max(c.i + 1, Math.round(c.i * c.e));
+      else { c.e += 0.15; c.i = Math.max(c.i + 2, Math.round(c.i * c.e * 1.3)); }
+      c.d = dayStart(now) + c.i * SRS_DAY;
+    }
+  }
+  return c;
+}
+function srsLabel(c, g, now) { const x = srsGrade(c, g, now); return x.s < 2 ? Math.max(1, Math.round((x.d - now) / SRS_MIN)) + ' min' : x.i < 30 ? x.i + (x.i === 1 ? ' day' : ' days') : Math.round(x.i / 30) + ' mo'; }
+const studyWho = () => db.study.who[db.currentClass] || '';
+const studyKey = () => (db.currentClass || HOME_CLASS) + ':' + (studyWho() || 'all');
+function studyWhoName() { const g = currentClassGroup(); const s = g && g.students.find(x => x.id === studyWho()); return s ? s.name : 'Everyone'; }
+function studyData() {
+  const k = studyKey(), S = db.study;
+  if (!S.cards[k]) S.cards[k] = {};
+  if (!S.meta[k]) S.meta[k] = { day: '', newN: 0, bonus: 0 };
+  if (!S.pet[k]) S.pet[k] = {};
+  const p = S.pet[k]; for (const f of ['cloze', 'cats', 'drillOk', 'ex']) if (!p[f] || typeof p[f] !== 'object') p[f] = {};
+  if (S.meta[k].day !== todayKey()) Object.assign(S.meta[k], { day: todayKey(), newN: 0, bonus: 0 });
+  return { cards: S.cards[k], meta: S.meta[k], pet: p };
+}
+async function pickStudyWho(rerender) {
+  const g = currentClassGroup(); if (!g) return;
+  const v = await chooseDlg('Who is studying?', [{ label: 'Everyone', value: '', sub: 'One shared progress for the whole class' }].concat(g.students.map(s => ({ label: s.name, value: s.id }))));
+  if (v === null) return; db.study.who[db.currentClass] = v; saveDb(); rerender();
+}
+const whoRowHtml = () => `<div class="card"><div class="row" data-act="who"><div class="ic">👤</div><div class="txt"><div class="t">${esc(studyWhoName())}</div><div class="s">Progress is saved for this student. Tap to change.</div></div><div class="chev">›</div></div></div>`;
+function studyCards(ids) {
+  const out = [], seen = new Set();
+  for (const id of ids) {
+    const k = getDeck(id); if (!k) continue; const pre = String(id).startsWith('tb_pet') ? 'pet' : id;
+    for (const w of k.words) { const p = parts(w); if (!p[0]) continue; const key = pre + '|' + p[0].toLowerCase(); if (seen.has(key)) continue; seen.add(key); out.push({ key, front: p[0], back: p[1] || '', extra: p.slice(2).join(' · ') }); }
+  }
+  return out;
+}
+function srsBuckets(cards, st, now) {
+  const learn = [], due = [], fresh = []; let known = 0;
+  for (const c of cards) { const s = st[c.key]; if (!s) fresh.push(c); else if (s.s < 2) learn.push(c); else { known++; if (s.d <= now) due.push(c); } }
+  learn.sort((a, b) => st[a.key].d - st[b.key].d);
+  return { learn, due, fresh, known };
+}
+let study = null;
+function renderStudySetup(arg) {
+  const cfg = gameCfg('study'); const groups = deckGroups();
+  if (arg === 'pet' && getDeck('tb_pet_all')) cfg.lastDecks = ['tb_pet_all'];
+  const selected = ensureSelection(cfg);
+  const render = () => {
+    const cards = studyCards([...selected]); const b = srsBuckets(cards, studyData().cards, Date.now()); const left = Math.max(0, cfg.newPerDay + studyData().meta.bonus - studyData().meta.newN);
+    app.innerHTML = `<div class="screen">
+      ${topbar('Study', backBtn('Back', '#class'), '')}
+      <div class="content"><div class="wrap">
+        <div class="hint" style="margin:0 4px 12px">Flashcards with spaced repetition, like Anki: cards you find hard come back soon, easy ones after days or weeks. A little every day works best.</div>
+        ${whoRowHtml()}
+        <div class="statline"><div><b>${b.due.length + b.learn.length}</b><span>to review now</span></div><div><b>${Math.min(left, b.fresh.length)}</b><span>new today</span></div><div><b>${b.known}</b><span>learned</span></div><div><b>${b.fresh.length}</b><span>not seen yet</span></div></div>
+        <button class="btn big" data-act="start" ${cards.length ? '' : 'disabled'}>Start studying</button>
+        <h2 class="sec">Options</h2>
+        <div class="card">${stepHtml('newPerDay', 'New cards per day', 'Reviews are never limited', cfg.newPerDay)}
+          ${togHtml('autoSpeak', 'Say the English word aloud', 'Uses the best English voice installed', cfg.autoSpeak)}</div>
+        <div style="margin-top:10px">${segHtml('dir', [['fwd', 'English → answer'], ['rev', 'Answer → English']], cfg.dir)}</div>
+        <h2 class="sec">Decks</h2>
+        ${deckPickerHtml(groups, selected)}
+      </div></div></div>`;
+    const sc = $('.screen', app);
+    bindSetup(sc, cfg, groups, selected, { newPerDay: [5, 60] }, render, () => startStudy([...selected]));
+    sc.addEventListener('click', e => { if (e.target.closest('[data-act=who]')) pickStudyWho(render); });
+  };
+  render();
+}
+function startStudy(ids) {
+  study = { ids, cards: studyCards(ids), cur: null, shown: false, done: 0 };
+  studyNext();
+  if (!/^#studyplay/.test(location.hash)) { navState.depth++; go('#studyplay'); } else renderStudy();
+}
+function studyNext() {
+  const { cards: st, meta } = studyData(); const now = Date.now(); const cfg = gameCfg('study');
+  const b = srsBuckets(study.cards, st, now); const left = Math.max(0, cfg.newPerDay + meta.bonus - meta.newN);
+  study.counts = { learn: b.learn.length, due: b.due.length, fresh: Math.min(left, b.fresh.length), freshAll: b.fresh.length };
+  let next = b.learn.find(c => st[c.key].d <= now) || null;
+  if (!next && b.due.length) next = b.due[Math.floor(Math.random() * b.due.length)];
+  if (!next && left && b.fresh.length) next = b.fresh[0];
+  if (!next && b.learn.length) next = b.learn[0];
+  study.cur = next; study.shown = false;
+}
+function studyGrade(g) {
+  const { cards: st, meta } = studyData(); const c = study.cur; if (!c) return;
+  if (!st[c.key]) meta.newN++;
+  st[c.key] = srsGrade(st[c.key] || srsNew(), g, Date.now()); study.done++; saveDb();
+  studyNext(); renderStudy();
+}
+function renderStudy() {
+  if (!study) { location.replace('#study'); return; }
+  const cfg = gameCfg('study'), c = study.cur, n = study.counts;
+  const top = topbar('Study · ' + studyWhoName(), backBtn('Done', '#study'), '');
+  if (!c) {
+    const st = studyData().cards; const tomorrow = study.cards.filter(x => st[x.key] && st[x.key].s === 2 && st[x.key].d <= dayStart(Date.now()) + SRS_DAY).length;
+    app.innerHTML = `<div class="screen">${top}<div class="content"><div class="wrap"><div class="empty"><div class="big">🎉</div><b>That is all for now.</b><br>${plural(study.done, 'card')} studied in this session. ${tomorrow ? plural(tomorrow, 'card') + ' will be waiting tomorrow.' : ''}</div>
+      ${n.freshAll ? `<button class="btn" data-act="more">Learn 10 more new cards</button>` : ''}<button class="btn sec" style="margin-top:10px" data-nav="back" data-fallback="#study">Back</button></div></div></div>`;
+    $('.screen', app).addEventListener('click', e => { if (e.target.closest('[data-act=more]')) { studyData().meta.bonus += 10; saveDb(); studyNext(); renderStudy(); } });
+    return;
+  }
+  const pv = c.key.startsWith('pet|') ? PET_WORDS[c.front.toLowerCase()] : null;
+  const rev = cfg.dir === 'rev' && c.back;
+  const st0 = studyData().cards[c.key] || srsNew(); const now = Date.now();
+  const ex = pv ? `<div class="fex">${esc(pv.ex_es)}</div><div class="fex en">${esc(pv.ex_en)} <button class="spk" data-say="${esc(pv.ex_en)}">🔊</button></div>` : c.extra ? `<div class="fex">${esc(c.extra)}</div>` : '';
+  const english = `<div class="fword">${esc(c.front)}${pv ? ` <span class="fpos">${esc(pv.pos)}</span>` : ''} <button class="spk" data-say="${esc(c.front)}">🔊</button></div>`;
+  const answer = `<div class="fans">${esc(c.back || '(say it aloud, then check with your teacher)')}</div>`;
+  app.innerHTML = `<div class="screen">${top}<div class="content"><div class="wrap">
+    <div class="statline small"><div><b style="color:#2f7de1">${n.fresh}</b><span>new</span></div><div><b style="color:var(--bad)">${n.learn}</b><span>learning</span></div><div><b style="color:var(--ok)">${n.due}</b><span>to review</span></div></div>
+    <div class="flash" data-act="show">${rev ? answer : english}${study.shown ? `<hr>${rev ? english : answer}${ex}` : `<div class="ftap">Tap to see the answer</div>`}</div>
+    ${study.shown ? `<div class="grade">${[['Again', 'bad'], ['Hard', 'warn'], ['Good', 'ok'], ['Easy', 'easy']].map((x, g) => `<button class="gbtn ${x[1]}" data-grade="${g}"><b>${x[0]}</b><span>${srsLabel(st0, g, now)}</span></button>`).join('')}</div>` : `<button class="btn big" data-act="show">Show answer</button>`}
+  </div></div></div>`;
+  const sc = $('.screen', app);
+  sc.addEventListener('click', e => {
+    const sp = e.target.closest('[data-say]'); if (sp) { speak(sp.dataset.say, 'en-GB'); return; }
+    const g = e.target.closest('[data-grade]'); if (g) { studyGrade(+g.dataset.grade); return; }
+    if (e.target.closest('[data-act=show]') && !study.shown) { study.shown = true; renderStudy(); if (cfg.autoSpeak && rev) speak(c.front, 'en-GB'); }
+  });
+  if (cfg.autoSpeak && !rev && !study.shown) speak(c.front, 'en-GB');
+}
+
+/* ===================== Exam prep: B1 Preliminary (PET) ===================== */
+/* Content comes from pet.json (tools/build_pet.py). Only the headwords come from the official word list;
+   texts, questions, sentences and tips were written for this app. */
+let PET = null, PET_WORDS = {};
+function installPet(data) {
+  PET = data; PET_WORDS = {}; const topics = [];
+  for (const v of data.vocab) { PET_WORDS[v.w.toLowerCase()] = v; if (!topics.includes(v.topic)) topics.push(v.topic); }
+  const entry = v => `${v.w} | ${v.es} | ${v.ex_es} ⟶ ${v.ex_en}`;
+  const mk = (id, name, list) => ({ id, name, desc: 'English word | Spanish (Spain) | example sentence in both languages. Headwords from the Cambridge B1 Preliminary vocabulary list (August 2025).', emoji: '🎓', words: cleanWords(list.map(entry)), kind: 'vocab', folderId: 'tb_pet' });
+  TEXTBOOK_FOLDERS = TEXTBOOK_FOLDERS.filter(f => f.id !== 'tb_pet').concat([{ id: 'tb_pet', name: 'B1 Preliminary (PET)', grade: null,
+    decks: [mk('tb_pet_all', `Hardest words · all ${data.vocab.length}`, data.vocab)].concat(topics.map((t, i) => mk('tb_pet_t' + (i + 1), 'Hardest words · ' + t, data.vocab.filter(v => v.topic === t)))) }]);
+}
+const normAns = s => String(s ?? '').trim().toLowerCase().replace(/[’`´]/g, "'").replace(/[.,;!?]+$/, '').replace(/\s+/g, ' ');
+const ansOk = (given, accepted) => { const g = normAns(given); return !!g && accepted.some(a => normAns(a) === g); };
+const GAP_ATTR = 'type="text" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"';
+function petCatStat(pet, cat, ok) { const c = pet.cats[cat] || (pet.cats[cat] = { ok: 0, n: 0 }); c.n++; if (ok) c.ok++; }
+function petWeakCats(pet) {
+  const rated = Object.keys(PET.cats).filter(c => pet.cats[c] && pet.cats[c].n >= 3).map(c => ({ c, r: pet.cats[c].ok / pet.cats[c].n })).sort((a, b) => a.r - b.r);
+  return rated.filter(x => x.r < 0.85).slice(0, 3).map(x => x.c);
+}
+function renderPet(arg) {
+  if (!PET) { app.innerHTML = `<div class="screen">${topbar('Exam prep', backBtn('Back', '#class'), '')}<div class="content"><div class="wrap"><div class="empty"><div class="big">📡</div>The exam material has not been downloaded yet.<br>Open the app once with an internet connection.</div></div></div></div>`; return; }
+  const g = currentClassGroup();
+  if (g && db.study.who[g.id] === undefined) { const c = g.id === HOME_CLASS && g.students.find(s => /^carlos/i.test(s.name)); db.study.who[g.id] = c ? c.id : ''; saveDb(); }
+  try { speechSynthesis.cancel(); } catch (e) {}
+  const i = String(arg || '').indexOf('/'); const sec = i < 0 ? String(arg || '') : arg.slice(0, i), id = i < 0 ? '' : arg.slice(i + 1);
+  ({ cloze: petCloze, drills: petDrills, ex: petEx, dictation: petDictation, guide: petGuide }[sec] || petHub)(id);
+}
+function petHub() {
+  const { pet, cards } = studyData(); const now = Date.now();
+  const doneC = PET.cloze.filter(t => pet.cloze[t.id]).length; const best = PET.cloze.reduce((a, t) => a + ((pet.cloze[t.id] || {}).best || 0), 0);
+  const weak = petWeakCats(pet).map(c => PET.cats[c]);
+  const dn = Object.keys(pet.drillOk).length;
+  const vb = srsBuckets(studyCards(['tb_pet_all']), cards, now);
+  const exRow = ex => { const r = pet.ex[ex.id]; return `<div class="row" data-nav="#pet/ex/${ex.id}"><div class="ic">${ex.id[0] === 'l' ? '🎧' : '📄'}</div><div class="txt"><div class="t">${esc(ex.title)}</div><div class="s">${r ? `best ${r.best}/${ex.items.length} · done ${r.n}×` : plural(ex.items.length, 'question')}</div></div><div class="chev">›</div></div>`; };
+  app.innerHTML = `<div class="screen">
+    ${topbar('B1 Preliminary', backBtn('Back', '#class'), '')}
+    <div class="content"><div class="wrap">
+      ${whoRowHtml()}
+      <h2 class="sec">Reading Part 6 · write the missing word</h2>
+      <div class="card">
+        <div class="row" data-nav="#pet/cloze"><div class="ic">✍️</div><div class="txt"><div class="t">Exam-style texts</div><div class="s">${doneC}/${PET.cloze.length} done${doneC ? ` · ${best}/${doneC * 6} gaps right` : ' · 6 gaps each, with an explanation for every gap'}</div></div><div class="chev">›</div></div>
+        <div class="row" data-nav="#pet/drills"><div class="ic">🎯</div><div class="txt"><div class="t">One-gap training by type</div><div class="s">${dn}/${PET.drills.length} sentences right${weak.length ? ' · weak: ' + esc(weak.join(', ')) : ''}</div></div><div class="chev">›</div></div>
+        <div class="row" data-nav="#pet/guide"><div class="ic">🧭</div><div class="txt"><div class="t">Method and typical traps</div><div class="s">How to attack Part 6, listening tips, the other parts in one line</div></div><div class="chev">›</div></div>
+      </div>
+      <h2 class="sec">Listening</h2>
+      <div class="card">${PET.listening.map(exRow).join('')}
+        <div class="row" data-nav="#pet/dictation"><div class="ic">⌨️</div><div class="txt"><div class="t">Dictation</div><div class="s">Hear a sentence, type it. Ten minutes a day trains the ear.</div></div><div class="chev">›</div></div>
+      </div>
+      <h2 class="sec">Vocabulary</h2>
+      <div class="card"><div class="row" data-nav="#study/pet"><div class="ic">🎓</div><div class="txt"><div class="t">Hardest words of the official list</div><div class="s">${PET.vocab.length} cards · ${vb.known} learned · ${vb.due.length + vb.learn.length} to review now</div></div><div class="chev">›</div></div></div>
+      <h2 class="sec">The other reading parts</h2>
+      <div class="card">${PET.reading.map(exRow).join('')}</div>
+      <div class="hint">Word list: ${esc(PET.list)}. A printable pack with the answer key is on the PC Desktop (folder "Carlos Polo - PET").</div>
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', e => { if (e.target.closest('[data-act=who]')) pickStudyWho(petHub); });
+}
+/* ---- Part 6 texts ---- */
+function petCloze(id) {
+  const { pet } = studyData();
+  const t = PET.cloze.find(x => x.id === id);
+  if (!t) {
+    app.innerHTML = `<div class="screen">${topbar('Part 6 texts', backBtn('Back', '#pet'), '')}<div class="content"><div class="wrap">
+      <div class="hint" style="margin:0 4px 12px">Write ONE word in each gap. Read the whole text first. After checking, every gap shows why.</div>
+      <div class="card">${PET.cloze.map((x, i) => { const r = pet.cloze[x.id]; return `<div class="row" data-nav="#pet/cloze/${x.id}"><div class="ic">${r ? (r.best === 6 ? '✅' : '🟡') : i + 1}</div><div class="txt"><div class="t">${esc(x.title)}</div><div class="s">${r ? `best ${r.best}/6 · last ${r.last}/6 · done ${r.n}×` : 'not done yet'}</div></div><div class="chev">›</div></div>`; }).join('')}</div>
+    </div></div></div>`;
+    return;
+  }
+  const body = esc(t.text).replace(/\{(\d+)\}/g, (m, n) => `<span class="gapw"><sup>${n}</sup><input class="gapin" data-g="${n - 1}" size="7" ${GAP_ATTR}></span>`);
+  const idx = PET.cloze.indexOf(t), next = PET.cloze[idx + 1];
+  app.innerHTML = `<div class="screen">${topbar(`Text ${idx + 1} of ${PET.cloze.length}`, backBtn('Texts', '#pet/cloze'), '')}<div class="content"><div class="wrap">
+    <h2 class="sec" style="margin-top:6px">${esc(t.title)}</h2>
+    <div class="pet-text">${body}</div>
+    <div id="petres"></div>
+    <div class="btnrow" style="margin-top:14px"><button class="btn" data-act="check">Check</button></div>
+  </div></div></div>`;
+  const sc = $('.screen', app);
+  sc.addEventListener('click', e => {
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'retry') { petCloze(id); return; }
+    if (a.dataset.act === 'next') { location.replace('#pet/cloze/' + next.id); return; }
+    if (a.dataset.act !== 'check') return;
+    let ok = 0;
+    $$('.gapin', sc).forEach(inp => { const g = t.gaps[+inp.dataset.g]; const good = ansOk(inp.value, g.a); if (good) ok++; petCatStat(pet, g.cat, good); inp.classList.add(good ? 'ok' : 'no'); inp.disabled = true; if (!good) inp.insertAdjacentHTML('afterend', `<span class="fix">${esc(g.a[0])}</span>`); });
+    const r = pet.cloze[id] || (pet.cloze[id] = { best: 0, last: 0, n: 0 }); r.best = Math.max(r.best, ok); r.last = ok; r.n++; saveDb();
+    audio.unlock(); if (ok === 6) audio.ding(); else audio.tick(true);
+    $('#petres', sc).innerHTML = `<div class="petscore">${ok} / 6</div><div class="card">${t.gaps.map((g, i) => `<div class="row static"><div class="ic">${i + 1}</div><div class="txt"><div class="t" style="white-space:normal"><b>${esc(g.a.join(' / '))}</b> <span class="cattag">${esc(PET.cats[g.cat])}</span></div>${g.why ? `<div class="s">${esc(g.why)}</div>` : ''}</div></div>`).join('')}</div>`;
+    a.parentNode.innerHTML = `<button class="btn sec" data-act="retry">Try again</button>${next ? `<button class="btn" data-act="next">Next text</button>` : ''}`;
+  });
+}
+/* ---- one-gap training ---- */
+let drill = null;
+function petDrills(id) {
+  const { pet } = studyData();
+  if (!id) {
+    drill = null; const weak = petWeakCats(pet);
+    const row = (key, icon, name, sub) => `<div class="row" data-nav="#pet/drills/${key}"><div class="ic">${icon}</div><div class="txt"><div class="t">${esc(name)}</div><div class="s">${sub}</div></div><div class="chev">›</div></div>`;
+    app.innerHTML = `<div class="screen">${topbar('One-gap training', backBtn('Back', '#pet'), '')}<div class="content"><div class="wrap">
+      <div class="hint" style="margin:0 4px 12px">Ten sentences at a time. Sentences answered wrong come back first next time.</div>
+      <div class="card">${row('all', '🔀', 'Mixed', 'All types together, like the exam')}${row('weak', '🩹', 'My weak points', weak.length ? esc(weak.map(c => PET.cats[c]).join(', ')) : 'Needs a few answers first; until then it is a mixed set')}</div>
+      <h2 class="sec">By type</h2>
+      <div class="card">${Object.keys(PET.cats).map(c => { const all = PET.drills.map((d, i) => ({ d, i })).filter(x => x.d.cat === c); const okN = all.filter(x => pet.drillOk[x.i]).length; const s = pet.cats[c]; return row(c, okN === all.length ? '✅' : '▫️', PET.cats[c], `${okN}/${all.length} sentences right${s && s.n ? ` · ${Math.round(100 * s.ok / s.n)}% of all answers of this type` : ''}`); }).join('')}</div>
+    </div></div></div>`;
+    return;
+  }
+  if (!drill || drill.cat !== id || drill.over) {
+    let pool = PET.drills.map((d, i) => ({ ...d, i })); const weak = petWeakCats(pet);
+    if (id === 'weak' && weak.length) pool = pool.filter(d => weak.includes(d.cat)); else if (PET.cats[id]) pool = pool.filter(d => d.cat === id);
+    pool = shuffle(pool).sort((a, b) => (pet.drillOk[a.i] ? 1 : 0) - (pet.drillOk[b.i] ? 1 : 0)).slice(0, 10);
+    drill = { cat: id, items: shuffle(pool), n: 0, ok: 0, res: null, over: false };
+  }
+  const total = drill.items.length;
+  if (drill.n >= total) {
+    drill.over = true;
+    app.innerHTML = `<div class="screen">${topbar('One-gap training', backBtn('Back', '#pet/drills'), '')}<div class="content"><div class="wrap"><div class="empty"><div class="big">${drill.ok === total ? '🏆' : '💪'}</div><div class="petscore">${drill.ok} / ${total}</div></div>
+      <button class="btn" data-act="again">Ten more</button><button class="btn sec" style="margin-top:10px" data-nav="back" data-fallback="#pet/drills">Back</button></div></div></div>`;
+    $('.screen', app).addEventListener('click', e => { if (e.target.closest('[data-act=again]')) petDrills(id); });
+    return;
+  }
+  const d = drill.items[drill.n], res = drill.res;
+  const sent = esc(d.s).replace('___', res ? `<span class="gapin ${res.ok ? 'ok' : 'no'}" style="display:inline-block">${esc(res.given || '—')}</span>${res.ok ? '' : `<span class="fix">${esc(d.a[0])}</span>`}` : `<input class="gapin" id="dgap" size="8" ${GAP_ATTR}>`);
+  app.innerHTML = `<div class="screen">${topbar(`${drill.n + 1} / ${total}`, backBtn('Stop', '#pet/drills'), '')}<div class="content"><div class="wrap">
+    <div class="cattag" style="margin:4px">${esc(PET.cats[d.cat])}</div>
+    <div class="pet-text big">${sent}</div>
+    ${res ? `<div class="card" style="margin-top:12px"><div class="row static"><div class="ic">${res.ok ? '✅' : '❌'}</div><div class="txt"><div class="t" style="white-space:normal"><b>${esc(d.a.join(' / '))}</b></div><div class="s">${esc(d.why)}</div></div></div></div>` : ''}
+    <button class="btn big" style="margin-top:14px" data-act="${res ? 'next' : 'check'}">${res ? (drill.n + 1 >= total ? 'Finish' : 'Next') : 'Check'}</button>
+  </div></div></div>`;
+  const sc = $('.screen', app), inp = $('#dgap', sc);
+  const act = () => {
+    if (drill.res) { drill.n++; drill.res = null; petDrills(id); return; }
+    const given = inp.value.trim(); if (!given) { inp.focus(); return; }
+    const ok = ansOk(given, d.a); drill.res = { ok, given }; if (ok) { drill.ok++; pet.drillOk[d.i] = 1; } else delete pet.drillOk[d.i];
+    petCatStat(pet, d.cat, ok); saveDb(); petDrills(id);
+  };
+  sc.addEventListener('click', e => { if (e.target.closest('[data-act=check],[data-act=next]')) act(); });
+  if (inp) { inp.addEventListener('keydown', e => { if (e.key === 'Enter') act(); }); setTimeout(() => inp.focus(), 60); }
+}
+/* ---- speech for the listening tasks: two voices when the iPad has them, otherwise one voice at two pitches ---- */
+const PET_F = /kate|serena|martha|stephanie|samantha|karen|moira|tessa|fiona|hazel|susan|libby|sonia|catherine|allison|ava|zoe|female/i, PET_M = /daniel|arthur|oliver|gordon|alex|aaron|rishi|george|ryan|thomas|fred|\bmale/i;
+function petVoice(role) {
+  const gb = voicesFor('en-GB'); const rest = VOICES.filter(v => voiceLang(v).startsWith('en') && !gb.includes(v)).sort((a, b) => voiceQuality(b) - voiceQuality(a));
+  const all = gb.concat(rest), rx = role === 'M' ? PET_M : PET_F;
+  return { v: all.find(v => rx.test(v.name)) || all[0] || null, matched: all.some(v => rx.test(v.name)) };
+}
+let petUtter = [];
+function petSpeak(script, rate, onEnd) {
+  try {
+    speechSynthesis.cancel(); petUtter = [];
+    for (const ln of script) for (const sent of (String(ln.t).match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [ln.t])) {
+      const u = new SpeechSynthesisUtterance(sent.trim()); const pv = petVoice(ln.v);
+      u.lang = 'en-GB'; if (pv.v) { u.voice = pv.v; u.lang = pv.v.lang; }
+      u.pitch = pv.matched ? 1 : (ln.v === 'M' ? 0.7 : 1.25); u.rate = rate; petUtter.push(u);
+    }
+    if (petUtter.length) { const last = petUtter[petUtter.length - 1]; last.onend = last.onerror = () => onEnd && onEnd(); }
+    petUtter.forEach(u => speechSynthesis.speak(u));
+  } catch (e) { onEnd && onEnd(); }
+}
+/* ---- exam-style exercises (reading parts 1-5, listening parts 1-4) ---- */
+function petEx(id) {
+  const ex = PET.reading.concat(PET.listening).find(x => x.id === id); if (!ex) { location.replace('#pet'); return; }
+  const { pet } = studyData(); const isL = id[0] === 'l'; const cfg = gameCfg('study');
+  const playBtn = (k, label) => `<button class="btn sec playbtn" data-play="${k}">▶ ${label}</button>`;
+  const letters = !!ex.bank;
+  const item = (it, i) => `<div class="exq" data-i="${i}">
+    ${it.text ? `<div class="notice">${esc(it.text)}</div>` : ''}${it.script ? playBtn(i, 'Play recording ' + (i + 1)) : ''}
+    <div class="qt">${i + 1}. ${esc(it.q).replace('___', '<span class="blank"></span>')}</div>
+    ${it.opts ? `<div class="${letters ? 'optrow' : ''}">${it.opts.map((o, j) => `<button class="opt ${letters ? 'letter' : ''}" data-o="${j}">${letters ? esc(o) : `<b>${'ABCD'[j]}</b> ${esc(o)}`}</button>`).join('')}</div>` : `<input class="gapin wide" ${GAP_ATTR} placeholder="write here">`}
+    <div class="why" hidden></div></div>`;
+  app.innerHTML = `<div class="screen">${topbar(ex.title.split(' · ')[0], backBtn('Back', '#pet'), '')}<div class="content"><div class="wrap">
+    <h2 class="sec" style="margin-top:6px">${esc(ex.title)}</h2>
+    <div class="hint" style="margin:0 4px 12px">${esc(ex.intro)}</div>
+    ${isL ? `<div style="margin-bottom:10px">${segHtml('rate', [['0.8', 'Slower'], ['0.95', 'Exam speed']], String(cfg.rate || 0.95))}</div>` : ''}
+    ${ex.script ? `<div class="btnrow">${playBtn('all', 'Play')}<button class="btn sec" data-act="stop">■ Stop</button></div><div class="hint" id="plays">Listen twice, like in the exam.</div>` : ''}
+    ${ex.text ? `<div class="pet-text">${esc(ex.text)}</div>` : ''}
+    ${ex.bank ? `<div class="card" style="margin-top:12px">${ex.bank.map(b => `<div class="row static"><div class="ic">${b.k}</div><div class="txt"><div class="t" style="white-space:normal;font-size:16px;font-weight:400">${esc(b.t)}</div></div></div>`).join('')}</div>` : ''}
+    ${ex.items.map(item).join('')}
+    <div id="petres"></div>
+    <div class="btnrow" style="margin-top:14px"><button class="btn" data-act="check">Check answers</button></div>
+  </div></div></div>`;
+  const sc = $('.screen', app); let checked = false, plays = 0;
+  const say = (script, btn) => { $$('.playbtn', sc).forEach(b => b.classList.remove('on')); btn.classList.add('on'); petSpeak(script, +(cfg.rate || 0.95), () => btn.classList.remove('on')); };
+  sc.addEventListener('click', e => {
+    const sg = e.target.closest('[data-seg=rate]'); if (sg) { cfg.rate = +sg.dataset.v; saveDb(); $$('[data-seg=rate]', sc).forEach(b => b.classList.toggle('on', b === sg)); return; }
+    const p = e.target.closest('[data-play]'); if (p) { const k = p.dataset.play; say(k === 'all' ? ex.script : ex.items[+k].script, p); if (k === 'all') { plays++; $('#plays', sc).textContent = 'Played ' + plays + (plays === 1 ? ' time' : ' times') + '. In the exam you hear it twice.'; } return; }
+    const o = e.target.closest('.opt'); if (o && !checked) { $$('.opt', o.closest('.exq')).forEach(b => b.classList.toggle('sel', b === o)); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'stop') { try { speechSynthesis.cancel(); } catch (er) {} $$('.playbtn', sc).forEach(b => b.classList.remove('on')); return; }
+    if (a.dataset.act === 'retry') { petEx(id); return; }
+    if (a.dataset.act === 'script') { a.outerHTML = `<div class="card">${(ex.script || []).concat(...ex.items.map((it, i) => (it.script || []).map((l, j) => ({ ...l, n: j ? 0 : i + 1 })))).map(l => `<div class="row static"><div class="ic">${l.n ? l.n : l.v === 'M' ? '👨' : '👩'}</div><div class="txt"><div class="t" style="white-space:normal;font-size:16px;font-weight:400">${esc(l.t)}</div></div></div>`).join('')}</div>`; return; }
+    if (a.dataset.act !== 'check' || checked) return;
+    checked = true; let ok = 0;
+    $$('.exq', sc).forEach(q => {
+      const it = ex.items[+q.dataset.i]; let good;
+      if (it.opts) { const sel = $('.opt.sel', q); good = !!sel && +sel.dataset.o === it.a; $$('.opt', q).forEach(b => { if (+b.dataset.o === it.a) b.classList.add('ok'); else if (b === sel) b.classList.add('no'); }); }
+      else { const inp = $('.gapin', q); good = ansOk(inp.value, it.ans); inp.classList.add(good ? 'ok' : 'no'); inp.disabled = true; if (!good) inp.insertAdjacentHTML('afterend', `<span class="fix">${esc(it.ans[0])}</span>`); }
+      if (good) ok++;
+      const w = $('.why', q); w.hidden = false; w.textContent = (good ? '✓ ' : '✗ ') + (it.why || '');
+    });
+    const r = pet.ex[id] || (pet.ex[id] = { best: 0, last: 0, n: 0 }); r.best = Math.max(r.best, ok); r.last = ok; r.n++; saveDb();
+    $('#petres', sc).innerHTML = `<div class="petscore">${ok} / ${ex.items.length}</div>`;
+    a.parentNode.innerHTML = `<button class="btn sec" data-act="retry">Try again</button>${isL ? `<button class="btn sec" data-act="script">Show the script</button>` : ''}`;
+  });
+}
+/* ---- dictation ---- */
+function lcsWords(a, b) {   // marks which words of b (the target) were typed, in order
+  const m = a.length, n = b.length, t = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = m - 1; i >= 0; i--) for (let j = n - 1; j >= 0; j--) t[i][j] = a[i] === b[j] ? t[i + 1][j + 1] + 1 : Math.max(t[i + 1][j], t[i][j + 1]);
+  const hit = new Array(n).fill(false); let i = 0, j = 0;
+  while (i < m && j < n) { if (a[i] === b[j]) { hit[j] = true; i++; j++; } else if (t[i + 1][j] >= t[i][j + 1]) i++; else j++; }
+  return hit;
+}
+const dictWords = s => normAns(s).replace(/[.,;:!?¡¿"()]/g, '').split(' ').filter(Boolean);
+let dict = null;
+function petDictation() {
+  const cfg = gameCfg('study');
+  if (!dict || dict.over) dict = { items: shuffle(PET.vocab.map(v => v.ex_en).filter(s => s.split(' ').length <= 12)).slice(0, 8), n: 0, hit: 0, total: 0, res: null, over: false };
+  const total = dict.items.length;
+  if (dict.n >= total) {
+    dict.over = true; const pc = Math.round(100 * dict.hit / Math.max(1, dict.total));
+    app.innerHTML = `<div class="screen">${topbar('Dictation', backBtn('Back', '#pet'), '')}<div class="content"><div class="wrap"><div class="empty"><div class="big">🎧</div><div class="petscore">${pc}%</div>of the words heard correctly</div>
+      <button class="btn" data-act="again">Eight more</button><button class="btn sec" style="margin-top:10px" data-nav="back" data-fallback="#pet">Back</button></div></div></div>`;
+    $('.screen', app).addEventListener('click', e => { if (e.target.closest('[data-act=again]')) petDictation(); });
+    return;
+  }
+  const target = dict.items[dict.n], res = dict.res;
+  app.innerHTML = `<div class="screen">${topbar(`Dictation ${dict.n + 1} / ${total}`, backBtn('Stop', '#pet'), '')}<div class="content"><div class="wrap">
+    <div class="hint" style="margin:0 4px 12px">Listen as many times as you need, then type the whole sentence. Capital letters and punctuation do not matter.</div>
+    <div class="btnrow"><button class="btn sec playbtn" data-rate="0.95">▶ Play</button><button class="btn sec playbtn" data-rate="0.7">🐢 Slowly</button></div>
+    ${res ? `<div class="pet-text" style="margin-top:12px">${target.split(' ').map((w, i) => `<span class="${res.hit[i] ? 'dok' : 'dno'}">${esc(w)}</span>`).join(' ')}</div><div class="hint">You wrote: ${esc(res.given)}</div>`
+      : `<div class="card" style="margin-top:12px"><div class="field"><textarea id="dtext" style="min-height:110px" ${GAP_ATTR.replace('type="text" ', '')} placeholder="Type what you hear"></textarea></div></div>`}
+    <button class="btn big" style="margin-top:14px" data-act="go">${res ? (dict.n + 1 >= total ? 'Finish' : 'Next') : 'Check'}</button>
+  </div></div></div>`;
+  const sc = $('.screen', app);
+  sc.addEventListener('click', e => {
+    const p = e.target.closest('[data-rate]'); if (p) { petSpeak([{ v: dict.n % 2 ? 'M' : 'F', t: target }], +p.dataset.rate, null); return; }
+    if (!e.target.closest('[data-act=go]')) return;
+    if (dict.res) { dict.n++; dict.res = null; petDictation(); return; }
+    const given = $('#dtext', sc).value.trim(); if (!given) return;
+    const hit = lcsWords(dictWords(given), dictWords(target)); dict.hit += hit.filter(Boolean).length; dict.total += hit.length; dict.res = { hit, given }; petDictation();
+  });
+  if (!res) setTimeout(() => petSpeak([{ v: dict.n % 2 ? 'M' : 'F', t: target }], +(cfg.rate || 0.95), null), 350);
+}
+function petGuide() {
+  app.innerHTML = `<div class="screen">${topbar('Method and tips', backBtn('Back', '#pet'), '')}<div class="content"><div class="wrap">
+    ${PET.guide.map(g => `<h2 class="sec">${esc(g.title)}</h2><div class="card">${g.points.map(p => `<div class="row static"><div class="txt"><div class="t" style="white-space:normal;font-size:16px;font-weight:400;line-height:1.45">${esc(p)}</div></div></div>`).join('')}</div>`).join('')}
+  </div></div></div>`;
 }
 
 /* ===================== Settings ===================== */
@@ -2938,7 +3367,7 @@ if (location.search.includes('selftest')) {
     t('absence message', absenceMessage(db.queue.groups.find(x => x.id === 'ga'), ['x1', 'x2'], todayKey()) === 'Ana, Luis (3)' && absenceMessage(db.queue.groups.find(x => x.id === 'ga'), ['x2'], yesterdayKey()) === 'ayer: Luis (3)' && isAbsentToday('ga', 'x1') && !isAbsentToday('ga', 'zz'));
     t('attendance numbers seeded', qSeed().groups.find(x => x.name === '2 EP').att === 4 && normalizeQueue({ groups: [{ id: 'q', name: '1 ESO A', students: [] }] }).groups[0].att === 1);
     db.queue.groups = db.queue.groups.filter(x => x.id !== 'ga'); delete db.absences.ga;
-    t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [{ id: 'home', name: 'Home students', students: [{ id: 'k', name: 'Sara' }] }] }).groups.find(g => g.id === 'home').students.length === 10 && new Set(normalizeQueue({ groups: [] }).groups.find(g => g.id === 'home').students.map(s => s.color)).size === 10);
+    t('home class exists', db.queue.groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [] }).groups.some(g => g.id === HOME_CLASS) && normalizeQueue({ groups: [{ id: 'home', name: 'Home students', students: [{ id: 'k', name: 'Sara' }] }] }).groups.find(g => g.id === 'home').students.length === 11 && new Set(normalizeQueue({ groups: [] }).groups.find(g => g.id === 'home').students.map(s => s.color)).size === 11);
     db.currentClass = HOME_CLASS;
     const r1 = mergeBackup(bk.data, false); t('merge adds', r1.decks === 1 && r1.folders === 1 && db.decks[0].folderId === 'f1');
     const r2 = mergeBackup(bk.data, false); t('merge idempotent', r2.decks === 0 && db.decks.length === 1);
@@ -3013,10 +3442,22 @@ if (location.search.includes('selftest')) {
     const lv = { q: [], now: null, nowAt: 0 };
     t('queue join/pos', qJoin(lv, 'a') && qJoin(lv, 'b') && !qJoin(lv, 'a') && qPos(lv, 'b') === 2 && qPos(lv, 'zz') === 0);
     t('queue next/leave', qNext(lv) === 'a' && lv.now === 'a' && qPos(lv, 'b') === 1 && qLeave(lv, 'b') && !qLeave(lv, 'b') && qNext(lv) === null);
-    const qs = qSeed(); t('queue seed 2026-27', qs.groups.length === 7 && qs.groups.reduce((a, g) => a + g.students.length, 0) === 45 && qs.groups[1].students.some(x => x.name === 'Macarena') && qs.groups.every(g => new Set(g.students.map(x => x.color)).size === g.students.length));
+    const qs = qSeed(); t('queue seed 2026-27', qs.groups.length === 7 && qs.groups.reduce((a, g) => a + g.students.length, 0) === 46 && qs.groups[1].students.some(x => x.name === 'Macarena') && qs.groups.every(g => new Set(g.students.map(x => x.color)).size === g.students.length));
     t('ordinal', ordinal(1) === '1st' && ordinal(2) === '2nd' && ordinal(3) === '3rd' && ordinal(4) === '4th' && ordinal(11) === '11th' && ordinal(22) === '22nd');
     t('normalizeQueue', normalizeQueue(null).groups.length === 7 && normalizeQueue({ groups: [{ id: 'x', name: 'X', students: [{ id: 'a', name: 'A' }] }] }).groups[0].students[0].color === Q_COLORS[0]);
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
+    // --- Study (spaced repetition) + exam prep helpers
+    const srsT0 = new Date(2026, 8, 19, 17, 0).getTime(); let srsC1 = srsGrade(srsNew(), 2, srsT0);
+    t('srs new good -> 10 min', srsC1.s === 1 && srsC1.d === srsT0 + 10 * SRS_MIN);
+    srsC1 = srsGrade(srsC1, 2, srsT0 + 10 * SRS_MIN); t('srs graduates to 1 day (due from midnight)', srsC1.s === 2 && srsC1.i === 1 && srsC1.d === dayStart(srsT0) + SRS_DAY);
+    const srsC2 = srsGrade(srsC1, 2, srsT0 + SRS_DAY); t('srs good grows interval', srsC2.i === 3 && srsC2.s === 2);
+    const srsC3 = srsGrade(srsC2, 0, srsT0 + 4 * SRS_DAY); t('srs again = relearn, shorter interval, lower ease', srsC3.s === 1 && srsC3.i === 2 && srsC3.l === 1 && srsC3.e < 2.5 && srsC3.d === srsT0 + 4 * SRS_DAY + SRS_MIN);
+    t('srs easy on new -> 4 days', srsGrade(srsNew(), 3, srsT0).i === 4 && srsLabel(srsNew(), 3, srsT0) === '4 days' && srsLabel(srsNew(), 0, srsT0) === '1 min');
+    const srsB = srsBuckets([{ key: 'a' }, { key: 'b' }, { key: 'c' }, { key: 'd' }], { a: { s: 2, d: srsT0 - 1 }, b: { s: 2, d: srsT0 + SRS_DAY }, c: { s: 0, d: srsT0 } }, srsT0);
+    t('srs buckets', srsB.due.length === 1 && srsB.learn.length === 1 && srsB.fresh.length === 1 && srsB.known === 2);
+    t('answer check', ansOk(' Which ', ['who', 'which']) && ansOk('HALF PAST EIGHT.', ['half past eight']) && !ansOk('', ['a']) && !ansOk('that', ['who']));
+    t('dictation diff', JSON.stringify(lcsWords(dictWords('I left my walet at home'), dictWords('I left my wallet at home.'))) === '[true,true,true,false,true,true]');
+    t('study db normalised', !!db.study && ['who', 'cards', 'meta', 'pet'].every(f => typeof db.study[f] === 'object'));
     // --- Memory
     const mc = buildMemory(['dog | perro', 'cat | gato', 'plain', 'other'], { sets: 3, size: 2, variant: 'same' });
     t('memory board pairs', mc.length === 6 && new Set(mc.map(c => c.set)).size === 3 && mc.some(c => c.text === 'perro'));
@@ -3052,6 +3493,10 @@ if (location.search.includes('selftest')) {
     else if (demo === 'hangman') { Object.assign(gameCfg('hangman'), { teams: 2, rounds: 5 }); startHang(four); hang.guessed = new Set(['E', 'A', 'Z', 'Q', 'X']); hang.wrong = 3; renderHang(); }
     else if (demo === 'roulette') { db.currentClass = db.queue.groups[1].id; const st = rouState(db.currentClass); st.picked = [db.queue.groups[1].students[0].id]; st.excluded = [db.queue.groups[1].students[3].id]; go('#roulette'); }
     else if (demo === 'timer') { go('#timer'); }
+    else if (demo && demo.startsWith('pet')) { db.currentClass = HOME_CLASS; const m = { pet: '#pet', petcloze: '#pet/cloze/c05', petclozelist: '#pet/cloze', petdrills: '#pet/drills', petdrill: '#pet/drills/prep', petread: '#pet/ex/r2', petlisten: '#pet/ex/l3a', petlisten4: '#pet/ex/l4', petdict: '#pet/dictation', petguide: '#pet/guide' }; go(m[demo] || '#pet');
+      if (demo === 'petcloze') setTimeout(() => { const v = ['in', 'to', 'in', 'as', 'was', 'of']; $$('.gapin').forEach((x, i) => x.value = v[i]); $('[data-act=check]').click(); }, 400);
+      if (demo === 'petlisten') setTimeout(() => { const v = ['12', '8.15', 'fourteen', 'packed lunch', 'robots', 'Dalton']; $$('.gapin').forEach((x, i) => x.value = v[i]); $('[data-act=check]').click(); }, 400); }
+    else if (demo === 'study' || demo === 'studyback' || demo === 'studysetup') { db.currentClass = HOME_CLASS; gameCfg('study').autoSpeak = false; if (demo === 'studysetup') go('#study/pet'); else { startStudy(['tb_pet_all']); if (demo === 'studyback') { study.shown = true; renderStudy(); } } }
     else if (demo === 'absences') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; setAbsences(gg.id, todayKey(), [gg.students[2].id, gg.students[6].id]); db.global.attBot = 'attendance_bot'; go('#absences'); }
     else if (demo === 'players') { db.currentClass = db.queue.groups[1].id; Object.assign(gameCfg('quiz'), { teams: 3 }); startQuiz(four); }
     else if (demo === 'rankings') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; db.results = [{ ts: Date.now() - 86400000, cls: gg.id, clsName: gg.name, grade: 2, game: 'quiz', title: 'Quiz Show', teams: [{ name: 'Team 1', score: 500, rank: 1, pts: 3, students: [gg.students[0].id, gg.students[1].id] }, { name: 'Team 2', score: 300, rank: 2, pts: 2, students: [gg.students[2].id, gg.students[3].id] }] }, { ts: Date.now(), cls: gg.id, clsName: gg.name, grade: 2, game: 'ttt', title: 'Tic-tac-toe', teams: [{ name: 'X', score: 1, rank: 1, pts: 3, students: [gg.students[2].id] }, { name: 'O', score: 0, rank: 2, pts: 2, students: [gg.students[0].id, gg.students[5].id] }] }]; go('#rankings'); }
