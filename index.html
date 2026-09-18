@@ -338,7 +338,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.9.2';
+const APP_VERSION = '1.10.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -2790,7 +2790,7 @@ function renderSettings() {
       <h2 class="sec">Library</h2>
       <div class="card">
         <div class="toggle" data-opt="showPresets"><div><div class="lbl">Show preset decks</div><div class="sub">${PRESET_DECKS.length} built-in decks</div></div><div class="sw ${s.showPresets ? 'on' : ''}"></div></div>
-        <div class="toggle" data-opt="showTextbooks"><div><div class="lbl">Show textbook decks</div><div class="sub">Time Travellers · ${TEXTBOOK_FOLDERS.length} books · ${TEXTBOOK_FOLDERS.reduce((a, f) => a + f.decks.length, 0)} decks (vocabulary, grammar, irregular verbs, review per unit)</div></div><div class="sw ${db.global.showTextbooks !== false ? 'on' : ''}"></div></div>
+        <div class="toggle" data-opt="showTextbooks"><div><div class="lbl">Show textbook decks</div><div class="sub">Time Travellers 1-6 and Prepare 4-8 · ${TEXTBOOK_FOLDERS.length} books · ${TEXTBOOK_FOLDERS.reduce((a, f) => a + f.decks.length, 0)} decks (vocabulary and grammar per unit)</div></div><div class="sw ${db.global.showTextbooks !== false ? 'on' : ''}"></div></div>
       </div>
       <h2 class="sec">Backup</h2>
       <div class="card">

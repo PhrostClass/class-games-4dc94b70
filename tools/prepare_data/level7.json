@@ -1,0 +1,2644 @@
+{
+ "level": 7,
+ "units": [
+  {
+   "n": 1,
+   "vocab": [
+    {
+     "topic": "ARTS AND MEDIA",
+     "words": [
+      {
+       "w": "appearance",
+       "pos": "n",
+       "def": "a time when a famous person is seen on TV or stage"
+      },
+      {
+       "w": "bestseller",
+       "pos": "n",
+       "def": "a book that huge numbers of readers buy"
+      },
+      {
+       "w": "broadcast",
+       "pos": "v",
+       "def": "to transmit a show on TV or radio"
+      },
+      {
+       "w": "cast",
+       "pos": "n",
+       "def": "the group of performers acting in a film or play"
+      },
+      {
+       "w": "the charts",
+       "pos": "phr",
+       "def": "the weekly ranking of the top-selling songs"
+      },
+      {
+       "w": "classic",
+       "pos": "n",
+       "def": "a famous old book, film or song still thought excellent"
+      },
+      {
+       "w": "piece",
+       "pos": "n",
+       "def": "a single work of art, music or writing"
+      },
+      {
+       "w": "series",
+       "pos": "n",
+       "def": "several books on one theme from the same publisher"
+      },
+      {
+       "w": "shoot",
+       "pos": "v",
+       "def": "to film or photograph something with a camera"
+      },
+      {
+       "w": "stream",
+       "pos": "v",
+       "def": "to play music or video live from the internet"
+      },
+      {
+       "w": "track",
+       "pos": "n",
+       "def": "one recorded song on an album"
+      }
+     ]
+    },
+    {
+     "topic": "CREATIVE JOBS",
+     "words": [
+      {
+       "w": "comedian",
+       "pos": "n",
+       "def": "a performer who makes audiences laugh with jokes"
+      },
+      {
+       "w": "critic",
+       "pos": "n",
+       "def": "a person paid to review films, books or music"
+      },
+      {
+       "w": "editor",
+       "pos": "n",
+       "def": "a person who checks and improves texts, or runs a newspaper"
+      },
+      {
+       "w": "novelist",
+       "pos": "n",
+       "def": "an author of long fictional stories"
+      },
+      {
+       "w": "producer",
+       "pos": "n",
+       "def": "the person who organises and manages making a film or record"
+      },
+      {
+       "w": "programmer",
+       "pos": "n",
+       "def": "a person whose job is writing code for computers"
+      },
+      {
+       "w": "TV presenter",
+       "pos": "n",
+       "def": "the host who introduces a television show"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "SIMPLE, CONTINUOUS OR PERFECT",
+    "points": [
+     "Present perfect (have/has + past participle): past events with no finished time given, often with just, already, yet, ever, never, since, for. 'I've already seen that film.'",
+     "Past simple: finished actions at a stated past time. 'We moved here in 2019.'",
+     "Past perfect (had + past participle): something that happened before another past moment. 'When I arrived, the bus had left.'",
+     "Present continuous: actions happening now, temporary situations, and annoying habits with always. 'He's always interrupting me.'",
+     "Past continuous: background actions or actions in progress at a past moment. 'It was raining when we went out.'"
+    ],
+    "questions": [
+     "I ____ (never / try) sushi before, so I'm a bit nervous. | have never tried",
+     "We ____ (move) to Valencia in 2019. | moved",
+     "When we got to the cinema, the film ____ (already / start). | had already started",
+     "Be quiet! The baby ____ (sleep). | is sleeping",
+     "My sister ____ (always / take) my charger without asking. It's so annoying! | is always taking",
+     "While I ____ (wait) for the bus, it started to snow. | was waiting",
+     "Correct it: I have seen Marta yesterday. | I saw Marta yesterday.",
+     "She ____ her homework yet. (hasn't finished / didn't finish) | hasn't finished",
+     "It was the first time he ____ (fly) in a helicopter. | had flown",
+     "This is the second time I ____ (lose) my keys this week. | have lost",
+     "They ____ here since 2020. (live / have lived / lived) | have lived",
+     "Correct it: What do you do right now? | What are you doing right now?"
+    ]
+   }
+  },
+  {
+   "n": 2,
+   "vocab": [
+    {
+     "topic": "PERSONALITY: ADJECTIVE + PREPOSITION",
+     "words": [
+      {
+       "w": "addicted (to)",
+       "pos": "adj",
+       "def": "unable to stop doing or wanting something"
+      },
+      {
+       "w": "adventurous (with)",
+       "pos": "adj",
+       "def": "happy to try new, risky or unusual things"
+      },
+      {
+       "w": "aware (of)",
+       "pos": "adj",
+       "def": "knowing that something exists or is happening"
+      },
+      {
+       "w": "bothered (about)",
+       "pos": "adj",
+       "def": "worried because something matters to you"
+      },
+      {
+       "w": "cautious (about)",
+       "pos": "adj",
+       "def": "careful to stay away from danger or mistakes"
+      },
+      {
+       "w": "critical (of)",
+       "pos": "adj",
+       "def": "often pointing out faults in people or things"
+      },
+      {
+       "w": "decisive (about)",
+       "pos": "adj",
+       "def": "able to choose quickly and with confidence"
+      },
+      {
+       "w": "hopeless (at)",
+       "pos": "adj",
+       "def": "really terrible at doing a certain activity"
+      },
+      {
+       "w": "impressed (by)",
+       "pos": "adj",
+       "def": "full of admiration for something or someone"
+      },
+      {
+       "w": "jealous (of)",
+       "pos": "adj",
+       "def": "upset because another person has what you want"
+      },
+      {
+       "w": "loyal (to)",
+       "pos": "adj",
+       "def": "always faithful and supportive, even in hard times"
+      },
+      {
+       "w": "mean (about)",
+       "pos": "adj",
+       "def": "unkind or nasty towards other people"
+      }
+     ]
+    },
+    {
+     "topic": "VERB + PREPOSITION",
+     "words": [
+      {
+       "w": "apologise (for)",
+       "pos": "v",
+       "def": "to say sorry because of something you did"
+      },
+      {
+       "w": "compare with",
+       "pos": "v",
+       "def": "to look at how two things are similar or different"
+      },
+      {
+       "w": "cope (with)",
+       "pos": "v",
+       "def": "to manage a hard situation successfully"
+      },
+      {
+       "w": "depend on",
+       "pos": "pv",
+       "def": "to need someone's help or support to manage"
+      },
+      {
+       "w": "do without",
+       "pos": "pv",
+       "def": "to manage although you lack something"
+      },
+      {
+       "w": "have heard of",
+       "pos": "v",
+       "def": "to know that a person or thing exists"
+      },
+      {
+       "w": "laugh at",
+       "pos": "pv",
+       "def": "to make fun of someone as if they were silly"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "PRESENT PERFECT SIMPLE AND CONTINUOUS",
+    "points": [
+     "Both tenses link the past to now, without saying exactly when something happened.",
+     "Present perfect simple: a finished action with a result now, or how many / how often. 'I've written two emails.'",
+     "Present perfect continuous (have/has been + -ing): focus on the activity or how long, maybe unfinished. 'I've been writing emails all morning.'",
+     "It also explains visible results of a recent activity: 'You're dirty! Have you been playing football?'",
+     "State verbs (know, have = own, like, believe) don't take the continuous: 'I've known her for years.'",
+     "With live, work, study and similar verbs, both forms are possible with little change in meaning."
+    ],
+    "questions": [
+     "I ____ (read) three chapters so far today. | have read",
+     "Your eyes are red. ____ (you / cry)? | Have you been crying",
+     "She ____ that novel. You can borrow it now. (has finished / has been finishing) | has finished",
+     "We ____ (wait) for forty minutes and the bus still isn't here. | have been waiting",
+     "I ____ English for six years. (am learning / have been learning) | have been learning",
+     "How many times ____ (you / visit) London? | have you visited",
+     "I ____ (know) Pablo since primary school. | have known",
+     "Correct it: I've been having this bike for years. | I've had this bike for years.",
+     "He's out of breath because he ____ (run). | has been running",
+     "They ____ (win) five matches this season. | have won",
+     "How long ____ (it / rain)? | has it been raining",
+     "I ____ my phone. Can you help me look for it? (have lost / have been losing) | have lost"
+    ]
+   }
+  },
+  {
+   "n": 3,
+   "vocab": [
+    {
+     "topic": "ABSTRACT NOUNS",
+     "words": [
+      {
+       "w": "agreement",
+       "pos": "n",
+       "def": "a situation where people share one opinion or decision"
+      },
+      {
+       "w": "ambition",
+       "pos": "n",
+       "def": "a strong desire to achieve power, money or fame"
+      },
+      {
+       "w": "belief",
+       "pos": "n",
+       "def": "something you feel sure is true"
+      },
+      {
+       "w": "development",
+       "pos": "n",
+       "def": "the process of growing, changing and becoming more advanced"
+      },
+      {
+       "w": "drive",
+       "pos": "n",
+       "def": "the inner energy that pushes you to reach goals"
+      },
+      {
+       "w": "luck",
+       "pos": "n",
+       "def": "things that happen by chance, not because of you"
+      },
+      {
+       "w": "problem-solving",
+       "pos": "n",
+       "def": "the skill of finding answers to difficulties"
+      },
+      {
+       "w": "success",
+       "pos": "n",
+       "def": "reaching your goals and being admired for it"
+      },
+      {
+       "w": "thought",
+       "pos": "n",
+       "def": "an idea in your head, or the act of considering"
+      }
+     ]
+    },
+    {
+     "topic": "PHRASAL VERBS: LEARNING AND THINKING",
+     "words": [
+      {
+       "w": "back up",
+       "pos": "pv",
+       "def": "to save an extra copy of computer files"
+      },
+      {
+       "w": "face up to",
+       "pos": "pv",
+       "def": "to admit a hard situation is real and deal with it"
+      },
+      {
+       "w": "focus on",
+       "pos": "pv",
+       "def": "to concentrate all your attention on one thing"
+      },
+      {
+       "w": "get in",
+       "pos": "pv",
+       "def": "to win a place at a university or course"
+      },
+      {
+       "w": "mix up",
+       "pos": "pv",
+       "def": "to confuse two people or things with each other"
+      },
+      {
+       "w": "think through",
+       "pos": "pv",
+       "def": "to consider every possible result before acting"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "THE GRAMMAR OF PHRASAL VERBS",
+    "points": [
+     "A phrasal verb is a verb + one or two particles (adverb or preposition). The meaning is often not literal: 'give up' = stop trying.",
+     "Some have no object: 'The plane took off late.'",
+     "Verb + adverb + object: a noun object can go before or after the particle ('turn off the TV' / 'turn the TV off'), but a pronoun must go in the middle: 'turn it off'.",
+     "Verb + preposition + object: the object always comes after the preposition, even a pronoun: 'I'll look after him.'",
+     "Three-part verbs (verb + adverb + preposition) keep the object at the end: 'I get on with them.'"
+    ],
+    "questions": [
+     "Replace the noun with a pronoun: Turn off the radio. | Turn it off.",
+     "Correct it: I'll look the children after. | I'll look after the children.",
+     "That music is too loud. Please ____. (turn down it / turn it down) | turn it down",
+     "Can you ____ while I'm away? (look my cat after / look after my cat) | look after my cat",
+     "Replace the noun with a pronoun: She gave back the books. | She gave them back.",
+     "I'm really looking forward ____ the concert. (to / at / for) | to",
+     "Correct it: We've run milk out of. | We've run out of milk.",
+     "Replace the noun with a pronoun: He takes after his father. | He takes after him.",
+     "I don't know this word. I'll ____. (look up it / look it up) | look it up",
+     "My car broke ____ on the motorway. (down / off / out) | down",
+     "Correct it: She gets on her cousins with. | She gets on with her cousins.",
+     "Replace the noun with a pronoun: Pick up your clothes! | Pick them up!"
+    ]
+   }
+  },
+  {
+   "n": 4,
+   "vocab": [
+    {
+     "topic": "STRESS",
+     "words": [
+      {
+       "w": "faint",
+       "pos": "v",
+       "def": "to lose consciousness suddenly for a short while"
+      },
+      {
+       "w": "feel dizzy",
+       "pos": "phr",
+       "def": "to sense that everything is spinning around you"
+      },
+      {
+       "w": "get in a panic",
+       "pos": "phr",
+       "def": "to suddenly become so frightened you can't think clearly"
+      },
+      {
+       "w": "go over and over (sth) in your mind",
+       "pos": "phr",
+       "def": "to keep thinking about a past event again and again"
+      },
+      {
+       "w": "have an upset stomach",
+       "pos": "phr",
+       "def": "to feel sick in your tummy"
+      },
+      {
+       "w": "have difficulty sleeping",
+       "pos": "phr",
+       "def": "to lie awake at night, unable to rest properly"
+      },
+      {
+       "w": "lose your appetite",
+       "pos": "phr",
+       "def": "to stop feeling hungry or wanting food"
+      },
+      {
+       "w": "lose your temper",
+       "pos": "phr",
+       "def": "to suddenly get very angry"
+      }
+     ]
+    },
+    {
+     "topic": "PHRASAL VERBS: HEALTH",
+     "words": [
+      {
+       "w": "calm down",
+       "pos": "pv",
+       "def": "to relax after being angry, upset or excited"
+      },
+      {
+       "w": "come down with (sth)",
+       "pos": "pv",
+       "def": "to catch an illness, usually a mild one"
+      },
+      {
+       "w": "come round",
+       "pos": "pv",
+       "def": "to wake up again after fainting or an operation"
+      },
+      {
+       "w": "get (sb) down",
+       "pos": "pv",
+       "def": "to make a person feel sad or low"
+      },
+      {
+       "w": "get over (sth/sb)",
+       "pos": "pv",
+       "def": "to recover from an illness or a sad experience"
+      },
+      {
+       "w": "throw up",
+       "pos": "pv",
+       "def": "to be sick and empty your stomach through your mouth"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "MODALS (1): NECESSITY, OBLIGATION, PROHIBITION AND ADVICE",
+    "points": [
+     "need to = it is necessary; don't need to / needn't = it isn't necessary. 'You need to book early.'",
+     "must: the speaker feels it is obligatory. have to: the rule comes from outside. 'I must call Gran.' 'We have to wear a uniform.'",
+     "mustn't = it is forbidden. don't have to = it's optional. They are very different! 'You mustn't run here.' 'You don't have to come.'",
+     "should / ought to give advice; shouldn't says something is a bad idea. 'You ought to rest.'",
+     "must has no past form: use had to. 'Yesterday I had to stay late.'"
+    ],
+    "questions": [
+     "You ____ touch that wire. It's dangerous! (mustn't / don't have to) | mustn't",
+     "Tomorrow is a holiday, so we ____ get up early. (mustn't / don't have to) | don't have to",
+     "You look tired. You ____ go to bed earlier. (should / mustn't) | should",
+     "Correct it: You ought see a doctor. | You ought to see a doctor.",
+     "In my school, students ____ wear a uniform. It's a rule. (have to / should) | have to",
+     "Correct it: She musts finish it today. | She must finish it today.",
+     "Past of must: Yesterday I ____ stay late at school. | had to",
+     "You ____ bring food. There's plenty here. (needn't / mustn't) | needn't",
+     "Correct it: He don't have to come. | He doesn't have to come.",
+     "You ____ eat so many sweets. They're bad for your teeth. (shouldn't / don't have to) | shouldn't",
+     "Complete with one word: You ought ____ apologise to her. | to",
+     "Passengers ____ smoke anywhere on the plane. (mustn't / needn't) | mustn't"
+    ]
+   }
+  },
+  {
+   "n": 5,
+   "vocab": [
+    {
+     "topic": "HISTORY",
+     "words": [
+      {
+       "w": "ancestor",
+       "pos": "n",
+       "def": "a family member from many generations before you"
+      },
+      {
+       "w": "century",
+       "pos": "n",
+       "def": "one hundred years"
+      },
+      {
+       "w": "citizen",
+       "pos": "n",
+       "def": "a person who legally belongs to a town or country"
+      },
+      {
+       "w": "decade",
+       "pos": "n",
+       "def": "ten years"
+      },
+      {
+       "w": "found",
+       "pos": "v",
+       "def": "to start a city, company or organisation"
+      },
+      {
+       "w": "get the vote",
+       "pos": "phr",
+       "def": "to win the right to choose in elections"
+      },
+      {
+       "w": "inhabitant",
+       "pos": "n",
+       "def": "a person or animal living in a certain place"
+      },
+      {
+       "w": "myth",
+       "pos": "n",
+       "def": "a very old traditional story about gods and heroes"
+      },
+      {
+       "w": "tribe",
+       "pos": "n",
+       "def": "a traditional community sharing language, customs and a leader"
+      }
+     ]
+    },
+    {
+     "topic": "EXPRESSING FREQUENCY",
+     "words": [
+      {
+       "w": "all the time",
+       "pos": "phr",
+       "def": "without stopping; constantly"
+      },
+      {
+       "w": "constantly",
+       "pos": "adv",
+       "def": "again and again, almost without a break"
+      },
+      {
+       "w": "from time to time",
+       "pos": "phr",
+       "def": "now and again, not very frequently"
+      },
+      {
+       "w": "most days/weeks/months",
+       "pos": "phr",
+       "def": "on nearly every day, week or month"
+      },
+      {
+       "w": "occasionally",
+       "pos": "adv",
+       "def": "sometimes, though not regularly"
+      },
+      {
+       "w": "(every) once in a while",
+       "pos": "phr",
+       "def": "sometimes, though not often at all"
+      },
+      {
+       "w": "rarely",
+       "pos": "adv",
+       "def": "almost never"
+      },
+      {
+       "w": "regularly",
+       "pos": "adv",
+       "def": "often and at similar intervals"
+      },
+      {
+       "w": "seldom",
+       "pos": "adv",
+       "def": "hardly ever (quite formal)"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "PRESENT AND PAST HABITS",
+    "points": [
+     "Present habits: present simple + frequency adverb (before the main verb, after be) or a frequency phrase at the end. 'I hardly ever eat meat.' 'We meet from time to time.'",
+     "always / constantly / continually + present continuous shows a habit annoys you: 'She's always borrowing my pens.'",
+     "used to + infinitive: past habits and states that are no longer true. Negative and question: didn't use to / Did you use to ...?",
+     "would + infinitive: repeated past actions only, never states. 'Every Sunday we would visit Gran.' (NOT 'I would have a dog.')",
+     "always / constantly + past continuous: annoying habits in the past. 'He was always forgetting his book.'"
+    ],
+    "questions": [
+     "When I was little, I ____ be afraid of dogs. (used to / use to) | used to",
+     "Correct it: I didn't used to like olives. | I didn't use to like olives.",
+     "We ____ a house by the sea when I was a child. (used to have / would have) | used to have",
+     "He ____ (always / lose) his keys! It drives me mad. | is always losing",
+     "Put the adverb in the right place: She is late. (never) | She is never late.",
+     "Put the adverb in the right place: I eat meat. (rarely) | I rarely eat meat.",
+     "Every summer, Grandad ____ us fishing. (would take / was used to take) | would take",
+     "Nowadays I ____ running twice a week. (go / use to go) | go",
+     "____ (you / use) play with dolls when you were small? | Did you use to",
+     "My old neighbours ____ (constantly / shout) at each other. It was awful. | were constantly shouting",
+     "I ____ in ghosts when I was six. (would believe / used to believe) | used to believe",
+     "We see each other once ____ a while. (in / on / at) | in"
+    ]
+   }
+  },
+  {
+   "n": 6,
+   "vocab": [
+    {
+     "topic": "EXPRESSING EMOTIONS",
+     "words": [
+      {
+       "w": "anxious (about)",
+       "pos": "adj",
+       "def": "nervous and worried that something bad may happen"
+      },
+      {
+       "w": "bad-tempered (about)",
+       "pos": "adj",
+       "def": "easily annoyed and often in an angry mood"
+      },
+      {
+       "w": "cheerful (about)",
+       "pos": "adj",
+       "def": "in a bright, happy and positive mood"
+      },
+      {
+       "w": "concerned (about)",
+       "pos": "adj",
+       "def": "worried about a person or situation"
+      },
+      {
+       "w": "content (with)",
+       "pos": "adj",
+       "def": "satisfied with what you have; not wanting more"
+      },
+      {
+       "w": "depressed (about)",
+       "pos": "adj",
+       "def": "very sad and without hope"
+      },
+      {
+       "w": "down (about)",
+       "pos": "adj",
+       "def": "feeling sad and low in spirits"
+      },
+      {
+       "w": "fed up (with)",
+       "pos": "adj",
+       "def": "tired and annoyed after too much of something"
+      },
+      {
+       "w": "furious (with)",
+       "pos": "adj",
+       "def": "extremely angry"
+      },
+      {
+       "w": "irritated (by)",
+       "pos": "adj",
+       "def": "slightly angry because something keeps annoying you"
+      },
+      {
+       "w": "optimistic (about)",
+       "pos": "adj",
+       "def": "expecting that the future will be good"
+      },
+      {
+       "w": "over the moon (about)",
+       "pos": "id",
+       "def": "absolutely delighted"
+      },
+      {
+       "w": "pessimistic (about)",
+       "pos": "adj",
+       "def": "expecting that things will turn out badly"
+      },
+      {
+       "w": "petrified (of)",
+       "pos": "adj",
+       "def": "so terrified that you can hardly move"
+      },
+      {
+       "w": "relieved (about)",
+       "pos": "adj",
+       "def": "glad because a worry or danger has gone"
+      },
+      {
+       "w": "scared (of)",
+       "pos": "adj",
+       "def": "afraid of something"
+      }
+     ]
+    },
+    {
+     "topic": "ADVERBS: TYPE AND POSITION",
+     "words": [
+      {
+       "w": "definitely",
+       "pos": "adv",
+       "def": "certainly; with no doubt at all"
+      },
+      {
+       "w": "frequently",
+       "pos": "adv",
+       "def": "many times; often"
+      },
+      {
+       "w": "however",
+       "pos": "adv",
+       "def": "no matter how (much, hard, fast, etc.)"
+      },
+      {
+       "w": "last week",
+       "pos": "adv",
+       "def": "during the seven days before this one"
+      },
+      {
+       "w": "outside",
+       "pos": "adv",
+       "def": "in the open air, not in a building"
+      },
+      {
+       "w": "quickly",
+       "pos": "adv",
+       "def": "fast; in very little time"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "BE/GET USED TO",
+    "points": [
+     "be used to + noun or -ing: something is normal for you now. 'I'm used to the noise.'",
+     "get used to + noun or -ing: something is slowly becoming normal. 'I'm getting used to my new school.'",
+     "Here 'to' is a preposition, so the next verb takes -ing: 'She's used to cooking for ten people.' (NOT 'used to cook')",
+     "be and get can go in any tense: 'I wasn't used to it', 'You'll get used to it', 'He has got used to it'.",
+     "Don't confuse it with used to + infinitive, which is a past habit: 'I used to cycle to school.'"
+    ],
+    "questions": [
+     "I'm used to ____ (get) up early, so 6 a.m. is no problem. | getting",
+     "It took me months to ____ used to the cold weather. (be / get) | get",
+     "She's used to ____ on the left. (drive / driving) | driving",
+     "When I was five, I ____ have a toy rabbit. (used to / was used to) | used to",
+     "Don't worry, you'll soon ____ used to your new school. (get / getting) | get",
+     "He has lived in Seville for years, so he ____ the heat. (is used to / used to) | is used to",
+     "I can't get used to ____ (wear) glasses. | wearing",
+     "Correct it: I'm not use to spicy food. | I'm not used to spicy food.",
+     "We ____ live in a flat, but now we have a house. (used to / are used to) | used to",
+     "She still hasn't ____ (get) used to her new timetable. | got",
+     "Are you used to ____ (speak) in public? | speaking",
+     "At first the noise bothered us, but we slowly ____ used to it. (got / were) | got"
+    ]
+   }
+  },
+  {
+   "n": 7,
+   "vocab": [
+    {
+     "topic": "VERBS OF MOVEMENT AND SOUNDS",
+     "words": [
+      {
+       "w": "kneel down",
+       "pos": "pv",
+       "def": "to lower yourself so your knees touch the floor"
+      },
+      {
+       "w": "lean",
+       "pos": "v",
+       "def": "to bend your upper body towards one side"
+      },
+      {
+       "w": "mumble",
+       "pos": "v",
+       "def": "to speak quietly and unclearly so people can't understand"
+      },
+      {
+       "w": "rush",
+       "pos": "v",
+       "def": "to go somewhere or do something in a great hurry"
+      },
+      {
+       "w": "sigh",
+       "pos": "v",
+       "def": "to let out a long, loud breath when tired or sad"
+      },
+      {
+       "w": "slap",
+       "pos": "v",
+       "def": "to hit with your open hand"
+      },
+      {
+       "w": "swing open",
+       "pos": "phr",
+       "def": "(of a door) to turn smoothly so people can pass"
+      },
+      {
+       "w": "tap",
+       "pos": "v",
+       "def": "to hit something lightly, often with your fingers"
+      },
+      {
+       "w": "tremble",
+       "pos": "v",
+       "def": "to shake a little from cold, fear or emotion"
+      },
+      {
+       "w": "wander",
+       "pos": "v",
+       "def": "to walk around slowly with no clear destination"
+      },
+      {
+       "w": "whisper",
+       "pos": "v",
+       "def": "to talk very softly using only your breath"
+      },
+      {
+       "w": "whistle",
+       "pos": "v",
+       "def": "to make a high sound by blowing through your lips"
+      }
+     ]
+    },
+    {
+     "topic": "TIME PHRASES",
+     "words": [
+      {
+       "w": "before (very/too) long",
+       "pos": "phr",
+       "def": "soon; after only a short wait"
+      },
+      {
+       "w": "for hours/weeks on end",
+       "pos": "phr",
+       "def": "for a very long time without any break"
+      },
+      {
+       "w": "for some time",
+       "pos": "phr",
+       "def": "during quite a long period"
+      },
+      {
+       "w": "in no time",
+       "pos": "phr",
+       "def": "almost immediately; very fast"
+      },
+      {
+       "w": "the week before last",
+       "pos": "phr",
+       "def": "not the previous seven days, but the seven days earlier"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "NARRATIVE TENSES",
+    "points": [
+     "Past simple tells the main events of a story in order: 'She opened the box and smiled.'",
+     "Past continuous sets the scene or shows an action in progress: 'The wind was blowing hard.'",
+     "Past perfect simple (had + past participle): a completed action before another past event. 'By the time we arrived, they had eaten.'",
+     "Past perfect continuous (had been + -ing): an activity that went on for some time before a past moment. 'I had been waiting for an hour when he came.'",
+     "State verbs (know, be, have = own) are not used in the continuous: 'I had known him for years.'"
+    ],
+    "questions": [
+     "When I got home, my brother ____ (already / eat) all the pizza. | had already eaten",
+     "Her eyes were red because she ____ (cry). | had been crying",
+     "We ____ (walk) for three hours when we finally saw the village. | had been walking",
+     "I opened the door, ____ (switch) on the light and screamed. | switched",
+     "The sun ____ (shine) when we left the house. | was shining",
+     "I didn't recognise him because he ____ (grow) a beard. | had grown",
+     "By the time the police arrived, the thief ____. (escaped / had escaped) | had escaped",
+     "Correct it: I had been knowing her for years. | I had known her for years.",
+     "While they ____ (sleep), someone stole their car. | were sleeping",
+     "The ground was wet. It ____ (rain) all night. | had been raining",
+     "She ____ three emails before lunch. (had written / had been writing) | had written",
+     "He was nervous because he ____ (never / fly) before. | had never flown"
+    ]
+   }
+  },
+  {
+   "n": 8,
+   "vocab": [
+    {
+     "topic": "COMMUNITY",
+     "words": [
+      {
+       "w": "affordable",
+       "pos": "adj",
+       "def": "cheap enough for ordinary people to buy or rent"
+      },
+      {
+       "w": "close",
+       "pos": "adj",
+       "def": "(of a community) where neighbours know and help each other"
+      },
+      {
+       "w": "diverse",
+       "pos": "adj",
+       "def": "including many different kinds of people or things"
+      },
+      {
+       "w": "industrial",
+       "pos": "adj",
+       "def": "having many factories and businesses that produce goods"
+      },
+      {
+       "w": "inner-city",
+       "pos": "adj",
+       "def": "in the central, often poorer part of a big town"
+      },
+      {
+       "w": "relaxed",
+       "pos": "adj",
+       "def": "calm, comfortable and informal"
+      },
+      {
+       "w": "remote",
+       "pos": "adj",
+       "def": "far away from towns and hard to reach"
+      },
+      {
+       "w": "residential",
+       "pos": "adj",
+       "def": "(of an area) made up of homes, not offices or factories"
+      },
+      {
+       "w": "rural",
+       "pos": "adj",
+       "def": "connected with the countryside"
+      },
+      {
+       "w": "trendy",
+       "pos": "adj",
+       "def": "fashionable and popular right now"
+      },
+      {
+       "w": "urban",
+       "pos": "adj",
+       "def": "connected with towns and cities"
+      },
+      {
+       "w": "welcoming",
+       "pos": "adj",
+       "def": "friendly to visitors, making them feel at home"
+      }
+     ]
+    },
+    {
+     "topic": "AS IF / AS THOUGH",
+     "words": [
+      {
+       "w": "as if / as though",
+       "pos": "phr",
+       "def": "in a way that suggests something is true"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "FUTURE (1): REVIEW",
+    "points": [
+     "Present simple for timetables and fixed schedules: 'My flight leaves at noon.' Present continuous for arrangements with other people: 'I'm seeing the dentist on Friday.'",
+     "be going to: intentions already decided, and predictions from what you can see now. 'It's going to fall!'",
+     "will: decisions made at the moment of speaking, offers, promises and predictions based on opinion. 'I'll carry that for you.'",
+     "be about to + verb: something will happen in the next few moments. 'The match is about to start.'",
+     "After when, until, before, after, as soon as, use a present tense (or present perfect), not will: 'I'll phone when I arrive.'"
+    ],
+    "questions": [
+     "The train ____ (leave) at 6.45 tomorrow morning. | leaves",
+     "Look at those black clouds! It ____ rain. (is going to / will) | is going to",
+     "'The phone's ringing.' 'OK, ____ it.' (I'll answer / I'm answering) | I'll answer",
+     "I'll text you as soon as I ____ (arrive). | arrive",
+     "We'll start when everyone ____ here. (is / will be) | is",
+     "Hurry up! The film is ____ to start. (about / soon) | about",
+     "I ____ (meet) Laura at five tomorrow. We booked a table. | am meeting",
+     "I promise I ____ (not / tell) anyone your secret. | won't tell",
+     "She has decided: she ____ study medicine. (is going to / will) | is going to",
+     "Don't go out until you ____ your homework. (finish / will finish) | finish",
+     "What time ____ (the concert / start) on Saturday? | does the concert start",
+     "I think Spain ____ (win) the next World Cup. | will win"
+    ]
+   }
+  },
+  {
+   "n": 9,
+   "vocab": [
+    {
+     "topic": "COLLOCATIONS",
+     "words": [
+      {
+       "w": "achieve your goals",
+       "pos": "phr",
+       "def": "to manage to do what you planned through hard work"
+      },
+      {
+       "w": "go wrong",
+       "pos": "phr",
+       "def": "to stop working properly or start having problems"
+      },
+      {
+       "w": "have a go at (sth)",
+       "pos": "phr",
+       "def": "to try an activity, often for the first time"
+      },
+      {
+       "w": "look bright",
+       "pos": "phr",
+       "def": "(of the future) to seem full of hope and promise"
+      },
+      {
+       "w": "make a (big) difference",
+       "pos": "phr",
+       "def": "to change a situation for the better"
+      },
+      {
+       "w": "make the best of (sth)",
+       "pos": "phr",
+       "def": "to accept a bad situation and do what you can"
+      },
+      {
+       "w": "make the most of (sth)",
+       "pos": "phr",
+       "def": "to enjoy or use something fully while you can"
+      },
+      {
+       "w": "put an end to (sth)",
+       "pos": "phr",
+       "def": "to stop something from continuing"
+      },
+      {
+       "w": "see the best in (sb)",
+       "pos": "phr",
+       "def": "to notice a person's good qualities first"
+      },
+      {
+       "w": "see the worst in (sb)",
+       "pos": "phr",
+       "def": "to notice mainly a person's bad qualities"
+      },
+      {
+       "w": "strength",
+       "pos": "n",
+       "def": "a positive quality or skill that helps you do well"
+      },
+      {
+       "w": "take an opportunity",
+       "pos": "phr",
+       "def": "to use a chance when it appears"
+      },
+      {
+       "w": "weakness",
+       "pos": "n",
+       "def": "a fault or area where you are not good"
+      }
+     ]
+    },
+    {
+     "topic": "ADJECTIVE AND NOUN SUFFIXES",
+     "words": [
+      {
+       "w": "active",
+       "pos": "adj",
+       "def": "always busy doing things or moving about"
+      },
+      {
+       "w": "beneficial",
+       "pos": "adj",
+       "def": "having a good or helpful effect"
+      },
+      {
+       "w": "competition",
+       "pos": "n",
+       "def": "an event or situation where people try to beat others"
+      },
+      {
+       "w": "dangerous",
+       "pos": "adj",
+       "def": "likely to hurt or harm you"
+      },
+      {
+       "w": "driverless",
+       "pos": "adj",
+       "def": "(of a car) able to move with nobody steering it"
+      },
+      {
+       "w": "emotional",
+       "pos": "adj",
+       "def": "connected with feelings, or showing them strongly"
+      },
+      {
+       "w": "enjoyment",
+       "pos": "n",
+       "def": "the pleasure you get from something you like"
+      },
+      {
+       "w": "majority",
+       "pos": "n",
+       "def": "the larger part of a group; over half"
+      },
+      {
+       "w": "personality",
+       "pos": "n",
+       "def": "your character; what makes you different from others"
+      },
+      {
+       "w": "professional",
+       "pos": "adj",
+       "def": "connected with a job that needs special training"
+      },
+      {
+       "w": "recognisable",
+       "pos": "adj",
+       "def": "easy to identify when you see or hear it"
+      },
+      {
+       "w": "relationship",
+       "pos": "n",
+       "def": "the connection between two people and how they get on"
+      },
+      {
+       "w": "remarkable",
+       "pos": "adj",
+       "def": "unusual and surprising in an impressive way"
+      },
+      {
+       "w": "satisfaction",
+       "pos": "n",
+       "def": "the good feeling of having got what you wanted"
+      },
+      {
+       "w": "settlement",
+       "pos": "n",
+       "def": "a place where a group of people have made homes"
+      },
+      {
+       "w": "useful",
+       "pos": "adj",
+       "def": "helping you do or get what you need"
+      },
+      {
+       "w": "valuable",
+       "pos": "adj",
+       "def": "very important, helpful or worth a lot"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "FUTURE (2): CONTINUOUS AND PERFECT",
+    "points": [
+     "Future continuous (will be + -ing): an action in progress at a future moment. 'At ten tomorrow I'll be sitting my exam.'",
+     "It is also a polite way to ask about plans: 'Will you be using the computer later?'",
+     "Future perfect (will have + past participle): an action finished before a future moment, often with by. 'By Friday I'll have read the book.'",
+     "Future perfect continuous (will have been + -ing): how long something will have lasted at a future point. 'In May we'll have been living here for a year.'",
+     "State verbs take the simple perfect form: 'Next year they'll have been married for ten years.'"
+    ],
+    "questions": [
+     "This time next week, I ____ (lie) on a beach. | will be lying",
+     "By 2030, I ____ (finish) university. | will have finished",
+     "By June, she ____ (study) English for ten years. | will have been studying",
+     "Don't call at nine. We ____ (have) dinner then. | will be having",
+     "By the time you arrive, the film ____. (will be starting / will have started) | will have started",
+     "I'll have ____ it by Friday. (finish / finished) | finished",
+     "At midnight tonight, I ____ (sleep). | will be sleeping",
+     "____ (you / use) the car tonight? I'd like to borrow it. | Will you be using",
+     "Next month my parents ____ (be) married for twenty years. | will have been",
+     "At this moment tomorrow, we ____ over the Alps. (will be flying / will have flown) | will be flying",
+     "By the end of this year, he ____ (save) 1,000 euros. | will have saved",
+     "By 6 p.m. I ____ (work) for ten hours without a break. | will have been working"
+    ]
+   }
+  },
+  {
+   "n": 10,
+   "vocab": [
+    {
+     "topic": "PHRASES WITH IN, OUT OF, AT, BY",
+     "words": [
+      {
+       "w": "at fault",
+       "pos": "phr",
+       "def": "to blame for something that went wrong"
+      },
+      {
+       "w": "at risk",
+       "pos": "phr",
+       "def": "in danger of something bad happening"
+      },
+      {
+       "w": "by accident",
+       "pos": "phr",
+       "def": "without meaning to; not on purpose"
+      },
+      {
+       "w": "by chance",
+       "pos": "phr",
+       "def": "through luck, without any plan"
+      },
+      {
+       "w": "in advance",
+       "pos": "phr",
+       "def": "before something happens; ahead of time"
+      },
+      {
+       "w": "in all",
+       "pos": "phr",
+       "def": "as a total when everything is counted"
+      },
+      {
+       "w": "in detail",
+       "pos": "phr",
+       "def": "carefully, including every small fact"
+      },
+      {
+       "w": "in secret",
+       "pos": "phr",
+       "def": "privately, so nobody else knows"
+      },
+      {
+       "w": "out of character",
+       "pos": "phr",
+       "def": "not typical of how a person normally behaves"
+      },
+      {
+       "w": "out of nowhere",
+       "pos": "phr",
+       "def": "suddenly and completely unexpectedly"
+      }
+     ]
+    },
+    {
+     "topic": "EXTENDED MEANINGS OF WORDS",
+     "words": [
+      {
+       "w": "angel",
+       "pos": "n",
+       "def": "a very kind person who helps you"
+      },
+      {
+       "w": "boiling",
+       "pos": "adj",
+       "def": "extremely hot (said of weather or a room)"
+      },
+      {
+       "w": "bright",
+       "pos": "adj",
+       "def": "(of the future) likely to be successful and happy"
+      },
+      {
+       "w": "flood",
+       "pos": "v",
+       "def": "to arrive somewhere in very large numbers"
+      },
+      {
+       "w": "foggy",
+       "pos": "adj",
+       "def": "unclear or confused, like a weak memory"
+      },
+      {
+       "w": "freeze",
+       "pos": "v",
+       "def": "to stop moving suddenly, often from fear"
+      },
+      {
+       "w": "frozen",
+       "pos": "adj",
+       "def": "completely still, unable to move"
+      },
+      {
+       "w": "grill",
+       "pos": "v",
+       "def": "to question a person hard for a long time"
+      },
+      {
+       "w": "hit",
+       "pos": "v",
+       "def": "to have a bad effect on a person or place"
+      },
+      {
+       "w": "lift (sb's) mood",
+       "pos": "phr",
+       "def": "to make a person feel more cheerful"
+      },
+      {
+       "w": "sail through (sth)",
+       "pos": "pv",
+       "def": "to pass an exam or challenge with no difficulty"
+      },
+      {
+       "w": "stormy",
+       "pos": "adj",
+       "def": "full of arguments and strong emotions"
+      },
+      {
+       "w": "weigh up",
+       "pos": "pv",
+       "def": "to think carefully about options before deciding"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "MODALS (2): MODALS IN THE PAST",
+    "points": [
+     "would have + past participle: something imagined in the past that didn't really happen. 'You would have laughed!'",
+     "should have / ought to have + past participle: criticism or regret about the past. 'I should have listened.' shouldn't have = it was a mistake to do it.",
+     "needn't have + past participle: you did something, but it turned out to be unnecessary. 'You needn't have cooked; we'd already eaten.'",
+     "didn't need to + infinitive: it wasn't necessary, so you probably didn't do it. 'I didn't need to queue because I had a ticket.'",
+     "All of these use have + past participle, never a past simple form: 'should have gone' (NOT 'should have went')."
+    ],
+    "questions": [
+     "You ____ (should / tell) me you were coming! I had no food ready. | should have told",
+     "I ____ (need / not / buy) milk; we already had three cartons. | needn't have bought",
+     "It was a holiday, so I ____ get up early. I stayed in bed. (didn't need to / needn't have) | didn't need to",
+     "I failed the test. I ____ (should / study) more. | should have studied",
+     "He ____ (should / not / shout) at her. She was only trying to help. | shouldn't have shouted",
+     "What a great party! You ____ (would / love) it. | would have loved",
+     "You should have ____ to bed earlier. (went / gone) | gone",
+     "I took an umbrella, but it didn't rain. I ____ (need / not / take) it. | needn't have taken",
+     "I'm glad I missed that film. I ____ (would / not / enjoy) it. | wouldn't have enjoyed",
+     "Complete with one word: She ought to ____ asked before borrowing my bike. | have",
+     "The museum was free, so we ____ pay. (didn't need to / shouldn't have) | didn't need to",
+     "Oh no, I'm soaked! I ____ (should / bring) a coat. | should have brought"
+    ]
+   }
+  },
+  {
+   "n": 11,
+   "vocab": [
+    {
+     "topic": "PHRASAL VERBS: RELATIONSHIPS",
+     "words": [
+      {
+       "w": "count on (sb)",
+       "pos": "pv",
+       "def": "to trust that a person will help you"
+      },
+      {
+       "w": "fall out (with) (sb)",
+       "pos": "pv",
+       "def": "to have an argument and stop being friends"
+      },
+      {
+       "w": "finish with (sb)",
+       "pos": "pv",
+       "def": "to break up with your boyfriend or girlfriend"
+      },
+      {
+       "w": "go off (sb/sth)",
+       "pos": "pv",
+       "def": "to stop liking a person or thing"
+      },
+      {
+       "w": "hit it off (with)",
+       "pos": "pv",
+       "def": "to get on well from the first meeting"
+      },
+      {
+       "w": "let (sb) down",
+       "pos": "pv",
+       "def": "to disappoint a person by not keeping a promise"
+      },
+      {
+       "w": "look down on (sb)",
+       "pos": "pv",
+       "def": "to think you are superior to another person"
+      },
+      {
+       "w": "look up to (sb)",
+       "pos": "pv",
+       "def": "to admire and respect an older or wiser person"
+      },
+      {
+       "w": "stick together",
+       "pos": "pv",
+       "def": "to stay united and support each other"
+      },
+      {
+       "w": "take after (sb)",
+       "pos": "pv",
+       "def": "to resemble a parent or older relative"
+      }
+     ]
+    },
+    {
+     "topic": "COMPOUND ADJECTIVES",
+     "words": [
+      {
+       "w": "badly behaved",
+       "pos": "adj",
+       "def": "acting in a rude or naughty way"
+      },
+      {
+       "w": "grown-up",
+       "pos": "adj",
+       "def": "adult, or mature and responsible"
+      },
+      {
+       "w": "high-tech",
+       "pos": "adj",
+       "def": "using the most modern technology"
+      },
+      {
+       "w": "last-minute",
+       "pos": "adj",
+       "def": "done just before it is too late"
+      },
+      {
+       "w": "long-distance",
+       "pos": "adj",
+       "def": "between places that are far apart"
+      },
+      {
+       "w": "middle-aged",
+       "pos": "adj",
+       "def": "between about 45 and 65 years old"
+      },
+      {
+       "w": "self-confident",
+       "pos": "adj",
+       "def": "sure of your own abilities"
+      },
+      {
+       "w": "short-term",
+       "pos": "adj",
+       "def": "continuing for only a brief period"
+      },
+      {
+       "w": "well-balanced",
+       "pos": "adj",
+       "def": "(of a diet) containing the right mix of healthy foods"
+      },
+      {
+       "w": "well-built",
+       "pos": "adj",
+       "def": "having a big, strong, muscular body"
+      },
+      {
+       "w": "well-organised",
+       "pos": "adj",
+       "def": "carefully planned and working efficiently"
+      },
+      {
+       "w": "well-paid",
+       "pos": "adj",
+       "def": "giving or receiving a high salary"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "RELATIVE CLAUSES",
+    "points": [
+     "Defining clauses say which person or thing we mean. No commas. Use who/that for people, which/that for things: 'The boy who sits next to me is Dutch.'",
+     "You can leave out who/which/that when it is the object of the clause: 'The film (that) we watched was long.' You can't when it is the subject.",
+     "Non-defining clauses add extra information between commas. Never use that and never leave the pronoun out: 'My aunt, who lives in Vigo, is a vet.'",
+     "whose = possession, where = places, when = times: 'a friend whose mum is a chef', 'the day when we met'.",
+     "which can refer to a whole idea: 'He arrived late, which annoyed everyone.'",
+     "Prepositions usually go at the end ('the girl I spoke to'); in formal style they go before whom/which ('the girl to whom I spoke')."
+    ],
+    "questions": [
+     "That's the girl ____ brother plays for Betis. (who / whose / which) | whose",
+     "This is the town ____ I was born. (which / where / that) | where",
+     "My mum, ____ is a nurse, works nights. (who / that) | who",
+     "The film ____ we saw last night was brilliant. (who / which / where) | which",
+     "Can the pronoun be left out? 'The book that I bought is great.' (yes / no) | yes",
+     "Can the pronoun be left out? 'The man who lives next door is a chef.' (yes / no) | no",
+     "Madrid, ____ is the capital of Spain, is very hot in summer. (which / that) | which",
+     "The boy ____ won the race is my cousin. (who / which / whose) | who",
+     "2015 was the year ____ we moved house. (when / where / whose) | when",
+     "Does this sentence need commas? 'My dad who is 50 loves skating.' (yes / no) | yes",
+     "Formal style: The person to ____ I spoke was helpful. (who / whom / which) | whom",
+     "He passed all his exams, ____ surprised everyone. (which / that / what) | which"
+    ]
+   }
+  },
+  {
+   "n": 12,
+   "vocab": [
+    {
+     "topic": "VERBS OF COMMUNICATION",
+     "words": [
+      {
+       "w": "amuse",
+       "pos": "v",
+       "def": "to make people smile or laugh"
+      },
+      {
+       "w": "cheer (sb) up",
+       "pos": "pv",
+       "def": "to make a sad person feel happier"
+      },
+      {
+       "w": "congratulate",
+       "pos": "v",
+       "def": "to tell a person you are pleased about their achievement"
+      },
+      {
+       "w": "highlight",
+       "pos": "v",
+       "def": "to draw special attention to an important point"
+      },
+      {
+       "w": "promote",
+       "pos": "v",
+       "def": "to advertise or support something so it becomes popular"
+      },
+      {
+       "w": "reassure",
+       "pos": "v",
+       "def": "to say things that make a person less worried"
+      },
+      {
+       "w": "speak out",
+       "pos": "pv",
+       "def": "to give your opinion publicly, especially to protest"
+      },
+      {
+       "w": "spread",
+       "pos": "v",
+       "def": "to pass a feeling or news to many people"
+      },
+      {
+       "w": "stimulate",
+       "pos": "v",
+       "def": "to make a person feel interested and full of ideas"
+      }
+     ]
+    },
+    {
+     "topic": "BOTH, EITHER, NEITHER",
+     "words": [
+      {
+       "w": "both",
+       "pos": "pron, det",
+       "def": "the two together; one and also the other"
+      },
+      {
+       "w": "either",
+       "pos": "pron, det",
+       "def": "one or the other of two options"
+      },
+      {
+       "w": "either ... or",
+       "pos": "conj",
+       "def": "used to offer a choice between two things"
+      },
+      {
+       "w": "neither",
+       "pos": "pron, det",
+       "def": "not one and not the other of two"
+      },
+      {
+       "w": "neither ... nor",
+       "pos": "conj",
+       "def": "used to join two negative ideas"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "THE PASSIVE (1): REVIEW",
+    "points": [
+     "Form the passive with be in the right tense + past participle: 'The bridge was built in 1990.' 'Dinner is being cooked.'",
+     "Use it when the doer is unknown, obvious or unimportant, or when you want to focus on the thing affected: 'My bike has been stolen.'",
+     "Add the doer with by only when it matters: 'The song was written by a teenager.'",
+     "Verbs with two objects can make the person the subject: 'She was given a prize.'",
+     "have / get + object + past participle means someone else does a job for you: 'I had my phone repaired.' Get is more informal."
+    ],
+    "questions": [
+     "This castle ____ (build) in the twelfth century. | was built",
+     "Be careful! The floor ____ (clean) right now. | is being cleaned",
+     "My wallet ____ (steal)! I can't find it anywhere. | has been stolen",
+     "The results ____ (announce) tomorrow morning. | will be announced",
+     "Make it passive: Someone broke the window. The window ____. | was broken",
+     "'Don Quixote' was written ____ Cervantes. (by / from / for) | by",
+     "When we arrived, the room ____ (already / decorate). | had already been decorated",
+     "I don't cut my own hair. I ____ it cut at the hairdresser's. (have / make) | have",
+     "She got her laptop ____ (fix) at a shop in town. | fixed",
+     "English is ____ all over the world. (spoke / spoken / speaking) | spoken",
+     "Make it passive: They are repairing the road. The road ____. | is being repaired",
+     "We're going to ____ the house painted next month. (have / be) | have"
+    ]
+   }
+  },
+  {
+   "n": 13,
+   "vocab": [
+    {
+     "topic": "LEADERSHIP AND ACHIEVEMENT",
+     "words": [
+      {
+       "w": "bossy",
+       "pos": "adj",
+       "def": "always giving orders to other people"
+      },
+      {
+       "w": "conscientious",
+       "pos": "adj",
+       "def": "careful and hard-working; doing tasks properly"
+      },
+      {
+       "w": "doubt",
+       "pos": "v",
+       "def": "to feel unsure whether something is true or possible"
+      },
+      {
+       "w": "drive",
+       "pos": "n",
+       "def": "strong determination and energy to succeed"
+      },
+      {
+       "w": "fairly",
+       "pos": "adv",
+       "def": "in an honest way that treats everyone equally"
+      },
+      {
+       "w": "motivated",
+       "pos": "adj",
+       "def": "keen and determined to do well"
+      },
+      {
+       "w": "put your mind to (sth)",
+       "pos": "phr",
+       "def": "to give a task your full effort and attention"
+      },
+      {
+       "w": "self-esteem",
+       "pos": "n",
+       "def": "the good opinion you have of yourself"
+      },
+      {
+       "w": "stand out",
+       "pos": "pv",
+       "def": "to be clearly better or more noticeable than others"
+      },
+      {
+       "w": "sympathetic",
+       "pos": "adj",
+       "def": "kind and understanding when others have problems"
+      },
+      {
+       "w": "target",
+       "pos": "n",
+       "def": "a goal or result you aim to reach"
+      }
+     ]
+    },
+    {
+     "topic": "PHRASAL VERBS WITH UP",
+     "words": [
+      {
+       "w": "come up",
+       "pos": "pv",
+       "def": "to approach a person, walking towards them"
+      },
+      {
+       "w": "keep up",
+       "pos": "pv",
+       "def": "to go as fast as others, not falling behind"
+      },
+      {
+       "w": "live up to",
+       "pos": "pv",
+       "def": "to be as good as people expected"
+      },
+      {
+       "w": "make (sth) up",
+       "pos": "pv",
+       "def": "to invent a story or excuse that isn't true"
+      },
+      {
+       "w": "set up",
+       "pos": "pv",
+       "def": "to create and start a business or organisation"
+      },
+      {
+       "w": "speak up",
+       "pos": "pv",
+       "def": "to talk more loudly so people hear you"
+      },
+      {
+       "w": "turn up",
+       "pos": "pv",
+       "def": "to arrive, sometimes unexpectedly"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "THE PASSIVE (2): OTHER STRUCTURES",
+    "points": [
+     "Passive infinitive = (to) be + past participle. It follows verbs like want, hope, expect, seem: 'Everyone wants to be liked.'",
+     "Verb + object + passive infinitive: 'We expect the work to be finished soon.'",
+     "After modal verbs there is no to: 'Phones must be switched off.'",
+     "-ing passive = being + past participle, after verbs like enjoy, avoid, hate, remember, don't mind: 'I hate being told what to do.'",
+     "Use being + past participle after prepositions too: 'She's afraid of being laughed at.'"
+    ],
+    "questions": [
+     "Nobody likes ____ (criticise) in public. | being criticised",
+     "He hopes ____ (choose) for the school team. | to be chosen",
+     "All phones must ____ (switch) off during the exam. | be switched",
+     "I remember ____ (take) to the zoo when I was four. | being taken",
+     "She insisted on ____ (tell) the truth by her friends. | being told",
+     "The teacher expects the projects ____ (hand) in on Friday. | to be handed",
+     "I don't mind ____ what to do. (to be told / being told) | being told",
+     "This door should ____ locked at night. (be / to be / being) | be",
+     "The cat wants ____ (feed). | to be fed",
+     "He's tired of ____ (treat) like a child. | being treated",
+     "She seems ____ by everyone. (to be liked / being liked) | to be liked",
+     "The thief managed to avoid ____ (catch). | being caught"
+    ]
+   }
+  },
+  {
+   "n": 14,
+   "vocab": [
+    {
+     "topic": "PHRASAL VERBS: TRANSPORT",
+     "words": [
+      {
+       "w": "break down",
+       "pos": "pv",
+       "def": "(of a car or machine) to stop working"
+      },
+      {
+       "w": "drive off",
+       "pos": "pv",
+       "def": "to leave a place in a car"
+      },
+      {
+       "w": "hold up",
+       "pos": "pv",
+       "def": "to delay a person or thing"
+      },
+      {
+       "w": "keep up with (sb or sth)",
+       "pos": "pv",
+       "def": "to move as fast as another person or vehicle"
+      },
+      {
+       "w": "pull into",
+       "pos": "pv",
+       "def": "(of a vehicle) to enter a place and stop there"
+      },
+      {
+       "w": "pull out",
+       "pos": "pv",
+       "def": "(of a train) to begin leaving the station"
+      },
+      {
+       "w": "pull over",
+       "pos": "pv",
+       "def": "to steer to the roadside and stop"
+      },
+      {
+       "w": "pull up",
+       "pos": "pv",
+       "def": "(of a car) to stop, usually briefly"
+      },
+      {
+       "w": "run into",
+       "pos": "pv",
+       "def": "to crash against something while driving"
+      },
+      {
+       "w": "run over",
+       "pos": "pv",
+       "def": "to hit a person or animal with a vehicle, driving across them"
+      },
+      {
+       "w": "slow down",
+       "pos": "pv",
+       "def": "to reduce your speed"
+      },
+      {
+       "w": "speed up",
+       "pos": "pv",
+       "def": "to go faster; to accelerate"
+      }
+     ]
+    },
+    {
+     "topic": "REPORTING VERBS",
+     "words": [
+      {
+       "w": "agree",
+       "pos": "v",
+       "def": "to say yes to a request or suggestion"
+      },
+      {
+       "w": "confess",
+       "pos": "v",
+       "def": "to admit you did something wrong"
+      },
+      {
+       "w": "enquire",
+       "pos": "v",
+       "def": "to ask for information politely or formally"
+      },
+      {
+       "w": "forbid",
+       "pos": "v",
+       "def": "to order a person not to do something"
+      },
+      {
+       "w": "insist",
+       "pos": "v",
+       "def": "to say firmly that something must happen or is true"
+      },
+      {
+       "w": "persuade",
+       "pos": "v",
+       "def": "to convince a person to do something with good reasons"
+      },
+      {
+       "w": "point out",
+       "pos": "pv",
+       "def": "to mention a fact others may not have noticed"
+      },
+      {
+       "w": "recommend",
+       "pos": "v",
+       "def": "to suggest something as a good choice"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "REPORTED SPEECH",
+    "points": [
+     "When the reporting verb is in the past, the tense usually moves one step back: 'I'm tired' -> She said she was tired. will -> would, can -> could, past simple / present perfect -> past perfect.",
+     "No change is needed when the reporting verb is in the present ('He says he likes it'), or when the fact is still true or still in the future.",
+     "Pronouns, places and times change: I -> he/she, here -> there, tomorrow -> the next day, yesterday -> the day before.",
+     "Reported questions use statement word order and no do/did: 'Where do you live?' -> He asked where I lived. Yes/no questions use if or whether.",
+     "Orders and requests: tell / ask + person + (not) to + verb: 'She told me to wait.' Remember: say something, but tell someone something."
+    ],
+    "questions": [
+     "'I'm hungry.' -> He said he ____ hungry. | was",
+     "'I'll help you.' -> She said she ____ help me. | would",
+     "'I can swim.' -> He said he ____ swim. | could",
+     "'We have finished.' -> They said they ____ finished. | had",
+     "'Where do you live?' -> She asked me where I ____. | lived",
+     "He asked me where ____. (was the station / the station was) | the station was",
+     "'Do you like jazz?' -> He asked me ____ I liked jazz. (if / that / what) | if",
+     "'Sit down!' -> The teacher told us ____ down. | to sit",
+     "'Don't touch it!' -> She told me ____ it. | not to touch",
+     "'I like this song.' -> She says she ____ this song. (likes / liked) | likes",
+     "'I saw him yesterday.' -> She said she had seen him the day ____. | before",
+     "She ____ me that she was leaving. (said / told) | told"
+    ]
+   }
+  },
+  {
+   "n": 15,
+   "vocab": [
+    {
+     "topic": "GLOBAL ISSUES: NOUNS AND VERBS",
+     "words": [
+      {
+       "w": "ban",
+       "pos": "v",
+       "def": "to say officially that something is not allowed"
+      },
+      {
+       "w": "ban",
+       "pos": "n",
+       "def": "an official rule saying something is not allowed"
+      },
+      {
+       "w": "collect",
+       "pos": "v",
+       "def": "to ask people for donations for a good cause"
+      },
+      {
+       "w": "collection",
+       "pos": "n",
+       "def": "the act of gathering money or goods for charity"
+      },
+      {
+       "w": "cooperate",
+       "pos": "v",
+       "def": "to work with others towards a shared goal"
+      },
+      {
+       "w": "cooperation",
+       "pos": "n",
+       "def": "the act of working together and helping each other"
+      },
+      {
+       "w": "criticise",
+       "pos": "v",
+       "def": "to say what you think is bad about something"
+      },
+      {
+       "w": "criticism",
+       "pos": "n",
+       "def": "negative comments about a person or thing"
+      },
+      {
+       "w": "elect",
+       "pos": "v",
+       "def": "to choose a leader or representative by voting"
+      },
+      {
+       "w": "election",
+       "pos": "n",
+       "def": "an event where people vote to choose their leaders"
+      },
+      {
+       "w": "support",
+       "pos": "v",
+       "def": "to agree with and help a person, group or idea"
+      },
+      {
+       "w": "supporter",
+       "pos": "n",
+       "def": "a person who backs a certain group or idea"
+      }
+     ]
+    },
+    {
+     "topic": "PHRASES WITH IN",
+     "words": [
+      {
+       "w": "in actual fact",
+       "pos": "phr",
+       "def": "really; used to correct a wrong idea"
+      },
+      {
+       "w": "in favour of",
+       "pos": "phr",
+       "def": "agreeing with a plan or idea"
+      },
+      {
+       "w": "in general",
+       "pos": "phr",
+       "def": "usually; considering the whole, not details"
+      },
+      {
+       "w": "in the light of",
+       "pos": "phr",
+       "def": "because of new information or events"
+      },
+      {
+       "w": "in progress",
+       "pos": "phr",
+       "def": "happening or being done at this moment"
+      },
+      {
+       "w": "in turn",
+       "pos": "phr",
+       "def": "one after the other, in order"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "MODALS (3): DEDUCTION",
+    "points": [
+     "must + verb: you feel sure something is true. 'They look identical. They must be twins.'",
+     "can't / couldn't + verb: you feel sure something is NOT true. (Don't use mustn't for this.) 'That can't be right.'",
+     "may / might / could + verb: it is possible. may not / might not = perhaps not. 'She might be at the gym.'",
+     "For the past, add have + past participle: 'He must have forgotten.' 'They can't have left yet.' 'I might have lost it.'",
+     "For actions in progress use modal + be + -ing: 'He must be joking.'"
+    ],
+    "questions": [
+     "He's been running for hours. He ____ be exhausted. (must / can't) | must",
+     "That ____ be Ana. She's in Paris this week. (must / can't) | can't",
+     "I'm not sure where Leo is. He ____ be in the library. (might / must) | might",
+     "The ground is wet. It ____ (must / rain) last night. | must have rained",
+     "She ____ (can't / see) us; she walked straight past. | can't have seen",
+     "They're late. They ____ (might / miss) the bus. | might have missed",
+     "The lights are off. He ____ be at home. (mustn't / can't) | can't",
+     "You ____ have been tired after that 20-kilometre walk! (must / can't) | must",
+     "I can hear a violin. She must ____. (practise / be practising) | be practising",
+     "He ____ (can't / finish) already! He only started five minutes ago. | can't have finished",
+     "Take an umbrella. It ____ rain later. (could / must) | could",
+     "Complete with one word: They might not ____ received my email. | have"
+    ]
+   }
+  },
+  {
+   "n": 16,
+   "vocab": [
+    {
+     "topic": "ADVERTISING: NOUNS AND VERBS",
+     "words": [
+      {
+       "w": "ad break",
+       "pos": "n",
+       "def": "a pause in a TV show for commercials"
+      },
+      {
+       "w": "appeal to",
+       "pos": "v",
+       "def": "to attract or interest a person"
+      },
+      {
+       "w": "be aimed at",
+       "pos": "v",
+       "def": "to be designed to interest a certain group"
+      },
+      {
+       "w": "consumer",
+       "pos": "n",
+       "def": "a person who buys goods or services"
+      },
+      {
+       "w": "launch",
+       "pos": "v",
+       "def": "to put a new product on sale for the first time"
+      },
+      {
+       "w": "product placement",
+       "pos": "n",
+       "def": "advertising by showing branded items inside films or shows"
+      },
+      {
+       "w": "sample",
+       "pos": "n",
+       "def": "a small free amount you can try before buying"
+      },
+      {
+       "w": "sponsor",
+       "pos": "v",
+       "def": "to pay for an event or team in return for publicity"
+      }
+     ]
+    },
+    {
+     "topic": "ADVERB + ADJECTIVE COLLOCATIONS",
+     "words": [
+      {
+       "w": "ecologically safe",
+       "pos": "",
+       "def": "causing no damage to nature"
+      },
+      {
+       "w": "environmentally friendly",
+       "pos": "",
+       "def": "not harming the natural world"
+      },
+      {
+       "w": "financially independent",
+       "pos": "",
+       "def": "able to pay for your own life without help"
+      },
+      {
+       "w": "globally recognised",
+       "pos": "",
+       "def": "famous and known around the whole world"
+      },
+      {
+       "w": "incredibly economical",
+       "pos": "",
+       "def": "using very little fuel or money"
+      },
+      {
+       "w": "regularly updated",
+       "pos": "",
+       "def": "often refreshed with new information"
+      },
+      {
+       "w": "scientifically proven",
+       "pos": "",
+       "def": "shown to be true by research and experiments"
+      },
+      {
+       "w": "well-balanced",
+       "pos": "",
+       "def": "(of a meal) with the right mix of food types"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "CONDITIONALS (1): REVIEW",
+    "points": [
+     "Zero conditional: if / when + present, present. For things that are always true. 'If you press this, the screen turns on.'",
+     "First conditional: if + present, will / can / might + verb. A real future possibility. 'If I see her, I'll tell her.' unless = if ... not.",
+     "Second conditional: if + past simple, would / could / might + verb. Imaginary or unlikely present or future. 'If I were you, I'd apologise.'",
+     "Third conditional: if + past perfect, would have + past participle. Imaginary past, often regrets. 'If we had run, we would have caught the bus.'",
+     "The if-clause can come first (with a comma) or second (no comma). Don't put will or would in the if-clause."
+    ],
+    "questions": [
+     "If you heat ice, it ____ (melt). | melts",
+     "If it rains tomorrow, we ____ (stay) at home. | will stay",
+     "If I ____ (be) you, I'd tell the truth. | were",
+     "If I had more free time, I ____ (learn) the guitar. | would learn",
+     "If she had studied, she ____ (pass) the exam. | would have passed",
+     "If we ____ (leave) earlier, we wouldn't have missed the train. | had left",
+     "If I ____ him, I'll tell him. (see / will see) | see",
+     "You won't pass ____ you work harder. (unless / if) | unless",
+     "What would you do if you ____ (win) the lottery? | won",
+     "If I ____ about the party, I would have come. (knew / had known) | had known",
+     "Plants die if they ____ (not / get) enough water. | don't get",
+     "If he ____ so shy, he would talk to her. (wasn't / hadn't been) | wasn't"
+    ]
+   }
+  },
+  {
+   "n": 17,
+   "vocab": [
+    {
+     "topic": "THE MEDIA",
+     "words": [
+      {
+       "w": "celebrate achievements",
+       "pos": "phr",
+       "def": "to praise people publicly for their successes"
+      },
+      {
+       "w": "comment on current events",
+       "pos": "phr",
+       "def": "to give opinions about things in the news"
+      },
+      {
+       "w": "cover a story",
+       "pos": "phr",
+       "def": "to report on a piece of news as a journalist"
+      },
+      {
+       "w": "gossip (about)",
+       "pos": "v",
+       "def": "to chat about other people's private lives"
+      },
+      {
+       "w": "keep (sb) amused",
+       "pos": "phr",
+       "def": "to entertain a person so they don't get bored"
+      },
+      {
+       "w": "keep (sb) up to date",
+       "pos": "phr",
+       "def": "to give a person the latest news regularly"
+      },
+      {
+       "w": "make fun of",
+       "pos": "phr",
+       "def": "to joke about a person in an unkind way"
+      },
+      {
+       "w": "make headlines",
+       "pos": "phr",
+       "def": "to be important news in papers and on TV"
+      }
+     ]
+    },
+    {
+     "topic": "PHRASAL VERBS: THE MEDIA",
+     "words": [
+      {
+       "w": "back (sb) up",
+       "pos": "pv",
+       "def": "to support a person or confirm what they say"
+      },
+      {
+       "w": "bring (sth) up",
+       "pos": "pv",
+       "def": "to introduce a topic into a conversation"
+      },
+      {
+       "w": "catch up on",
+       "pos": "pv",
+       "def": "to find out the latest news you missed"
+      },
+      {
+       "w": "clear (sth) up",
+       "pos": "pv",
+       "def": "to explain or solve a mystery or misunderstanding"
+      },
+      {
+       "w": "follow up",
+       "pos": "pv",
+       "def": "to investigate further or take the next action"
+      },
+      {
+       "w": "get (sth) across",
+       "pos": "pv",
+       "def": "to communicate an idea so people understand it"
+      },
+      {
+       "w": "leave out",
+       "pos": "pv",
+       "def": "to not include a person or thing"
+      },
+      {
+       "w": "look into",
+       "pos": "pv",
+       "def": "to investigate a problem or situation"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "CONDITIONALS (2): MIXED",
+    "points": [
+     "Mixed conditionals join two different times in one sentence.",
+     "Past condition -> present result: if + past perfect, would / could / might + verb. 'If I had slept more, I wouldn't be tired now.'",
+     "Present or general condition -> past result: if + past simple, would have + past participle. 'If I spoke French, I would have understood the film.'",
+     "Compare with the pure third conditional, where both parts are in the past: 'If I had slept more, I wouldn't have been tired yesterday.'",
+     "Words like now and today show a present result; yesterday or last week show a past result."
+    ],
+    "questions": [
+     "If I had eaten breakfast, I ____ (not / be) hungry now. | wouldn't be",
+     "If she weren't so lazy, she ____ (finish) the project last week. | would have finished",
+     "If we ____ (take) the map, we wouldn't be lost now. | had taken",
+     "If he ____ (speak) German, he would have got that job in Berlin. | spoke",
+     "If I had saved money, I ____ a new phone now. (would have / would have had) | would have",
+     "If you weren't afraid of flying, you ____ with us last summer. (would come / would have come) | would have come",
+     "If they had left on time, they ____ (be) here by now. | would be",
+     "If I ____ (not / forget) my keys, I wouldn't be standing outside now. | hadn't forgotten",
+     "Present or past result? 'If I'd studied medicine, I'd be a doctor.' (present / past) | present",
+     "If I ____ (know) how to cook, I would have made you dinner yesterday. | knew",
+     "If you had listened to me, we ____ (not / be) in this mess now. | wouldn't be",
+     "If she ____ the bus, she would be here now. (didn't miss / hadn't missed) | hadn't missed"
+    ]
+   }
+  },
+  {
+   "n": 18,
+   "vocab": [
+    {
+     "topic": "THE WORLD OF WORK",
+     "words": [
+      {
+       "w": "badly paid",
+       "pos": "adj",
+       "def": "receiving or giving a low salary"
+      },
+      {
+       "w": "deadline",
+       "pos": "n",
+       "def": "the latest date or time for finishing a task"
+      },
+      {
+       "w": "make a living",
+       "pos": "phr",
+       "def": "to earn the money you need for daily life"
+      },
+      {
+       "w": "rewarding",
+       "pos": "adj",
+       "def": "giving you satisfaction because it feels worthwhile"
+      },
+      {
+       "w": "shift",
+       "pos": "n",
+       "def": "one fixed working period, such as nights, in a 24-hour workplace"
+      },
+      {
+       "w": "take time off",
+       "pos": "phr",
+       "def": "to have a break from your job for some days"
+      },
+      {
+       "w": "well paid",
+       "pos": "adj",
+       "def": "receiving a high salary"
+      },
+      {
+       "w": "work long hours",
+       "pos": "phr",
+       "def": "to spend much of each day doing your job"
+      }
+     ]
+    },
+    {
+     "topic": "WORD PAIRS",
+     "words": [
+      {
+       "w": "more and more",
+       "pos": "phr",
+       "def": "increasingly; in growing amounts"
+      },
+      {
+       "w": "more or less",
+       "pos": "phr",
+       "def": "approximately; almost"
+      },
+      {
+       "w": "now and then",
+       "pos": "phr",
+       "def": "sometimes, but not regularly"
+      },
+      {
+       "w": "one or two",
+       "pos": "phr",
+       "def": "a few; a very small number"
+      },
+      {
+       "w": "over and over (again)",
+       "pos": "phr",
+       "def": "repeatedly; many times"
+      },
+      {
+       "w": "round and round",
+       "pos": "phr",
+       "def": "moving in circles many times"
+      },
+      {
+       "w": "sooner or later",
+       "pos": "phr",
+       "def": "at some future moment, certainly, though nobody knows when"
+      },
+      {
+       "w": "up and down",
+       "pos": "adv",
+       "def": "first one way, then back, repeatedly"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "USES OF VERB + -ING",
+    "points": [
+     "Some verbs are followed by -ing, not the infinitive: enjoy, avoid, deny, admit, consider, suggest, finish, mind, keep, imagine, risk. 'She keeps texting me.'",
+     "After a preposition the verb is always -ing: 'good at drawing', 'without asking', 'after leaving school'.",
+     "Set expressions take -ing: it's not worth, there's no point, can't help, have difficulty, spend time, be fed up with. 'There's no point complaining.'",
+     "The -ing form can be the subject of a sentence: 'Skating is harder than it looks.'",
+     "Participle clauses: when both parts have the same subject, an -ing clause can show time or reason. 'Feeling tired, I went to bed.' Negative: 'Not wanting to argue, he left.'"
+    ],
+    "questions": [
+     "She suggested ____ (go) to the beach. | going",
+     "He left without ____ (say) goodbye. | saying",
+     "It's not worth ____ (wait) any longer. | waiting",
+     "I can't help ____ when he sings. (to laugh / laughing) | laughing",
+     "____ (eat) too much sugar is bad for you. | Eating",
+     "I'm fed up with ____ (do) the same exercises. | doing",
+     "Because she felt ill, she went home. = ____ ill, she went home. | Feeling",
+     "He denied ____ the window. (to break / breaking) | breaking",
+     "We spent the whole afternoon ____ (play) video games. | playing",
+     "____ (not / know) the answer, I stayed quiet. | Not knowing",
+     "Are you good at ____ (draw)? | drawing",
+     "Correct it: I've finished to read the book. | I've finished reading the book."
+    ]
+   }
+  },
+  {
+   "n": 19,
+   "vocab": [
+    {
+     "topic": "OPINIONS AND BELIEFS",
+     "words": [
+      {
+       "w": "as far as I'm concerned",
+       "pos": "phr",
+       "def": "in my personal opinion"
+      },
+      {
+       "w": "be convinced by (sth)",
+       "pos": "phr",
+       "def": "to feel sure something is true after hearing arguments"
+      },
+      {
+       "w": "be totally against",
+       "pos": "phr",
+       "def": "to disagree completely with an idea or plan"
+      },
+      {
+       "w": "bear in mind",
+       "pos": "phr",
+       "def": "to remember a fact when making a decision"
+      },
+      {
+       "w": "believe in",
+       "pos": "pv",
+       "def": "to feel sure that something is right or works"
+      },
+      {
+       "w": "firmly",
+       "pos": "adv",
+       "def": "in a strong, definite way"
+      },
+      {
+       "w": "go along with (sth/sb)",
+       "pos": "pv",
+       "def": "to accept and support another person's idea"
+      },
+      {
+       "w": "It's hard to deny (that)",
+       "pos": "phr",
+       "def": "used to say something is obviously true"
+      },
+      {
+       "w": "keep an open mind",
+       "pos": "phr",
+       "def": "to wait before deciding and consider all ideas"
+      },
+      {
+       "w": "suspect",
+       "pos": "v",
+       "def": "to think something is probably true without proof"
+      },
+      {
+       "w": "there's no doubt",
+       "pos": "phr",
+       "def": "used to say you are completely sure"
+      },
+      {
+       "w": "to my mind",
+       "pos": "phr",
+       "def": "in my opinion; as I see it"
+      },
+      {
+       "w": "view",
+       "pos": "n",
+       "def": "an opinion or way of thinking about something"
+      }
+     ]
+    },
+    {
+     "topic": "PLURAL NOUNS",
+     "words": [
+      {
+       "w": "belongings",
+       "pos": "n",
+       "def": "the things you own and can carry with you"
+      },
+      {
+       "w": "clothes",
+       "pos": "n",
+       "def": "things you wear, like shirts, jeans and dresses"
+      },
+      {
+       "w": "contents",
+       "pos": "n",
+       "def": "the list of chapters at the front of a book"
+      },
+      {
+       "w": "lyrics",
+       "pos": "n",
+       "def": "the text that a singer sings"
+      },
+      {
+       "w": "outskirts",
+       "pos": "n",
+       "def": "the outer parts of a town, far from the centre"
+      },
+      {
+       "w": "refreshments",
+       "pos": "n",
+       "def": "snacks and drinks offered at an event or meeting"
+      },
+      {
+       "w": "savings",
+       "pos": "n",
+       "def": "money you have kept in the bank instead of spending"
+      },
+      {
+       "w": "surroundings",
+       "pos": "n",
+       "def": "everything around you in the place where you are"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "SUBJECT–VERB AGREEMENT",
+    "points": [
+     "Some nouns end in -s but are singular: news, maths, physics, politics, athletics, gymnastics, the United States. 'Politics is complicated.'",
+     "everyone, someone, anybody, nobody, etc. take a singular verb, but we refer back with they / their: 'Someone has left their bag.'",
+     "When a clause or an -ing phrase is the subject, the verb is singular: 'Making new friends takes time.'",
+     "both of, all of, most of, a number of, a couple of + plural noun take a plural verb: 'Both of my cousins live here.'",
+     "one of + plural noun takes a singular verb: 'One of the windows is broken.'",
+     "With a lot of, the verb agrees with the noun that follows: 'A lot of time is wasted.' 'A lot of people are waiting.'"
+    ],
+    "questions": [
+     "The news ____ really bad today. (is / are) | is",
+     "Everybody ____ (know) the answer to that. | knows",
+     "One of my friends ____ (live) in Ireland. | lives",
+     "Both of my sisters ____ (play) the piano. | play",
+     "Maths ____ my favourite subject. (is / are) | is",
+     "Learning languages ____ (take) a lot of time. | takes",
+     "Correct it: Nobody like getting up early. | Nobody likes getting up early.",
+     "A lot of the water ____ polluted. (is / are) | is",
+     "A lot of people ____ (think) the same. | think",
+     "The United States ____ fifty states. (has / have) | has",
+     "Someone has left ____ umbrella here. (their / its) | their",
+     "Most of my friends ____ (not / like) horror films. | don't like"
+    ]
+   }
+  },
+  {
+   "n": 20,
+   "vocab": [
+    {
+     "topic": "IDIOMS",
+     "words": [
+      {
+       "w": "be a pain",
+       "pos": "id",
+       "def": "to be very annoying"
+      },
+      {
+       "w": "be a piece of cake",
+       "pos": "id",
+       "def": "to be extremely easy"
+      },
+      {
+       "w": "break (sb's) heart",
+       "pos": "id",
+       "def": "to make a person feel terribly sad"
+      },
+      {
+       "w": "break the ice",
+       "pos": "id",
+       "def": "to help strangers relax and start talking"
+      },
+      {
+       "w": "cross (sb's) mind",
+       "pos": "id",
+       "def": "(of an idea) to come into your head briefly"
+      },
+      {
+       "w": "have an eye for (sth)",
+       "pos": "id",
+       "def": "to be naturally good at noticing a certain thing"
+      },
+      {
+       "w": "lose track of time",
+       "pos": "id",
+       "def": "to forget how late it is getting"
+      },
+      {
+       "w": "take (sb's) breath away",
+       "pos": "id",
+       "def": "to amaze a person with beauty or surprise"
+      }
+     ]
+    },
+    {
+     "topic": "COMMONLY CONFUSED WORDS",
+     "words": [
+      {
+       "w": "damage",
+       "pos": "v",
+       "def": "to break or spoil a thing so it works less well"
+      },
+      {
+       "w": "fun",
+       "pos": "n",
+       "def": "enjoyment; a good time"
+      },
+      {
+       "w": "funny",
+       "pos": "adj",
+       "def": "making you laugh"
+      },
+      {
+       "w": "guess",
+       "pos": "v",
+       "def": "to answer without being sure you are right"
+      },
+      {
+       "w": "harm",
+       "pos": "v",
+       "def": "to hurt a person or have a bad effect"
+      },
+      {
+       "w": "injure",
+       "pos": "v",
+       "def": "to hurt a person's body, as in an accident"
+      },
+      {
+       "w": "journey",
+       "pos": "n",
+       "def": "a trip from one place to another"
+      },
+      {
+       "w": "know",
+       "pos": "v",
+       "def": "to have facts in your head; to be sure"
+      },
+      {
+       "w": "means",
+       "pos": "n",
+       "def": "a method or tool for doing something"
+      },
+      {
+       "w": "observe",
+       "pos": "v",
+       "def": "to watch carefully to learn something"
+      },
+      {
+       "w": "opportunity",
+       "pos": "n",
+       "def": "a good moment or chance to do something"
+      },
+      {
+       "w": "possibility",
+       "pos": "n",
+       "def": "something that might happen or be true"
+      },
+      {
+       "w": "way",
+       "pos": "n",
+       "def": "a method of doing something, or a route somewhere"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "DETERMINERS",
+    "points": [
+     "the: for something unique, something specific we both know about, or something already mentioned. 'I bought a cake. The cake was delicious.'",
+     "a / an: with a singular countable noun when it is one of many or mentioned for the first time. 'She's got a new bike.'",
+     "No article: plural and uncountable nouns when we speak in general. 'Dogs need exercise.' 'Sugar is bad for your teeth.'",
+     "some, any, plenty of, a lot of, lots of go with both plural countable and uncountable nouns.",
+     "(not) much, (a) little, a bit of + uncountable nouns; (not) many, (a) few, several + plural countable nouns.",
+     "few / little = not enough (negative idea); a few / a little = some (positive idea). 'I have a few ideas.' 'There is little hope.'"
+    ],
+    "questions": [
+     "I saw ____ great film last night. (a / the / no article) | a",
+     "____ sun rises in the east. (A / The) | The",
+     "I love ____ music. It's my whole life. (a / the / no article) | no article",
+     "We don't have ____ time, so hurry up! (much / many) | much",
+     "How ____ students are there in your class? (much / many) | many",
+     "I've got ____ friends here, so I'm never lonely. (few / a few) | a few",
+     "He has ____ money, so he can't afford a holiday. (little / a little) | little",
+     "I bought a jacket and a hat. ____ jacket was expensive. (A / The) | The",
+     "There's ____ of food for everyone. (plenty / several) | plenty",
+     "She gave me ____ good advice. (a / some) | some",
+     "We visited ____ museums in Rome. (several / a little) | several",
+     "Could I have ____ bit of cake, please? (a / the / some) | a"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,2904 @@
+{
+ "level": 8,
+ "units": [
+  {
+   "n": 1,
+   "vocab": [
+    {
+     "topic": "PERSONALITY",
+     "words": [
+      {
+       "w": "clash (with)",
+       "pos": "v",
+       "def": "to argue or disagree strongly with someone"
+      },
+      {
+       "w": "come across as",
+       "pos": "pv",
+       "def": "to give people a certain impression of yourself"
+      },
+      {
+       "w": "conscientiously",
+       "pos": "adv",
+       "def": "in a careful way, putting in a lot of effort"
+      },
+      {
+       "w": "extroverted",
+       "pos": "adj",
+       "def": "lively, confident and happy around other people"
+      },
+      {
+       "w": "feel left out",
+       "pos": "phr",
+       "def": "to be sad because others don't include you"
+      },
+      {
+       "w": "introverted",
+       "pos": "adj",
+       "def": "quiet and shy, preferring to spend time alone"
+      },
+      {
+       "w": "open-minded",
+       "pos": "adj",
+       "def": "willing to accept new or different ideas"
+      },
+      {
+       "w": "relate to",
+       "pos": "pv",
+       "def": "to understand how someone feels because you've experienced it too"
+      },
+      {
+       "w": "rely on",
+       "pos": "pv",
+       "def": "to need or depend upon someone or something"
+      },
+      {
+       "w": "self-conscious",
+       "pos": "adj",
+       "def": "nervous because you worry what others think of you"
+      },
+      {
+       "w": "trustworthy",
+       "pos": "adj",
+       "def": "honest and reliable; someone you can believe"
+      }
+     ]
+    },
+    {
+     "topic": "ADJECTIVE SUFFIXES",
+     "words": [
+      {
+       "w": "careless",
+       "pos": "adj",
+       "def": "not paying enough attention, so you make mistakes"
+      },
+      {
+       "w": "chatty",
+       "pos": "adj",
+       "def": "enjoying talking a lot in a friendly way"
+      },
+      {
+       "w": "judgemental",
+       "pos": "adj",
+       "def": "too quick to criticise other people"
+      },
+      {
+       "w": "knowledgeable",
+       "pos": "adj",
+       "def": "well informed; having lots of information about a subject"
+      },
+      {
+       "w": "narrow-minded",
+       "pos": "adj",
+       "def": "unwilling to accept ideas different from your own"
+      },
+      {
+       "w": "optimistic",
+       "pos": "adj",
+       "def": "expecting good things to happen in the future"
+      },
+      {
+       "w": "respectful",
+       "pos": "adj",
+       "def": "showing polite admiration for someone or something"
+      },
+      {
+       "w": "selfish",
+       "pos": "adj",
+       "def": "caring only about yourself and not about others"
+      },
+      {
+       "w": "sensible",
+       "pos": "adj",
+       "def": "showing good judgement; practical and reasonable"
+      },
+      {
+       "w": "supportive",
+       "pos": "adj",
+       "def": "giving encouragement and help to someone"
+      }
+     ]
+    },
+    {
+     "topic": "ADVERB SUFFIXES",
+     "words": [
+      {
+       "w": "bad-temperedly",
+       "pos": "adv",
+       "def": "in an angry, easily annoyed way"
+      },
+      {
+       "w": "beautifully",
+       "pos": "adv",
+       "def": "in a very attractive or pleasing way"
+      },
+      {
+       "w": "falsely",
+       "pos": "adv",
+       "def": "in a way that is untrue or wrong"
+      },
+      {
+       "w": "happily",
+       "pos": "adv",
+       "def": "in a cheerful, pleased way"
+      },
+      {
+       "w": "knowledgeably",
+       "pos": "adv",
+       "def": "in a way that shows you are well informed"
+      },
+      {
+       "w": "realistically",
+       "pos": "adv",
+       "def": "in a way that accepts facts and what is possible"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "PAST TENSE REVIEW",
+    "points": [
+     "Past simple = finished actions (single or repeated) at a known past time: We moved to Seville in 2019.",
+     "Past continuous = an action in progress at a past moment, often interrupted by a past simple action: I was cooking when the lights went out.",
+     "used to + infinitive = past states and habits that are no longer true; would + infinitive = repeated past actions only, never states: I used to have a dog and we would walk for hours. In questions and negatives write did / didn't use to.",
+     "Present perfect simple = past actions with no stated time or with a link to now (ever, never, just, already, yet): She's just finished. Present perfect continuous = an activity that began in the past and is still going on: I've been revising since six.",
+     "Past perfect simple = an action or state before another past moment: The film had started when we arrived. Past perfect continuous = an activity in progress up to that moment: He was out of breath because he had been running."
+    ],
+    "questions": [
+     "While I ____ (walk) home, it started to rain. | was walking",
+     "We ____ (not see) that film yet. | haven't seen",
+     "The train ____ (already / leave) when we got to the station. | had already left",
+     "When I was little, I ____ have a red bike. (used to / would) | used to",
+     "Correct it: Did you used to play chess? | Did you use to play chess?",
+     "They ____ (wait) for two hours and they are still waiting. | have been waiting",
+     "I ____ (break) my arm last summer. | broke",
+     "I can't find my keys. I think I ____ them. (lost / 've lost) | 've lost",
+     "His eyes were red because he ____ (cry) for an hour. | had been crying",
+     "Correct it: I have seen him yesterday. | I saw him yesterday.",
+     "Every Sunday Gran ____ bake us a cake. (would / was) | would",
+     "I didn't ____ (use) to like olives, but now I love them. | use"
+    ]
+   }
+  },
+  {
+   "n": 2,
+   "vocab": [
+    {
+     "topic": "CITIES",
+     "words": [
+      {
+       "w": "densely populated",
+       "pos": "adj",
+       "def": "with many people living close together in one area"
+      },
+      {
+       "w": "derelict",
+       "pos": "adj",
+       "def": "abandoned and in very bad condition (buildings or land)"
+      },
+      {
+       "w": "green space",
+       "pos": "n",
+       "def": "an area of grass and trees inside a town"
+      },
+      {
+       "w": "high-rise",
+       "pos": "adj",
+       "def": "very tall, with many floors (of buildings)"
+      },
+      {
+       "w": "pedestrianised",
+       "pos": "adj",
+       "def": "closed to traffic so people can walk freely"
+      },
+      {
+       "w": "ring road",
+       "pos": "n",
+       "def": "a main route that goes around a town, avoiding the centre"
+      },
+      {
+       "w": "slum",
+       "pos": "n",
+       "def": "a very poor, crowded part of a city with bad housing"
+      },
+      {
+       "w": "suburb",
+       "pos": "n",
+       "def": "a residential area on the edge of a city"
+      },
+      {
+       "w": "transport link",
+       "pos": "n",
+       "def": "a connection, like a train line, for travelling between two places"
+      },
+      {
+       "w": "urban sprawl",
+       "pos": "n",
+       "def": "the unplanned spread of a city into the surrounding countryside"
+      }
+     ]
+    },
+    {
+     "topic": "BUILDINGS AND PLACES: IDIOMS",
+     "words": [
+      {
+       "w": "break the glass ceiling",
+       "pos": "id",
+       "def": "to get past an invisible barrier stopping your career progress"
+      },
+      {
+       "w": "burn your bridges",
+       "pos": "id",
+       "def": "to do something that makes going back impossible"
+      },
+      {
+       "w": "feel at home",
+       "pos": "id",
+       "def": "to be relaxed and comfortable somewhere"
+      },
+      {
+       "w": "get on like a house on fire",
+       "pos": "id",
+       "def": "to become good friends very quickly"
+      },
+      {
+       "w": "go down the drain",
+       "pos": "id",
+       "def": "to be completely wasted or lost"
+      },
+      {
+       "w": "go to town",
+       "pos": "id",
+       "def": "to do something with great enthusiasm, often spending a lot"
+      },
+      {
+       "w": "have a roof over your head",
+       "pos": "id",
+       "def": "to possess somewhere to live"
+      },
+      {
+       "w": "hit a brick wall",
+       "pos": "id",
+       "def": "to be unable to progress because something stops you"
+      },
+      {
+       "w": "hit the roof",
+       "pos": "id",
+       "def": "to suddenly become extremely angry"
+      },
+      {
+       "w": "set in stone",
+       "pos": "id",
+       "def": "fixed and impossible to change"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "COMPARATIVES AND SUPERLATIVES",
+    "points": [
+     "Short adjectives take -er / the -est; longer ones take more / the most (or less / the least): This street is quieter, but that one is more convenient.",
+     "Learn the irregular forms: good - better - best, bad - worse - worst, far - further - furthest.",
+     "Most adverbs use more / most (more carefully). Adverbs that look like adjectives take -er / -est (faster, harder, earlier). Also well - better - best and badly - worse - worst.",
+     "Show the size of a difference with a bit, a little, slightly (small) or much, far, a lot (big): far cheaper. With superlatives use by far or easily: by far the best. For the opposite idea use not as ... as: not as hard as.",
+     "Double comparatives show continuing change: It's getting hotter and hotter; more and more expensive. The + comparative, the + comparative shows two things changing together: The earlier we leave, the sooner we'll arrive."
+    ],
+    "questions": [
+     "This is ____ (bad) film I've ever seen. | the worst",
+     "My sister drives ____ (carefully) than my brother. | more carefully",
+     "Tickets cost double this year: they are ____ more expensive. (slightly / far) | far",
+     "The more you practise, the ____ (good) you get. | better",
+     "Correct it: She is more tall than me. | She is taller than me.",
+     "Flats here are getting more and ____ expensive. (one word) | more",
+     "He is ____ the fastest runner in the school. (by far / much) | by far",
+     "Tom arrived ____ (early) than anyone else. | earlier",
+     "The exam wasn't ____ hard as I expected. (as / than / more) | as",
+     "That was ____ (interesting) talk of the whole week. | the most interesting",
+     "Correct it: It's the most cheapest phone. | It's the cheapest phone.",
+     "He plays the piano ____ (well) than he did last year. | better"
+    ]
+   }
+  },
+  {
+   "n": 3,
+   "vocab": [
+    {
+     "topic": "THE HUMAN BODY",
+     "words": [
+      {
+       "w": "choke",
+       "pos": "v",
+       "def": "to be unable to breathe because your throat is blocked"
+      },
+      {
+       "w": "exhale",
+       "pos": "v",
+       "def": "to breathe out"
+      },
+      {
+       "w": "germ",
+       "pos": "n",
+       "def": "a tiny living thing that can make you ill"
+      },
+      {
+       "w": "inhale",
+       "pos": "v",
+       "def": "to breathe in"
+      },
+      {
+       "w": "joint",
+       "pos": "n",
+       "def": "a place where two bones meet, like the knee"
+      },
+      {
+       "w": "left-handed",
+       "pos": "adj",
+       "def": "writing with the opposite hand from most people"
+      },
+      {
+       "w": "limb",
+       "pos": "n",
+       "def": "an arm or a leg"
+      },
+      {
+       "w": "lung",
+       "pos": "n",
+       "def": "one of two organs in your chest used for breathing"
+      },
+      {
+       "w": "nerve",
+       "pos": "n",
+       "def": "a thin fibre carrying messages between brain and body"
+      },
+      {
+       "w": "numb",
+       "pos": "adj",
+       "def": "unable to feel anything in part of your body"
+      },
+      {
+       "w": "poorly",
+       "pos": "adj",
+       "def": "ill; not feeling well (informal British)"
+      },
+      {
+       "w": "spine",
+       "pos": "n",
+       "def": "the row of bones down the middle of your back"
+      },
+      {
+       "w": "sweat",
+       "pos": "n",
+       "def": "salty liquid that comes through your skin when you're hot"
+      }
+     ]
+    },
+    {
+     "topic": "HEALTH: PHRASAL VERBS",
+     "words": [
+      {
+       "w": "black out",
+       "pos": "pv",
+       "def": "to lose consciousness suddenly for a short time"
+      },
+      {
+       "w": "break out (in a sweat/fever)",
+       "pos": "pv",
+       "def": "to suddenly start perspiring or get a high temperature"
+      },
+      {
+       "w": "burned out",
+       "pos": "adj",
+       "def": "exhausted or ill after working too hard for too long"
+      },
+      {
+       "w": "come round",
+       "pos": "pv",
+       "def": "to become conscious again after fainting or an operation"
+      },
+      {
+       "w": "fight off (an illness)",
+       "pos": "pv",
+       "def": "to get rid of an infection using your body's defences"
+      },
+      {
+       "w": "freak out",
+       "pos": "pv",
+       "def": "to suddenly become very upset, scared or emotional"
+      },
+      {
+       "w": "nod off",
+       "pos": "pv",
+       "def": "to fall asleep without meaning to"
+      },
+      {
+       "w": "pass away",
+       "pos": "pv",
+       "def": "to die (a polite expression)"
+      },
+      {
+       "w": "pass on (an illness)",
+       "pos": "pv",
+       "def": "to give someone a disease you have caught"
+      },
+      {
+       "w": "sleep (something) off",
+       "pos": "pv",
+       "def": "to get better by resting in bed for some hours"
+      }
+     ]
+    },
+    {
+     "topic": "HEALTH: EXPRESSIONS",
+     "words": [
+      {
+       "w": "all in one piece",
+       "pos": "phr",
+       "def": "safe and not injured after something risky"
+      },
+      {
+       "w": "cause for concern",
+       "pos": "phr",
+       "def": "a reason to be worried"
+      },
+      {
+       "w": "not sleep a wink",
+       "pos": "phr",
+       "def": "to stay awake all night"
+      },
+      {
+       "w": "on the mend",
+       "pos": "phr",
+       "def": "getting better after an illness or injury"
+      },
+      {
+       "w": "right as rain",
+       "pos": "phr",
+       "def": "completely healthy again"
+      },
+      {
+       "w": "under the weather",
+       "pos": "phr",
+       "def": "feeling slightly ill"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "MODAL VERBS: REVIEW",
+    "points": [
+     "Deduction: must + infinitive = you are almost sure it's true; can't = almost sure it's impossible; may / might / could = it's possible: Her light is on, so she must be in.",
+     "Permission: ask with can, could or may (could and may are more polite); give it with can and refuse it with can't.",
+     "Obligation: must / mustn't for rules and for what the speaker feels is important; have to for obligations that come from outside. mustn't = it's forbidden, but don't have to / needn't = it isn't necessary.",
+     "need to / don't need to / needn't express necessity or lack of it. For the future use will have to and will need to.",
+     "Advice: should / shouldn't. ought to / ought not to is stronger and suggests a duty: You ought to apologise."
+    ],
+    "questions": [
+     "You ____ wear a helmet on a motorbike; it's the law. (must / might) | must",
+     "The museum is free, so you ____ pay. (mustn't / don't have to) | don't have to",
+     "He's only ten. He ____ be the new teacher! (can't / mustn't) | can't",
+     "You ____ touch that wire; it's dangerous. (mustn't / needn't) | mustn't",
+     "She isn't answering. She ____ be asleep, but I'm not sure. (might / must) | might",
+     "You ought ____ see a doctor about that cough. (one word) | to",
+     "____ I borrow your pen, please? (May / Must) | May",
+     "Correct it: You should to rest more. | You should rest more.",
+     "They've been travelling all day. They ____ be exhausted. (must / can't) | must",
+     "Correct it: She musts leave now. | She must leave now.",
+     "Next year we ____ (will / have) to choose our subjects. | will have",
+     "We've got plenty of time, so we ____ hurry. (needn't / mustn't) | needn't"
+    ]
+   }
+  },
+  {
+   "n": 4,
+   "vocab": [
+    {
+     "topic": "MAKING DECISIONS",
+     "words": [
+      {
+       "w": "be in doubt about",
+       "pos": "phr",
+       "def": "to feel uncertain what to do regarding something"
+      },
+      {
+       "w": "be in two minds about",
+       "pos": "phr",
+       "def": "to be unable to choose between a pair of options"
+      },
+      {
+       "w": "be undecided about",
+       "pos": "phr",
+       "def": "to have not yet made a choice regarding something"
+      },
+      {
+       "w": "be unsure about",
+       "pos": "phr",
+       "def": "to not feel certain or confident regarding something"
+      },
+      {
+       "w": "brainstorm ideas",
+       "pos": "phr",
+       "def": "to quickly think of many possible suggestions, often in a group"
+      },
+      {
+       "w": "come to a decision",
+       "pos": "phr",
+       "def": "to finally make a choice after thinking carefully"
+      },
+      {
+       "w": "consider your options",
+       "pos": "phr",
+       "def": "to think carefully about the different choices you have"
+      },
+      {
+       "w": "make up your mind",
+       "pos": "phr",
+       "def": "to decide"
+      },
+      {
+       "w": "reconsider",
+       "pos": "v",
+       "def": "to think again about a choice and maybe change it"
+      },
+      {
+       "w": "seek advice",
+       "pos": "phr",
+       "def": "to ask someone for their opinion on what to do"
+      },
+      {
+       "w": "think (something) through",
+       "pos": "pv",
+       "def": "to carefully consider all the possible results of an action"
+      },
+      {
+       "w": "weigh up the pros and cons",
+       "pos": "phr",
+       "def": "to compare advantages and disadvantages before deciding"
+      }
+     ]
+    },
+    {
+     "topic": "LIFE EVENTS: VERB AND NOUN COLLOCATIONS",
+     "words": [
+      {
+       "w": "accept (a place at university)",
+       "pos": "v",
+       "def": "to say yes to an offer"
+      },
+      {
+       "w": "apply for (a job / a place at university / an apprenticeship)",
+       "pos": "v",
+       "def": "to formally ask for something, usually by filling in a form"
+      },
+      {
+       "w": "be a huge step",
+       "pos": "phr",
+       "def": "to be a very important stage or change in life"
+      },
+      {
+       "w": "be offered (a job / a place at university)",
+       "pos": "v",
+       "def": "to be told you can have something if you want"
+      },
+      {
+       "w": "choose (a path / a career)",
+       "pos": "v",
+       "def": "to decide which direction to take in your working life"
+      },
+      {
+       "w": "do (a course / an apprenticeship)",
+       "pos": "v",
+       "def": "to take part in a period of study or training"
+      },
+      {
+       "w": "fail (an exam)",
+       "pos": "v",
+       "def": "to not reach the required mark in a test"
+      },
+      {
+       "w": "follow the path",
+       "pos": "phr",
+       "def": "to take a particular route in life towards a goal"
+      },
+      {
+       "w": "get good grades",
+       "pos": "phr",
+       "def": "to receive high marks for your school work"
+      },
+      {
+       "w": "get into (a school / university)",
+       "pos": "pv",
+       "def": "to be accepted as a student somewhere"
+      },
+      {
+       "w": "graduate (from university)",
+       "pos": "v",
+       "def": "to successfully complete a degree"
+      },
+      {
+       "w": "leave home",
+       "pos": "phr",
+       "def": "to move out of your family's house for good"
+      },
+      {
+       "w": "leave university / college / school",
+       "pos": "phr",
+       "def": "to finish your studies at a place of education"
+      },
+      {
+       "w": "mark (an exam)",
+       "pos": "v",
+       "def": "to correct a test and give it a score"
+      },
+      {
+       "w": "pass (an exam)",
+       "pos": "v",
+       "def": "to be successful in a test"
+      },
+      {
+       "w": "resit (an exam)",
+       "pos": "v",
+       "def": "to do a test again after not succeeding the first time"
+      },
+      {
+       "w": "set (an exam)",
+       "pos": "v",
+       "def": "to write the test questions that students must answer"
+      },
+      {
+       "w": "sit (an exam)",
+       "pos": "v",
+       "def": "to do a formal test (British English)"
+      },
+      {
+       "w": "take a gap year",
+       "pos": "phr",
+       "def": "to spend twelve months travelling or working before university"
+      },
+      {
+       "w": "take an exam",
+       "pos": "phr",
+       "def": "to do a test of your knowledge"
+      }
+     ]
+    },
+    {
+     "topic": "ADJECTIVE AND NOUN COLLOCATIONS",
+     "words": [
+      {
+       "w": "big changes",
+       "pos": "phr",
+       "def": "important differences from how things were before"
+      },
+      {
+       "w": "big decision",
+       "pos": "phr",
+       "def": "an important choice that needs careful thought"
+      },
+      {
+       "w": "clear understanding",
+       "pos": "phr",
+       "def": "sure and complete knowledge of something"
+      },
+      {
+       "w": "deciding factor",
+       "pos": "phr",
+       "def": "the one thing that finally determines a choice"
+      },
+      {
+       "w": "immediate future",
+       "pos": "phr",
+       "def": "the time coming very soon after now"
+      },
+      {
+       "w": "major changes",
+       "pos": "phr",
+       "def": "very large and important differences from before"
+      },
+      {
+       "w": "major role",
+       "pos": "phr",
+       "def": "a very important part in a situation"
+      },
+      {
+       "w": "mixed feelings",
+       "pos": "phr",
+       "def": "both positive and negative emotions about something"
+      },
+      {
+       "w": "near future",
+       "pos": "phr",
+       "def": "a time not long from now"
+      },
+      {
+       "w": "strong feelings",
+       "pos": "phr",
+       "def": "powerful emotions or opinions"
+      },
+      {
+       "w": "strong influence",
+       "pos": "phr",
+       "def": "great power to affect how people think or act"
+      },
+      {
+       "w": "strong understanding",
+       "pos": "phr",
+       "def": "deep, solid knowledge of a subject"
+      },
+      {
+       "w": "vital factor",
+       "pos": "phr",
+       "def": "an absolutely essential thing affecting a result"
+      },
+      {
+       "w": "vital role",
+       "pos": "phr",
+       "def": "an absolutely essential part in a situation"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "MODALS IN THE PAST",
+    "points": [
+     "Past deduction: must have + past participle (almost sure it happened), can't have (almost sure it didn't), may / might / could have (perhaps it did). For a negative possibility use may not have or might not have.",
+     "Past permission: could / couldn't or was / were allowed to: We were allowed to stay up late at weekends.",
+     "Past obligation: had to or needed to (must has no past form). didn't have to / didn't need to = it wasn't necessary. needn't have + past participle = you did it, but it turned out to be unnecessary.",
+     "should have / ought to have + past participle = criticism or regret about the past: I should have left earlier.",
+     "Past ability: could for general abilities (I could swim at five). For one successful action on a specific occasion use was able to or managed to, not could. couldn't works in both cases."
+    ],
+    "questions": [
+     "The ground is wet. It ____ (must / rain) last night. | must have rained",
+     "There's a bus strike today, so he ____ have come by bus. (can't / must) | can't",
+     "I failed the test. I ____ (should / study) harder. | should have studied",
+     "The door was locked, but I ____ get in through a window. (could / managed to) | managed to",
+     "Yesterday we ____ (have to) wear a suit for the photo. | had to",
+     "You ____ have brought wine; we already had lots. (needn't / couldn't) | needn't",
+     "Correct it: She must has forgotten. | She must have forgotten.",
+     "When I was five, I ____ already swim. (could / managed) | could",
+     "I don't know where Leo is. He ____ have missed the train. (might / can't) | might",
+     "As children we ____ (not / allow) to watch TV late. | weren't allowed",
+     "Correct it: You shouldn't have tell him. | You shouldn't have told him.",
+     "It was a holiday, so I ____ get up early and slept till ten. (didn't have to / mustn't) | didn't have to"
+    ]
+   }
+  },
+  {
+   "n": 5,
+   "vocab": [
+    {
+     "topic": "TECHNOLOGY AND PROGRESS",
+     "words": [
+      {
+       "w": "advance",
+       "pos": "n",
+       "def": "a step forward or improvement in something"
+      },
+      {
+       "w": "breakthrough",
+       "pos": "n",
+       "def": "an important discovery that solves a problem"
+      },
+      {
+       "w": "cutting edge",
+       "pos": "adj",
+       "def": "extremely modern, with the newest features"
+      },
+      {
+       "w": "development",
+       "pos": "n",
+       "def": "the process of growing or becoming more advanced"
+      },
+      {
+       "w": "drawback",
+       "pos": "n",
+       "def": "a disadvantage or negative side"
+      },
+      {
+       "w": "launch",
+       "pos": "v",
+       "def": "to start something or put a new product on sale"
+      },
+      {
+       "w": "market",
+       "pos": "v",
+       "def": "to advertise and sell a product in a planned way"
+      },
+      {
+       "w": "obsolete",
+       "pos": "adj",
+       "def": "no longer used because something newer has replaced it"
+      },
+      {
+       "w": "prototype",
+       "pos": "n",
+       "def": "the first model of something, made for testing"
+      },
+      {
+       "w": "radical",
+       "pos": "adj",
+       "def": "extreme; completely different from before"
+      },
+      {
+       "w": "trigger",
+       "pos": "v",
+       "def": "to make something suddenly start happening"
+      }
+     ]
+    },
+    {
+     "topic": "ADJECTIVES AND DEPENDENT PREPOSITIONS",
+     "words": [
+      {
+       "w": "apparent (to)",
+       "pos": "adj",
+       "def": "easy to see or understand; obvious"
+      },
+      {
+       "w": "appropriate (for)",
+       "pos": "adj",
+       "def": "suitable or right in a particular situation"
+      },
+      {
+       "w": "conscious (of)",
+       "pos": "adj",
+       "def": "aware that something exists or is happening"
+      },
+      {
+       "w": "hostile (towards)",
+       "pos": "adj",
+       "def": "unfriendly and showing strong dislike"
+      },
+      {
+       "w": "inferior (to)",
+       "pos": "adj",
+       "def": "worse or lower in quality than something else"
+      },
+      {
+       "w": "notorious (for)",
+       "pos": "adj",
+       "def": "famous because of something bad"
+      },
+      {
+       "w": "toxic (to)",
+       "pos": "adj",
+       "def": "poisonous and harmful"
+      },
+      {
+       "w": "vulnerable (to)",
+       "pos": "adj",
+       "def": "easily hurt, harmed or attacked"
+      }
+     ]
+    },
+    {
+     "topic": "PHRASAL VERBS",
+     "words": [
+      {
+       "w": "catch on",
+       "pos": "pv",
+       "def": "to become popular or fashionable"
+      },
+      {
+       "w": "cater for",
+       "pos": "pv",
+       "def": "to provide what a group of people need or want"
+      },
+      {
+       "w": "check out",
+       "pos": "pv",
+       "def": "to take a good look at something (informal)"
+      },
+      {
+       "w": "do away with",
+       "pos": "pv",
+       "def": "to get rid of something completely"
+      },
+      {
+       "w": "lie ahead",
+       "pos": "pv",
+       "def": "to be going to happen in the future"
+      },
+      {
+       "w": "look upon",
+       "pos": "pv",
+       "def": "to think of someone or something in a particular way"
+      },
+      {
+       "w": "run on",
+       "pos": "pv",
+       "def": "to use a type of fuel or power to work"
+      },
+      {
+       "w": "rush into",
+       "pos": "pv",
+       "def": "to start something too quickly, without thinking enough"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "THE FUTURE",
+    "points": [
+     "Present simple for timetables (The ferry sails at nine) and after time words such as when, as soon as, until: I'll text you when I land. Present continuous for fixed arrangements: I'm seeing the dentist on Friday.",
+     "will for predictions, future facts, promises, offers, refusals and instant decisions. going to for intentions and for predictions based on something you can see now.",
+     "be about to + infinitive = something will happen very soon: Hurry, the film is about to start.",
+     "Future continuous (will be + -ing) = in progress at a future time. Future perfect (will have + past participle) = finished before a future time. Future perfect continuous (will have been + -ing) = how long something will have lasted by then.",
+     "Future in the past: was / were going to (also for plans that never happened) and would: I knew she would win."
+    ],
+    "questions": [
+     "The train ____ (leave) at 6.15 tomorrow morning. | leaves",
+     "I'll call you as soon as I ____ (arrive). | arrive",
+     "Look at those black clouds! It ____ rain. (is going to / will) | is going to",
+     "This time next week I ____ (lie) on a beach. | will be lying",
+     "By June we ____ (finish) all our exams. | will have finished",
+     "'The phone's ringing.' 'OK, I ____ get it.' ('ll / 'm going to) | 'll",
+     "Be quiet! The concert is about ____ (start). | to start",
+     "Correct it: When he will come, we'll eat. | When he comes, we'll eat.",
+     "We ____ (meet) Sara at eight tonight; it's all arranged. | are meeting",
+     "We ____ going to have a barbecue, but it rained. (one word) | were",
+     "By 2030 she ____ (work) here for ten years. | will have been working",
+     "Correct it: I promise I call you. | I promise I'll call you."
+    ]
+   }
+  },
+  {
+   "n": 6,
+   "vocab": [
+    {
+     "topic": "FILMS AND BOOKS",
+     "words": [
+      {
+       "w": "blockbuster",
+       "pos": "n",
+       "def": "a hugely successful film or novel"
+      },
+      {
+       "w": "blurb",
+       "pos": "n",
+       "def": "the short description on a book's back cover"
+      },
+      {
+       "w": "box-office flop",
+       "pos": "n",
+       "def": "a film that loses money because few people see it"
+      },
+      {
+       "w": "cinemagoer",
+       "pos": "n",
+       "def": "someone who often watches films on the big screen"
+      },
+      {
+       "w": "instalment",
+       "pos": "n",
+       "def": "one part of a story released in several parts"
+      },
+      {
+       "w": "main character",
+       "pos": "n",
+       "def": "the most important person in a story"
+      },
+      {
+       "w": "masterpiece",
+       "pos": "n",
+       "def": "a work of art made with outstanding skill"
+      },
+      {
+       "w": "remake",
+       "pos": "n",
+       "def": "a new version of an old film"
+      },
+      {
+       "w": "revenue",
+       "pos": "n",
+       "def": "the money a company regularly receives"
+      },
+      {
+       "w": "sequel",
+       "pos": "n",
+       "def": "a film or book that continues an earlier story"
+      },
+      {
+       "w": "set (in)",
+       "pos": "v",
+       "def": "to have its story happen in a particular place or time"
+      },
+      {
+       "w": "trailer",
+       "pos": "n",
+       "def": "a short advert showing scenes from a new film"
+      }
+     ]
+    },
+    {
+     "topic": "ENTERTAINMENT: ADVERB AND ADJECTIVE COLLOCATIONS",
+     "words": [
+      {
+       "w": "critically acclaimed",
+       "pos": "phr",
+       "def": "praised a lot by professional reviewers"
+      },
+      {
+       "w": "highly anticipated",
+       "pos": "phr",
+       "def": "eagerly awaited and expected to be very good"
+      },
+      {
+       "w": "hysterically funny",
+       "pos": "phr",
+       "def": "so amusing that you can't stop laughing"
+      },
+      {
+       "w": "internationally successful",
+       "pos": "phr",
+       "def": "very popular and profitable in many countries"
+      },
+      {
+       "w": "largely unknown",
+       "pos": "phr",
+       "def": "not familiar to most people"
+      },
+      {
+       "w": "painfully slow",
+       "pos": "phr",
+       "def": "moving or progressing at an annoyingly low speed"
+      }
+     ]
+    },
+    {
+     "topic": "ENTERTAINMENT: COMPOUND ADJECTIVES",
+     "words": [
+      {
+       "w": "action-packed",
+       "pos": "adj",
+       "def": "full of exciting events and fast scenes"
+      },
+      {
+       "w": "award-winning",
+       "pos": "adj",
+       "def": "having received a prize for being excellent"
+      },
+      {
+       "w": "best-known",
+       "pos": "adj",
+       "def": "most famous or recognised by the public"
+      },
+      {
+       "w": "highest-paid",
+       "pos": "adj",
+       "def": "earning more money than anyone else"
+      },
+      {
+       "w": "low-budget",
+       "pos": "adj",
+       "def": "made with very little money"
+      },
+      {
+       "w": "Oscar-nominated",
+       "pos": "adj",
+       "def": "shortlisted for a famous American film prize"
+      },
+      {
+       "w": "record-breaking",
+       "pos": "adj",
+       "def": "better, bigger or faster than anything before"
+      },
+      {
+       "w": "thought-provoking",
+       "pos": "adj",
+       "def": "making you think seriously about a subject"
+      },
+      {
+       "w": "world-famous",
+       "pos": "adj",
+       "def": "known by people all over the planet"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "GERUNDS AND INFINITIVES",
+    "points": [
+     "Some verbs are followed by to + infinitive: afford, agree, decide, hope, manage, offer, promise, refuse: We agreed to share the bill.",
+     "Others are followed by -ing: admit, avoid, consider, deny, enjoy, finish, keep, miss, risk, suggest, can't stand, look forward to: He keeps interrupting.",
+     "begin, start and continue take both forms with no real change. forget, remember, stop, try, go on and mean change meaning: I remembered to lock the door (I didn't forget) but I remember locking it (I have the memory).",
+     "Adjective + to-infinitive (happy to help, hard to say); adjective + preposition + -ing (good at drawing, tired of waiting).",
+     "Use -ing after every preposition (before leaving, without asking) and as the subject of a sentence: Swimming keeps me fit."
+    ],
+    "questions": [
+     "We can't afford ____ (buy) a new car. | to buy",
+     "She avoided ____ (answer) my question. | answering",
+     "I'm looking forward to ____ (see) you. | seeing",
+     "I'll never forget ____ the sea for the first time. (to see / seeing) | seeing",
+     "Remember ____ the lights off when you leave. (to turn / turning) | to turn",
+     "He's very good ____ fixing computers. (in / at / on) | at",
+     "Correct it: I suggest to take a taxi. | I suggest taking a taxi.",
+     "She left without ____ (say) goodbye. | saying",
+     "We stopped ____ (buy) some water and then drove on. | to buy",
+     "It was impossible ____ (hear) the speaker. | to hear",
+     "____ (eat) too much sugar is bad for you. | Eating",
+     "My head hurts. Have you tried ____ an aspirin? (to take / taking) | taking"
+    ]
+   }
+  },
+  {
+   "n": 7,
+   "vocab": [
+    {
+     "topic": "ACHIEVEMENTS",
+     "words": [
+      {
+       "w": "adversity",
+       "pos": "n",
+       "def": "a very difficult or unlucky situation"
+      },
+      {
+       "w": "against all odds",
+       "pos": "id",
+       "def": "despite many problems and little chance of success"
+      },
+      {
+       "w": "break down barriers",
+       "pos": "id",
+       "def": "to help different groups understand each other better"
+      },
+      {
+       "w": "endurance",
+       "pos": "n",
+       "def": "the ability to keep going through something hard for long"
+      },
+      {
+       "w": "overcome",
+       "pos": "v",
+       "def": "to successfully deal with a problem or difficulty"
+      },
+      {
+       "w": "self-belief",
+       "pos": "n",
+       "def": "confidence in your own abilities"
+      },
+      {
+       "w": "self-discipline",
+       "pos": "n",
+       "def": "the ability to make yourself do what you should"
+      },
+      {
+       "w": "setback",
+       "pos": "n",
+       "def": "a problem that delays or stops your progress"
+      },
+      {
+       "w": "suffer defeat",
+       "pos": "phr",
+       "def": "to lose in a competition or fight"
+      },
+      {
+       "w": "thrive",
+       "pos": "v",
+       "def": "to grow, develop and be very successful"
+      }
+     ]
+    },
+    {
+     "topic": "NOUN SUFFIXES",
+     "words": [
+      {
+       "w": "acceptance",
+       "pos": "n",
+       "def": "general agreement that something or someone is welcome or right"
+      },
+      {
+       "w": "aggression",
+       "pos": "n",
+       "def": "angry, threatening behaviour or violence"
+      },
+      {
+       "w": "apprenticeship",
+       "pos": "n",
+       "def": "a period of learning a skilled job while working"
+      },
+      {
+       "w": "courtesy",
+       "pos": "n",
+       "def": "polite behaviour and good manners"
+      },
+      {
+       "w": "disapproval",
+       "pos": "n",
+       "def": "the feeling that something is bad or wrong"
+      },
+      {
+       "w": "freedom",
+       "pos": "n",
+       "def": "the right to do or say what you want"
+      },
+      {
+       "w": "inaccuracy",
+       "pos": "n",
+       "def": "a mistake; something that is not exact or correct"
+      },
+      {
+       "w": "interference",
+       "pos": "n",
+       "def": "getting involved in a situation where you aren't wanted"
+      },
+      {
+       "w": "motivation",
+       "pos": "n",
+       "def": "the enthusiasm or reason for doing something"
+      },
+      {
+       "w": "negativity",
+       "pos": "n",
+       "def": "an attitude that expects bad things and lacks hope"
+      },
+      {
+       "w": "neighbourhood",
+       "pos": "n",
+       "def": "the area around your home and the people living there"
+      },
+      {
+       "w": "replacement",
+       "pos": "n",
+       "def": "the act of putting something new where something old was"
+      },
+      {
+       "w": "unfairness",
+       "pos": "n",
+       "def": "a situation where people are not treated equally or justly"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "CONDITIONALS",
+    "points": [
+     "Zero: if + present, present = something that is always true: If you press this, it beeps. When the if clause comes first, put a comma after it.",
+     "First: if + present, will / may / might = a likely future result. unless means if not: We'll be late unless we run.",
+     "Second: if + past simple, would / could + infinitive = an unlikely or imaginary present or future: If I were you, I'd apologise.",
+     "Third: if + past perfect, would / might / could have + past participle = an imaginary past: If we had booked, we would have got seats.",
+     "Mixed: past cause with present result = if + past perfect, would + infinitive (If I had slept more, I wouldn't be tired now). Present fact with past result = if + past simple, would have + past participle (If I spoke French, I'd have got the job)."
+    ],
+    "questions": [
+     "If you heat ice, it ____ (melt). | melts",
+     "If it rains tomorrow, we ____ (stay) at home. | will stay",
+     "If I ____ (have) more money, I'd travel the world. | had",
+     "If she had studied, she ____ (pass) the exam. | would have passed",
+     "You won't pass ____ you work harder. (unless / if) | unless",
+     "If I ____ (be) you, I'd say sorry. | were",
+     "Correct it: If it will rain, I'll stay. | If it rains, I'll stay.",
+     "If we ____ (leave) earlier, we wouldn't have missed the bus. | had left",
+     "If I hadn't eaten so much, I ____ (not feel) sick now. | wouldn't feel",
+     "If he ____ so lazy, he would have finished yesterday. (wasn't / isn't) | wasn't",
+     "I ____ (call) you if I had known your number. | would have called",
+     "Plants die if they ____ water. (don't get / won't get) | don't get"
+    ]
+   }
+  },
+  {
+   "n": 8,
+   "vocab": [
+    {
+     "topic": "MONEY AND WEALTH",
+     "words": [
+      {
+       "w": "allowance",
+       "pos": "n",
+       "def": "money given regularly, e.g. by parents to a child"
+      },
+      {
+       "w": "broke",
+       "pos": "adj",
+       "def": "having no money at all (informal)"
+      },
+      {
+       "w": "fund",
+       "pos": "v",
+       "def": "to provide the money to pay for something"
+      },
+      {
+       "w": "rip-off",
+       "pos": "n",
+       "def": "something that costs far more than it's worth"
+      },
+      {
+       "w": "support",
+       "pos": "n",
+       "def": "help of a financial, emotional or practical kind"
+      },
+      {
+       "w": "take out a loan",
+       "pos": "phr",
+       "def": "to arrange to borrow money from a bank"
+      },
+      {
+       "w": "unaffordable",
+       "pos": "adj",
+       "def": "too expensive for people to buy"
+      },
+      {
+       "w": "well-off",
+       "pos": "adj",
+       "def": "rich; having plenty of money"
+      },
+      {
+       "w": "withdraw",
+       "pos": "v",
+       "def": "to remove cash from your bank account"
+      }
+     ]
+    },
+    {
+     "topic": "MONEY: IDIOMS",
+     "words": [
+      {
+       "w": "break the bank",
+       "pos": "id",
+       "def": "to cost more than you can pay"
+      },
+      {
+       "w": "daylight robbery",
+       "pos": "id",
+       "def": "a situation where the price charged is outrageously high"
+      },
+      {
+       "w": "false economy",
+       "pos": "id",
+       "def": "a saving now that costs you more later"
+      },
+      {
+       "w": "go from rags to riches",
+       "pos": "id",
+       "def": "to start very poor and become very wealthy"
+      },
+      {
+       "w": "make ends meet",
+       "pos": "id",
+       "def": "to have just enough money for basic needs"
+      },
+      {
+       "w": "pour money down the drain",
+       "pos": "id",
+       "def": "to waste your cash on something useless"
+      }
+     ]
+    },
+    {
+     "topic": "MONEY: PHRASAL VERBS",
+     "words": [
+      {
+       "w": "come down (in price)",
+       "pos": "pv",
+       "def": "to become cheaper"
+      },
+      {
+       "w": "come into (money)",
+       "pos": "pv",
+       "def": "to inherit wealth when a relative dies"
+      },
+      {
+       "w": "get by (on)",
+       "pos": "pv",
+       "def": "to survive with just enough money"
+      },
+      {
+       "w": "put (money) aside",
+       "pos": "pv",
+       "def": "to save cash regularly for a special purpose"
+      },
+      {
+       "w": "rip (someone) off",
+       "pos": "pv",
+       "def": "to cheat a person by charging far too much"
+      },
+      {
+       "w": "share out",
+       "pos": "pv",
+       "def": "to divide something between several people"
+      },
+      {
+       "w": "shop around",
+       "pos": "pv",
+       "def": "to compare prices in different stores before buying"
+      },
+      {
+       "w": "splash out (on)",
+       "pos": "pv",
+       "def": "to spend a lot on something nice but unnecessary"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "WISH AND IF ONLY",
+    "points": [
+     "wish + past simple or past continuous = you are unhappy about a present situation: I wish I had a bigger room.",
+     "wish + past perfect = regret about the past: I wish I had brought a coat.",
+     "wish + could + infinitive = something you would like to be able to do but find difficult: I wish I could dance.",
+     "wish + would / wouldn't = you are irritated by someone else's behaviour or by a situation and want it to change: I wish they would turn the music down. Don't use it about yourself (not I wish I would).",
+     "If only follows exactly the same patterns but sounds stronger: If only I hadn't sent that message!"
+    ],
+    "questions": [
+     "I wish I ____ (know) the answer, but I don't. | knew",
+     "I wish I ____ (not eat) so much last night. | hadn't eaten",
+     "I wish you ____ stop tapping your pen! (would / did) | would",
+     "If only I ____ (can) play the guitar. | could",
+     "She wishes she ____ (have) a sister. | had",
+     "I got soaked. I wish I ____ my umbrella this morning. (took / had taken) | had taken",
+     "Correct it: I wish I can fly. | I wish I could fly.",
+     "If only it ____ stop raining! (would / will) | would",
+     "If only we ____ so far from the beach. (didn't live / don't live) | didn't live",
+     "He wishes he ____ (listen) to his mum's advice last year. | had listened",
+     "I wish my brother ____ keep taking my clothes. (wouldn't / won't) | wouldn't",
+     "Correct it: I wish I didn't go yesterday. | I wish I hadn't gone yesterday."
+    ]
+   }
+  },
+  {
+   "n": 9,
+   "vocab": [
+    {
+     "topic": "EDUCATION",
+     "words": [
+      {
+       "w": "aspirations",
+       "pos": "n",
+       "def": "things you hope to achieve in life"
+      },
+      {
+       "w": "career path",
+       "pos": "n",
+       "def": "the series of jobs that make up your working life"
+      },
+      {
+       "w": "careers advice",
+       "pos": "n",
+       "def": "guidance about which job would suit you best"
+      },
+      {
+       "w": "critical thinking",
+       "pos": "n",
+       "def": "judging ideas carefully and logically without letting emotions decide"
+      },
+      {
+       "w": "internship",
+       "pos": "n",
+       "def": "a period of work experience, often for students or graduates"
+      },
+      {
+       "w": "leadership",
+       "pos": "n",
+       "def": "the qualities and skills needed to guide a group"
+      },
+      {
+       "w": "networking",
+       "pos": "n",
+       "def": "meeting people who could be useful for your job"
+      },
+      {
+       "w": "scholarship",
+       "pos": "n",
+       "def": "money given to a talented student to pay for studies"
+      },
+      {
+       "w": "social skills",
+       "pos": "n",
+       "def": "the abilities you need to get on well with people"
+      },
+      {
+       "w": "trainee",
+       "pos": "n",
+       "def": "a person who is learning how to do a job"
+      }
+     ]
+    },
+    {
+     "topic": "EDUCATION: PHRASAL VERBS",
+     "words": [
+      {
+       "w": "break up",
+       "pos": "pv",
+       "def": "to finish classes when the school holidays begin"
+      },
+      {
+       "w": "catch up (with)",
+       "pos": "pv",
+       "def": "to reach the same level as others"
+      },
+      {
+       "w": "drop out",
+       "pos": "pv",
+       "def": "to leave a course before finishing it"
+      },
+      {
+       "w": "fall behind (with)",
+       "pos": "pv",
+       "def": "to make slower progress than others or than planned"
+      },
+      {
+       "w": "get through (an exam)",
+       "pos": "pv",
+       "def": "to pass a test successfully"
+      },
+      {
+       "w": "go over",
+       "pos": "pv",
+       "def": "to check or revise something carefully"
+      },
+      {
+       "w": "hand in",
+       "pos": "pv",
+       "def": "to give finished work to your teacher"
+      },
+      {
+       "w": "read up on",
+       "pos": "pv",
+       "def": "to study a topic by finding lots of information about it"
+      }
+     ]
+    },
+    {
+     "topic": "EDUCATION: VERB AND NOUN COLLOCATIONS",
+     "words": [
+      {
+       "w": "fulfil (an ambition, a dream, a goal, requirements)",
+       "pos": "v",
+       "def": "to achieve something hoped for, or do what is needed"
+      },
+      {
+       "w": "gain (experience (in), insight (into), understanding (of))",
+       "pos": "v",
+       "def": "to gradually get something useful or positive"
+      },
+      {
+       "w": "pay a visit (to)",
+       "pos": "phr",
+       "def": "to go and see a person or place"
+      },
+      {
+       "w": "pay attention",
+       "pos": "phr",
+       "def": "to listen, watch or think carefully"
+      },
+      {
+       "w": "pay (school) fees",
+       "pos": "phr",
+       "def": "to give money in exchange for being taught somewhere"
+      },
+      {
+       "w": "set (a goal, homework, a standard)",
+       "pos": "v",
+       "def": "to decide or establish something for people to do or reach"
+      },
+      {
+       "w": "submit (an application, an essay, homework, a proposal)",
+       "pos": "v",
+       "def": "to formally give a document to someone for judging"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "CLEFT SENTENCES",
+    "points": [
+     "A cleft sentence splits one idea into two parts so that one piece of information stands out.",
+     "What-clause + is / was + noun phrase: What I need is a holiday. You can also begin with All: All I want is some peace.",
+     "What + subject + do / did + is / was + infinitive emphasises an action: What she did was call the police. After verbs like want or intend keep to: What I want is to sleep.",
+     "It + is / was + emphasised part + that / who clause: It was Marta who found the keys.",
+     "With It-clefts you can highlight a person, a thing, a time or a place: It was in Rome that we met; It was last week that he called."
+    ],
+    "questions": [
+     "____ I need is a good night's sleep. (one word) | What",
+     "It was my brother ____ broke the window. (who / which) | who",
+     "It ____ in 2015 that we moved here. (was / were) | was",
+     "What I love about her ____ her sense of humour. (is / are) | is",
+     "Rewrite: I want a pizza. What I ____ a pizza. | want is",
+     "Rewrite: The noise woke me. It ____ woke me. | was the noise that",
+     "What he did ____ call the police. (was / did) | was",
+     "Correct it: What I need it is time. | What I need is time.",
+     "Correct it: It was Tom which phoned. | It was Tom who phoned.",
+     "It was in Paris ____ they first met. (that / what) | that",
+     "Rewrite: She only wants some peace. All she ____ some peace. | wants is",
+     "It's the waiting ____ I can't stand. (that / what) | that"
+    ]
+   }
+  },
+  {
+   "n": 10,
+   "vocab": [
+    {
+     "topic": "PUNISHMENT FOR CRIME",
+     "words": [
+      {
+       "w": "arrest (someone) on suspicion of",
+       "pos": "phr",
+       "def": "to detain a person because police believe they committed a crime"
+      },
+      {
+       "w": "be found guilty of",
+       "pos": "phr",
+       "def": "to be judged by a court to have committed a crime"
+      },
+      {
+       "w": "be issued with (a fine)",
+       "pos": "pv",
+       "def": "to be officially given something, such as a penalty to pay"
+      },
+      {
+       "w": "be prosecuted for",
+       "pos": "v",
+       "def": "to be officially accused in court of a crime"
+      },
+      {
+       "w": "charge (someone) with (a crime)",
+       "pos": "v",
+       "def": "to formally accuse a person of breaking the law"
+      },
+      {
+       "w": "pay damages (to)",
+       "pos": "phr",
+       "def": "to give money as compensation for harm you caused"
+      },
+      {
+       "w": "plead guilty to (a crime)",
+       "pos": "phr",
+       "def": "to admit in court that you did it"
+      },
+      {
+       "w": "report (someone) to the police",
+       "pos": "phr",
+       "def": "to tell the authorities about something illegal a person did"
+      },
+      {
+       "w": "sentence (someone) to",
+       "pos": "v",
+       "def": "to officially announce a criminal's punishment in court"
+      }
+     ]
+    },
+    {
+     "topic": "CRIME AND PUNISHMENT: COLLOCATIONS",
+     "words": [
+      {
+       "w": "community service",
+       "pos": "n",
+       "def": "unpaid work helping others, done as a punishment"
+      },
+      {
+       "w": "jail sentence",
+       "pos": "n",
+       "def": "a punishment of a fixed time in prison"
+      },
+      {
+       "w": "light (punishment/sentence)",
+       "pos": "adj",
+       "def": "not severe; short or easy to bear"
+      },
+      {
+       "w": "minor (crime/offence)",
+       "pos": "adj",
+       "def": "not very serious or important"
+      },
+      {
+       "w": "organised crime",
+       "pos": "n",
+       "def": "illegal activity planned and run by large professional gangs"
+      },
+      {
+       "w": "petty (crime/theft)",
+       "pos": "adj",
+       "def": "small and not considered serious"
+      },
+      {
+       "w": "repeat (offence/offender)",
+       "pos": "n",
+       "def": "the same illegal act done again, or the person doing it"
+      }
+     ]
+    },
+    {
+     "topic": "CRIME AND PUNISHMENT: SUFFIXES",
+     "words": [
+      {
+       "w": "burglary",
+       "pos": "n",
+       "def": "the crime of breaking into a building to steal"
+      },
+      {
+       "w": "crime",
+       "pos": "n",
+       "def": "an action that breaks the law"
+      },
+      {
+       "w": "criminal",
+       "pos": "n",
+       "def": "a person who breaks the law"
+      },
+      {
+       "w": "cruelty",
+       "pos": "n",
+       "def": "behaviour that deliberately makes people or animals suffer"
+      },
+      {
+       "w": "imprison",
+       "pos": "v",
+       "def": "to lock someone up in jail"
+      },
+      {
+       "w": "imprisonment",
+       "pos": "n",
+       "def": "the state of being locked up in jail"
+      },
+      {
+       "w": "offence",
+       "pos": "n",
+       "def": "an illegal act"
+      },
+      {
+       "w": "offender",
+       "pos": "n",
+       "def": "a person who has broken the law"
+      },
+      {
+       "w": "offensive",
+       "pos": "adj",
+       "def": "rude or insulting; likely to upset people"
+      },
+      {
+       "w": "prison",
+       "pos": "n",
+       "def": "a building where criminals are kept locked up"
+      },
+      {
+       "w": "shoplift",
+       "pos": "v",
+       "def": "to steal things from a store while pretending to be a customer"
+      },
+      {
+       "w": "shoplifting",
+       "pos": "n",
+       "def": "the crime of stealing goods from a store"
+      },
+      {
+       "w": "steal",
+       "pos": "v",
+       "def": "to take something that isn't yours without permission"
+      },
+      {
+       "w": "theft",
+       "pos": "n",
+       "def": "the act of taking something that belongs to another person"
+      },
+      {
+       "w": "vandalism",
+       "pos": "n",
+       "def": "the crime of damaging property on purpose"
+      },
+      {
+       "w": "vandalise",
+       "pos": "v",
+       "def": "to damage buildings or objects on purpose"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "INVERSION",
+    "points": [
+     "In formal or dramatic style, a negative or limiting expression at the start of a sentence is followed by question word order (auxiliary + subject + verb): Never have I seen such a mess.",
+     "Negative starters: never, not once, at no time, under no circumstances, no way, not since, not only ... but also.",
+     "Limiting starters: little, rarely, seldom, hardly, only then, only when, not until.",
+     "If the normal sentence has no auxiliary, add do / does / did: Rarely does he complain; Little did we know.",
+     "After only when / not until + clause, the inversion comes in the main clause: Not until I got home did I notice the stain."
+    ],
+    "questions": [
+     "Never ____ I seen such a beautiful sunset. (one word) | have",
+     "Rarely ____ so much homework. (we get / do we get) | do we get",
+     "Not only ____ she sing, but she also dances. (does / is) | does",
+     "Under no circumstances ____ you open this door. (should / you should) | should",
+     "Correct it: Never I have felt worse. | Never have I felt worse.",
+     "Little ____ he know what was waiting for him. (did / was) | did",
+     "Rewrite: I had never felt so happy. Never ____ so happy. | had I felt",
+     "Only when the bell rang ____ we leave. (did / had) | did",
+     "Correct it: Not once he did say sorry. | Not once did he say sorry.",
+     "Not until I got home ____ my phone was missing. (did I realise / I realised) | did I realise",
+     "No way ____ I going to pay that much! (am / do) | am",
+     "Rewrite: We rarely eat out. Rarely ____ out. | do we eat"
+    ]
+   }
+  },
+  {
+   "n": 11,
+   "vocab": [
+    {
+     "topic": "DESCRIBING FOOD",
+     "words": [
+      {
+       "w": "bland",
+       "pos": "adj",
+       "def": "having very little flavour"
+      },
+      {
+       "w": "fatty",
+       "pos": "adj",
+       "def": "containing a lot of grease or oil"
+      },
+      {
+       "w": "high in",
+       "pos": "adj",
+       "def": "containing a lot of something, e.g. sugar"
+      },
+      {
+       "w": "in season",
+       "pos": "phr",
+       "def": "being grown and harvested locally at this time of year"
+      },
+      {
+       "w": "junk food",
+       "pos": "n",
+       "def": "unhealthy snacks and meals that are quick and easy"
+      },
+      {
+       "w": "low in",
+       "pos": "adj",
+       "def": "containing only a little of something, e.g. salt"
+      },
+      {
+       "w": "organic",
+       "pos": "adj",
+       "def": "grown or produced without artificial chemicals"
+      },
+      {
+       "w": "preservative",
+       "pos": "n",
+       "def": "a chemical added to make products last longer"
+      },
+      {
+       "w": "produce",
+       "pos": "n",
+       "def": "fresh fruit, vegetables and other things from farms"
+      },
+      {
+       "w": "ready meal",
+       "pos": "n",
+       "def": "a pre-cooked dish you buy and just heat up"
+      },
+      {
+       "w": "rich",
+       "pos": "adj",
+       "def": "containing lots of butter, cream or eggs; heavy"
+      }
+     ]
+    },
+    {
+     "topic": "DESCRIBING FOOD: COLLOCATIONS",
+     "words": [
+      {
+       "w": "free-range",
+       "pos": "adj",
+       "def": "from animals that can move around outside, not caged"
+      },
+      {
+       "w": "freshly baked",
+       "pos": "adj",
+       "def": "just taken out of the oven"
+      },
+      {
+       "w": "gluten-free",
+       "pos": "adj",
+       "def": "without the protein found in wheat"
+      },
+      {
+       "w": "homemade",
+       "pos": "adj",
+       "def": "prepared in your own kitchen, not bought"
+      },
+      {
+       "w": "locally sourced",
+       "pos": "adj",
+       "def": "obtained from producers in the nearby area"
+      },
+      {
+       "w": "pan-fried",
+       "pos": "adj",
+       "def": "cooked quickly in a little hot oil on the hob"
+      },
+      {
+       "w": "slow-roasted",
+       "pos": "adj",
+       "def": "cooked in the oven for many hours at gentle heat"
+      },
+      {
+       "w": "sun-dried",
+       "pos": "adj",
+       "def": "left outside in hot weather until the water has gone"
+      }
+     ]
+    },
+    {
+     "topic": "FOOD AND DRINK: EXPRESSIONS",
+     "words": [
+      {
+       "w": "go easy on (something)",
+       "pos": "phr",
+       "def": "to not use or have too much of a thing"
+      },
+      {
+       "w": "go halves (on)",
+       "pos": "phr",
+       "def": "to split the cost equally between two people"
+      },
+      {
+       "w": "have a sweet tooth",
+       "pos": "phr",
+       "def": "to love sugary things like cakes and chocolate"
+      },
+      {
+       "w": "I could eat a horse.",
+       "pos": "id",
+       "def": "I am extremely hungry."
+      },
+      {
+       "w": "It's on the house.",
+       "pos": "id",
+       "def": "You don't pay; the restaurant or bar gives it free."
+      },
+      {
+       "w": "Say when.",
+       "pos": "id",
+       "def": "Tell me to stop once I've poured or served enough."
+      },
+      {
+       "w": "Tuck in!",
+       "pos": "id",
+       "def": "Start eating; enjoy your food!"
+      },
+      {
+       "w": "Your eyes are bigger than your stomach.",
+       "pos": "id",
+       "def": "You took more food than you can actually finish."
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "THE PASSIVE",
+    "points": [
+     "Form: be in the right tense + past participle. Only verbs that can take an object have a passive. Use it to focus on the person or thing affected: The bridge was built in 1900.",
+     "It works in all tenses and after modals: is being repaired, has been sold, had been stolen, will be sent, must be signed.",
+     "In informal English get can replace be: My bike got stolen.",
+     "The object of the active sentence becomes the passive subject; the doer can be added with by: The goal was scored by Lucia.",
+     "Leave the agent out when it is obvious, unknown or secret: Two men were arrested last night."
+    ],
+    "questions": [
+     "Spanish ____ (speak) in many countries. | is spoken",
+     "The thief ____ (arrest) last night. | was arrested",
+     "Our classroom ____ (paint) at the moment. | is being painted",
+     "The invitations ____ (already / send), so it's too late to change them. | have already been sent",
+     "The results ____ (announce) tomorrow. | will be announced",
+     "All phones must ____ (switch) off during the exam. | be switched",
+     "The Mona Lisa was painted ____ Leonardo. (by / from) | by",
+     "Correct it: The window was broke yesterday. | The window was broken yesterday.",
+     "Rewrite: Someone has stolen my bag. My bag ____. | has been stolen",
+     "When I arrived, the room ____ (still / clean) by the staff. | was still being cleaned",
+     "Informal: My phone ____ stolen on the bus. (got / did) | got",
+     "By the time we arrived, all the food ____ (eat). | had been eaten"
+    ]
+   }
+  },
+  {
+   "n": 12,
+   "vocab": [
+    {
+     "topic": "TRAVEL",
+     "words": [
+      {
+       "w": "bound for",
+       "pos": "adj",
+       "def": "travelling towards a particular place"
+      },
+      {
+       "w": "carbon neutral",
+       "pos": "adj",
+       "def": "not adding extra CO2 to the atmosphere overall"
+      },
+      {
+       "w": "clean up",
+       "pos": "pv",
+       "def": "to remove pollution or harmful substances from a place"
+      },
+      {
+       "w": "itinerary",
+       "pos": "n",
+       "def": "a detailed plan of a journey and its stops"
+      },
+      {
+       "w": "off the beaten track",
+       "pos": "id",
+       "def": "in a remote place where few tourists go"
+      },
+      {
+       "w": "offset your carbon footprint",
+       "pos": "phr",
+       "def": "to pay for green projects that balance out your emissions"
+      },
+      {
+       "w": "self-catering",
+       "pos": "adj",
+       "def": "with a kitchen so you cook your own holiday meals"
+      },
+      {
+       "w": "staycation",
+       "pos": "n",
+       "def": "a holiday spent at home or in your own country"
+      },
+      {
+       "w": "sustainable",
+       "pos": "adj",
+       "def": "not harming the environment, so able to continue long-term"
+      },
+      {
+       "w": "tourism tax",
+       "pos": "n",
+       "def": "money visitors pay the government to reduce their impact"
+      }
+     ]
+    },
+    {
+     "topic": "FORMAL (F) AND INFORMAL (INF) LANGUAGE",
+     "words": [
+      {
+       "w": "become (f)",
+       "pos": "v",
+       "def": "formal verb: to start to be"
+      },
+      {
+       "w": "get (inf)",
+       "pos": "v",
+       "def": "everyday verb: to start to be (e.g. angry, dark)"
+      },
+      {
+       "w": "child (f)",
+       "pos": "n",
+       "def": "formal noun: a young person who isn't yet an adult"
+      },
+      {
+       "w": "kid (inf)",
+       "pos": "n",
+       "def": "casual noun for a young boy or girl"
+      },
+      {
+       "w": "commence (f)",
+       "pos": "v",
+       "def": "formal verb: to begin"
+      },
+      {
+       "w": "start (inf)",
+       "pos": "v",
+       "def": "everyday verb: to begin"
+      },
+      {
+       "w": "dishonest (f)",
+       "pos": "adj",
+       "def": "formal adjective: not telling the truth; likely to cheat"
+      },
+      {
+       "w": "dodgy (inf)",
+       "pos": "adj",
+       "def": "casual British adjective: not to be trusted; suspicious"
+      },
+      {
+       "w": "express (f)",
+       "pos": "v",
+       "def": "formal verb: to put a feeling or opinion into words"
+      },
+      {
+       "w": "say (inf)",
+       "pos": "v",
+       "def": "everyday verb: to speak words; to tell"
+      },
+      {
+       "w": "friend (f)",
+       "pos": "n",
+       "def": "neutral noun: someone you know well and like"
+      },
+      {
+       "w": "mate (inf)",
+       "pos": "n",
+       "def": "casual British noun for a pal"
+      },
+      {
+       "w": "incorrect (f)",
+       "pos": "adj",
+       "def": "formal adjective: containing mistakes; not right"
+      },
+      {
+       "w": "wrong (inf)",
+       "pos": "adj",
+       "def": "everyday adjective: not right or true"
+      },
+      {
+       "w": "investigate (f)",
+       "pos": "v",
+       "def": "formal verb: to examine something carefully to find the truth"
+      },
+      {
+       "w": "look into (inf)",
+       "pos": "pv",
+       "def": "everyday phrasal verb: to try to find out about a problem"
+      },
+      {
+       "w": "permit (f)",
+       "pos": "v",
+       "def": "formal verb: to allow"
+      },
+      {
+       "w": "let (inf)",
+       "pos": "v",
+       "def": "everyday verb: to allow"
+      },
+      {
+       "w": "purchase (f)",
+       "pos": "v",
+       "def": "formal verb: to get something by paying for it"
+      },
+      {
+       "w": "buy (inf)",
+       "pos": "v",
+       "def": "everyday verb: to get something by paying for it"
+      },
+      {
+       "w": "resign (from) (f)",
+       "pos": "v",
+       "def": "formal verb: to officially leave your job"
+      },
+      {
+       "w": "quit (inf)",
+       "pos": "v",
+       "def": "casual verb: to leave your job"
+      },
+      {
+       "w": "return (f)",
+       "pos": "v",
+       "def": "formal verb: to take or send something back"
+      },
+      {
+       "w": "give back (inf)",
+       "pos": "pv",
+       "def": "everyday phrasal verb: to hand something to its owner again"
+      },
+      {
+       "w": "succeed in (doing) (f)",
+       "pos": "pv",
+       "def": "formal: to achieve what you were trying to do"
+      },
+      {
+       "w": "manage to (do) (inf)",
+       "pos": "v",
+       "def": "everyday: to be able to do something difficult"
+      },
+      {
+       "w": "virus (f)",
+       "pos": "n",
+       "def": "scientific noun: a tiny organism that causes disease"
+      },
+      {
+       "w": "bug (inf)",
+       "pos": "n",
+       "def": "casual noun for an illness that spreads easily"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "PASSIVE GERUND & INFINITIVE",
+    "points": [
+     "Verbs that take a to-infinitive take the passive infinitive to be + past participle (She hopes to be chosen); verbs that take -ing take being + past participle (He avoids being seen).",
+     "Use to be + past participle after adjectives: I was glad to be invited.",
+     "Use be + past participle after modal verbs: The flight might be cancelled.",
+     "Use being + past participle after prepositions and as the subject of a sentence: I'm tired of being ignored; Being chosen was an honour.",
+     "Verbs with two objects (give, send, offer, show, tell, teach, lend, pay) have two passives: I was given a prize / A prize was given to me. Making the person the subject usually sounds more natural."
+    ],
+    "questions": [
+     "I hate ____ (tell) what to do. | being told",
+     "She expects ____ (promote) soon. | to be promoted",
+     "The match might ____ (cancel) because of the snow. | be cancelled",
+     "He insisted on ____ (pay) in cash. | being paid",
+     "I was happy ____ (invite) to the wedding. | to be invited",
+     "____ (choose) for the team was a big surprise. | Being chosen",
+     "Nobody enjoys ____ at. (being laughed / to be laughed) | being laughed",
+     "Correct it: I want to being informed. | I want to be informed.",
+     "Rewrite: They gave Ana a medal. Ana ____ a medal. | was given",
+     "Rewrite: They sent me an email. An email was sent ____ me. (one word) | to",
+     "Correct it: She hates be criticised. | She hates being criticised.",
+     "The rules must ____ by everyone. (be followed / being followed) | be followed"
+    ]
+   }
+  },
+  {
+   "n": 13,
+   "vocab": [
+    {
+     "topic": "COMMUNICATION: PHRASAL VERBS",
+     "words": [
+      {
+       "w": "brush up on",
+       "pos": "pv",
+       "def": "to improve a skill you have partly forgotten"
+      },
+      {
+       "w": "burst out (laughing)",
+       "pos": "pv",
+       "def": "to suddenly start giggling or crying loudly"
+      },
+      {
+       "w": "catch up on",
+       "pos": "pv",
+       "def": "to find out the latest news you have missed"
+      },
+      {
+       "w": "come up to (someone)",
+       "pos": "pv",
+       "def": "to approach a person"
+      },
+      {
+       "w": "get at",
+       "pos": "pv",
+       "def": "to suggest something indirectly; to really mean"
+      },
+      {
+       "w": "get by",
+       "pos": "pv",
+       "def": "to manage with just enough of something, e.g. language skills"
+      },
+      {
+       "w": "go on about",
+       "pos": "pv",
+       "def": "to talk for too long in an annoying way"
+      },
+      {
+       "w": "take (something) in",
+       "pos": "pv",
+       "def": "to fully understand and absorb information"
+      },
+      {
+       "w": "talk (someone) into",
+       "pos": "pv",
+       "def": "to persuade a person to do something"
+      },
+      {
+       "w": "talk (someone) out of",
+       "pos": "pv",
+       "def": "to persuade a person not to do something"
+      }
+     ]
+    },
+    {
+     "topic": "ADVERBS",
+     "words": [
+      {
+       "w": "comprehensively",
+       "pos": "adv",
+       "def": "completely and thoroughly, including everything"
+      },
+      {
+       "w": "effectively",
+       "pos": "adv",
+       "def": "in reality, although not officially; in practice"
+      },
+      {
+       "w": "incredibly",
+       "pos": "adv",
+       "def": "extremely; to a surprising degree"
+      },
+      {
+       "w": "individually",
+       "pos": "adv",
+       "def": "separately, one by one"
+      },
+      {
+       "w": "massively",
+       "pos": "adv",
+       "def": "hugely; to a very great extent"
+      },
+      {
+       "w": "namely",
+       "pos": "adv",
+       "def": "used before giving exact details of what you just mentioned"
+      },
+      {
+       "w": "poorly",
+       "pos": "adv",
+       "def": "badly; not well"
+      },
+      {
+       "w": "publicly",
+       "pos": "adv",
+       "def": "openly, so that everyone can see or know"
+      },
+      {
+       "w": "repeatedly",
+       "pos": "adv",
+       "def": "many times; again and again"
+      },
+      {
+       "w": "respectively",
+       "pos": "adv",
+       "def": "in the same order as the things just mentioned"
+      },
+      {
+       "w": "supposedly",
+       "pos": "adv",
+       "def": "according to what people say, though you doubt it"
+      },
+      {
+       "w": "technically",
+       "pos": "adv",
+       "def": "according to the exact rules or facts"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "CAUSATIVES",
+    "points": [
+     "have + object + past participle = you arrange for somebody else to do a job: I had my bike repaired. The same pattern describes bad things that happen to you: She had her phone stolen.",
+     "get + object + past participle means the same but is more informal: I must get my jacket cleaned.",
+     "get + person + to-infinitive = ask or persuade somebody: I got my sister to help. have + person + infinitive without to is more formal: I'll have the porter carry your bags.",
+     "make + person + infinitive without to = force somebody: The coach made us run ten laps.",
+     "let + person + infinitive without to = allow somebody: Mum let me stay up late."
+    ],
+    "questions": [
+     "I'm going to have my hair ____ (cut) tomorrow. | cut",
+     "We got the car ____ (repair) last week. | repaired",
+     "Our teacher made us ____ (stay) after class. | stay",
+     "My parents let me ____ (go) to the concert. | go",
+     "I'll get my brother ____ (help) us move the sofa. | to help",
+     "Correct it: She made me to cry. | She made me cry.",
+     "He had his wallet ____ on the metro. (stolen / steal) | stolen",
+     "I'll have my assistant ____ (send) you the file. | send",
+     "Correct it (a painter did it): I had painted my room. | I had my room painted.",
+     "Dad won't ____ me stay out late. (let / make) | let",
+     "You should get your eyes ____ (test). | tested",
+     "The dentist ____ me open my mouth wide. (made / got) | made"
+    ]
+   }
+  },
+  {
+   "n": 14,
+   "vocab": [
+    {
+     "topic": "SOCIAL MEDIA MARKETING",
+     "words": [
+      {
+       "w": "boost (sales)",
+       "pos": "v",
+       "def": "to increase or improve something, e.g. how much you sell"
+      },
+      {
+       "w": "designer goods",
+       "pos": "n",
+       "def": "expensive fashionable products made by famous brands"
+      },
+      {
+       "w": "emulate",
+       "pos": "v",
+       "def": "to copy someone's success and try to match it"
+      },
+      {
+       "w": "engage with",
+       "pos": "v",
+       "def": "to get involved or interact with people or content"
+      },
+      {
+       "w": "fanbase",
+       "pos": "n",
+       "def": "all the supporters of a celebrity, band or team"
+      },
+      {
+       "w": "follower",
+       "pos": "n",
+       "def": "a person who subscribes to your posts online"
+      },
+      {
+       "w": "market",
+       "pos": "v",
+       "def": "to promote products so that more people buy them"
+      },
+      {
+       "w": "product placement",
+       "pos": "n",
+       "def": "advertising by showing brand items in films or programmes"
+      },
+      {
+       "w": "sponsor",
+       "pos": "v",
+       "def": "to give money to support a person, team or event"
+      },
+      {
+       "w": "target",
+       "pos": "v",
+       "def": "to aim advertising at a particular group of people"
+      }
+     ]
+    },
+    {
+     "topic": "NEGATIVE PREFIXES",
+     "words": [
+      {
+       "w": "antisocial",
+       "pos": "adj",
+       "def": "harmful or annoying to other people in society"
+      },
+      {
+       "w": "deactivate",
+       "pos": "v",
+       "def": "to switch something off so it stops working"
+      },
+      {
+       "w": "disobey",
+       "pos": "v",
+       "def": "to refuse to do what you are told"
+      },
+      {
+       "w": "illegal",
+       "pos": "adj",
+       "def": "against the law"
+      },
+      {
+       "w": "imprecise",
+       "pos": "adj",
+       "def": "not exact or accurate"
+      },
+      {
+       "w": "inaccessible",
+       "pos": "adj",
+       "def": "impossible or very hard to reach"
+      },
+      {
+       "w": "irresponsibly",
+       "pos": "adv",
+       "def": "without thinking about the possible bad results"
+      },
+      {
+       "w": "misinformation",
+       "pos": "n",
+       "def": "false or wrong facts that are spread around"
+      },
+      {
+       "w": "non-existent",
+       "pos": "adj",
+       "def": "not real or not present at all"
+      },
+      {
+       "w": "undo",
+       "pos": "v",
+       "def": "to reverse the effects of an action"
+      }
+     ]
+    },
+    {
+     "topic": "SUFFIXES -FUL AND -LESS",
+     "words": [
+      {
+       "w": "helpful",
+       "pos": "adj",
+       "def": "willing to give assistance, or useful"
+      },
+      {
+       "w": "helpless",
+       "pos": "adj",
+       "def": "unable to look after or defend yourself"
+      },
+      {
+       "w": "unhelpful",
+       "pos": "adj",
+       "def": "not willing to assist; making things no easier"
+      },
+      {
+       "w": "truthful",
+       "pos": "adj",
+       "def": "honest; saying only what is real"
+      },
+      {
+       "w": "untruthful",
+       "pos": "adj",
+       "def": "saying things that are false; dishonest"
+      },
+      {
+       "w": "useful",
+       "pos": "adj",
+       "def": "good for a purpose; practical and handy"
+      },
+      {
+       "w": "useless",
+       "pos": "adj",
+       "def": "not serving any purpose; no good at all"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "REPORTED SPEECH",
+    "points": [
+     "Tenses usually move one step back (am - was, have done - had done, did - had done, will - would, can - could). The past perfect, would, could and should stay the same. The word that is optional.",
+     "No tense change is needed if the words are still true or if the reporting verb is in the present: She says she's tired.",
+     "Pronouns, possessives and time or place words change: tomorrow - the next day, yesterday - the day before, here - there, ago - before.",
+     "Reporting verbs have their own patterns: verb + to-infinitive (agree, offer, promise); verb + object + to-infinitive (advise, invite, tell, persuade, warn); verb + -ing (suggest, recommend, deny, admit); verb + preposition + -ing (apologise for, insist on, complain about).",
+     "To report what people in general say, use It + passive: It is believed that the painting is a fake."
+    ],
+    "questions": [
+     "'I'm hungry.' He said he ____ hungry. | was",
+     "'I'll help you.' She said she ____ help me. | would",
+     "'We've finished.' They said they ____ finished. | had",
+     "'I saw it yesterday.' He said he had seen it the day ____. | before",
+     "She suggested ____ a taxi. (to take / taking) | taking",
+     "He offered ____ me home. (to drive / driving) | to drive",
+     "He apologised ____ being late. (for / of / about) | for",
+     "Correct it: He said me the truth. | He told me the truth.",
+     "'I'll be here tomorrow.' He said he'd be ____ the next day. | there",
+     "The doctor advised me ____ (rest). | to rest",
+     "Tom denied ____ the window. (breaking / to break) | breaking",
+     "It ____ (say) that the castle is haunted. | is said"
+    ]
+   }
+  },
+  {
+   "n": 15,
+   "vocab": [
+    {
+     "topic": "ENDANGERED ANIMALS",
+     "words": [
+      {
+       "w": "declining population",
+       "pos": "n",
+       "def": "a number of animals or people that keeps getting smaller"
+      },
+      {
+       "w": "endangered",
+       "pos": "adj",
+       "def": "at risk of disappearing forever because few are left"
+      },
+      {
+       "w": "extinct",
+       "pos": "adj",
+       "def": "no longer existing anywhere on Earth"
+      },
+      {
+       "w": "habitat loss",
+       "pos": "n",
+       "def": "the disappearance of the natural places where species live"
+      },
+      {
+       "w": "on the verge of extinction",
+       "pos": "phr",
+       "def": "very close to dying out completely"
+      },
+      {
+       "w": "poaching",
+       "pos": "n",
+       "def": "hunting or catching wild creatures illegally"
+      },
+      {
+       "w": "threatened",
+       "pos": "adj",
+       "def": "likely to be harmed or to die out"
+      },
+      {
+       "w": "vulnerable",
+       "pos": "adj",
+       "def": "easily harmed; at some risk"
+      },
+      {
+       "w": "wilderness",
+       "pos": "n",
+       "def": "a wild natural area where nobody lives or farms"
+      },
+      {
+       "w": "woodland",
+       "pos": "n",
+       "def": "land covered with trees"
+      }
+     ]
+    },
+    {
+     "topic": "ADVERB AND ADJECTIVE COLLOCATIONS",
+     "words": [
+      {
+       "w": "equally important",
+       "pos": "phr",
+       "def": "mattering just as much as something else"
+      },
+      {
+       "w": "naturally occurring",
+       "pos": "phr",
+       "def": "existing without human action; not man-made"
+      },
+      {
+       "w": "noticeably different",
+       "pos": "phr",
+       "def": "not the same, in a way that's easy to see"
+      },
+      {
+       "w": "officially recognised",
+       "pos": "phr",
+       "def": "formally accepted by people in authority"
+      },
+      {
+       "w": "randomly selected",
+       "pos": "phr",
+       "def": "chosen by chance, not according to a plan"
+      },
+      {
+       "w": "rapidly increasing",
+       "pos": "phr",
+       "def": "growing very fast in number or size"
+      },
+      {
+       "w": "universally accepted",
+       "pos": "phr",
+       "def": "agreed to be right by everybody"
+      },
+      {
+       "w": "virtually impossible",
+       "pos": "phr",
+       "def": "almost certainly not able to happen or be done"
+      }
+     ]
+    },
+    {
+     "topic": "INTENSIFYING ADVERBS",
+     "words": [
+      {
+       "w": "bitterly",
+       "pos": "adv",
+       "def": "with strong anger or disappointment; also extremely (of cold)"
+      },
+      {
+       "w": "dangerously",
+       "pos": "adv",
+       "def": "in a way that could cause harm or injury"
+      },
+      {
+       "w": "deeply",
+       "pos": "adv",
+       "def": "very strongly or intensely (e.g. with feelings)"
+      },
+      {
+       "w": "fully",
+       "pos": "adv",
+       "def": "completely; in every way"
+      },
+      {
+       "w": "highly",
+       "pos": "adv",
+       "def": "very; to a great degree"
+      },
+      {
+       "w": "perfectly",
+       "pos": "adv",
+       "def": "completely; in a way that couldn't be better"
+      },
+      {
+       "w": "seriously",
+       "pos": "adv",
+       "def": "badly or severely; also without joking"
+      },
+      {
+       "w": "utterly",
+       "pos": "adv",
+       "def": "totally; absolutely (often with negative adjectives)"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "RELATIVE CLAUSES",
+    "points": [
+     "who / that for people, which / that for things, whose for possession, where for places, when for times, why for reasons. whom is formal and used after prepositions.",
+     "Defining clauses give essential information and have no commas. When the pronoun is the object of the clause you can drop it: The film (that) we saw was great.",
+     "Non-defining clauses add extra information between commas. Never use that in them and never drop the pronoun: My aunt, who lives in Cádiz, is a nurse.",
+     "which can refer back to a whole clause to add a comment: He arrived late, which annoyed everyone.",
+     "Prepositions: formal style puts them before the pronoun (the person to whom I spoke); everyday style puts them at the end (the person I spoke to)."
+    ],
+    "questions": [
+     "The woman ____ lives next door is a vet. (who / which) | who",
+     "That's the boy ____ dog bit me. (one word) | whose",
+     "This is the town ____ I was born. (one word) | where",
+     "My mum, ____ is 50, runs marathons. (who / that) | who",
+     "Can 'that' be left out? The book that I bought was cheap. (yes / no) | yes",
+     "Correct it: The man which called was rude. | The man who called was rude.",
+     "I'll never forget the day ____ we met. (when / where) | when",
+     "He failed the test, ____ surprised everyone. (which / what) | which",
+     "Formal: The person to ____ I spoke was helpful. (one word) | whom",
+     "Correct it: Madrid, that is huge, is fun. | Madrid, which is huge, is fun.",
+     "That's the reason ____ I left early. (why / which) | why",
+     "Which type of relative clause needs commas? (defining / non-defining) | non-defining"
+    ]
+   }
+  },
+  {
+   "n": 16,
+   "vocab": [
+    {
+     "topic": "ROLE MODELS",
+     "words": [
+      {
+       "w": "campaign for/against (something)",
+       "pos": "v",
+       "def": "to organise actions to try to achieve or stop a change"
+      },
+      {
+       "w": "come up against (a difficulty)",
+       "pos": "pv",
+       "def": "to have to face a problem or obstacle"
+      },
+      {
+       "w": "devote yourself to (something)",
+       "pos": "v",
+       "def": "to give all your time and energy to a cause"
+      },
+      {
+       "w": "fulfil an ambition",
+       "pos": "phr",
+       "def": "to achieve something you have long dreamed of doing"
+      },
+      {
+       "w": "look up to (someone)",
+       "pos": "pv",
+       "def": "to admire and respect a person"
+      },
+      {
+       "w": "raise awareness of",
+       "pos": "phr",
+       "def": "to help more people know about an issue"
+      },
+      {
+       "w": "role model",
+       "pos": "n",
+       "def": "a person others admire and try to copy"
+      },
+      {
+       "w": "take on a challenge",
+       "pos": "phr",
+       "def": "to accept a difficult task that tests your abilities"
+      },
+      {
+       "w": "think highly of (someone)",
+       "pos": "phr",
+       "def": "to have a very good opinion of a person"
+      },
+      {
+       "w": "throw yourself into (something)",
+       "pos": "pv",
+       "def": "to start doing an activity with lots of energy and enthusiasm"
+      }
+     ]
+    },
+    {
+     "topic": "DEPENDENT PREPOSITIONS",
+     "words": [
+      {
+       "w": "apparent to (someone)",
+       "pos": "adj",
+       "def": "obvious or clear for a person to see"
+      },
+      {
+       "w": "capable of (something)",
+       "pos": "adj",
+       "def": "having the ability or skill needed"
+      },
+      {
+       "w": "compatible with (something)",
+       "pos": "adj",
+       "def": "able to exist or work well together"
+      },
+      {
+       "w": "integral to (something)",
+       "pos": "adj",
+       "def": "an essential, necessary part of a whole"
+      },
+      {
+       "w": "mistaken in (something)",
+       "pos": "adj",
+       "def": "wrong about what you believe or think"
+      },
+      {
+       "w": "notable for (something)",
+       "pos": "adj",
+       "def": "important and deserving attention because of a quality"
+      },
+      {
+       "w": "thankful for (something)",
+       "pos": "adj",
+       "def": "pleased and grateful about a thing you have"
+      },
+      {
+       "w": "unaware of (something)",
+       "pos": "adj",
+       "def": "not knowing or realising that a thing exists"
+      }
+     ]
+    },
+    {
+     "topic": "PHRASAL PREPOSITIONS",
+     "words": [
+      {
+       "w": "aside from",
+       "pos": "adv",
+       "def": "other than; except for"
+      },
+      {
+       "w": "contrary to",
+       "pos": "adj",
+       "def": "opposite to what was said or expected"
+      },
+      {
+       "w": "in common with",
+       "pos": "phr",
+       "def": "in the same way as somebody or something else"
+      },
+      {
+       "w": "in the region of",
+       "pos": "phr",
+       "def": "approximately; about (used before numbers)"
+      },
+      {
+       "w": "let alone",
+       "pos": "id",
+       "def": "and even less; used after a negative to stress impossibility"
+      },
+      {
+       "w": "with regard to",
+       "pos": "phr",
+       "def": "concerning; on the subject of"
+      }
+     ]
+    }
+   ],
+   "grammar": {
+    "title": "PARTICIPLE CLAUSES",
+    "points": [
+     "Present participle (-ing) clauses describe an action at the same time as, or just before, the main action, or its result: Opening the door, she saw a stranger. Both parts must share the same subject.",
+     "They can follow conjunctions and prepositions such as while, after, before, since, on: After leaving school, he moved abroad.",
+     "Perfect participle clauses (having + past participle) show that one action was complete before the next, often giving a reason: Having lost my keys, I couldn't get in.",
+     "Past participle clauses have a passive meaning: Built in 1900, the house needs repairs.",
+     "Participles can replace relative clauses (the girl sitting by the window; the cars made here) and reason clauses (Being tired, I went to bed). Make them negative with not: Not knowing the answer, I guessed."
+    ],
+    "questions": [
+     "____ (walk) along the beach, I found a ring. | Walking",
+     "____ (finish) her homework first, she then went out. (perfect participle) | Having finished",
+     "____ (build) in 1850, the bridge is still in use. | Built",
+     "The man ____ (stand) by the door is my uncle. | standing",
+     "The phones ____ (make) in this factory are exported. | made",
+     "____ (not know) the way, we got lost. | Not knowing",
+     "____ by the noise, the baby started to cry. (Frightened / Frightening) | Frightened",
+     "She sat by the fire, ____ a book. (reading / read) | reading",
+     "Rewrite: Because I was tired, I left. ____ tired, I left. | Being",
+     "After ____ (leave) school, he moved to London. | leaving",
+     "Correct it: Having ate, we went out. | Having eaten, we went out.",
+     "____ in simple English, the book is easy to read. (Written / Writing) | Written"
+    ]
+   }
+  }
+ ]
+}

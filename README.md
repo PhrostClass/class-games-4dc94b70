@@ -3,6 +3,12 @@
 Classroom games as an installable web app for the iPad. Pure static files, no build step, no server, no accounts.
 Everything the teacher creates (decks, folders, settings) is stored **on the iPad only**, inside the app's own storage.
 
+Textbook decks (`textbooks.json`): Time Travellers 1-6 (primary, from the publisher's platform via `tools/milton.py` +
+`tools/build_decks.py`) and Prepare Levels 4-8 (ESO). For Prepare only the unit word lists and grammar topics come from
+the book (`tools/prepare_data/level*.json`, extracted from low-resolution page screenshots with OCR + enlarged crops);
+the definitions, grammar notes and practice questions were written for this app. `tools/build_prepare.py` merges them
+and also writes "Level N - vocabulary by unit.txt" / "Level N - grammar by unit.txt" into Desktop\prepare.
+
 All games share one deck library: 16 preset English-vocabulary decks plus your own decks in folders.
 Import lists by pasting or from .txt / .csv / .json files, export decks, full backup/restore.
 An entry can be a single word (`dog`) or a pair (`dog | perro`, also `dog<tab>perro`, `dog = perro`, `dog - perro`),
