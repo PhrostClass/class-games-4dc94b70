@@ -371,7 +371,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.11.0';
+const APP_VERSION = '1.12.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -435,7 +435,8 @@ function normalizeSettings(sv) {
 }
 function classSettings(d, cid) {
   cid = cid || HOME_CLASS;
-  if (!d.classSettings[cid]) d.classSettings[cid] = normalizeSettings(d.template);
+  // a home student's settings start as a copy of what was used in "Home students" before students had their own
+  if (!d.classSettings[cid]) d.classSettings[cid] = normalizeSettings(cid.startsWith(HOME_CLASS + ':') && d.classSettings[HOME_CLASS] ? JSON.parse(JSON.stringify(d.classSettings[HOME_CLASS])) : d.template);
   const cs = d.classSettings[cid];
   if (!Object.getOwnPropertyDescriptor(cs, 'theme') || !Object.getOwnPropertyDescriptor(cs, 'theme').get) {
     for (const k of GLOBAL_KEYS) { delete cs[k]; Object.defineProperty(cs, k, { enumerable: false, configurable: true, get: () => d.global[k], set: v => { d.global[k] = v; } }); }
@@ -445,10 +446,12 @@ function classSettings(d, cid) {
 function installDb(d) {
   if (!Object.getOwnPropertyDescriptor(d, 'settings') || !Object.getOwnPropertyDescriptor(d, 'settings').get) {
     delete d.settings;
-    Object.defineProperty(d, 'settings', { enumerable: false, configurable: true, get: () => classSettings(d, d.currentClass) });
+    Object.defineProperty(d, 'settings', { enumerable: false, configurable: true, get: () => classSettings(d, settingsKey(d)) });
   }
   return d;
 }
+/* Home students are taught one by one, so each of them has their own settings: key "home:<studentId>". */
+const settingsKey = d => d.currentClass === HOME_CLASS && d.currentStudent ? HOME_CLASS + ':' + d.currentStudent : d.currentClass;
 const makeDb = raw => installDb(normalizeDb(raw));
 function normalizeDb(d) {
   if (!d || typeof d !== 'object') d = freshDb();
@@ -478,6 +481,7 @@ function normalizeDb(d) {
   else if (d.template) d.template = normalizeSettings(d.template);
   if (Object.getOwnPropertyDescriptor(d, 'settings') && !Object.getOwnPropertyDescriptor(d, 'settings').get) delete d.settings;
   d.currentClass = typeof d.currentClass === 'string' && d.currentClass ? d.currentClass : null;
+  d.currentStudent = typeof d.currentStudent === 'string' && d.currentStudent ? d.currentStudent : null;
   return d;
 }
 function loadDb() {
@@ -682,7 +686,7 @@ function route() {
     queue: a => a ? renderQueueGroup(a) : renderQueueGroups(),
     quiz: renderQuizSetup, quizplay: renderQuiz, ttt: renderTttSetup, tttplay: renderTtt, bam: renderBamSetup, bamplay: renderBam,
     snakes: renderSnkSetup, snakesplay: renderSnk, hangman: renderHangSetup, hangmanplay: renderHang, roulette: renderRoulette, timer: renderTimer, rankings: renderRankings, absences: renderAbsences,
-    study: renderStudySetup, studyplay: renderStudy, pet: renderPet };
+    study: renderStudySetup, studyplay: renderStudy, pet: renderPet, students: renderHomeStudents };
   clearInterval(qTimer);
   (screens[name] || renderClasses)(arg);
 }
@@ -701,7 +705,7 @@ app.addEventListener('click', e => {
 function renderHome() {
   app.innerHTML = `<div class="screen">
     <div class="content"><div class="wrap">
-      <div class="hero" style="padding-top:calc(var(--sa-t) + 10px)"><div class="title">Games</div><div class="sub">${(() => { const g = currentClassGroup(); return g ? esc(g.icon + ' ' + g.name) : ''; })()} · <a data-nav="#class" style="color:var(--accent);cursor:pointer;font-weight:600">back to class</a></div></div>
+      <div class="hero" style="padding-top:calc(var(--sa-t) + 10px)"><div class="title">Games</div><div class="sub">${(() => { const g = currentClassGroup(), hs = homeStudent(); return hs ? esc(hs.name) : g ? esc(g.icon + ' ' + g.name) : ''; })()} · <a data-nav="#class" style="color:var(--accent);cursor:pointer;font-weight:600">back to class</a></div></div>
       <div class="games">
         <div class="gcard charades" data-nav="#setup"><div class="emoji">🎭</div><div class="n">Charades</div><div class="d">Act it out, the class guesses.</div></div>
         <div class="gcard buzz" data-nav="#buzz"><div class="emoji">🎲</div><div class="n">Yahtzee</div><div class="d">Turn question, pick a card, win points, dodge the monster.</div></div>
@@ -2469,6 +2473,7 @@ function withParticipants(obj, gameId, title, teamNames, go) {
   activeGame = { id: gameId, title, obj, participants: null, recorded: false };
   const g = currentClassGroup();
   if (!g || !g.students.length) { go(); return; }
+  if (g.id === HOME_CLASS) { if (homeStudent()) activeGame.participants = teamNames.map((_, i) => i === 0 ? [db.currentStudent] : []); go(); return; }
   const n = teamNames.length; const assign = {};
   const m = openSheet(`<h3>Who is playing?</h3><p>Tap a name to put them in a team${n > 1 ? ' (tap again for the next team)' : ''}. Leave absent students unmarked. Points go to the students who play.</p>
     <div class="ptteams">${teamNames.map((t, i) => `<span class="ptteam" style="background:${TEAM_COLORS[i % 8]}">${i + 1} · ${esc(t)}</span>`).join('')}</div>
@@ -2797,12 +2802,47 @@ function renderClasses() {
       <div class="ver">v${APP_VERSION}${IS_STANDALONE ? '' : ' · add to your Home Screen for the full-screen app'}</div>
     </div></div></div>`;
   $('.screen', app).addEventListener('click', e => {
-    const c = e.target.closest('[data-class]'); if (c) { db.currentClass = c.dataset.class; saveDb(); navState.depth++; go('#class'); return; }
+    const c = e.target.closest('[data-class]'); if (c) { db.currentClass = c.dataset.class; saveDb(); navState.depth++; go(c.dataset.class === HOME_CLASS ? '#students' : '#class'); return; }
     const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'teacher') qTeacher();
+  });
+}
+const homeStudent = () => { const g = db.queue.groups.find(x => x.id === HOME_CLASS); return (db.currentClass === HOME_CLASS && g && g.students.find(s => s.id === db.currentStudent)) || null; };
+function renderHomeStudents() {
+  const g = db.queue.groups.find(x => x.id === HOME_CLASS); if (!g) { location.replace('#classes'); return; }
+  db.currentClass = HOME_CLASS; const now = Date.now();
+  const card = s => { const st = db.study.cards[HOME_CLASS + ':' + s.id] || {}; const v = Object.values(st); const known = v.filter(c => c.s === 2).length, due = v.filter(c => c.s < 2 || c.d <= now).length;
+    return `<div class="ccard ${s.id === db.currentStudent ? 'cur' : ''}" data-student="${s.id}"><div class="cname">${esc(s.name)}</div><div class="csub">${v.length ? `${known} cards learned · ${due} to review` : 'Private lessons'}</div><div class="ccount">${s.id === db.currentStudent ? 'last student' : ''}</div></div>`; };
+  app.innerHTML = `<div class="screen">
+    ${topbar('Home students', backBtn('Classes', '#classes'), `<button class="tbtn" data-act="add">+ Student</button>`)}
+    <div class="content"><div class="wrap">
+      <div class="hero" style="padding-top:8px"><div class="title">Home students</div><div class="sub">Who is the lesson with?</div></div>
+      <div class="classes">${g.students.map(card).join('') || '<div class="empty">No students yet. Tap + Student.</div>'}</div>
+      <div class="hint" style="margin-top:16px">Each student keeps their own decks, game options, flashcard progress and exam results. Rename or remove students in Classes → Teacher.</div>
+    </div></div></div>`;
+  $('.screen', app).addEventListener('click', async e => {
+    const c = e.target.closest('[data-student]'); if (c) { db.currentStudent = c.dataset.student; saveDb(); navState.depth++; go('#class'); return; }
+    if (e.target.closest('[data-act=add]')) { const n = (await promptDlg('New home student', '', 'Name', 'Add') || '').trim(); if (!n) return; g.students.push({ id: uid(), name: n, emoji: '', color: '', photo: null }); qAssignLooks(g); saveDb(); renderHomeStudents(); }
   });
 }
 function renderClassHub() {
   const g = currentClassGroup(); if (!g) { location.replace('#classes'); return; }
+  if (g.id === HOME_CLASS) {
+    const stu = homeStudent(); if (!stu) { location.replace('#students'); return; }
+    const s = db.settings; const lastDeckNames = s.lastDecks.map(id => (getDeck(id) || {}).name).filter(Boolean);
+    const st = Object.values(db.study.cards[studyKey()] || {}); const due = st.filter(c => c.s < 2 || c.d <= Date.now()).length;
+    app.innerHTML = `<div class="screen">
+      ${topbar(stu.name, backBtn('Students', '#students'), `<button class="tbtn" data-nav="#settings">Settings</button>`)}
+      <div class="content"><div class="wrap">
+        <div class="hint" style="margin:0 4px 12px">Private lessons · everything you choose with ${esc(stu.name)} (decks, options, progress) is remembered for next time.</div>
+        <div class="games">
+          <div class="gcard exam" data-nav="#pet"><div class="emoji">🎓</div><div class="n">Exam prep</div><div class="d">B1 Preliminary (PET): Part 6 trainer, listening, hardest words.</div></div>
+          <div class="gcard study" data-nav="#study"><div class="emoji">🧠</div><div class="n">Study</div><div class="d">${st.length ? `${due} cards to review now · ${st.filter(c => c.s === 2).length} learned` : 'Flashcards with spaced repetition.'}</div></div>
+          <div class="gcard charades" data-nav="#home"><div class="emoji">🎮</div><div class="n">Games</div><div class="d">Charades, Yahtzee, Futaba, Memory${lastDeckNames.length ? ' · last decks: ' + esc(lastDeckNames.slice(0, 2).join(', ')) + (lastDeckNames.length > 2 ? '…' : '') : ''}</div></div>
+          <div class="gcard rank" data-nav="#rankings"><div class="emoji">🏆</div><div class="n">Rankings</div><div class="d">Points your home students win in the games.</div></div>
+        </div>
+      </div></div></div>`;
+    return;
+  }
   const live = db.queue.live[g.id]; const waiting = live && live.q ? live.q.length : 0;
   const s = db.settings; const lastDeckNames = s.lastDecks.map(id => (getDeck(id) || {}).name).filter(Boolean);
   app.innerHTML = `<div class="screen">
@@ -2846,7 +2886,7 @@ function srsGrade(c0, g, now) {   // g: 0 again · 1 hard · 2 good · 3 easy
   return c;
 }
 function srsLabel(c, g, now) { const x = srsGrade(c, g, now); return x.s < 2 ? Math.max(1, Math.round((x.d - now) / SRS_MIN)) + ' min' : x.i < 30 ? x.i + (x.i === 1 ? ' day' : ' days') : Math.round(x.i / 30) + ' mo'; }
-const studyWho = () => db.study.who[db.currentClass] || '';
+const studyWho = () => db.currentClass === HOME_CLASS ? (db.currentStudent || '') : (db.study.who[db.currentClass] || '');
 const studyKey = () => (db.currentClass || HOME_CLASS) + ':' + (studyWho() || 'all');
 function studyWhoName() { const g = currentClassGroup(); const s = g && g.students.find(x => x.id === studyWho()); return s ? s.name : 'Everyone'; }
 function studyData() {
@@ -2863,7 +2903,7 @@ async function pickStudyWho(rerender) {
   const v = await chooseDlg('Who is studying?', [{ label: 'Everyone', value: '', sub: 'One shared progress for the whole class' }].concat(g.students.map(s => ({ label: s.name, value: s.id }))));
   if (v === null) return; db.study.who[db.currentClass] = v; saveDb(); rerender();
 }
-const whoRowHtml = () => `<div class="card"><div class="row" data-act="who"><div class="ic">👤</div><div class="txt"><div class="t">${esc(studyWhoName())}</div><div class="s">Progress is saved for this student. Tap to change.</div></div><div class="chev">›</div></div></div>`;
+const whoRowHtml = () => db.currentClass === HOME_CLASS ? '' : `<div class="card"><div class="row" data-act="who"><div class="ic">👤</div><div class="txt"><div class="t">${esc(studyWhoName())}</div><div class="s">Progress is saved for this student. Tap to change.</div></div><div class="chev">›</div></div></div>`;
 function studyCards(ids) {
   const out = [], seen = new Set();
   for (const id of ids) {
@@ -2980,7 +3020,7 @@ function petWeakCats(pet) {
 function renderPet(arg) {
   if (!PET) { app.innerHTML = `<div class="screen">${topbar('Exam prep', backBtn('Back', '#class'), '')}<div class="content"><div class="wrap"><div class="empty"><div class="big">📡</div>The exam material has not been downloaded yet.<br>Open the app once with an internet connection.</div></div></div></div>`; return; }
   const g = currentClassGroup();
-  if (g && db.study.who[g.id] === undefined) { const c = g.id === HOME_CLASS && g.students.find(s => /^carlos/i.test(s.name)); db.study.who[g.id] = c ? c.id : ''; saveDb(); }
+  if (g && g.id === HOME_CLASS && !homeStudent()) { location.replace('#students'); return; }
   try { speechSynthesis.cancel(); } catch (e) {}
   const i = String(arg || '').indexOf('/'); const sec = i < 0 ? String(arg || '') : arg.slice(0, i), id = i < 0 ? '' : arg.slice(i + 1);
   ({ cloze: petCloze, drills: petDrills, ex: petEx, dictation: petDictation, guide: petGuide }[sec] || petHub)(id);
@@ -2993,7 +3033,7 @@ function petHub() {
   const vb = srsBuckets(studyCards(['tb_pet_all']), cards, now);
   const exRow = ex => { const r = pet.ex[ex.id]; return `<div class="row" data-nav="#pet/ex/${ex.id}"><div class="ic">${ex.id[0] === 'l' ? '🎧' : '📄'}</div><div class="txt"><div class="t">${esc(ex.title)}</div><div class="s">${r ? `best ${r.best}/${ex.items.length} · done ${r.n}×` : plural(ex.items.length, 'question')}</div></div><div class="chev">›</div></div>`; };
   app.innerHTML = `<div class="screen">
-    ${topbar('B1 Preliminary', backBtn('Back', '#class'), '')}
+    ${topbar('B1 Preliminary' + (homeStudent() ? ' · ' + homeStudent().name : ''), backBtn('Back', '#class'), '')}
     <div class="content"><div class="wrap">
       ${whoRowHtml()}
       <h2 class="sec">Reading Part 6 · write the missing word</h2>
@@ -3446,6 +3486,13 @@ if (location.search.includes('selftest')) {
     t('ordinal', ordinal(1) === '1st' && ordinal(2) === '2nd' && ordinal(3) === '3rd' && ordinal(4) === '4th' && ordinal(11) === '11th' && ordinal(22) === '22nd');
     t('normalizeQueue', normalizeQueue(null).groups.length === 7 && normalizeQueue({ groups: [{ id: 'x', name: 'X', students: [{ id: 'a', name: 'A' }] }] }).groups[0].students[0].color === Q_COLORS[0]);
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
+    // --- home students have their own settings
+    { const keepC = db.currentClass, keepS = db.currentStudent; const hg = db.queue.groups.find(x => x.id === HOME_CLASS);
+      db.currentClass = HOME_CLASS; db.currentStudent = null; db.settings.roundSeconds = 77;
+      db.currentStudent = hg.students[0].id; const inherited = db.settings.roundSeconds === 77; db.settings.roundSeconds = 30;
+      db.currentStudent = hg.students[1].id; const separate = db.settings.roundSeconds === 77;
+      t('home student settings', inherited && separate && settingsKey(db) === 'home:' + hg.students[1].id && studyKey() === 'home:' + hg.students[1].id && homeStudent() === hg.students[1]);
+      db.currentClass = keepC; db.currentStudent = keepS; }
     // --- Study (spaced repetition) + exam prep helpers
     const srsT0 = new Date(2026, 8, 19, 17, 0).getTime(); let srsC1 = srsGrade(srsNew(), 2, srsT0);
     t('srs new good -> 10 min', srsC1.s === 1 && srsC1.d === srsT0 + 10 * SRS_MIN);
@@ -3493,10 +3540,12 @@ if (location.search.includes('selftest')) {
     else if (demo === 'hangman') { Object.assign(gameCfg('hangman'), { teams: 2, rounds: 5 }); startHang(four); hang.guessed = new Set(['E', 'A', 'Z', 'Q', 'X']); hang.wrong = 3; renderHang(); }
     else if (demo === 'roulette') { db.currentClass = db.queue.groups[1].id; const st = rouState(db.currentClass); st.picked = [db.queue.groups[1].students[0].id]; st.excluded = [db.queue.groups[1].students[3].id]; go('#roulette'); }
     else if (demo === 'timer') { go('#timer'); }
-    else if (demo && demo.startsWith('pet')) { db.currentClass = HOME_CLASS; const m = { pet: '#pet', petcloze: '#pet/cloze/c05', petclozelist: '#pet/cloze', petdrills: '#pet/drills', petdrill: '#pet/drills/prep', petread: '#pet/ex/r2', petlisten: '#pet/ex/l3a', petlisten4: '#pet/ex/l4', petdict: '#pet/dictation', petguide: '#pet/guide' }; go(m[demo] || '#pet');
+    else if (demo === 'students') { db.currentClass = HOME_CLASS; go('#students'); }
+    else if (demo === 'homehub') { db.currentClass = HOME_CLASS; db.currentStudent = currentClassGroup().students.find(s => /^carlos/i.test(s.name)).id; go('#class'); }
+    else if (demo && demo.startsWith('pet')) { db.currentClass = HOME_CLASS; db.currentStudent = currentClassGroup().students.find(s => /^carlos/i.test(s.name)).id; const m = { pet: '#pet', petcloze: '#pet/cloze/c05', petclozelist: '#pet/cloze', petdrills: '#pet/drills', petdrill: '#pet/drills/prep', petread: '#pet/ex/r2', petlisten: '#pet/ex/l3a', petlisten4: '#pet/ex/l4', petdict: '#pet/dictation', petguide: '#pet/guide' }; go(m[demo] || '#pet');
       if (demo === 'petcloze') setTimeout(() => { const v = ['in', 'to', 'in', 'as', 'was', 'of']; $$('.gapin').forEach((x, i) => x.value = v[i]); $('[data-act=check]').click(); }, 400);
       if (demo === 'petlisten') setTimeout(() => { const v = ['12', '8.15', 'fourteen', 'packed lunch', 'robots', 'Dalton']; $$('.gapin').forEach((x, i) => x.value = v[i]); $('[data-act=check]').click(); }, 400); }
-    else if (demo === 'study' || demo === 'studyback' || demo === 'studysetup') { db.currentClass = HOME_CLASS; gameCfg('study').autoSpeak = false; if (demo === 'studysetup') go('#study/pet'); else { startStudy(['tb_pet_all']); if (demo === 'studyback') { study.shown = true; renderStudy(); } } }
+    else if (demo === 'study' || demo === 'studyback' || demo === 'studysetup') { db.currentClass = HOME_CLASS; db.currentStudent = currentClassGroup().students.find(s => /^carlos/i.test(s.name)).id; gameCfg('study').autoSpeak = false; if (demo === 'studysetup') go('#study/pet'); else { startStudy(['tb_pet_all']); if (demo === 'studyback') { study.shown = true; renderStudy(); } } }
     else if (demo === 'absences') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; setAbsences(gg.id, todayKey(), [gg.students[2].id, gg.students[6].id]); db.global.attBot = 'attendance_bot'; go('#absences'); }
     else if (demo === 'players') { db.currentClass = db.queue.groups[1].id; Object.assign(gameCfg('quiz'), { teams: 3 }); startQuiz(four); }
     else if (demo === 'rankings') { db.currentClass = db.queue.groups[1].id; const gg = db.queue.groups[1]; db.results = [{ ts: Date.now() - 86400000, cls: gg.id, clsName: gg.name, grade: 2, game: 'quiz', title: 'Quiz Show', teams: [{ name: 'Team 1', score: 500, rank: 1, pts: 3, students: [gg.students[0].id, gg.students[1].id] }, { name: 'Team 2', score: 300, rank: 2, pts: 2, students: [gg.students[2].id, gg.students[3].id] }] }, { ts: Date.now(), cls: gg.id, clsName: gg.name, grade: 2, game: 'ttt', title: 'Tic-tac-toe', teams: [{ name: 'X', score: 1, rank: 1, pts: 3, students: [gg.students[2].id] }, { name: 'O', score: 0, rank: 2, pts: 2, students: [gg.students[0].id, gg.students[5].id] }] }]; go('#rankings'); }

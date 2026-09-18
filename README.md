@@ -59,7 +59,9 @@ Games:
 ## Classes
 
 After sign-in the app asks **which class** this is (the queue groups plus a **Home students** entry). Each class has a hub
-with **Queue** and **Games**. Every game setting (decks ticked, teams and their names, timers, question types…) is stored
+with **Queue** and **Games**. **Home students** opens a list of the private students first; each of them has their own hub
+(Exam prep, Study, Games, Rankings; no queue, roulette or absences) and their own settings (`db.classSettings["home:<studentId>"]`,
+`db.currentStudent`), and plays as team 1 without the "Who is playing?" sheet. Every game setting (decks ticked, teams and their names, timers, question types…) is stored
 per class in `db.classSettings[classId]` and comes back exactly as last used; theme and preset visibility are global.
 
 ## Sign-in
@@ -111,5 +113,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover|absences|pet|petcloze|petclozelist|petdrills|petdrill|petread|petlisten|petlisten4|petdict|petguide|study|studyback|studysetup` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover|absences|pet|petcloze|petclozelist|petdrills|petdrill|petread|petlisten|petlisten4|petdict|petguide|study|studyback|studysetup|students|homehub` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.
