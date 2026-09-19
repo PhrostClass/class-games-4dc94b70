@@ -12,3 +12,5 @@ tools/prepare_ocr/
 tools/prepare_crops/
 tools/pet/*.pdf
 tools/pet/headwords_ranked.json
+tools/tts_models/
+tools/img_cache/

@@ -344,7 +344,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .cattag{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:2px 9px;vertical-align:middle}
 .petscore{font-size:44px;font-weight:800;text-align:center;margin:16px 0 10px}
 .exq{background:var(--card);border-radius:16px;padding:14px 16px;margin-top:12px}
-.exq .qt{font-size:17px;font-weight:600;margin:4px 0 8px;line-height:1.4}.exq .blank{display:inline-block;width:70px;border-bottom:2px solid var(--muted)}
+.exq .qt{font-size:17px;font-weight:600;margin:4px 0 8px;line-height:1.4}.blank{display:inline-block;width:70px;border-bottom:3px solid var(--accent);margin:0 3px}
 .notice{border:2px solid var(--line);border-radius:12px;padding:12px 14px;white-space:pre-line;font-size:16px;line-height:1.45;background:var(--card2);margin-bottom:8px}
 .opt{display:block;width:100%;text-align:left;font:inherit;font-size:16px;color:var(--text);background:var(--card2);border:2px solid var(--line);border-radius:12px;padding:11px 13px;margin-top:7px;cursor:pointer;line-height:1.35}
 .opt b{color:var(--accent);margin-right:6px}.opt.sel{border-color:var(--accent);background:var(--card)}
@@ -364,6 +364,16 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 .grade{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .gbtn{border:0;border-radius:14px;padding:13px 4px;font:inherit;color:#fff;cursor:pointer}.gbtn b{display:block;font-size:17px}.gbtn span{font-size:12px;opacity:.9}
 .gbtn.bad{background:var(--bad)}.gbtn.warn{background:#d97706}.gbtn.ok{background:var(--ok)}.gbtn.easy{background:#2f7de1}.gbtn:active{filter:brightness(.9)}
+.unithead{display:flex;align-items:center;gap:8px;padding:10px 6px 8px 16px;cursor:pointer;font-size:15px;font-weight:600}
+.unithead .tri{font-size:11px;color:var(--muted);width:12px}.unithead .name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.unithead .cnt{font-size:13px;color:var(--muted);font-weight:500}
+.unitbox{margin:0 0 4px 14px}
+.fimg{width:min(260px,60vw);height:min(260px,60vw);object-fit:contain;background:#fff;border-radius:22px;margin:0 auto 14px;display:block}
+.fword.okc{color:var(--ok)}.fword.noc{color:var(--bad)}
+.chipbank{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:14px}
+.chipbtn{font:inherit;font-size:20px;font-weight:600;color:var(--text);background:var(--card);border:2px solid var(--line);border-radius:12px;padding:9px 14px;margin:3px 1px;cursor:pointer}
+.chipbtn.on{border-color:var(--accent);background:var(--card2)}
+.chip img{width:34px;height:34px;object-fit:contain;background:#fff;border-radius:8px;vertical-align:middle;margin:-4px 6px -4px -6px}
+.gcard.grammar{background:linear-gradient(135deg,#9d174d,#f43f5e);color:#fff}.gcard.grammar .d{color:rgba(255,255,255,.88)}
 .dok{color:var(--ok);font-weight:600}.dno{color:var(--bad);font-weight:800;text-decoration:underline}
 </style>
 </head>
@@ -371,7 +381,7 @@ h2.sec{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercas
 <div id="app"></div>
 <script>
 'use strict';
-const APP_VERSION = '1.12.1';
+const APP_VERSION = '1.13.0';
 const LS_KEY = 'classGames.v1';
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
@@ -409,11 +419,24 @@ function buildTextbookFolders(data) {
 async function loadTextbooks() {
   try { const r = await fetch('./textbooks.json', { cache: 'default' }); if (r.ok) TEXTBOOK_FOLDERS = buildTextbookFolders(await r.json()); } catch (e) { console.warn('textbooks.json not loaded', e); }
   try { const r = await fetch('./pet.json', { cache: 'default' }); if (r.ok) installPet(await r.json()); } catch (e) { console.warn('pet.json not loaded', e); }
+  await Promise.all([loadMedia(), loadGrammar()]);
 }
 const textbookDecks = () => db.global.showTextbooks === false ? [] : TEXTBOOK_FOLDERS.flatMap(f => f.decks);
 /* Grade of the current class (from its name: "5º EP A", "2 EP") — used to open that grade's textbook folder by default */
 function classGrade() { const g = currentClassGroup(); const m = g && g.name.match(/(\d)\s*º?\s*(EP|PRIM)/i); return m ? +m[1] : null; }
-function collapsedByDefault(key) { return key.startsWith('tb_') && key !== 'tb_tt' + classGrade(); }
+/* Units (…_u3) and the presets start closed; a textbook folder starts open only when it is the class's own grade. Keys may carry a screen prefix. */
+function collapsedByDefault(key) { const k = key.replace(/^(pick_|gram_)/, ''); if (/_u\d+$/.test(k) || k === 'preset') return true; return k.startsWith('tb_') && k !== 'tb_tt' + classGrade(); }
+const KIND_LABEL = { vocab: 'Vocabulary', grammar: 'Grammar', verbs: 'Irregular verbs', review: 'Review' };
+const nameTail = k => { const i = k.name.indexOf('·'); return i < 0 ? '' : k.name.slice(i + 1).trim(); };
+/* A textbook folder is shown as Unit → Vocabulary / Grammar / Irregular verbs / Review. */
+function folderUnits(f) {
+  if (!f || !String(f.id).startsWith('tb_') || !f.decks.some(k => k.unit)) return null;
+  const by = new Map(); for (const k of f.decks) { if (!by.has(k.unit)) by.set(k.unit, []); by.get(k.unit).push(k); }
+  if (by.size < 2) return null;
+  return [...by.entries()].map(([n, decks]) => { const head = decks.find(k => k.kind === 'vocab') || decks[0]; const title = nameTail(head);
+    return { n, key: f.id + '_u' + n, title, name: decks.length === 1 && decks[0].kind === 'verbs' ? nameTail(decks[0]) || 'Irregular verbs' : `Unit ${n}${title ? ' · ' + title : ''}`, decks }; });
+}
+const unitDeckLabel = (k, u) => { const t = nameTail(k); return (KIND_LABEL[k.kind] || k.name) + (t && t !== u.title ? ' · ' + t : ''); };
 function isCollapsed(key) { const c = db.global.collapsed || {}; return key in c ? !!c[key] : collapsedByDefault(key); }
 
 /* ===================== Store ===================== */
@@ -672,7 +695,7 @@ const backBtn = (label = 'Back', fallback = '#library') => `<button class="tbtn"
 
 /* ===================== Router ===================== */
 let pendingReload = false;   // a new version is installed and waits for a harmless moment (a menu screen) to load
-const SAFE_TO_RELOAD = () => /^#?\/?(classes|class|students|home|library|settings|rankings|pet|study)?$/.test(location.hash) && !$('.modal');
+const SAFE_TO_RELOAD = () => /^#?\/?(classes|class|students|home|library|settings|rankings|pet|study|grammar)?$/.test(location.hash) && !$('.modal');
 const app = $('#app');
 const navState = { depth: 0 };
 function route() {
@@ -689,7 +712,7 @@ function route() {
     queue: a => a ? renderQueueGroup(a) : renderQueueGroups(),
     quiz: renderQuizSetup, quizplay: renderQuiz, ttt: renderTttSetup, tttplay: renderTtt, bam: renderBamSetup, bamplay: renderBam,
     snakes: renderSnkSetup, snakesplay: renderSnk, hangman: renderHangSetup, hangmanplay: renderHang, roulette: renderRoulette, timer: renderTimer, rankings: renderRankings, absences: renderAbsences,
-    study: renderStudySetup, studyplay: renderStudy, pet: renderPet, students: renderHomeStudents };
+    study: renderStudySetup, studyplay: renderStudy, pet: renderPet, students: renderHomeStudents, grammar: renderGrammar };
   clearInterval(qTimer);
   (screens[name] || renderClasses)(arg);
 }
@@ -731,13 +754,15 @@ function renderHome() {
 
 function renderLibrary() {
   const s = db.settings;
-  const folderBlock = (fid, name, decks, isPresetF) => {
+  const folderBlock = (fid, name, decks, isPresetF, units) => {
     const key = fid || 'none';
     const collapsed = isCollapsed(key);
     const menu = (isPresetF || !fid) ? '' : `<button class="tbtn" data-fmenu="${fid}">•••</button>`;
-    const rows = decks.map(k => `<div class="row" data-nav="#deck/${k.id}"><div class="ic">${esc(k.emoji || (isPresetF ? '📚' : '🗂️'))}</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}</div></div><div class="chev">›</div></div>`).join('');
-    return `<div class="folderhead" data-collapse="${key}"><span class="tri">${collapsed ? '▶' : '▼'}</span><div class="name">${esc(name)}</div><span class="cnt">${decks.length}</span>${menu}</div>
-      ${collapsed ? '' : `<div class="card">${rows || `<div class="row static"><div class="txt"><div class="s">Empty folder · use ••• to add a deck</div></div></div>`}</div>`}`;
+    const row = (k, label) => `<div class="row" data-nav="#deck/${k.id}"><div class="ic">${esc(k.emoji || (isPresetF ? '📚' : '🗂️'))}</div><div class="txt"><div class="t">${esc(label || k.name)}</div><div class="s">${k.kind === 'grammar' || k.kind === 'review' ? plural(k.words.length, 'question') : nWords(k.words.length)}</div></div><div class="chev">›</div></div>`;
+    const inner = units ? units.map(u => { const uc = isCollapsed(u.key); return `<div class="unithead" data-collapse="${u.key}"><span class="tri">${uc ? '▶' : '▼'}</span><div class="name">${esc(u.name)}</div><span class="cnt">${u.decks.length}</span></div>${uc ? '' : `<div class="unitbox"><div class="card">${u.decks.map(k => row(k, unitDeckLabel(k, u))).join('')}</div></div>`}`; }).join('')
+      : `<div class="card">${decks.map(k => row(k)).join('') || `<div class="row static"><div class="txt"><div class="s">Empty folder · use ••• to add a deck</div></div></div>`}</div>`;
+    return `<div class="folderhead" data-collapse="${key}"><span class="tri">${collapsed ? '▶' : '▼'}</span><div class="name">${esc(name)}</div><span class="cnt">${units ? plural(units.length, 'unit') : decks.length}</span>${menu}</div>
+      ${collapsed ? '' : inner}`;
   };
   const folders = foldersSorted();
   const unfiled = decksInFolder(null);
@@ -748,8 +773,8 @@ function renderLibrary() {
     if (unfiled.length || !folders.length) body += folderBlock(null, 'My decks', unfiled, false);
     for (const f of folders) body += folderBlock(f.id, f.name, decksInFolder(f.id), false);
   }
+  if (db.global.showTextbooks !== false) for (const f of TEXTBOOK_FOLDERS) body += folderBlock(f.id, f.name, f.decks, true, folderUnits(f));
   if (s.showPresets) body += folderBlock('preset', 'Preset decks', PRESET_DECKS, true);
-  if (db.global.showTextbooks !== false) for (const f of TEXTBOOK_FOLDERS) body += folderBlock(f.id, f.name, f.decks, true);
   app.innerHTML = `<div class="screen">
     ${topbar('Decks', backBtn('Games', '#home'), `<button class="tbtn" data-nav="#settings">Settings</button>`)}
     <div class="content"><div class="wrap">
@@ -807,12 +832,13 @@ function renderDeck(id) {
       <div class="hint" style="margin:0 4px 12px">${folder ? '📁 ' + esc(folder.name) + ' · ' : ''}${nWords(k.words.length)}${preset ? ' · preset (copy it to edit)' : ''}</div>
       ${k.desc ? `<div class="hint" style="margin:0 4px 12px;color:var(--text)">${esc(k.desc)}</div>` : ''}
       <button class="btn big" data-act="play">▶ Play this deck</button>
+      ${GRAMMAR[k.id] ? `<button class="btn sec" style="margin-top:10px" data-nav="#grammar/${k.id}">✏️ Practise on the iPad (${GRAMMAR[k.id].items.length} questions with explanations)</button>` : k.kind === 'grammar' || k.kind === 'review' ? '' : `<button class="btn sec" style="margin-top:10px" data-act="study">🧠 Study these words</button>`}
       <div class="btnrow" style="margin-top:10px">
         ${preset ? `<button class="btn sec" data-act="copy">Copy to my decks</button>` : `<button class="btn sec" data-act="move">Move</button><button class="btn sec" data-act="dup">Duplicate</button>`}
         <button class="btn sec" data-act="export">Export</button>
       </div>
       <h2 class="sec">Words</h2>
-      <div class="chips">${k.words.map(w => `<span class="chip">${esc(term(w))}${hasPair(w) ? `<span class="pair"> · ${esc(parts(w).slice(1).join(' · '))}</span>` : ''}</span>`).join('') || '<span class="hint">No words yet. Tap Edit to add some.</span>'}</div>
+      <div class="chips">${k.words.map(w => `<span class="chip">${k.kind === 'grammar' || k.kind === 'review' || !imgFor(term(w)) ? '' : `<img src="${imgFor(term(w))}" alt="" loading="lazy">`}${esc(term(w))}${hasPair(w) ? `<span class="pair"> · ${esc(parts(w).slice(1).join(' · '))}</span>` : ''}</span>`).join('') || '<span class="hint">No words yet. Tap Edit to add some.</span>'}</div>
       ${!preset && k.words.length && !k.words.some(hasPair) ? '<div class="hint">Tip: add a translation or answer after a vertical bar, e.g. <b>dog | perro</b>, and Futaba and Memory can use it.</div>' : ''}
       ${preset ? '' : `<div style="margin-top:20px"><button class="btn bad" data-act="delete">Delete deck</button></div>`}
     </div></div></div>`;
@@ -820,6 +846,7 @@ function renderDeck(id) {
     const a = e.target.closest('[data-act]'); if (!a) return;
     const act = a.dataset.act;
     if (act === 'play') pickGame([k.id]);
+    if (act === 'study') { gameCfg('study').lastDecks = [k.id]; saveDb(); navState.depth++; go('#study'); }
     if (act === 'copy' || act === 'dup') {
       const d = upsertDeck({ id: uid(), name: uniqueName(k.name), folderId: preset ? null : k.folderId, words: k.words.slice() });
       toast('Copied as "' + d.name + '"'); navState.depth++; go('#edit/' + d.id);
@@ -992,7 +1019,7 @@ function renderSetup() {
       const t = e.target.closest('[data-time]'); if (t) { s.roundSeconds = +t.dataset.time; saveDb(); keepScroll(render); return; }
       const tm = e.target.closest('[data-team]'); if (tm) { s.teams = Math.min(4, Math.max(1, s.teams + (+tm.dataset.team))); saveDb(); keepScroll(render); return; }
       const o = e.target.closest('[data-opt]'); if (o) { s[o.dataset.opt] = !s[o.dataset.opt]; saveDb(); keepScroll(render); return; }
-      const sa = e.target.closest('[data-selall]'); if (sa) { const g = groups.find(x => x.id === sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); s.lastDecks = [...selected]; saveDb(); keepScroll(render); return; }
+      const sa = e.target.closest('[data-selall]'); if (sa) { const g = pickGroup(groups, sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); s.lastDecks = [...selected]; saveDb(); keepScroll(render); return; }
       const d = e.target.closest('[data-deck]'); if (d) { const id = d.dataset.deck; if (selected.has(id)) selected.delete(id); else selected.add(id); s.lastDecks = [...selected]; saveDb(); keepScroll(render); return; }
       const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'start') startGame([...selected]);
     });
@@ -1247,7 +1274,7 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
 window.addEventListener('hashchange', () => {
   const playing = /^#(play|buzzplay|futabaplay|memoryplay|quizplay|tttplay|bamplay|snakesplay|hangmanplay)$/.test(location.hash);
   keepAwake(playing);
-  if (!playing) { try { speechSynthesis.cancel(); } catch (e) {} }
+  if (!playing) stopSpeech();
   if (!playing && game) { if (game.phase === 'word' || game.phase === 'countdown') { clearInterval(game.timer); clearTimeout(game.timer); game.phase = 'ready'; game.pool = game.queue.concat(game.pool); game.queue = []; game.current = null; } }
 });
 
@@ -1276,7 +1303,7 @@ const GAME_DEFAULTS = {
   bam: { lastDecks: [], cards: 20, powers: 5, qTime: 20, side: 'answer', plain: 'scramble', showOpts: false, teams: 2 },
   snakes: { lastDecks: [], size: 8, qTime: 20, side: 'answer', plain: 'scramble', showOpts: false, exact: false, teams: 2 },
   hangman: { lastDecks: [], rounds: 5, hint: true, teams: 1 },
-  study: { lastDecks: [], newPerDay: 20, dir: 'fwd', autoSpeak: true, rate: 0.95 },
+  study: { lastDecks: [], newPerDay: 20, dir: 'auto', mode: 'say', pics: true, autoSpeak: true, rate: 0.95 },
 };
 function gameCfg(key) {
   const s = db.settings;
@@ -1290,8 +1317,9 @@ function deckGroups() {
   const groups = [];
   const unfiled = decksInFolder(null); if (unfiled.length) groups.push({ id: 'none', name: 'My decks', decks: unfiled });
   for (const f of foldersSorted()) { const d = decksInFolder(f.id); if (d.length) groups.push({ id: f.id, name: f.name, decks: d }); }
-  if (db.settings.showPresets) groups.push({ id: 'preset', name: 'Preset decks', decks: PRESET_DECKS });
-  if (db.global.showTextbooks !== false) for (const f of TEXTBOOK_FOLDERS) groups.push({ id: f.id, name: f.name, decks: f.decks, collapsible: true });
+  groups.forEach(g => { g.collapsible = true; });
+  if (db.global.showTextbooks !== false) for (const f of TEXTBOOK_FOLDERS) groups.push({ id: f.id, name: f.name, decks: f.decks, collapsible: true, units: folderUnits(f) });
+  if (db.settings.showPresets) groups.push({ id: 'preset', name: 'Preset decks', decks: PRESET_DECKS, collapsible: true });
   return groups;
 }
 function ensureSelection(cfg) {
@@ -1301,9 +1329,18 @@ function ensureSelection(cfg) {
   return new Set(cfg.lastDecks);
 }
 function deckPickerHtml(groups, selected) {
-  return groups.map(g => { const col = g.collapsible && isCollapsed('pick_' + g.id); const nsel = g.decks.filter(k => selected.has(k.id)).length; return `<div class="folderhead">${g.collapsible ? `<span class="tri" data-pickcollapse="${g.id}">${col ? '▶' : '▼'}</span>` : ''}<div class="name" ${g.collapsible ? `data-pickcollapse="${g.id}"` : ''}>${esc(g.name)}${nsel && col ? ` <span class="cnt">· ${nsel} selected</span>` : ''}</div>${col ? '' : `<button class="tbtn" data-selall="${g.id}">${g.decks.every(k => selected.has(k.id)) ? 'None' : 'All'}</button>`}</div>
-    ${col ? '' : `<div class="card">${g.decks.map(k => `<div class="row" data-deck="${k.id}"><div class="check ${selected.has(k.id) ? 'on' : ''}">✓</div><div class="txt"><div class="t">${esc(k.name)}</div><div class="s">${nWords(k.words.length)}${k.words.some(hasPair) ? ' · ' + k.words.filter(hasPair).length + ' with pairs' : ''}</div></div></div>`).join('')}</div>`}`; }).join('');
+  const row = (k, label) => `<div class="row" data-deck="${k.id}"><div class="check ${selected.has(k.id) ? 'on' : ''}">✓</div><div class="txt"><div class="t">${esc(label || k.name)}</div><div class="s">${k.kind === 'grammar' || k.kind === 'review' ? plural(k.words.length, 'question') : nWords(k.words.length)}${k.kind !== 'grammar' && k.kind !== 'review' && k.words.some(hasPair) ? ' · ' + k.words.filter(hasPair).length + ' with pairs' : ''}</div></div></div>`;
+  const allBtn = (id, decks) => `<button class="tbtn" data-selall="${id}">${decks.every(k => selected.has(k.id)) ? 'None' : 'All'}</button>`;
+  return groups.map(g => {
+    const col = g.collapsible && isCollapsed('pick_' + g.id); const nsel = g.decks.filter(k => selected.has(k.id)).length;
+    const head = `<div class="folderhead">${g.collapsible ? `<span class="tri" data-pickcollapse="${g.id}">${col ? '▶' : '▼'}</span>` : ''}<div class="name" ${g.collapsible ? `data-pickcollapse="${g.id}"` : ''}>${esc(g.name)}${nsel ? ` <span class="cnt">· ${nsel} selected</span>` : ''}</div>${col || g.units ? '' : allBtn(g.id, g.decks)}</div>`;
+    if (col) return head;
+    if (!g.units) return head + `<div class="card">${g.decks.map(k => row(k)).join('')}</div>`;
+    return head + g.units.map(u => { const uc = isCollapsed('pick_' + u.key); const us = u.decks.filter(k => selected.has(k.id)).length;
+      return `<div class="unithead"><span class="tri" data-pickcollapse="${u.key}">${uc ? '▶' : '▼'}</span><div class="name" data-pickcollapse="${u.key}">${esc(u.name)}${us ? ` <span class="cnt">· ${us} selected</span>` : ''}</div>${uc ? '' : allBtn(u.key, u.decks)}</div>${uc ? '' : `<div class="unitbox"><div class="card">${u.decks.map(k => row(k, unitDeckLabel(k, u))).join('')}</div></div>`}`; }).join('');
+  }).join('');
 }
+const pickGroup = (groups, id) => groups.find(x => x.id === id) || groups.flatMap(x => x.units || []).find(u => u.key === id);
 function togglePickCollapse(id) { const k = 'pick_' + id; db.global.collapsed[k] = !isCollapsed(k); saveDb(); }
 const stepHtml = (key, label, sub, value) => `<div class="toggle" style="cursor:default"><div><div class="lbl">${label}</div>${sub ? `<div class="sub">${sub}</div>` : ''}</div><div class="stepper"><button data-step="${key}" data-d="-1">−</button><span>${value}</span><button data-step="${key}" data-d="1">+</button></div></div>`;
 const segHtml = (key, opts, value) => `<div class="seg wrap">${opts.map(o => `<button data-seg="${key}" data-v="${esc(o[0])}" class="${String(value) === String(o[0]) ? 'on' : ''}">${esc(o[1])}</button>`).join('')}</div>`;
@@ -1316,7 +1353,7 @@ function bindSetup(sc, cfg, groups, selected, limits, rerender, onStart) {
     const st = e.target.closest('[data-step]'); if (st) { const k = st.dataset.step, [lo, hi] = limits[k]; cfg[k] = Math.min(hi, Math.max(lo, (+cfg[k] || 0) + (+st.dataset.d))); saveDb(); rr(); return; }
     const sg = e.target.closest('[data-seg]'); if (sg) { const v = sg.dataset.v; cfg[sg.dataset.seg] = /^-?\d+$/.test(v) ? +v : v; saveDb(); rr(); return; }
     const o = e.target.closest('[data-opt]'); if (o) { cfg[o.dataset.opt] = !cfg[o.dataset.opt]; saveDb(); rr(); return; }
-    const sa = e.target.closest('[data-selall]'); if (sa) { const g = groups.find(x => x.id === sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); cfg.lastDecks = [...selected]; saveDb(); rr(); return; }
+    const sa = e.target.closest('[data-selall]'); if (sa) { const g = pickGroup(groups, sa.dataset.selall); const allOn = g.decks.every(k => selected.has(k.id)); g.decks.forEach(k => allOn ? selected.delete(k.id) : selected.add(k.id)); cfg.lastDecks = [...selected]; saveDb(); rr(); return; }
     const d = e.target.closest('[data-deck]'); if (d) { const id = d.dataset.deck; if (selected.has(id)) selected.delete(id); else selected.add(id); cfg.lastDecks = [...selected]; saveDb(); rr(); return; }
     const a = e.target.closest('[data-act]'); if (a && a.dataset.act === 'start') onStart();
   });
@@ -1589,8 +1626,14 @@ const voiceLang = v => String(v.lang || '').replace('_', '-').toLowerCase();
 const voiceQuality = v => { const id = (v.voiceURI || '') + ' ' + (v.name || ''); return /premium/i.test(id) ? 3 : /enhanced/i.test(id) ? 2 : /compact|eloquence/i.test(id) ? 0 : 1; };
 function voicesFor(lang) { const l = String(lang).toLowerCase(); const same = VOICES.filter(v => voiceLang(v) === l); const list = same.length ? same : VOICES.filter(v => voiceLang(v).startsWith(l.slice(0, 2))); return list.slice().sort((a, b) => voiceQuality(b) - voiceQuality(a) || a.name.localeCompare(b.name)); }
 function bestVoice(lang, name) { const list = voicesFor(lang); if (name) { const v = list.find(x => x.name === name); if (v) return v; } return list[0] || null; }
+/* Built-in words, sentences and student names have a recorded natural voice (audio/); the device voice is the fallback. */
 function speak(text, lang, name) {
-  try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text)); u.lang = lang || 'en-GB'; const v = bestVoice(lang || 'en-GB', name); if (v) u.voice = v; u.rate = 0.9; u.pitch = 1; speechSynthesis.speak(u); } catch (e) {}
+  const k = clipFor(String(lang || 'en').toLowerCase().startsWith('es') ? 'ES' : 'F', '1', text);
+  if (k) { playClips([k]).then(ok => { if (!ok) ttsSpeak(text, lang, name); }); return; }
+  ttsSpeak(text, lang, name);
+}
+function ttsSpeak(text, lang, name) {
+  try { stopSpeech(); const u = new SpeechSynthesisUtterance(String(text)); u.lang = lang || 'en-GB'; const v = bestVoice(lang || 'en-GB', name); if (v) u.voice = v; u.rate = 0.9; u.pitch = 1; speechSynthesis.speak(u); } catch (e) {}
 }
 let futabaRerender = null;
 function renderFutabaSetup() {
@@ -1729,7 +1772,7 @@ function renderFutaba() {
   const root = $('.play', app);
   root.addEventListener('click', async e => {
     const f2 = fut; if (!f2) return; const p = e.target.closest('[data-p]'); if (!p) return; const act = p.dataset.p;
-    if (act === 'exit') { if (f2.phase !== 'round' || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) { clearTimeout(f2.timer); clearTimeout(f2.window); fut = null; keepAwake(false); try { speechSynthesis.cancel(); } catch (x) {} leaveTo('#futaba'); } }
+    if (act === 'exit') { if (f2.phase !== 'round' || await confirmDlg('Leave the game?', 'Scores will be lost.', 'Leave', true)) { clearTimeout(f2.timer); clearTimeout(f2.window); fut = null; keepAwake(false); stopSpeech(); leaveTo('#futaba'); } }
     if (act === 'begin') { f2.phase = 'round'; f2.i = -1; futabaNext(); }
     if (act === 'say') speak(f2.rounds[f2.i].speak, f2.cfg.voice, f2.cfg.voiceName);
     if (act === 'skip') futabaEndRound();
@@ -2840,6 +2883,7 @@ function renderClassHub() {
         <div class="games">
           <div class="gcard exam" data-nav="#pet"><div class="emoji">🎓</div><div class="n">Exam prep</div><div class="d">B1 Preliminary (PET): Part 6 trainer, listening, hardest words.</div></div>
           <div class="gcard study" data-nav="#study"><div class="emoji">🧠</div><div class="n">Study</div><div class="d">${st.length ? `${due} cards to review now · ${st.filter(c => c.s === 2).length} learned` : 'Flashcards with spaced repetition.'}</div></div>
+          <div class="gcard grammar" data-nav="#grammar"><div class="emoji">✏️</div><div class="n">Grammar</div><div class="d">Practice for every unit, answered on the iPad, every answer explained.</div></div>
           <div class="gcard charades" data-nav="#home"><div class="emoji">🎮</div><div class="n">Games</div><div class="d">Charades, Yahtzee, Futaba, Memory${lastDeckNames.length ? ' · last decks: ' + esc(lastDeckNames.slice(0, 2).join(', ')) + (lastDeckNames.length > 2 ? '…' : '') : ''}</div></div>
           <div class="gcard rank" data-nav="#rankings"><div class="emoji">🏆</div><div class="n">Rankings</div><div class="d">Points your home students win in the games.</div></div>
         </div>
@@ -2858,10 +2902,132 @@ function renderClassHub() {
         <div class="gcard absent" data-nav="#absences"><div class="emoji">📋</div><div class="n">Absences</div><div class="d">${(() => { const n = absencesFor(g.id).length; return n ? plural(n, 'student') + ' absent today' : 'Mark who is missing and send it to the attendance bot.'; })()}</div></div>
         <div class="gcard rank" data-nav="#rankings"><div class="emoji">🏆</div><div class="n">Rankings</div><div class="d">${(() => { const n = (db.results || []).filter(r => r.cls === g.id).length; return n ? plural(n, 'game') + ' recorded' : 'Points from the games, per class and per grade.'; })()}</div></div>
         <div class="gcard charades" data-nav="#home"><div class="emoji">🎮</div><div class="n">Games</div><div class="d">Charades, Yahtzee, Futaba, Memory${lastDeckNames.length ? ' · last decks: ' + esc(lastDeckNames.slice(0, 2).join(', ')) + (lastDeckNames.length > 2 ? '…' : '') : ''}</div></div>
-        <div class="gcard study" data-nav="#study"><div class="emoji">🧠</div><div class="n">Study</div><div class="d">Flashcards with spaced repetition, progress per student.</div></div>
+        <div class="gcard study" data-nav="#study"><div class="emoji">🧠</div><div class="n">Study</div><div class="d">Flashcards with pictures: say the word or write it. Progress per student.</div></div>
+        <div class="gcard grammar" data-nav="#grammar"><div class="emoji">✏️</div><div class="n">Grammar</div><div class="d">Practice for every unit, answered on the iPad, every answer explained.</div></div>
         <div class="gcard exam" data-nav="#pet"><div class="emoji">🎓</div><div class="n">Exam prep</div><div class="d">B1 Preliminary (PET): Part 6 trainer, listening, hardest words.</div></div>
       </div>
     </div></div></div>`;
+}
+
+/* ===================== Pictures and recorded voices for the built-in vocabulary ===================== */
+/* img/index.json {term: pictogramId} (ARASAAC, CC BY-NC-SA) · audio/index.json {keys} = clips recorded with a neural voice
+   (tools/build_images.py, tools/build_audio.py). Anything without a clip falls back to the device voice. */
+const mediaKey = t => String(t ?? '').trim().toLowerCase().replace(/\s*\([^)]*\)\s*$/, '').replace(/\s+/g, ' ').trim();
+let IMG_INDEX = {}, CLIP_KEYS = new Set();
+async function loadMedia() {
+  try { const r = await fetch('./img/index.json', { cache: 'default' }); if (r.ok) IMG_INDEX = await r.json(); } catch (e) {}
+  try { const r = await fetch('./audio/index.json', { cache: 'default' }); if (r.ok) { const k = (await r.json()).keys || ''; CLIP_KEYS = new Set(k.match(/.{16}/g) || []); } } catch (e) {}
+}
+const imgFor = term => { const id = IMG_INDEX[mediaKey(term)]; return id ? `./img/${id}.webp` : ''; };
+function fnv1a(bytes, basis) { let h = basis >>> 0; for (const b of bytes) { h ^= b; h = Math.imul(h, 0x01000193) >>> 0; } return h; }
+function clipKey(voice, rate, text) {
+  const d = new TextEncoder().encode(`${voice}|${rate}|${String(text).trim().toLowerCase().replace(/\s+/g, ' ')}`);
+  return fnv1a(d, 0x811C9DC5).toString(16).padStart(8, '0') + fnv1a(d, 0x050C5D1F).toString(16).padStart(8, '0');
+}
+const clipFor = (voice, rate, text) => [clipKey(voice, rate, text), clipKey(voice, rate, mediaKey(text))].find(k => CLIP_KEYS.has(k)) || null;
+let voiceCtx = null, voiceTok = 0, voiceSrc = null; const clipBuf = new Map();
+function voiceUnlock() { try { if (!voiceCtx) voiceCtx = new (window.AudioContext || window.webkitAudioContext)(); if (voiceCtx.state === 'suspended') voiceCtx.resume(); } catch (e) {} }
+document.addEventListener('pointerdown', voiceUnlock, true); document.addEventListener('touchend', voiceUnlock, true);
+async function clipBuffer(key) {
+  if (clipBuf.has(key)) return clipBuf.get(key);
+  const r = await fetch(`./audio/${key}.mp3`); if (!r.ok) throw new Error('clip ' + r.status);
+  const raw = await r.arrayBuffer(); const b = await new Promise((res, rej) => voiceCtx.decodeAudioData(raw, res, rej));
+  clipBuf.set(key, b); if (clipBuf.size > 80) clipBuf.delete(clipBuf.keys().next().value);
+  return b;
+}
+function stopSpeech() { voiceTok++; try { if (voiceSrc) voiceSrc.stop(); } catch (e) {} voiceSrc = null; try { speechSynthesis.cancel(); } catch (e) {} }
+/* plays the clips one after another; resolves false when the first clip cannot be loaded (offline and never heard before) */
+async function playClips(keys, gapMs, onEnd) {
+  stopSpeech(); const tok = voiceTok; voiceUnlock(); if (!voiceCtx) return false;
+  let started = false;
+  try {
+    for (let i = 0; i < keys.length; i++) {
+      const buf = await clipBuffer(keys[i]); if (tok !== voiceTok) return true;
+      started = true;
+      await new Promise(res => { const s = voiceCtx.createBufferSource(); s.buffer = buf; s.connect(voiceCtx.destination); s.onended = res; voiceSrc = s; s.start(); if (keys[i + 1]) clipBuffer(keys[i + 1]).catch(() => {}); });
+      if (tok !== voiceTok) return true;
+      if (gapMs && keys[i + 1]) await new Promise(r => setTimeout(r, gapMs));
+      if (tok !== voiceTok) return true;
+    }
+    if (onEnd) onEnd(); return true;
+  } catch (e) { if (started && onEnd) onEnd(); return started; }
+}
+
+/* ===================== Grammar practice (student answers on the iPad) ===================== */
+/* grammar.json: { decks: { "<deckId>": { title, notes[], items[{t: choose|write|fix|order, q, opts?, a, why}] } } }  (tools/build_grammar.py) */
+let GRAMMAR = {};
+async function loadGrammar() { try { const r = await fetch('./grammar.json', { cache: 'default' }); if (r.ok) GRAMMAR = (await r.json()).decks || {}; } catch (e) {} }
+const gramNorm = s => normAns(s).replace(/[.,;:!?"]/g, '').replace(/\s+/g, ' ').trim();
+const gramOk = (given, answers) => { const g = gramNorm(given); return !!g && answers.some(a => gramNorm(a) === g); };
+function gramData() { const S = db.study; if (!S.gram || typeof S.gram !== 'object') S.gram = {}; const k = studyKey(); if (!S.gram[k]) S.gram[k] = {}; return S.gram[k]; }
+let gram = null;
+function renderGrammar(id) {
+  if (!Object.keys(GRAMMAR).length) { app.innerHTML = `<div class="screen">${topbar('Grammar', backBtn('Back', '#class'), '')}<div class="content"><div class="wrap"><div class="empty"><div class="big">📡</div>The grammar practice has not been downloaded yet.<br>Open the app once with an internet connection.</div></div></div></div>`; return; }
+  if (id && GRAMMAR[id]) { gramSession(id); return; }
+  gram = null; const prog = gramData();
+  const books = TEXTBOOK_FOLDERS.map(f => ({ f, decks: f.decks.filter(k => GRAMMAR[k.id]) })).filter(x => x.decks.length);
+  app.innerHTML = `<div class="screen">${topbar('Grammar', backBtn('Back', '#class'), '')}<div class="content"><div class="wrap">
+    <div class="hint" style="margin:0 4px 12px">Ten questions at a time: choose, write, correct the mistake, put in order. Every answer is explained, and questions answered wrong come back first.${db.currentClass === HOME_CLASS ? '' : ' Progress is saved for ' + esc(studyWhoName()) + '.'}</div>
+    ${whoRowHtml()}
+    ${books.map(({ f, decks }) => { const key = 'gram_' + f.id, col = isCollapsed(key); return `<div class="folderhead" data-collapse="${key}"><span class="tri">${col ? '▶' : '▼'}</span><div class="name">${esc(f.name)}</div><span class="cnt">${decks.length}</span></div>
+      ${col ? '' : `<div class="card">${decks.map(k => { const G = GRAMMAR[k.id], p = prog[k.id] || { ok: {} }, okN = Object.keys(p.ok).length; return `<div class="row" data-nav="#grammar/${k.id}"><div class="ic">${okN >= G.items.length ? '✅' : okN ? '🟡' : k.unit}</div><div class="txt"><div class="t">Unit ${k.unit} · ${esc(G.title)}</div><div class="s">${okN}/${G.items.length} right${p.n ? ` · done ${p.n}×` : ''}</div></div><div class="chev">›</div></div>`; }).join('')}</div>`}`; }).join('')}
+  </div></div></div>`;
+  $('.screen', app).addEventListener('click', e => {
+    if (e.target.closest('[data-act=who]')) { pickStudyWho(() => renderGrammar('')); return; }
+    const c = e.target.closest('[data-collapse]'); if (c) { const k = c.dataset.collapse; db.global.collapsed[k] = !isCollapsed(k); saveDb(); keepScroll(() => renderGrammar('')); }
+  });
+}
+function gramSession(id) {
+  const G = GRAMMAR[id], prog = gramData(); const p = prog[id] || (prog[id] = { ok: {}, n: 0, best: 0 });
+  if (!gram || gram.id !== id || gram.over) {
+    const pool = shuffle(G.items.map((it, i) => ({ ...it, i }))).sort((a, b) => (p.ok[a.i] ? 1 : 0) - (p.ok[b.i] ? 1 : 0)).slice(0, 10);
+    gram = { id, items: shuffle(pool), n: 0, ok: 0, res: null, built: [], rules: false, over: false };
+  }
+  const total = gram.items.length, back = backBtn('Stop', '#grammar');
+  if (gram.n >= total) {
+    gram.over = true; p.n++; p.best = Math.max(p.best || 0, gram.ok); saveDb();
+    app.innerHTML = `<div class="screen">${topbar(G.title, back, '')}<div class="content"><div class="wrap"><div class="empty"><div class="big">${gram.ok === total ? '🏆' : '💪'}</div><div class="petscore">${gram.ok} / ${total}</div>${Object.keys(p.ok).length}/${G.items.length} questions of this unit answered right so far</div>
+      <button class="btn" data-act="again">Ten more</button><button class="btn sec" style="margin-top:10px" data-nav="back" data-fallback="#grammar">Back</button></div></div></div>`;
+    $('.screen', app).addEventListener('click', e => { if (e.target.closest('[data-act=again]')) gramSession(id); });
+    return;
+  }
+  const it = gram.items[gram.n], res = gram.res; const answers = it.t === 'choose' ? [it.a] : it.a;
+  const LABEL = { choose: 'Choose', write: 'Write the correct form', fix: 'Correct the mistake', order: 'Put the words in order' };
+  let body = '';
+  if (it.t === 'choose') {
+    body = `<div class="pet-text big">${esc(it.q).replace('___', res ? `<b class="${res.ok ? 'dok' : 'dno'}">${esc(res.ok ? it.a : res.given)}</b>` : '<span class="blank"></span>')}</div>
+      <div style="margin-top:6px">${it.opts.map((o, j) => `<button class="opt ${res ? (o === it.a ? 'ok' : o === res.given ? 'no' : '') : ''}" data-o="${j}" style="font-size:19px;text-align:center">${esc(o)}</button>`).join('')}</div>`;
+  } else if (it.t === 'write') {
+    body = `<div class="pet-text big">${esc(it.q).replace('___', res ? `<span class="gapin ${res.ok ? 'ok' : 'no'}" style="display:inline-block;width:auto">${esc(res.given)}</span>` : `<input class="gapin" id="ginp" style="width:9em" ${GAP_ATTR}>`)}</div>`;
+  } else if (it.t === 'fix') {
+    body = `<div class="pet-text big" style="color:var(--bad)">✗ ${esc(it.q)}</div>${res ? '' : `<div class="card" style="margin-top:10px"><div class="field"><label>Write the sentence correctly</label><input type="text" id="ginp" value="${esc(it.q)}" ${GAP_ATTR.replace('type="text" ', '')} style="font-size:20px"></div></div>`}`;
+  } else {
+    const chunks = it.q.split(' / '); const used = new Set(gram.built);
+    body = `<div class="pet-text big" style="min-height:92px">${gram.built.map((ci, k) => `<button class="chipbtn on" data-un="${k}">${esc(chunks[ci])}</button>`).join(' ') || '<span class="hint">Tap the words in the right order</span>'}</div>
+      ${res ? '' : `<div class="chipbank">${chunks.map((c, ci) => used.has(ci) ? '' : `<button class="chipbtn" data-ch="${ci}">${esc(c)}</button>`).join('')}</div>`}`;
+  }
+  app.innerHTML = `<div class="screen">${topbar(`${gram.n + 1} / ${total}`, back, `<button class="tbtn" data-act="rules">📘 Rules</button>`)}<div class="content"><div class="wrap">
+    ${gram.rules ? `<div class="card" style="margin-bottom:12px">${G.notes.map(nt => `<div class="row static"><div class="txt"><div class="t" style="white-space:normal;font-size:15px;font-weight:400;line-height:1.4">${esc(nt)}</div></div></div>`).join('')}</div>` : ''}
+    <div class="cattag" style="margin:4px">${LABEL[it.t]}</div>
+    ${body}
+    ${res ? `<div class="card" style="margin-top:12px"><div class="row static"><div class="ic">${res.ok ? '✅' : '❌'}</div><div class="txt"><div class="t" style="white-space:normal"><b>${esc(answers[0])}</b></div>${it.why ? `<div class="s">${esc(it.why)}</div>` : ''}</div></div></div>` : ''}
+    ${it.t === 'choose' && !res ? '' : `<button class="btn big" style="margin-top:14px" data-act="go">${res ? (gram.n + 1 >= total ? 'Finish' : 'Next') : 'Check'}</button>`}
+  </div></div></div>`;
+  const sc = $('.screen', app), inp = $('#ginp', sc);
+  const answer = given => { const ok = it.t === 'choose' ? given === it.a : gramOk(given, answers); gram.res = { ok, given }; if (ok) { gram.ok++; p.ok[it.i] = 1; } else delete p.ok[it.i]; audio.unlock(); if (ok) audio.ding(); else audio.buzz(); saveDb(); gramSession(id); };
+  const go = () => {
+    if (gram.res) { gram.n++; gram.res = null; gram.built = []; gramSession(id); return; }
+    if (it.t === 'order') { if (gram.built.length) answer(gram.built.map(ci => it.q.split(' / ')[ci]).join(' ')); return; }
+    if (inp && inp.value.trim()) answer(inp.value.trim()); else if (inp) inp.focus();
+  };
+  sc.addEventListener('click', e => {
+    if (e.target.closest('[data-act=rules]')) { gram.rules = !gram.rules; const v = inp ? inp.value : ''; gramSession(id); const i2 = $('#ginp'); if (i2 && v) i2.value = v; return; }
+    const o = e.target.closest('.opt'); if (o && !gram.res) { answer(it.opts[+o.dataset.o]); return; }
+    const ch = e.target.closest('[data-ch]'); if (ch && !gram.res) { gram.built.push(+ch.dataset.ch); gramSession(id); return; }
+    const un = e.target.closest('[data-un]'); if (un && !gram.res) { gram.built.splice(+un.dataset.un, 1); gramSession(id); return; }
+    if (e.target.closest('[data-act=go]')) go();
+  });
+  if (inp) { inp.addEventListener('keydown', e => { if (e.key === 'Enter') go(); }); if (it.t === 'write') setTimeout(() => inp.focus(), 60); }
 }
 
 /* ===================== Study: spaced-repetition flashcards (Anki style) ===================== */
@@ -2907,11 +3073,11 @@ async function pickStudyWho(rerender) {
   if (v === null) return; db.study.who[db.currentClass] = v; saveDb(); rerender();
 }
 const whoRowHtml = () => db.currentClass === HOME_CLASS ? '' : `<div class="card"><div class="row" data-act="who"><div class="ic">👤</div><div class="txt"><div class="t">${esc(studyWhoName())}</div><div class="s">Progress is saved for this student. Tap to change.</div></div><div class="chev">›</div></div></div>`;
-function studyCards(ids) {
-  const out = [], seen = new Set();
+function studyCards(ids, mode) {
+  const out = [], seen = new Set(), pfx = mode === 'write' ? 'w~' : '';   // spelling a word is a different skill: its own progress
   for (const id of ids) {
     const k = getDeck(id); if (!k) continue; const pre = String(id).startsWith('tb_pet') ? 'pet' : id;
-    for (const w of k.words) { const p = parts(w); if (!p[0]) continue; const key = pre + '|' + p[0].toLowerCase(); if (seen.has(key)) continue; seen.add(key); out.push({ key, front: p[0], back: p[1] || '', extra: p.slice(2).join(' · ') }); }
+    for (const w of k.words) { const p = parts(w); if (!p[0]) continue; const key = pfx + pre + '|' + p[0].toLowerCase(); if (seen.has(key)) continue; seen.add(key); out.push({ key, front: p[0], back: p[1] || '', extra: p.slice(2).join(' · '), pet: pre === 'pet' }); }
   }
   return out;
 }
@@ -2927,18 +3093,23 @@ function renderStudySetup(arg) {
   if (arg === 'pet' && getDeck('tb_pet_all')) cfg.lastDecks = ['tb_pet_all'];
   const selected = ensureSelection(cfg);
   const render = () => {
-    const cards = studyCards([...selected]); const b = srsBuckets(cards, studyData().cards, Date.now()); const left = Math.max(0, cfg.newPerDay + studyData().meta.bonus - studyData().meta.newN);
+    const cards = studyCards([...selected], cfg.mode); const b = srsBuckets(cards, studyData().cards, Date.now()); const left = Math.max(0, cfg.newPerDay + studyData().meta.bonus - studyData().meta.newN);
+    const pics = cards.filter(c => imgFor(c.front)).length;
     app.innerHTML = `<div class="screen">
       ${topbar('Study', backBtn('Back', '#class'), '')}
       <div class="content"><div class="wrap">
         <div class="hint" style="margin:0 4px 12px">Flashcards with spaced repetition, like Anki: cards you find hard come back soon, easy ones after days or weeks. A little every day works best.</div>
         ${whoRowHtml()}
+        <h2 class="sec">How to study</h2>
+        ${segHtml('mode', [['say', '🗣 Say it'], ['write', '⌨️ Write it']], cfg.mode)}
+        <div class="hint">${cfg.mode === 'write' ? 'The student sees the picture or the meaning and types the English word. The app marks it: right = comes back later, wrong = comes back in a minute.' : 'The student sees the card and says the answer aloud, then taps to check and chooses Again, Hard, Good or Easy.'}</div>
         <div class="statline"><div><b>${b.due.length + b.learn.length}</b><span>to review now</span></div><div><b>${Math.min(left, b.fresh.length)}</b><span>new today</span></div><div><b>${b.known}</b><span>learned</span></div><div><b>${b.fresh.length}</b><span>not seen yet</span></div></div>
-        <button class="btn big" data-act="start" ${cards.length ? '' : 'disabled'}>Start studying</button>
+        <button class="btn big" data-act="start" ${cards.length ? '' : 'disabled'}>Start</button>
         <h2 class="sec">Options</h2>
         <div class="card">${stepHtml('newPerDay', 'New cards per day', 'Reviews are never limited', cfg.newPerDay)}
-          ${togHtml('autoSpeak', 'Say the English word aloud', 'Uses the best English voice installed', cfg.autoSpeak)}</div>
-        <div style="margin-top:10px">${segHtml('dir', [['fwd', 'English → answer'], ['rev', 'Answer → English']], cfg.dir)}</div>
+          ${togHtml('autoSpeak', 'Say the English word aloud', 'Recorded natural voice for the built-in decks', cfg.autoSpeak)}
+          ${togHtml('pics', 'Show pictures', `${pics} of these ${cards.length} cards have one`, cfg.pics !== false)}</div>
+        ${cfg.mode === 'write' ? '' : `<div style="margin-top:10px">${segHtml('dir', [['auto', 'Automatic'], ['fwd', 'See the word'], ['rev', 'See picture / meaning']], cfg.dir)}</div><div class="hint">Automatic: picture or meaning first, the student says the English word. Exam word lists show the English word first.</div>`}
         <h2 class="sec">Decks</h2>
         ${deckPickerHtml(groups, selected)}
       </div></div></div>`;
@@ -2949,7 +3120,7 @@ function renderStudySetup(arg) {
   render();
 }
 function startStudy(ids) {
-  study = { ids, cards: studyCards(ids), cur: null, shown: false, done: 0 };
+  study = { ids, cards: studyCards(ids, gameCfg('study').mode), cur: null, shown: false, done: 0, res: null };
   studyNext();
   if (!/^#studyplay/.test(location.hash)) { navState.depth++; go('#studyplay'); } else renderStudy();
 }
@@ -2961,7 +3132,7 @@ function studyNext() {
   if (!next && b.due.length) next = b.due[Math.floor(Math.random() * b.due.length)];
   if (!next && left && b.fresh.length) next = b.fresh[0];
   if (!next && b.learn.length) next = b.learn[0];
-  study.cur = next; study.shown = false;
+  study.cur = next; study.shown = false; study.res = null;
 }
 function studyGrade(g) {
   const { cards: st, meta } = studyData(); const c = study.cur; if (!c) return;
@@ -2969,10 +3140,13 @@ function studyGrade(g) {
   st[c.key] = srsGrade(st[c.key] || srsNew(), g, Date.now()); study.done++; saveDb();
   studyNext(); renderStudy();
 }
+/* what counts as the right spelling: the term without its bracket, and each side of "a / b" */
+function spellingAnswers(front) { const t = mediaKey(front); return [t].concat(t.includes('/') ? t.split('/').map(x => x.trim()).filter(Boolean) : []); }
+function editDistance(a, b) { const m = a.length, n = b.length; let prev = Array.from({ length: n + 1 }, (_, j) => j); for (let i = 1; i <= m; i++) { const cur = [i]; for (let j = 1; j <= n; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = cur; } return prev[n]; }
 function renderStudy() {
   if (!study) { location.replace('#study'); return; }
-  const cfg = gameCfg('study'), c = study.cur, n = study.counts;
-  const top = topbar('Study · ' + studyWhoName(), backBtn('Done', '#study'), '');
+  const cfg = gameCfg('study'), c = study.cur, n = study.counts, write = cfg.mode === 'write';
+  const top = topbar((write ? 'Write · ' : 'Study · ') + studyWhoName(), backBtn('Done', '#study'), '');
   if (!c) {
     const st = studyData().cards; const tomorrow = study.cards.filter(x => st[x.key] && st[x.key].s === 2 && st[x.key].d <= dayStart(Date.now()) + SRS_DAY).length;
     app.innerHTML = `<div class="screen">${top}<div class="content"><div class="wrap"><div class="empty"><div class="big">🎉</div><b>That is all for now.</b><br>${plural(study.done, 'card')} studied in this session. ${tomorrow ? plural(tomorrow, 'card') + ' will be waiting tomorrow.' : ''}</div>
@@ -2980,15 +3154,40 @@ function renderStudy() {
     $('.screen', app).addEventListener('click', e => { if (e.target.closest('[data-act=more]')) { studyData().meta.bonus += 10; saveDb(); studyNext(); renderStudy(); } });
     return;
   }
-  const pv = c.key.startsWith('pet|') ? PET_WORDS[c.front.toLowerCase()] : null;
-  const rev = cfg.dir === 'rev' && c.back;
-  const st0 = studyData().cards[c.key] || srsNew(); const now = Date.now();
+  const pv = c.pet ? PET_WORDS[c.front.toLowerCase()] : null;
+  const img = cfg.pics !== false ? imgFor(c.front) : ''; const pic = img ? `<img class="fimg" src="${img}" alt="">` : '';
+  const counts = `<div class="statline small"><div><b style="color:#2f7de1">${n.fresh}</b><span>new</span></div><div><b style="color:var(--bad)">${n.learn}</b><span>learning</span></div><div><b style="color:var(--ok)">${n.due}</b><span>to review</span></div></div>`;
   const ex = pv ? `<div class="fex">${esc(pv.ex_es)}</div><div class="fex en">${esc(pv.ex_en)} <button class="spk" data-say="${esc(pv.ex_en)}">🔊</button></div>` : c.extra ? `<div class="fex">${esc(c.extra)}</div>` : '';
   const english = `<div class="fword">${esc(c.front)}${pv ? ` <span class="fpos">${esc(pv.pos)}</span>` : ''} <button class="spk" data-say="${esc(c.front)}">🔊</button></div>`;
-  const answer = `<div class="fans">${esc(c.back || '(say it aloud, then check with your teacher)')}</div>`;
-  app.innerHTML = `<div class="screen">${top}<div class="content"><div class="wrap">
-    <div class="statline small"><div><b style="color:#2f7de1">${n.fresh}</b><span>new</span></div><div><b style="color:var(--bad)">${n.learn}</b><span>learning</span></div><div><b style="color:var(--ok)">${n.due}</b><span>to review</span></div></div>
-    <div class="flash" data-act="show">${rev ? answer : english}${study.shown ? `<hr>${rev ? english : answer}${ex}` : `<div class="ftap">Tap to see the answer</div>`}</div>
+  const meaning = c.back ? `<div class="fans">${esc(c.back)}</div>` : '';
+  if (write) {
+    const res = study.res, listenOnly = !pic && !c.back;
+    const fb = res ? `<hr><div class="fword ${res.g === 2 ? 'okc' : 'noc'}">${esc(mediaKey(c.front))} <button class="spk" data-say="${esc(c.front)}">🔊</button></div>${res.g === 2 ? '' : `<div class="fex">You wrote: <s>${esc(res.given)}</s>${res.g === 1 ? ' · almost!' : ''}</div>`}${ex}` : '';
+    app.innerHTML = `<div class="screen">${top}<div class="content"><div class="wrap">${counts}
+      <div class="flash" style="cursor:default">${pic}${meaning}${listenOnly ? `<div class="ftap" style="margin-top:0">Listen and write the word</div>` : ''}<div style="margin-top:12px"><button class="btn sec" style="display:inline-block;width:auto" data-say="${esc(c.front)}">🔊 Hear it</button></div>${fb}</div>
+      ${res ? '' : `<div class="card"><div class="field"><input type="text" id="spell" ${GAP_ATTR.replace('type="text" ', '')} placeholder="Write the English word" style="font-size:24px;text-align:center"></div></div>`}
+      <button class="btn big" style="margin-top:12px" data-act="go">${res ? 'Next' : 'Check'}</button>
+    </div></div></div>`;
+    const sc = $('.screen', app), inp = $('#spell', sc);
+    const act = () => {
+      if (study.res) { studyGrade(study.res.g); return; }
+      const given = inp.value.trim(); if (!given) { inp.focus(); return; }
+      const want = spellingAnswers(c.front), g0 = normAns(given);
+      const g = want.includes(g0) ? 2 : want.some(w => w.length >= 5 && editDistance(w, g0) === 1) ? 1 : 0;
+      study.res = { g, given }; audio.unlock(); if (g === 2) audio.ding(); else audio.buzz();
+      renderStudy(); if (cfg.autoSpeak) setTimeout(() => speak(c.front, 'en-GB'), g === 2 ? 350 : 500);
+    };
+    sc.addEventListener('click', e => { const sp = e.target.closest('[data-say]'); if (sp) { speak(sp.dataset.say, 'en-GB'); return; } if (e.target.closest('[data-act=go]')) act(); });
+    if (inp) { inp.addEventListener('keydown', e => { if (e.key === 'Enter') act(); }); setTimeout(() => inp.focus(), 60); if (listenOnly || (cfg.autoSpeak && !c.back && !pic)) setTimeout(() => speak(c.front, 'en-GB'), 300); }
+    return;
+  }
+  // "say it": which side is shown first
+  const canRev = !!(pic || c.back); const rev = canRev && (cfg.dir === 'rev' || (cfg.dir !== 'fwd' && !c.pet));
+  const st0 = studyData().cards[c.key] || srsNew(); const now = Date.now();
+  const frontHtml = rev ? `${pic}${meaning}` : english;
+  const backHtml = rev ? `${english}${ex}` : `${pic}${meaning || (pic ? '' : `<div class="fans" style="font-size:18px">(say it aloud, then check with your teacher)</div>`)}${ex}`;
+  app.innerHTML = `<div class="screen">${top}<div class="content"><div class="wrap">${counts}
+    <div class="flash" data-act="show">${frontHtml}${study.shown ? `<hr>${backHtml}` : `<div class="ftap">${rev ? 'Say the word in English, then tap' : 'Say what it means, then tap'}</div>`}</div>
     ${study.shown ? `<div class="grade">${[['Again', 'bad'], ['Hard', 'warn'], ['Good', 'ok'], ['Easy', 'easy']].map((x, g) => `<button class="gbtn ${x[1]}" data-grade="${g}"><b>${x[0]}</b><span>${srsLabel(st0, g, now)}</span></button>`).join('')}</div>` : `<button class="btn big" data-act="show">Show answer</button>`}
   </div></div></div>`;
   const sc = $('.screen', app);
@@ -3024,7 +3223,7 @@ function renderPet(arg) {
   if (!PET) { app.innerHTML = `<div class="screen">${topbar('Exam prep', backBtn('Back', '#class'), '')}<div class="content"><div class="wrap"><div class="empty"><div class="big">📡</div>The exam material has not been downloaded yet.<br>Open the app once with an internet connection.</div></div></div></div>`; return; }
   const g = currentClassGroup();
   if (g && g.id === HOME_CLASS && !homeStudent()) { location.replace('#students'); return; }
-  try { speechSynthesis.cancel(); } catch (e) {}
+  stopSpeech();
   const i = String(arg || '').indexOf('/'); const sec = i < 0 ? String(arg || '') : arg.slice(0, i), id = i < 0 ? '' : arg.slice(i + 1);
   ({ cloze: petCloze, drills: petDrills, ex: petEx, dictation: petDictation, guide: petGuide }[sec] || petHub)(id);
 }
@@ -3033,7 +3232,7 @@ function petHub() {
   const doneC = PET.cloze.filter(t => pet.cloze[t.id]).length; const best = PET.cloze.reduce((a, t) => a + ((pet.cloze[t.id] || {}).best || 0), 0);
   const weak = petWeakCats(pet).map(c => PET.cats[c]);
   const dn = Object.keys(pet.drillOk).length;
-  const vb = srsBuckets(studyCards(['tb_pet_all']), cards, now);
+  const vb = srsBuckets(studyCards(['tb_pet_all'], 'say'), cards, now);
   const exRow = ex => { const r = pet.ex[ex.id]; return `<div class="row" data-nav="#pet/ex/${ex.id}"><div class="ic">${ex.id[0] === 'l' ? '🎧' : '📄'}</div><div class="txt"><div class="t">${esc(ex.title)}</div><div class="s">${r ? `best ${r.best}/${ex.items.length} · done ${r.n}×` : plural(ex.items.length, 'question')}</div></div><div class="chev">›</div></div>`; };
   app.innerHTML = `<div class="screen">
     ${topbar('B1 Preliminary' + (homeStudent() ? ' · ' + homeStudent().name : ''), backBtn('Back', '#class'), '')}
@@ -3146,8 +3345,13 @@ function petVoice(role) {
 }
 let petUtter = [];
 function petSpeak(script, rate, onEnd) {
+  const r = rate < 0.9 ? 's' : '1'; const keys = script.map(ln => clipFor(ln.v === 'M' ? 'M' : 'F', r, ln.t) || clipFor('F', r, ln.t));
+  if (keys.every(Boolean)) { playClips(keys, 420, onEnd).then(ok => { if (!ok) petSpeakTts(script, rate, onEnd); }); return; }
+  petSpeakTts(script, rate, onEnd);
+}
+function petSpeakTts(script, rate, onEnd) {
   try {
-    speechSynthesis.cancel(); petUtter = [];
+    stopSpeech(); petUtter = [];
     for (const ln of script) for (const sent of (String(ln.t).match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [ln.t])) {
       const u = new SpeechSynthesisUtterance(sent.trim()); const pv = petVoice(ln.v);
       u.lang = 'en-GB'; if (pv.v) { u.voice = pv.v; u.lang = pv.v.lang; }
@@ -3186,7 +3390,7 @@ function petEx(id) {
     const p = e.target.closest('[data-play]'); if (p) { const k = p.dataset.play; say(k === 'all' ? ex.script : ex.items[+k].script, p); if (k === 'all') { plays++; $('#plays', sc).textContent = 'Played ' + plays + (plays === 1 ? ' time' : ' times') + '. In the exam you hear it twice.'; } return; }
     const o = e.target.closest('.opt'); if (o && !checked) { $$('.opt', o.closest('.exq')).forEach(b => b.classList.toggle('sel', b === o)); return; }
     const a = e.target.closest('[data-act]'); if (!a) return;
-    if (a.dataset.act === 'stop') { try { speechSynthesis.cancel(); } catch (er) {} $$('.playbtn', sc).forEach(b => b.classList.remove('on')); return; }
+    if (a.dataset.act === 'stop') { stopSpeech(); $$('.playbtn', sc).forEach(b => b.classList.remove('on')); return; }
     if (a.dataset.act === 'retry') { petEx(id); return; }
     if (a.dataset.act === 'script') { a.outerHTML = `<div class="card">${(ex.script || []).concat(...ex.items.map((it, i) => (it.script || []).map((l, j) => ({ ...l, n: j ? 0 : i + 1 })))).map(l => `<div class="row static"><div class="ic">${l.n ? l.n : l.v === 'M' ? '👨' : '👩'}</div><div class="txt"><div class="t" style="white-space:normal;font-size:16px;font-weight:400">${esc(l.t)}</div></div></div>`).join('')}</div>`; return; }
     if (a.dataset.act !== 'check' || checked) return;
@@ -3279,6 +3483,8 @@ function renderSettings() {
       </div>
       <h2 class="sec">Danger zone</h2>
       <div class="card"><div class="row" data-act="wipe"><div class="ic">🗑️</div><div class="txt"><div class="t" style="color:var(--bad)">Delete all my decks and folders</div></div></div></div>
+      <h2 class="sec">Credits</h2>
+      <div class="hint" style="margin-top:0">Pictures: pictographic symbols by Sergio Palao, property of the Government of Aragón, from ARASAAC (arasaac.org), licence Creative Commons BY-NC-SA. Recorded voices: Kokoro open speech model (Apache 2.0). ${Object.keys(IMG_INDEX).length} pictures · ${CLIP_KEYS.size} recordings.</div>
       <div class="ver">Phunzies Classroom v${APP_VERSION} · ${IS_STANDALONE ? 'installed' : 'browser'}${persistState ? ' · storage ' + persistState : ''}</div>
     </div></div></div>`;
   $('.screen', app).addEventListener('click', async e => {
@@ -3396,7 +3602,7 @@ if (location.search.includes('selftest')) {
     const tbf = buildTextbookFolders({ books: [{ id: 'tt9', name: 'TT 9', grade: 9, units: [{ n: 1, title: 'X', decks: [{ kind: 'vocab', name: 'U1 Vocabulary · X', desc: 'd', words: ['a | b', 'a | b', 'c'] }, { kind: 'verbs', name: 'U1 Irregular verbs · X', words: ['go | went | gone'] }] }] }] });
     t('textbook folders', tbf.length === 1 && tbf[0].id === 'tb_tt9' && tbf[0].decks.length === 2 && tbf[0].decks[0].id === 'tb_tt9_u1_vocab' && tbf[0].decks[0].words.length === 2 && tbf[0].decks[1].emoji === '🔁');
     db.queue.groups.push({ id: 'g5', name: '5º EP A', sub: '', icon: '', students: [] }); db.currentClass = 'g5';
-    t('class grade + default collapse', classGrade() === 5 && collapsedByDefault('tb_tt2') && !collapsedByDefault('tb_tt5') && !collapsedByDefault('preset'));
+    t('class grade + default collapse', classGrade() === 5 && collapsedByDefault('tb_tt2') && !collapsedByDefault('tb_tt5') && collapsedByDefault('preset') && collapsedByDefault('tb_tt5_u2'));
     db.queue.groups = db.queue.groups.filter(g => g.id !== 'g5');
     const mq2 = makeQuestions(['dog | perro', 'cat | gato', 'cow | vaca', 'pig | cerdo', 'go | went | gone', 'plain'], { side: 'answer', plain: 'scramble' });
     t('question engine', mq2.length === 6 && mq2.filter(x => x.kind === 'pair').every(x => x.options.length === 4 && x.options.includes(x.a)) && mq2.find(x => x.kind === 'verb').a === 'went, gone' && mq2.find(x => x.kind === 'plain').a === 'plain');
@@ -3494,6 +3700,13 @@ if (location.search.includes('selftest')) {
     t('ordinal', ordinal(1) === '1st' && ordinal(2) === '2nd' && ordinal(3) === '3rd' && ordinal(4) === '4th' && ordinal(11) === '11th' && ordinal(22) === '22nd');
     t('normalizeQueue', normalizeQueue(null).groups.length === 7 && normalizeQueue({ groups: [{ id: 'x', name: 'X', students: [{ id: 'a', name: 'A' }] }] }).groups[0].students[0].color === Q_COLORS[0]);
     t('futaba positions', futabaPos(4, 3) === 'r' && futabaPos(3, 1) === 'l' && futabaPos(2, 1) === 't');
+    // --- media keys, folders by unit, grammar checks
+    t('media key', mediaKey(' Protest (v.) ') === 'protest' && mediaKey('deal with (sth/sb)') === 'deal with' && clipKey('F', '1', 'Hello  World') === clipKey('F', '1', 'hello world') && /^[0-9a-f]{16}$/.test(clipKey('ES', '1', 'Iñigo')) && clipKey('F', '1', 'dog') === '4553ca00fa4dde7a');
+    { const fu = folderUnits({ id: 'tb_x', decks: [{ id: 'a', unit: 1, kind: 'vocab', name: 'U1 Vocabulary · Pets' }, { id: 'b', unit: 1, kind: 'grammar', name: 'U1 Grammar · Have got' }, { id: 'c', unit: 2, kind: 'vocab', name: 'U2 Vocabulary · Food' }] });
+      t('folders by unit', fu.length === 2 && fu[0].name === 'Unit 1 · Pets' && unitDeckLabel(fu[0].decks[1], fu[0]) === 'Grammar · Have got' && unitDeckLabel(fu[0].decks[0], fu[0]) === 'Vocabulary' && folderUnits({ id: 'preset', decks: [] }) === null && collapsedByDefault('pick_tb_x_u1') && collapsedByDefault('preset')); }
+    t('grammar answer check', gramOk('She doesn’t like tea', ["She doesn't like tea."]) && gramOk('when we are late the teacher gets angry', ['When we are late, the teacher gets angry.']) && !gramOk('She don\'t like tea', ["She doesn't like tea."]));
+    t('spelling check', spellingAnswers('Protest (v.)')[0] === 'protest' && spellingAnswers('disc/disk').includes('disk') && editDistance('handkerchief', 'hankerchief') === 1 && editDistance('cat', 'cat') === 0);
+    t('write mode has its own progress', studyCards(['preset_animals'], 'write')[0].key === 'w~preset_animals|dog' && studyCards(['preset_animals'], 'say')[0].key === 'preset_animals|dog');
     // --- home students have their own settings
     { const keepC = db.currentClass, keepS = db.currentStudent; const hg = db.queue.groups.find(x => x.id === HOME_CLASS);
       db.currentClass = HOME_CLASS; db.currentStudent = null; db.settings.roundSeconds = 77;
@@ -3548,6 +3761,11 @@ if (location.search.includes('selftest')) {
     else if (demo === 'hangman') { Object.assign(gameCfg('hangman'), { teams: 2, rounds: 5 }); startHang(four); hang.guessed = new Set(['E', 'A', 'Z', 'Q', 'X']); hang.wrong = 3; renderHang(); }
     else if (demo === 'roulette') { db.currentClass = db.queue.groups[1].id; const st = rouState(db.currentClass); st.picked = [db.queue.groups[1].students[0].id]; st.excluded = [db.queue.groups[1].students[3].id]; go('#roulette'); }
     else if (demo === 'timer') { go('#timer'); }
+    else if (demo === 'library') { db.currentClass = db.queue.groups[1].id; db.global.collapsed = { tb_tt5_u3: false }; go('#library'); }
+    else if (demo === 'picker') { db.currentClass = db.queue.groups[1].id; db.global.collapsed = { pick_tb_tt5_u3: false }; go('#memory'); }
+    else if (demo === 'grammar') { db.currentClass = db.queue.groups[1].id; go('#grammar'); }
+    else if (demo && demo.startsWith('gram_')) { db.currentClass = db.queue.groups[1].id; const id = Object.keys(GRAMMAR).find(k => k.startsWith('tb_tt5_u3')) || Object.keys(GRAMMAR)[0]; history.replaceState(null, '', '#grammar/' + id); gram = null; gramSession(id); const want = demo.slice(5).replace(/_done$/, ''); const G = GRAMMAR[id]; const gi = G.items.findIndex(x => x.t === want); gram.items[0] = { ...G.items[gi], i: gi }; gram.n = 0; if (want === 'order') gram.built = [2, 0]; gramSession(id); if (/_done$/.test(demo)) { const b = $('.opt'); if (b) b.click(); } }
+    else if (demo === 'studypic' || demo === 'studywrite') { db.currentClass = db.queue.groups[1].id; Object.assign(gameCfg('study'), { autoSpeak: false, mode: demo === 'studywrite' ? 'write' : 'say', dir: 'auto' }); startStudy(['preset_animals']); }
     else if (demo === 'students') { db.currentClass = HOME_CLASS; go('#students'); }
     else if (demo === 'homehub') { db.currentClass = HOME_CLASS; db.currentStudent = currentClassGroup().students.find(s => /^carlos/i.test(s.name)).id; go('#class'); }
     else if (demo && demo.startsWith('pet')) { db.currentClass = HOME_CLASS; db.currentStudent = currentClassGroup().students.find(s => /^carlos/i.test(s.name)).id; const m = { pet: '#pet', petcloze: '#pet/cloze/c05', petclozelist: '#pet/cloze', petdrills: '#pet/drills', petdrill: '#pet/drills/prep', petread: '#pet/ex/r2', petlisten: '#pet/ex/l3a', petlisten4: '#pet/ex/l4', petdict: '#pet/dictation', petguide: '#pet/guide' }; go(m[demo] || '#pet');

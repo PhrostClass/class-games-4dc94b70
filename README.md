@@ -43,7 +43,22 @@ Games:
 - **Absences** – per class, tap who is missing today (or yesterday). Builds the Attendance app's Telegram message
   ("Ana, Luis (4)", group number from Settings → Groups of that app) and opens Telegram with it ready to send
   (bot username in Settings → Attendance). Absent students are skipped by the roulette and the team picker.
-- **Study** – Anki-style flashcards with spaced repetition for any deck (Again / Hard / Good / Easy, learning steps of
+- **Decks are organised** as My decks → textbook folders (book → unit → Vocabulary / Grammar / Irregular verbs / Review,
+  every level collapsible; the class's own grade opens by default) → Preset decks last, collapsed.
+- **Pictures** – `img/` holds ARASAAC pictograms (arasaac.org, author Sergio Palao, property of the Government of Aragón,
+  licence CC BY-NC-SA) for every built-in vocabulary word that has an exact keyword match (`tools/build_images.py`,
+  fixes in `tools/img_overrides.json`: `{"term": id}` or `0` for no picture). Shown in Study and on the deck page.
+- **Voices** – built-in words, the PET sentences and listening scripts, and the students' names are recorded once with
+  the Kokoro neural TTS (open model, Apache 2.0, local: `tools/build_audio.py`, model files in the git-ignored
+  `tools/tts_models/`) into `audio/<key>.mp3`; `speak()` plays the clip when there is one and only falls back to the
+  iPad's system voice for the teacher's own decks. Clips are cached by the service worker the first time they are heard.
+- **Grammar** – `grammar.json` (from `tools/grammar_data/<book>.json`, written to the rules in
+  `tools/grammar_briefs/INSTRUCTIONS.md`, checked by `tools/check_grammar.py`, merged by `tools/build_grammar.py`):
+  20 original questions per unit (choose, write the form, correct the mistake, put in order), one gap each, every answer
+  explained, plus the unit's rules. Students answer on the iPad (`#grammar`), wrong questions come back first; the same
+  questions feed the Grammar decks used by the games. Build order: build_decks → build_prepare → build_grammar.
+- **Study** – two ways to study a deck: **Say it** (see the picture or meaning, say the word, grade yourself) and
+  **Write it** (type the word; the app marks it and keeps separate progress for spelling). Anki-style flashcards with spaced repetition for any deck (Again / Hard / Good / Easy, learning steps of
   1 and 10 minutes, then days; new cards per day; optional answer → English direction). Progress is stored per student
   (`db.study.cards["<class>:<student>"]`), chosen with "Who is studying?".
 - **Exam prep · B1 Preliminary (PET)** – `pet.json` (built by `tools/build_pet.py` from `tools/pet/*.txt` + `exam.json`):
@@ -113,5 +128,5 @@ On the iPad the new version downloads in the background; close the app fully (sw
 ## Developer notes
 
 - `index.html?selftest=1` runs the built-in unit tests (word parsing, import detection, backup merge, game engine).
-- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover|absences|pet|petcloze|petclozelist|petdrills|petdrill|petread|petlisten|petlisten4|petdict|petguide|study|studyback|studysetup|students|homehub` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
+- `index.html?demo=word|ready|roundEnd|over|buzz|buzzq|buzzcard|futaba|futaba2|futaba3|memory|queue|queuegroups|queueedit|classes|classhub|games|quiz|ttt|tttq|bam|snakes|snakes8|hangman|roulette|timer|players|rankings|gameover|absences|pet|petcloze|petclozelist|petdrills|petdrill|petread|petlisten|petlisten4|petdict|petguide|study|studyback|studysetup|students|homehub|library|picker|grammar|gram_choose|gram_write|gram_fix|gram_order|studypic|studywrite` opens a screen directly for screenshots; `?dev=1` skips the sign-in for screenshots. Both also skip the lock (the lock is client-side anyway).
 - Local preview: `python -m http.server 8765` in this folder, then <http://127.0.0.1:8765/>.

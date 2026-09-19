@@ -1,7 +1,7 @@
 /* Phunzies Classroom service worker. Bump VERSION on every deploy (deploy.ps1 does it). */
-const VERSION = '1.12.1';
+const VERSION = '1.13.0';
 const CACHE = 'classgames-' + VERSION;
-const SHELL = ['./', './index.html', './manifest.webmanifest', './textbooks.json', './pet.json',
+const SHELL = ['./', './index.html', './manifest.webmanifest', './textbooks.json', './pet.json', './grammar.json', './img/index.json', './audio/index.json',
   './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {

@@ -1,0 +1,4091 @@
+{
+ "book": "prep4",
+ "units": [
+  {
+   "n": 1,
+   "title": "Present simple and present continuous",
+   "notes": [
+    "Present simple for habits, routines and facts: My aunt works in a bank. With he, she and it add -s or -es: she watches.",
+    "Negatives and questions use do or does: He doesn't eat meat. Does she live here?",
+    "Present continuous (am, is, are + -ing) for things happening now or around now: Look, it is snowing.",
+    "Verbs like know, like, want and understand are not normally used in the continuous: I know him."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "My elderly neighbour ___ his dog in the park every morning.",
+     "opts": [
+      "walk",
+      "walks",
+      "is walking"
+     ],
+     "a": "walks",
+     "why": "every morning is a routine, and he takes -s"
+    },
+    {
+     "t": "choose",
+     "q": "Be careful! That careless driver ___ at the road.",
+     "opts": [
+      "doesn't look",
+      "not looking",
+      "isn't looking"
+     ],
+     "a": "isn't looking",
+     "why": "it is happening now, so is + not + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "___ your teenage brother usually tidy his room?",
+     "opts": [
+      "Do",
+      "Is",
+      "Does"
+     ],
+     "a": "Does",
+     "why": "your brother is he, so Does"
+    },
+    {
+     "t": "choose",
+     "q": "Why ___ you laughing? It isn't funny.",
+     "opts": [
+      "are",
+      "do",
+      "is"
+     ],
+     "a": "are",
+     "why": "present continuous question with you needs are"
+    },
+    {
+     "t": "choose",
+     "q": "Our new teacher is friendly, but she ___ rude students.",
+     "opts": [
+      "isn't liking",
+      "don't like",
+      "doesn't like"
+     ],
+     "a": "doesn't like",
+     "why": "like is not used in the continuous, and she takes doesn't"
+    },
+    {
+     "t": "choose",
+     "q": "Shy people often ___ speaking in front of the class.",
+     "opts": [
+      "hates",
+      "hate",
+      "are hating"
+     ],
+     "a": "hate",
+     "why": "people is plural, and hate is not used in the continuous"
+    },
+    {
+     "t": "choose",
+     "q": "I ___ what you mean. Can you explain it again?",
+     "opts": [
+      "am not understanding",
+      "don't understand",
+      "doesn't understand"
+     ],
+     "a": "don't understand",
+     "why": "understand is not used in the continuous"
+    },
+    {
+     "t": "choose",
+     "q": "Marta's hair is usually curly, but this week she ___ it straight.",
+     "opts": [
+      "wear",
+      "is wearing",
+      "wearing"
+     ],
+     "a": "is wearing",
+     "why": "this week is a temporary situation"
+    },
+    {
+     "t": "choose",
+     "q": "How often ___ your grandparents visit you?",
+     "opts": [
+      "does",
+      "are",
+      "do"
+     ],
+     "a": "do",
+     "why": "your grandparents is they, so do"
+    },
+    {
+     "t": "write",
+     "q": "Look at Dan! He ___ (wear) a really funny hat today.",
+     "a": [
+      "is wearing",
+      "'s wearing"
+     ],
+     "why": "Look! and today show it is happening now"
+    },
+    {
+     "t": "write",
+     "q": "My sister is very polite. She always ___ (say) thank you.",
+     "a": [
+      "says"
+     ],
+     "why": "always shows a habit, and she takes -s"
+    },
+    {
+     "t": "write",
+     "q": "We ___ (not have) lessons on Sundays, so I sleep late.",
+     "a": [
+      "don't have",
+      "do not have"
+     ],
+     "why": "a routine in the negative uses don't"
+    },
+    {
+     "t": "write",
+     "q": "Please turn the music down. I ___ (try) to study for an exam.",
+     "a": [
+      "am trying",
+      "'m trying"
+     ],
+     "why": "it is happening at the moment of speaking"
+    },
+    {
+     "t": "write",
+     "q": "My cheerful uncle ___ (watch) comedy films every Friday night.",
+     "a": [
+      "watches"
+     ],
+     "why": "after -ch add -es for he"
+    },
+    {
+     "t": "write",
+     "q": "My cousins ___ (not listen) to the teacher right now. They are chatting.",
+     "a": [
+      "aren't listening",
+      "are not listening"
+     ],
+     "why": "right now needs the present continuous"
+    },
+    {
+     "t": "fix",
+     "q": "My dad have dark curly hair.",
+     "a": [
+      "My dad has dark curly hair."
+     ],
+     "why": "he has, not he have"
+    },
+    {
+     "t": "fix",
+     "q": "I am not knowing that good-looking actor.",
+     "a": [
+      "I don't know that good-looking actor.",
+      "I do not know that good-looking actor."
+     ],
+     "why": "know is not used in the continuous"
+    },
+    {
+     "t": "fix",
+     "q": "Does she plays tennis on Saturdays?",
+     "a": [
+      "Does she play tennis on Saturdays?"
+     ],
+     "why": "after does use the infinitive without -s"
+    },
+    {
+     "t": "order",
+     "q": "is / why / so miserable / looking / today / your friend",
+     "a": [
+      "Why is your friend looking so miserable today?"
+     ],
+     "why": "question word + is + subject + -ing"
+    },
+    {
+     "t": "order",
+     "q": "at the weekend / early / never / my brother / gets up",
+     "a": [
+      "My brother never gets up early at the weekend.",
+      "At the weekend my brother never gets up early."
+     ],
+     "why": "never goes before the main verb"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Past simple",
+   "notes": [
+    "Regular verbs add -ed: walked, danced, carried, stopped. The form is the same for every person.",
+    "Many common verbs are irregular: go and went, buy and bought, take and took, wear and wore.",
+    "Negatives and questions use didn't or did + infinitive: I didn't go. Did you go?",
+    "The verb be has was and were and does not use did: Were you at home?"
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "Yesterday I ___ a second-hand jacket at the market.",
+     "opts": [
+      "buyed",
+      "bought",
+      "buy"
+     ],
+     "a": "bought",
+     "why": "buy is irregular: bought"
+    },
+    {
+     "t": "choose",
+     "q": "___ you wear your brand new trainers to the party last night?",
+     "opts": [
+      "Did",
+      "Were",
+      "Do"
+     ],
+     "a": "Did",
+     "why": "past simple questions use Did + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "Last Saturday she ___ like any of the jeans in the shop.",
+     "opts": [
+      "doesn't",
+      "wasn't",
+      "didn't"
+     ],
+     "a": "didn't",
+     "why": "past simple negative uses didn't + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "Where ___ you last weekend? I phoned you twice.",
+     "opts": [
+      "did",
+      "was",
+      "were"
+     ],
+     "a": "were",
+     "why": "the verb be with you in the past is were"
+    },
+    {
+     "t": "choose",
+     "q": "He ran so fast that he ___ the race easily.",
+     "opts": [
+      "win",
+      "won",
+      "winned"
+     ],
+     "a": "won",
+     "why": "win is irregular: won"
+    },
+    {
+     "t": "choose",
+     "q": "We ___ at a café because it was raining heavily.",
+     "opts": [
+      "stopped",
+      "stoped",
+      "stop"
+     ],
+     "a": "stopped",
+     "why": "short vowel + consonant: double the p"
+    },
+    {
+     "t": "choose",
+     "q": "My grandmother ___ very well-dressed when she was young.",
+     "opts": [
+      "were",
+      "did",
+      "was"
+     ],
+     "a": "was",
+     "why": "she + was"
+    },
+    {
+     "t": "choose",
+     "q": "What time ___ the fashion show start last night?",
+     "opts": [
+      "was",
+      "did",
+      "does"
+     ],
+     "a": "did",
+     "why": "last night needs did + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "The shop assistant spoke politely and ___ me a bigger size.",
+     "opts": [
+      "gived",
+      "give",
+      "gave"
+     ],
+     "a": "gave",
+     "why": "give is irregular: gave"
+    },
+    {
+     "t": "write",
+     "q": "Two years ago my cousin ___ (go) to London and bought some trendy clothes.",
+     "a": [
+      "went"
+     ],
+     "why": "go is irregular: went"
+    },
+    {
+     "t": "write",
+     "q": "I ___ (not see) you at the party last night. Were you there?",
+     "a": [
+      "didn't see",
+      "did not see"
+     ],
+     "why": "didn't + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "Luckily, I ___ (study) hard last week, so the test was easy.",
+     "a": [
+      "studied"
+     ],
+     "why": "consonant + y changes to -ied"
+    },
+    {
+     "t": "write",
+     "q": "We ___ (be) very uncomfortable on the bus yesterday because it was so hot.",
+     "a": [
+      "were"
+     ],
+     "why": "we + were"
+    },
+    {
+     "t": "write",
+     "q": "Mum ___ (take) the loose-fitting dress back to the shop last Monday.",
+     "a": [
+      "took"
+     ],
+     "why": "take is irregular: took"
+    },
+    {
+     "t": "write",
+     "q": "They ___ (not be) at school yesterday because they were ill.",
+     "a": [
+      "weren't",
+      "were not"
+     ],
+     "why": "be does not use did: they weren't"
+    },
+    {
+     "t": "fix",
+     "q": "Did you bought that casual shirt online?",
+     "a": [
+      "Did you buy that casual shirt online?"
+     ],
+     "why": "after did use the infinitive"
+    },
+    {
+     "t": "fix",
+     "q": "I didn't went shopping last weekend.",
+     "a": [
+      "I didn't go shopping last weekend.",
+      "I did not go shopping last weekend."
+     ],
+     "why": "after didn't use the infinitive"
+    },
+    {
+     "t": "fix",
+     "q": "She weared a smart dress to the wedding.",
+     "a": [
+      "She wore a smart dress to the wedding."
+     ],
+     "why": "wear is irregular: wore"
+    },
+    {
+     "t": "order",
+     "q": "did / those / where / trendy / you / find / boots",
+     "a": [
+      "Where did you find those trendy boots?"
+     ],
+     "why": "question word + did + subject + infinitive"
+    },
+    {
+     "t": "order",
+     "q": "to school / yesterday / walked / quickly / we / very",
+     "a": [
+      "We walked to school very quickly yesterday.",
+      "Yesterday we walked to school very quickly.",
+      "We walked very quickly to school yesterday.",
+      "Yesterday we walked very quickly to school."
+     ],
+     "why": ""
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Comparatives and superlatives",
+   "notes": [
+    "Short adjectives: add -er and the -est: cheap, cheaper, the cheapest. Watch the spelling: big, bigger; easy, easier.",
+    "Long adjectives use more and the most: more difficult than, the most exciting.",
+    "Irregular: good, better, the best; bad, worse, the worst; far, further, the furthest.",
+    "Use than after a comparative, in after a superlative (the best in the class) and as ... as to say two things are equal."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "My sister is ___ than me, so she left school first.",
+     "opts": [
+      "older",
+      "more old",
+      "oldest"
+     ],
+     "a": "older",
+     "why": "short adjective + -er before than"
+    },
+    {
+     "t": "choose",
+     "q": "Getting a driving licence is ___ than I thought.",
+     "opts": [
+      "difficulter",
+      "most difficult",
+      "more difficult"
+     ],
+     "a": "more difficult",
+     "why": "long adjectives use more"
+    },
+    {
+     "t": "choose",
+     "q": "The day I got my degree was the ___ day of my life.",
+     "opts": [
+      "happyest",
+      "happiest",
+      "happier"
+     ],
+     "a": "happiest",
+     "why": "y changes to i before -est"
+    },
+    {
+     "t": "choose",
+     "q": "This exam was ___ than the last one. I failed it!",
+     "opts": [
+      "worse",
+      "badder",
+      "worst"
+     ],
+     "a": "worse",
+     "why": "bad is irregular: worse"
+    },
+    {
+     "t": "choose",
+     "q": "My grandad is the ___ person in our family. He is ninety.",
+     "opts": [
+      "older",
+      "most old",
+      "oldest"
+     ],
+     "a": "oldest",
+     "why": "the + -est for a superlative"
+    },
+    {
+     "t": "choose",
+     "q": "Is going to university ___ expensive than getting a job?",
+     "opts": [
+      "most",
+      "more",
+      "much"
+     ],
+     "a": "more",
+     "why": "more + long adjective + than"
+    },
+    {
+     "t": "choose",
+     "q": "Moving home is not as stressful ___ starting a new school.",
+     "opts": [
+      "than",
+      "that",
+      "as"
+     ],
+     "a": "as",
+     "why": "as + adjective + as"
+    },
+    {
+     "t": "choose",
+     "q": "She is the best student ___ the class.",
+     "opts": [
+      "of",
+      "in",
+      "than"
+     ],
+     "a": "in",
+     "why": "after a superlative use in with places and groups"
+    },
+    {
+     "t": "choose",
+     "q": "Today is ___ than yesterday, so take off your coat.",
+     "opts": [
+      "hoter",
+      "more hot",
+      "hotter"
+     ],
+     "a": "hotter",
+     "why": "one vowel + one consonant: double the t"
+    },
+    {
+     "t": "write",
+     "q": "My new job is ___ (good) than my old one. I love it.",
+     "a": [
+      "better"
+     ],
+     "why": "good is irregular: better"
+    },
+    {
+     "t": "write",
+     "q": "My brother got a job in the ___ (big) company in Spain.",
+     "a": [
+      "biggest"
+     ],
+     "why": "the + superlative, and double the g"
+    },
+    {
+     "t": "write",
+     "q": "Maths is ___ (easy) than physics for me, so I get higher marks.",
+     "a": [
+      "easier"
+     ],
+     "why": "y changes to i before -er"
+    },
+    {
+     "t": "write",
+     "q": "That was the ___ (boring) lesson of the whole year.",
+     "a": [
+      "most boring"
+     ],
+     "why": "boring takes the most"
+    },
+    {
+     "t": "write",
+     "q": "My cousin lives ___ (far) from school than I do, so she takes the bus.",
+     "a": [
+      "further",
+      "farther"
+     ],
+     "why": "far is irregular: further"
+    },
+    {
+     "t": "write",
+     "q": "People today retire ___ (late) than they did fifty years ago.",
+     "a": [
+      "later"
+     ],
+     "why": "after -e add only -r"
+    },
+    {
+     "t": "fix",
+     "q": "My dad is more tall than my uncle.",
+     "a": [
+      "My dad is taller than my uncle."
+     ],
+     "why": "short adjectives take -er, not more"
+    },
+    {
+     "t": "fix",
+     "q": "She is the most young teacher in the school.",
+     "a": [
+      "She is the youngest teacher in the school."
+     ],
+     "why": "short adjectives take -est, not most"
+    },
+    {
+     "t": "fix",
+     "q": "My brother is older that me.",
+     "a": [
+      "My brother is older than me."
+     ],
+     "why": "use than after a comparative"
+    },
+    {
+     "t": "order",
+     "q": "in / is / my family / the youngest / person / my cousin",
+     "a": [
+      "My cousin is the youngest person in my family.",
+      "The youngest person in my family is my cousin."
+     ],
+     "why": "the + superlative + noun + in"
+    },
+    {
+     "t": "order",
+     "q": "more / than / is / getting a degree / getting a job / important",
+     "a": [
+      "Getting a degree is more important than getting a job.",
+      "Getting a job is more important than getting a degree."
+     ],
+     "why": "more + adjective + than"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Past continuous",
+   "notes": [
+    "Form: was or were + verb-ing. I was reading. They were laughing.",
+    "Negative: wasn't or weren't + -ing. Questions: Was she sleeping? Short answers: Yes, she was. No, she wasn't.",
+    "Use it for an action in progress at a moment in the past: At nine o'clock last night we were having dinner.",
+    "Spelling: run, running; swim, swimming; cycle, cycling."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "At six o'clock yesterday we ___ volleyball on the beach.",
+     "opts": [
+      "were playing",
+      "was playing",
+      "are playing"
+     ],
+     "a": "were playing",
+     "why": "an action in progress in the past: were + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "___ your coach watching when you scored the point?",
+     "opts": [
+      "Did",
+      "Were",
+      "Was"
+     ],
+     "a": "Was",
+     "why": "your coach is he or she, so Was"
+    },
+    {
+     "t": "choose",
+     "q": "'Were you jogging at seven this morning?' 'No, I ___.'",
+     "opts": [
+      "weren't",
+      "wasn't",
+      "didn't"
+     ],
+     "a": "wasn't",
+     "why": "short answer with I uses wasn't"
+    },
+    {
+     "t": "choose",
+     "q": "The players ___ listening to the trainer, so they made mistakes.",
+     "opts": [
+      "wasn't",
+      "didn't",
+      "weren't"
+     ],
+     "a": "weren't",
+     "why": "the players is they, so weren't"
+    },
+    {
+     "t": "choose",
+     "q": "What ___ your sister doing at the gym at ten last night?",
+     "opts": [
+      "was",
+      "were",
+      "did"
+     ],
+     "a": "was",
+     "why": "your sister is she, so was"
+    },
+    {
+     "t": "choose",
+     "q": "This time last week I ___ in the sea near Tarifa.",
+     "opts": [
+      "am windsurfing",
+      "were windsurfing",
+      "was windsurfing"
+     ],
+     "a": "was windsurfing",
+     "why": "I + was + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "'Was it raining during the rugby match?' 'Yes, it ___.'",
+     "opts": [
+      "did",
+      "was",
+      "were"
+     ],
+     "a": "was",
+     "why": "short answer repeats was"
+    },
+    {
+     "t": "choose",
+     "q": "My friends ___ in the gym at eight yesterday evening.",
+     "opts": [
+      "was working out",
+      "were working out",
+      "were work out"
+     ],
+     "a": "were working out",
+     "why": "my friends is they: were + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "All yesterday afternoon Tom ___ table tennis with his cousin.",
+     "opts": [
+      "was playing",
+      "were playing",
+      "is playing"
+     ],
+     "a": "was playing",
+     "why": "he + was + -ing"
+    },
+    {
+     "t": "write",
+     "q": "At 9 pm last night Dad ___ (watch) the ice hockey final on TV.",
+     "a": [
+      "was watching"
+     ],
+     "why": "an action in progress at 9 pm"
+    },
+    {
+     "t": "write",
+     "q": "At ten o'clock last night I ___ (not sleep). I was still doing exercise.",
+     "a": [
+      "wasn't sleeping",
+      "was not sleeping"
+     ],
+     "why": "wasn't + -ing"
+    },
+    {
+     "t": "write",
+     "q": "The sun ___ (shine) when we arrived at the tennis club.",
+     "a": [
+      "was shining"
+     ],
+     "why": "shine loses the -e: shining"
+    },
+    {
+     "t": "write",
+     "q": "This time yesterday my cousins ___ (climb) a mountain in the Pyrenees.",
+     "a": [
+      "were climbing"
+     ],
+     "why": "my cousins is they: were + -ing"
+    },
+    {
+     "t": "write",
+     "q": "Why ___ (you run) so fast at seven this morning? Were you late?",
+     "a": [
+      "were you running"
+     ],
+     "why": "question: were + subject + -ing, double the n"
+    },
+    {
+     "t": "write",
+     "q": "At midday the gymnasts ___ (not practise). They were having lunch.",
+     "a": [
+      "weren't practising",
+      "were not practising"
+     ],
+     "why": "weren't + -ing"
+    },
+    {
+     "t": "fix",
+     "q": "The children was swimming in the lake at noon.",
+     "a": [
+      "The children were swimming in the lake at noon."
+     ],
+     "why": "children is plural, so were"
+    },
+    {
+     "t": "fix",
+     "q": "She was runing in the park at eight o'clock.",
+     "a": [
+      "She was running in the park at eight o'clock."
+     ],
+     "why": "run doubles the n: running"
+    },
+    {
+     "t": "fix",
+     "q": "We were play squash at six yesterday.",
+     "a": [
+      "We were playing squash at six yesterday."
+     ],
+     "why": "were + verb-ing"
+    },
+    {
+     "t": "order",
+     "q": "at / were / what / doing / you / midnight / last night",
+     "a": [
+      "What were you doing at midnight last night?",
+      "What were you doing last night at midnight?"
+     ],
+     "why": "question word + were + subject + -ing"
+    },
+    {
+     "t": "order",
+     "q": "wasn't / in the race / my brother / this time yesterday / cycling",
+     "a": [
+      "My brother wasn't cycling in the race this time yesterday.",
+      "This time yesterday my brother wasn't cycling in the race."
+     ],
+     "why": ""
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "Past simple and past continuous",
+   "notes": [
+    "Past continuous is the longer action in progress. Past simple is the short action that interrupts it: I was having a shower when the phone rang.",
+    "when usually goes before the past simple action: We were sleeping when the burglar came in.",
+    "while usually goes before the past continuous action: While we were walking home, it started to rain.",
+    "Use the past simple for actions that happen one after another: He took the bag and ran away."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "I was waiting for the bus when a pickpocket ___ my phone.",
+     "opts": [
+      "was stealing",
+      "stole",
+      "steals"
+     ],
+     "a": "stole",
+     "why": "the short action that interrupts is past simple"
+    },
+    {
+     "t": "choose",
+     "q": "While we ___ on the beach, a thief took our bags.",
+     "opts": [
+      "are lying",
+      "lie",
+      "were lying"
+     ],
+     "a": "were lying",
+     "why": "the longer action after while is past continuous"
+    },
+    {
+     "t": "choose",
+     "q": "The burglar broke the window ___ the family were sleeping.",
+     "opts": [
+      "while",
+      "during",
+      "for"
+     ],
+     "a": "while",
+     "why": "while + subject + verb; during goes before a noun"
+    },
+    {
+     "t": "choose",
+     "q": "We were watching a film ___ we heard a strange noise downstairs.",
+     "opts": [
+      "while",
+      "when",
+      "during"
+     ],
+     "a": "when",
+     "why": "when introduces the short past simple action"
+    },
+    {
+     "t": "choose",
+     "q": "What ___ you doing when the police arrived?",
+     "opts": [
+      "did",
+      "was",
+      "were"
+     ],
+     "a": "were",
+     "why": "you + were + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "When the alarm rang, the shoplifter dropped the bag and ___ out of the shop.",
+     "opts": [
+      "ran",
+      "was running",
+      "run"
+     ],
+     "a": "ran",
+     "why": "one action after another uses the past simple"
+    },
+    {
+     "t": "choose",
+     "q": "She cut herself while she ___ vegetables.",
+     "opts": [
+      "is chopping",
+      "was chopping",
+      "were chopping"
+     ],
+     "a": "was chopping",
+     "why": "she + was + -ing for the longer action"
+    },
+    {
+     "t": "choose",
+     "q": "The vandals ___ graffiti on the wall when a police officer saw them.",
+     "opts": [
+      "were painting",
+      "are painting",
+      "was painting"
+     ],
+     "a": "were painting",
+     "why": "the action in progress is past continuous, and vandals is plural"
+    },
+    {
+     "t": "choose",
+     "q": "I ___ the thief's face because he was wearing a mask.",
+     "opts": [
+      "wasn't seeing",
+      "didn't saw",
+      "didn't see"
+     ],
+     "a": "didn't see",
+     "why": "see is not used in the continuous here; didn't + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "A hacker ___ (steal) my password while I was using the café's wifi.",
+     "a": [
+      "stole"
+     ],
+     "why": "the short finished action is past simple"
+    },
+    {
+     "t": "write",
+     "q": "My sister was walking home when she ___ (see) two men robbing a shop.",
+     "a": [
+      "saw"
+     ],
+     "why": "after when, the short action is past simple"
+    },
+    {
+     "t": "write",
+     "q": "While the guard ___ (sleep), the thieves took three paintings.",
+     "a": [
+      "was sleeping"
+     ],
+     "why": "the longer action after while is past continuous"
+    },
+    {
+     "t": "write",
+     "q": "It ___ (rain) when we left the police station, so we took a taxi.",
+     "a": [
+      "was raining"
+     ],
+     "why": "the rain was in progress when we left"
+    },
+    {
+     "t": "write",
+     "q": "Somebody stole our bikes yesterday. We ___ (not look) at that moment.",
+     "a": [
+      "weren't looking",
+      "were not looking"
+     ],
+     "why": "in progress at that moment: weren't + -ing"
+    },
+    {
+     "t": "write",
+     "q": "Dad was talking to himself when I ___ (come) into the kitchen.",
+     "a": [
+      "came"
+     ],
+     "why": "the short action that interrupts is past simple"
+    },
+    {
+     "t": "fix",
+     "q": "I was having a shower when the phone was ringing.",
+     "a": [
+      "I was having a shower when the phone rang."
+     ],
+     "why": "the short action after when is past simple"
+    },
+    {
+     "t": "fix",
+     "q": "He was breaking his leg while he was skating.",
+     "a": [
+      "He broke his leg while he was skating."
+     ],
+     "why": "breaking a leg is a short finished action"
+    },
+    {
+     "t": "fix",
+     "q": "During I was shopping, someone stole my purse.",
+     "a": [
+      "While I was shopping, someone stole my purse.",
+      "When I was shopping, someone stole my purse."
+     ],
+     "why": "use while before subject + verb, not during"
+    },
+    {
+     "t": "order",
+     "q": "the burglar / were / when / we / came in / sleeping",
+     "a": [
+      "We were sleeping when the burglar came in.",
+      "When the burglar came in, we were sleeping."
+     ],
+     "why": "continuous for the long action, simple after when"
+    },
+    {
+     "t": "order",
+     "q": "while / her bag / someone / she / took / was dancing",
+     "a": [
+      "Someone took her bag while she was dancing.",
+      "While she was dancing, someone took her bag."
+     ],
+     "why": "while + past continuous"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title": "some, any, much, many, a lot of, a few, a little",
+   "notes": [
+    "some in positive sentences and requests: some shops, some rice. any in negatives and most questions: There isn't any milk. Are there any buses?",
+    "much with uncountable nouns and many with plural nouns, mostly in negatives and questions: How much traffic? How many cars?",
+    "a lot of works with countable and uncountable nouns: a lot of people, a lot of rubbish.",
+    "a few + plural nouns (a few buses); a little + uncountable nouns (a little time)."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "There isn't ___ public transport in my village.",
+     "opts": [
+      "some",
+      "any",
+      "many"
+     ],
+     "a": "any",
+     "why": "negative sentence + uncountable noun"
+    },
+    {
+     "t": "choose",
+     "q": "How ___ recycling bins are there in your street?",
+     "opts": [
+      "much",
+      "a lot",
+      "many"
+     ],
+     "a": "many",
+     "why": "bins is a plural countable noun"
+    },
+    {
+     "t": "choose",
+     "q": "There was ___ rubbish on the beach after the festival.",
+     "opts": [
+      "a lot of",
+      "many",
+      "a few"
+     ],
+     "a": "a lot of",
+     "why": "rubbish is uncountable, so not many or a few"
+    },
+    {
+     "t": "choose",
+     "q": "We've only got ___ time before rush hour, so let's go now.",
+     "opts": [
+      "a few",
+      "a little",
+      "many"
+     ],
+     "a": "a little",
+     "why": "time is uncountable here"
+    },
+    {
+     "t": "choose",
+     "q": "How ___ pollution is there in your city?",
+     "opts": [
+      "many",
+      "few",
+      "much"
+     ],
+     "a": "much",
+     "why": "pollution is uncountable"
+    },
+    {
+     "t": "choose",
+     "q": "There are ___ green spaces near my flat, so I often go for a walk.",
+     "opts": [
+      "any",
+      "a little",
+      "some"
+     ],
+     "a": "some",
+     "why": "positive sentence + plural noun"
+    },
+    {
+     "t": "choose",
+     "q": "Only ___ people were waiting at the taxi rank.",
+     "opts": [
+      "a little",
+      "a few",
+      "much"
+     ],
+     "a": "a few",
+     "why": "people is a plural countable noun"
+    },
+    {
+     "t": "choose",
+     "q": "Are there ___ bus stops near your apartment building?",
+     "opts": [
+      "any",
+      "much",
+      "a little"
+     ],
+     "a": "any",
+     "why": "question + plural noun"
+    },
+    {
+     "t": "choose",
+     "q": "There aren't ___ road signs on this street, so drivers get lost.",
+     "opts": [
+      "much",
+      "many",
+      "some"
+     ],
+     "a": "many",
+     "why": "negative + plural countable noun"
+    },
+    {
+     "t": "write",
+     "q": "We don't have ___ (much / many) time. The bus leaves in two minutes.",
+     "a": [
+      "much"
+     ],
+     "why": "time is uncountable"
+    },
+    {
+     "t": "write",
+     "q": "There were ___ (a few / a little) traffic jams this morning, so I was late.",
+     "a": [
+      "a few"
+     ],
+     "why": "traffic jams is plural and countable"
+    },
+    {
+     "t": "write",
+     "q": "Can I have ___ (some / any) information about the speed limit here, please?",
+     "a": [
+      "some"
+     ],
+     "why": "use some in requests"
+    },
+    {
+     "t": "write",
+     "q": "There weren't ___ (some / any) crowds in the city centre on Monday.",
+     "a": [
+      "any"
+     ],
+     "why": "negative sentence"
+    },
+    {
+     "t": "write",
+     "q": "___ (How much / How many) post boxes are there in your town?",
+     "a": [
+      "How many"
+     ],
+     "why": "post boxes is plural and countable"
+    },
+    {
+     "t": "write",
+     "q": "I put ___ (a few / a little) milk in my coffee, but no sugar.",
+     "a": [
+      "a little"
+     ],
+     "why": "milk is uncountable"
+    },
+    {
+     "t": "fix",
+     "q": "How many traffic is there in the morning?",
+     "a": [
+      "How much traffic is there in the morning?"
+     ],
+     "why": "traffic is uncountable"
+    },
+    {
+     "t": "fix",
+     "q": "We haven't got some pedestrian crossings near the school.",
+     "a": [
+      "We haven't got any pedestrian crossings near the school."
+     ],
+     "why": "use any in negative sentences"
+    },
+    {
+     "t": "fix",
+     "q": "There are much cars in the city centre.",
+     "a": [
+      "There are a lot of cars in the city centre.",
+      "There are many cars in the city centre.",
+      "There are lots of cars in the city centre."
+     ],
+     "why": "cars is countable, so not much"
+    },
+    {
+     "t": "order",
+     "q": "aren't / in / green spaces / there / my city / many",
+     "a": [
+      "There aren't many green spaces in my city.",
+      "In my city there aren't many green spaces."
+     ],
+     "why": "many + plural noun in a negative"
+    },
+    {
+     "t": "order",
+     "q": "is / in / how much / the streets / there / graffiti",
+     "a": [
+      "How much graffiti is there in the streets?"
+     ],
+     "why": "How much + uncountable noun + is there"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title": "have to, must and should",
+   "notes": [
+    "have to + infinitive means it is necessary, often a rule. It changes: has to, had to, Do you have to?",
+    "must + infinitive without to also means it is necessary. It has no -s and no past form (use had to): I must phone Gran.",
+    "mustn't means it is not allowed. don't have to means it is not necessary: You mustn't shout. You don't have to pay.",
+    "should and shouldn't + infinitive give advice: You should say sorry."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "You ___ tell anyone my secret. Promise me!",
+     "opts": [
+      "mustn't",
+      "don't have to",
+      "haven't to"
+     ],
+     "a": "mustn't",
+     "why": "it is not allowed"
+    },
+    {
+     "t": "choose",
+     "q": "It's Saturday tomorrow, so I ___ get up early.",
+     "opts": [
+      "mustn't",
+      "must",
+      "don't have to"
+     ],
+     "a": "don't have to",
+     "why": "it is not necessary"
+    },
+    {
+     "t": "choose",
+     "q": "My brother ___ look after our little sister every Friday.",
+     "opts": [
+      "have to",
+      "has to",
+      "must to"
+     ],
+     "a": "has to",
+     "why": "he + has to"
+    },
+    {
+     "t": "choose",
+     "q": "You had an argument with Ana. I think you ___ say sorry.",
+     "opts": [
+      "should to",
+      "shouldn't",
+      "should"
+     ],
+     "a": "should",
+     "why": "advice: should + infinitive without to"
+    },
+    {
+     "t": "choose",
+     "q": "Last night we ___ stay at home because Dad was annoyed with us.",
+     "opts": [
+      "must",
+      "had to",
+      "have to"
+     ],
+     "a": "had to",
+     "why": "the past of must and have to is had to"
+    },
+    {
+     "t": "choose",
+     "q": "___ your sister have to do a lot of homework?",
+     "opts": [
+      "Do",
+      "Must",
+      "Does"
+     ],
+     "a": "Does",
+     "why": "question with she: Does ... have to"
+    },
+    {
+     "t": "choose",
+     "q": "You ___ be so rude to your sister. It makes her sad.",
+     "opts": [
+      "shouldn't",
+      "should",
+      "don't should"
+     ],
+     "a": "shouldn't",
+     "why": "advice not to do something"
+    },
+    {
+     "t": "choose",
+     "q": "Students ___ use their phones in class. It's against the rules.",
+     "opts": [
+      "don't have to",
+      "mustn't",
+      "must"
+     ],
+     "a": "mustn't",
+     "why": "against the rules means not allowed"
+    },
+    {
+     "t": "choose",
+     "q": "He ___ come round tonight if he is tired. We can get together tomorrow.",
+     "opts": [
+      "mustn't",
+      "don't have to",
+      "doesn't have to"
+     ],
+     "a": "doesn't have to",
+     "why": "not necessary, and he takes doesn't"
+    },
+    {
+     "t": "write",
+     "q": "My best friend ___ (have to) wear a uniform at her new school.",
+     "a": [
+      "has to"
+     ],
+     "why": "she + has to"
+    },
+    {
+     "t": "write",
+     "q": "Yesterday I ___ (have to) do my dad a favour and wash the car.",
+     "a": [
+      "had to"
+     ],
+     "why": "yesterday needs the past: had to"
+    },
+    {
+     "t": "write",
+     "q": "We ___ (not have to) pay. Entry to the youth club is free.",
+     "a": [
+      "don't have to",
+      "do not have to"
+     ],
+     "why": "it is not necessary"
+    },
+    {
+     "t": "write",
+     "q": "___ (you have to) help at home every day?",
+     "a": [
+      "Do you have to"
+     ],
+     "why": "questions with have to use do"
+    },
+    {
+     "t": "write",
+     "q": "Tom ___ (not have to) cook tonight because his parents are getting a pizza.",
+     "a": [
+      "doesn't have to",
+      "does not have to"
+     ],
+     "why": "he + doesn't have to"
+    },
+    {
+     "t": "write",
+     "q": "You look tired. You ___ (should / shouldn't) go to bed so late.",
+     "a": [
+      "shouldn't"
+     ],
+     "why": "advice not to do something"
+    },
+    {
+     "t": "fix",
+     "q": "You must to be polite to your classmates.",
+     "a": [
+      "You must be polite to your classmates."
+     ],
+     "why": "must + infinitive without to"
+    },
+    {
+     "t": "fix",
+     "q": "She should makes up with her friend.",
+     "a": [
+      "She should make up with her friend."
+     ],
+     "why": "after should the verb has no -s"
+    },
+    {
+     "t": "fix",
+     "q": "Does he has to hang out with them?",
+     "a": [
+      "Does he have to hang out with them?"
+     ],
+     "why": "after does use have, not has"
+    },
+    {
+     "t": "order",
+     "q": "to / with / don't / you / agree / have / me",
+     "a": [
+      "You don't have to agree with me."
+     ],
+     "why": "don't have to + infinitive"
+    },
+    {
+     "t": "order",
+     "q": "each other / friends / after / should / an argument / talk to",
+     "a": [
+      "Friends should talk to each other after an argument.",
+      "After an argument, friends should talk to each other."
+     ],
+     "why": "should + infinitive"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title": "Future: be going to and present continuous",
+   "notes": [
+    "Present continuous for fixed arrangements, usually with a time or place: We're meeting Carla at six.",
+    "be going to + infinitive for plans and intentions: I'm going to learn the guitar this year.",
+    "be going to also for predictions when you can see the evidence now: Watch out! That glass is going to fall.",
+    "Do not forget am, is or are: She is going to travel. Are you going to come?"
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "We ___ off at six tomorrow morning. The taxi is booked.",
+     "opts": [
+      "are setting",
+      "is setting",
+      "setting"
+     ],
+     "a": "are setting",
+     "why": "a fixed arrangement: we + are + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "Look at that long queue! We ___ miss our flight.",
+     "opts": [
+      "going to",
+      "are going to",
+      "will to"
+     ],
+     "a": "are going to",
+     "why": "a prediction from what we can see now"
+    },
+    {
+     "t": "choose",
+     "q": "___ your dad going to pick us up from the airport?",
+     "opts": [
+      "Is",
+      "Are",
+      "Does"
+     ],
+     "a": "Is",
+     "why": "your dad is he, so Is"
+    },
+    {
+     "t": "choose",
+     "q": "I'm going to ___ around the shops before I go to the departure gate.",
+     "opts": [
+      "looking",
+      "looks",
+      "look"
+     ],
+     "a": "look",
+     "why": "going to + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "What time ___ you checking in tomorrow?",
+     "opts": [
+      "do",
+      "are",
+      "is"
+     ],
+     "a": "are",
+     "why": "present continuous question: are + you + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "They ___ going to take much baggage. It's only a weekend trip.",
+     "opts": [
+      "isn't",
+      "don't",
+      "aren't"
+     ],
+     "a": "aren't",
+     "why": "they + aren't going to"
+    },
+    {
+     "t": "choose",
+     "q": "'Are you going to go away this summer?' 'Yes, we ___.'",
+     "opts": [
+      "do",
+      "are",
+      "going"
+     ],
+     "a": "are",
+     "why": "short answers repeat the verb be"
+    },
+    {
+     "t": "choose",
+     "q": "My cousin ___ back from Dublin on Friday. I've seen her ticket.",
+     "opts": [
+      "is getting",
+      "get",
+      "is get"
+     ],
+     "a": "is getting",
+     "why": "an arrangement: is + -ing"
+    },
+    {
+     "t": "choose",
+     "q": "Be careful! Your passport ___ out of your pocket.",
+     "opts": [
+      "going to fall",
+      "is going to falls",
+      "is going to fall"
+     ],
+     "a": "is going to fall",
+     "why": "is + going to + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "The sky is completely black. There ___ (be) a storm.",
+     "a": [
+      "is going to be",
+      "'s going to be"
+     ],
+     "why": "a prediction from evidence uses going to"
+    },
+    {
+     "t": "write",
+     "q": "I've decided. I ___ (learn) some Italian before our trip to Rome.",
+     "a": [
+      "am going to learn",
+      "'m going to learn"
+     ],
+     "why": "an intention uses going to"
+    },
+    {
+     "t": "write",
+     "q": "We ___ (meet) Grandma in the baggage hall at ten. She knows the plan.",
+     "a": [
+      "are meeting",
+      "'re meeting",
+      "are going to meet",
+      "'re going to meet"
+     ],
+     "why": "an arrangement with a time and place"
+    },
+    {
+     "t": "write",
+     "q": "He ___ (not come) with us on Saturday. He has decided to stay at home.",
+     "a": [
+      "isn't going to come",
+      "is not going to come",
+      "'s not going to come",
+      "isn't coming",
+      "is not coming",
+      "'s not coming"
+     ],
+     "why": "a plan in the negative"
+    },
+    {
+     "t": "write",
+     "q": "Slow down! You ___ (drop) all those bags!",
+     "a": [
+      "are going to drop",
+      "'re going to drop"
+     ],
+     "why": "you can see it is about to happen"
+    },
+    {
+     "t": "write",
+     "q": "___ (she fly) to Paris tomorrow? I saw her boarding pass on the table.",
+     "a": [
+      "Is she flying",
+      "Is she going to fly"
+     ],
+     "why": "question: Is + subject + -ing"
+    },
+    {
+     "t": "fix",
+     "q": "I going to show my passport at passport control.",
+     "a": [
+      "I am going to show my passport at passport control.",
+      "I'm going to show my passport at passport control."
+     ],
+     "why": "be going to needs am"
+    },
+    {
+     "t": "fix",
+     "q": "She is going to buys a magazine for the flight.",
+     "a": [
+      "She is going to buy a magazine for the flight."
+     ],
+     "why": "going to + infinitive without -s"
+    },
+    {
+     "t": "fix",
+     "q": "We meeting our friends at the check-in desk at nine.",
+     "a": [
+      "We are meeting our friends at the check-in desk at nine.",
+      "We're meeting our friends at the check-in desk at nine."
+     ],
+     "why": "the present continuous needs are"
+    },
+    {
+     "t": "order",
+     "q": "to / are / what / you / in London / going / do",
+     "a": [
+      "What are you going to do in London?"
+     ],
+     "why": "question word + are + subject + going to"
+    },
+    {
+     "t": "order",
+     "q": "at / is / tomorrow / taking off / seven o'clock / our plane",
+     "a": [
+      "Our plane is taking off at seven o'clock tomorrow.",
+      "Our plane is taking off tomorrow at seven o'clock.",
+      "Tomorrow our plane is taking off at seven o'clock.",
+      "At seven o'clock tomorrow our plane is taking off."
+     ],
+     "why": ""
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "title": "Present perfect",
+   "notes": [
+    "Form: have or has + past participle. I've finished. She hasn't arrived. Have they eaten?",
+    "Regular participles end in -ed. Irregular ones must be learned: see, saw, seen; give, gave, given; spend, spent, spent.",
+    "Use it for past actions connected to now, when the exact time is not said: I've lost my receipt (I can't find it now).",
+    "been means went and came back. gone means went and is still there: She has gone to the bank."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "I ___ my receipt, so I can't take the shoes back.",
+     "opts": [
+      "have lost",
+      "has lost",
+      "have lose"
+     ],
+     "a": "have lost",
+     "why": "I + have + past participle"
+    },
+    {
+     "t": "choose",
+     "q": "My sister ___ up enough money for a new phone.",
+     "opts": [
+      "have saved",
+      "has save",
+      "has saved"
+     ],
+     "a": "has saved",
+     "why": "she + has + past participle"
+    },
+    {
+     "t": "choose",
+     "q": "___ you ever opened a bank account?",
+     "opts": [
+      "Did",
+      "Have",
+      "Has"
+     ],
+     "a": "Have",
+     "why": "present perfect question with you uses Have"
+    },
+    {
+     "t": "choose",
+     "q": "We ___ paid for the tickets. We'll do it tomorrow.",
+     "opts": [
+      "haven't",
+      "hasn't",
+      "didn't"
+     ],
+     "a": "haven't",
+     "why": "we + haven't + past participle"
+    },
+    {
+     "t": "choose",
+     "q": "'Has the price gone up?' 'Yes, it ___.'",
+     "opts": [
+      "did",
+      "have",
+      "has"
+     ],
+     "a": "has",
+     "why": "short answers repeat has"
+    },
+    {
+     "t": "choose",
+     "q": "Dad isn't here. He has ___ to the bank.",
+     "opts": [
+      "been",
+      "gone",
+      "went"
+     ],
+     "a": "gone",
+     "why": "gone means he is still there"
+    },
+    {
+     "t": "choose",
+     "q": "I have never ___ so much money in one day!",
+     "opts": [
+      "spend",
+      "spended",
+      "spent"
+     ],
+     "a": "spent",
+     "why": "the participle of spend is spent"
+    },
+    {
+     "t": "choose",
+     "q": "I've ___ to that shopping centre three times. It's great.",
+     "opts": [
+      "been",
+      "gone",
+      "went"
+     ],
+     "a": "been",
+     "why": "been means I went and came back"
+    },
+    {
+     "t": "choose",
+     "q": "She has ___ all her old toys away to a charity shop.",
+     "opts": [
+      "gave",
+      "given",
+      "give"
+     ],
+     "a": "given",
+     "why": "the participle of give is given"
+    },
+    {
+     "t": "write",
+     "q": "Look! Somebody ___ (leave) their change at the checkout.",
+     "a": [
+      "has left",
+      "'s left"
+     ],
+     "why": "a past action with a result now"
+    },
+    {
+     "t": "write",
+     "q": "My parents ___ (never buy) anything online. They prefer real shops.",
+     "a": [
+      "have never bought"
+     ],
+     "why": "never goes between have and the participle"
+    },
+    {
+     "t": "write",
+     "q": "I can't buy the game because I ___ (not save) enough money.",
+     "a": [
+      "haven't saved",
+      "have not saved"
+     ],
+     "why": "the result matters now"
+    },
+    {
+     "t": "write",
+     "q": "___ (you ever pay) for something with your phone?",
+     "a": [
+      "Have you ever paid"
+     ],
+     "why": "ever + present perfect for life experience"
+    },
+    {
+     "t": "write",
+     "q": "I ___ (already pay) for the pizzas, so put your money away.",
+     "a": [
+      "have already paid",
+      "'ve already paid"
+     ],
+     "why": "already goes between have and the participle"
+    },
+    {
+     "t": "write",
+     "q": "Prices ___ (go) up a lot this year.",
+     "a": [
+      "have gone"
+     ],
+     "why": "this year is not finished, so present perfect"
+    },
+    {
+     "t": "fix",
+     "q": "He have spent all his pocket money.",
+     "a": [
+      "He has spent all his pocket money."
+     ],
+     "why": "he + has"
+    },
+    {
+     "t": "fix",
+     "q": "I have never saw such a big special offer.",
+     "a": [
+      "I have never seen such a big special offer."
+     ],
+     "why": "the participle of see is seen"
+    },
+    {
+     "t": "fix",
+     "q": "Has she took the jeans back to the shop?",
+     "a": [
+      "Has she taken the jeans back to the shop?"
+     ],
+     "why": "the participle of take is taken"
+    },
+    {
+     "t": "order",
+     "q": "ever / a wallet / have / found / you / in the street",
+     "a": [
+      "Have you ever found a wallet in the street?"
+     ],
+     "why": "Have + subject + ever + participle"
+    },
+    {
+     "t": "order",
+     "q": "hasn't / the / my brother / opened / from the bank / letter",
+     "a": [
+      "My brother hasn't opened the letter from the bank."
+     ],
+     "why": "hasn't + participle"
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "title": "Present perfect and past simple; How long, for and since",
+   "notes": [
+    "Present perfect for experiences up to now with no finished time: I've tried sushi.",
+    "Past simple with finished time words (yesterday, last year, in 2020, two days ago): I tried sushi last summer.",
+    "How long + present perfect for situations that started in the past and continue now: How long have you lived here?",
+    "for + a period of time (for two years); since + the starting point (since 2019, since Monday)."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "I ___ sushi for the first time last summer.",
+     "opts": [
+      "have tried",
+      "tried",
+      "have try"
+     ],
+     "a": "tried",
+     "why": "last summer is a finished time"
+    },
+    {
+     "t": "choose",
+     "q": "We have lived in this flat ___ 2019.",
+     "opts": [
+      "for",
+      "from",
+      "since"
+     ],
+     "a": "since",
+     "why": "2019 is the starting point"
+    },
+    {
+     "t": "choose",
+     "q": "How long ___ you known your best friend?",
+     "opts": [
+      "did",
+      "do",
+      "have"
+     ],
+     "a": "have",
+     "why": "you still know your friend, so present perfect"
+    },
+    {
+     "t": "choose",
+     "q": "My grandparents have been married ___ fifty years.",
+     "opts": [
+      "since",
+      "for",
+      "during"
+     ],
+     "a": "for",
+     "why": "fifty years is a period of time"
+    },
+    {
+     "t": "choose",
+     "q": "When ___ you cook that delicious soup?",
+     "opts": [
+      "have",
+      "did",
+      "do"
+     ],
+     "a": "did",
+     "why": "When asks about a finished time, so past simple"
+    },
+    {
+     "t": "choose",
+     "q": "She ___ raw fish. She doesn't want to try it.",
+     "opts": [
+      "has never eaten",
+      "has never ate",
+      "have never eaten"
+     ],
+     "a": "has never eaten",
+     "why": "she + has + participle eaten"
+    },
+    {
+     "t": "choose",
+     "q": "He has worked in that restaurant ___ last March.",
+     "opts": [
+      "since",
+      "for",
+      "ago"
+     ],
+     "a": "since",
+     "why": "last March is the starting point"
+    },
+    {
+     "t": "choose",
+     "q": "I ___ a really spicy curry two days ago.",
+     "opts": [
+      "have had",
+      "have",
+      "had"
+     ],
+     "a": "had",
+     "why": "ago needs the past simple"
+    },
+    {
+     "t": "choose",
+     "q": "'Have you ever tasted frozen yoghurt?' 'Yes, I ___ some last week.'",
+     "opts": [
+      "have tried",
+      "tried",
+      "try"
+     ],
+     "a": "tried",
+     "why": "last week is a finished time"
+    },
+    {
+     "t": "write",
+     "q": "We ___ (eat) at that Italian restaurant last Friday. The pizza was tasty.",
+     "a": [
+      "ate"
+     ],
+     "why": "last Friday is a finished time"
+    },
+    {
+     "t": "write",
+     "q": "I ___ (have) this recipe book since my birthday.",
+     "a": [
+      "have had",
+      "'ve had"
+     ],
+     "why": "since + a situation that continues now"
+    },
+    {
+     "t": "write",
+     "q": "My mum ___ (make) a delicious cake yesterday, but it has all gone now.",
+     "a": [
+      "made"
+     ],
+     "why": "yesterday needs the past simple"
+    },
+    {
+     "t": "write",
+     "q": "Carla ___ (be) a vegetarian for three years, and she still feels great.",
+     "a": [
+      "has been",
+      "'s been"
+     ],
+     "why": "it started in the past and continues now"
+    },
+    {
+     "t": "write",
+     "q": "How long ___ (you have) that fridge? It looks very old.",
+     "a": [
+      "have you had"
+     ],
+     "why": "How long + present perfect"
+    },
+    {
+     "t": "write",
+     "q": "They ___ (open) the new café in 2022.",
+     "a": [
+      "opened"
+     ],
+     "why": "in 2022 is a finished time"
+    },
+    {
+     "t": "fix",
+     "q": "I have eaten a sour apple yesterday.",
+     "a": [
+      "I ate a sour apple yesterday."
+     ],
+     "why": "yesterday needs the past simple"
+    },
+    {
+     "t": "fix",
+     "q": "We are friends since primary school.",
+     "a": [
+      "We have been friends since primary school.",
+      "We've been friends since primary school."
+     ],
+     "why": "since needs the present perfect"
+    },
+    {
+     "t": "fix",
+     "q": "She has lived here since two years.",
+     "a": [
+      "She has lived here for two years."
+     ],
+     "why": "use for with a period of time"
+    },
+    {
+     "t": "order",
+     "q": "you / long / have / how / in Spain / lived",
+     "a": [
+      "How long have you lived in Spain?"
+     ],
+     "why": "How long + have + subject + participle"
+    },
+    {
+     "t": "order",
+     "q": "for / haven't / I / chocolate / eaten / a month",
+     "a": [
+      "I haven't eaten chocolate for a month."
+     ],
+     "why": "for + a period of time"
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "title": "will and be going to",
+   "notes": [
+    "will or won't + infinitive for predictions and opinions, often after I think, I'm sure, probably: I'm sure you'll feel better.",
+    "will also for decisions made at the moment of speaking, offers and promises: I'll get you some water.",
+    "be going to for plans you decided before speaking: I'm going to see the doctor on Monday.",
+    "be going to for predictions when you can see the evidence now: Look out! You're going to fall."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "'I've got a terrible headache.' 'Sit down. I ___ you some water.'",
+     "opts": [
+      "'ll get",
+      "'m going to get",
+      "get"
+     ],
+     "a": "'ll get",
+     "why": "an offer decided at the moment of speaking"
+    },
+    {
+     "t": "choose",
+     "q": "I've already phoned the doctor. I ___ her at five o'clock.",
+     "opts": [
+      "will see",
+      "see",
+      "'m going to see"
+     ],
+     "a": "'m going to see",
+     "why": "a plan made before speaking"
+    },
+    {
+     "t": "choose",
+     "q": "I'm sure you ___ better after a good sleep.",
+     "opts": [
+      "are feeling",
+      "will feel",
+      "feel"
+     ],
+     "a": "will feel",
+     "why": "a prediction after I'm sure"
+    },
+    {
+     "t": "choose",
+     "q": "Be careful on that wall! You ___ your ankle.",
+     "opts": [
+      "will to hurt",
+      "are going to hurt",
+      "hurting"
+     ],
+     "a": "are going to hurt",
+     "why": "a prediction from what you can see now"
+    },
+    {
+     "t": "choose",
+     "q": "Don't worry. The injection ___ hurt.",
+     "opts": [
+      "won't",
+      "isn't",
+      "don't"
+     ],
+     "a": "won't",
+     "why": "a promise or prediction: won't + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "___ doctors find a cure for the flu one day?",
+     "opts": [
+      "Are",
+      "Do",
+      "Will"
+     ],
+     "a": "Will",
+     "why": "a question about a future prediction"
+    },
+    {
+     "t": "choose",
+     "q": "She will probably ___ a cold if she goes out with wet hair.",
+     "opts": [
+      "catches",
+      "to catch",
+      "catch"
+     ],
+     "a": "catch",
+     "why": "will + infinitive without to"
+    },
+    {
+     "t": "choose",
+     "q": "I promise I ___ you in hospital every day.",
+     "opts": [
+      "visit",
+      "'ll visit",
+      "am visiting"
+     ],
+     "a": "'ll visit",
+     "why": "promises use will"
+    },
+    {
+     "t": "choose",
+     "q": "He has bought new running shoes because he ___ get fit this year.",
+     "opts": [
+      "will",
+      "is going to",
+      "goes to"
+     ],
+     "a": "is going to",
+     "why": "he already has the plan"
+    },
+    {
+     "t": "write",
+     "q": "Perhaps my knee ___ (be) better next week. I hope so.",
+     "a": [
+      "will be",
+      "'ll be"
+     ],
+     "why": "a prediction with perhaps uses will"
+    },
+    {
+     "t": "write",
+     "q": "I think I ___ (not go) to school tomorrow. I still have a fever.",
+     "a": [
+      "won't go",
+      "will not go"
+     ],
+     "why": "an opinion about the future uses won't"
+    },
+    {
+     "t": "write",
+     "q": "Look at him on that skateboard! He ___ (fall)!",
+     "a": [
+      "is going to fall",
+      "'s going to fall"
+     ],
+     "why": "you can see the evidence now"
+    },
+    {
+     "t": "write",
+     "q": "Mum made the appointment last week. She ___ (take) me to the dentist on Monday because of my toothache.",
+     "a": [
+      "is going to take",
+      "'s going to take",
+      "is taking",
+      "'s taking"
+     ],
+     "why": "a plan made before speaking"
+    },
+    {
+     "t": "write",
+     "q": "'I can't open this bottle of cough medicine.' 'Give it to me. I ___ (open) it for you.'",
+     "a": [
+      "will open",
+      "'ll open"
+     ],
+     "why": "an offer at the moment of speaking"
+    },
+    {
+     "t": "write",
+     "q": "In the future, I'm sure people ___ (not get) ill so often.",
+     "a": [
+      "won't get",
+      "will not get"
+     ],
+     "why": "a general prediction uses won't"
+    },
+    {
+     "t": "fix",
+     "q": "I think she wills get better soon.",
+     "a": [
+      "I think she will get better soon.",
+      "I think she'll get better soon."
+     ],
+     "why": "will never takes -s"
+    },
+    {
+     "t": "fix",
+     "q": "Don't worry, I will to look after you.",
+     "a": [
+      "Don't worry, I will look after you.",
+      "Don't worry, I'll look after you."
+     ],
+     "why": "will + infinitive without to"
+    },
+    {
+     "t": "fix",
+     "q": "He is going break his arm if he is not careful.",
+     "a": [
+      "He is going to break his arm if he is not careful.",
+      "He's going to break his arm if he is not careful."
+     ],
+     "why": "going to needs to"
+    },
+    {
+     "t": "order",
+     "q": "will / you / soon / feel / I'm sure / better",
+     "a": [
+      "I'm sure you will feel better soon.",
+      "I'm sure you will soon feel better."
+     ],
+     "why": "will + infinitive"
+    },
+    {
+     "t": "order",
+     "q": "going / see / I'm / a doctor / to / about my back",
+     "a": [
+      "I'm going to see a doctor about my back."
+     ],
+     "why": "be going to + infinitive"
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "title": "Modals of probability: must, might, could, can't",
+   "notes": [
+    "must + infinitive means I'm almost sure it is true: You've run ten kilometres. You must be thirsty.",
+    "might or could + infinitive means it is possible: Take an umbrella. It might rain.",
+    "can't + infinitive means I'm almost sure it is not true: That can't be a shark. (Do not use mustn't here.)",
+    "These modals never change form and have no to after them: She might be at home."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "That animal has big ears and flies at night. It ___ be a bat.",
+     "opts": [
+      "must",
+      "can't",
+      "mustn't"
+     ],
+     "a": "must",
+     "why": "the evidence makes you almost sure"
+    },
+    {
+     "t": "choose",
+     "q": "It ___ be a shark. Sharks don't live in rivers!",
+     "opts": [
+      "must",
+      "might",
+      "can't"
+     ],
+     "a": "can't",
+     "why": "you are sure it is impossible"
+    },
+    {
+     "t": "choose",
+     "q": "I'm not sure what made that noise. It ___ be a fox.",
+     "opts": [
+      "must",
+      "might",
+      "can't"
+     ],
+     "a": "might",
+     "why": "not sure means it is only possible"
+    },
+    {
+     "t": "choose",
+     "q": "She might ___ afraid of bees. I don't really know.",
+     "opts": [
+      "be",
+      "to be",
+      "is"
+     ],
+     "a": "be",
+     "why": "modal + infinitive without to"
+    },
+    {
+     "t": "choose",
+     "q": "Take some cream with you. There ___ be mosquitoes near the lake.",
+     "opts": [
+      "can't",
+      "could",
+      "couldn't"
+     ],
+     "a": "could",
+     "why": "it is possible"
+    },
+    {
+     "t": "choose",
+     "q": "The eagle has been flying all day. It ___ be tired.",
+     "opts": [
+      "can't",
+      "mustn't",
+      "must"
+     ],
+     "a": "must",
+     "why": "you are almost sure it is true"
+    },
+    {
+     "t": "choose",
+     "q": "He ___ be at the zoo. I saw him at home two minutes ago.",
+     "opts": [
+      "can't",
+      "mustn't",
+      "might"
+     ],
+     "a": "can't",
+     "why": "you are sure it is not true"
+    },
+    {
+     "t": "choose",
+     "q": "Perhaps the deer are hiding. They ___ come out later.",
+     "opts": [
+      "must",
+      "can't",
+      "might"
+     ],
+     "a": "might",
+     "why": "perhaps shows possibility"
+    },
+    {
+     "t": "choose",
+     "q": "This insect has colourful wings, so it ___ a butterfly.",
+     "opts": [
+      "must to be",
+      "must be",
+      "musts be"
+     ],
+     "a": "must be",
+     "why": "must has no -s and no to"
+    },
+    {
+     "t": "write",
+     "q": "I'm sure that isn't a worm. It's much too big. It ___ (must / might / can't) be a worm.",
+     "a": [
+      "can't"
+     ],
+     "why": "sure it is not true"
+    },
+    {
+     "t": "write",
+     "q": "Perhaps there are frogs in this pond. There ___ (must / might / can't) be frogs in this pond.",
+     "a": [
+      "might"
+     ],
+     "why": "perhaps means it is possible"
+    },
+    {
+     "t": "write",
+     "q": "I'm certain the donkey is hungry. It ___ (must / could / can't) be hungry.",
+     "a": [
+      "must"
+     ],
+     "why": "certain it is true"
+    },
+    {
+     "t": "write",
+     "q": "It's possible that the fox lives under our shed. It ___ (must / could / can't) live there.",
+     "a": [
+      "could"
+     ],
+     "why": "possible means could or might"
+    },
+    {
+     "t": "write",
+     "q": "It is possible that the ants won't come back. They ___ (might not / can't / must) come back.",
+     "a": [
+      "might not"
+     ],
+     "why": "possibly not is might not"
+    },
+    {
+     "t": "write",
+     "q": "You saw a wolf in the city centre? You ___ (must / might / can't) be serious!",
+     "a": [
+      "can't"
+     ],
+     "why": "you think it is impossible"
+    },
+    {
+     "t": "fix",
+     "q": "That must to be an eagle.",
+     "a": [
+      "That must be an eagle."
+     ],
+     "why": "must + infinitive without to"
+    },
+    {
+     "t": "fix",
+     "q": "It mights be a fly or a bee.",
+     "a": [
+      "It might be a fly or a bee."
+     ],
+     "why": "modal verbs never take -s"
+    },
+    {
+     "t": "fix",
+     "q": "That mustn't be a shark. We are in a swimming pool!",
+     "a": [
+      "That can't be a shark. We are in a swimming pool!"
+     ],
+     "why": "use can't when you are sure it is not true"
+    },
+    {
+     "t": "order",
+     "q": "be / a wolf / outside / there / might / the tent",
+     "a": [
+      "There might be a wolf outside the tent."
+     ],
+     "why": "might + infinitive"
+    },
+    {
+     "t": "order",
+     "q": "must / very tired / flying / after / be / the birds / all day",
+     "a": [
+      "The birds must be very tired after flying all day.",
+      "After flying all day, the birds must be very tired."
+     ],
+     "why": "must + be"
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "title": "Present perfect with just, already and yet",
+   "notes": [
+    "just means a very short time ago. It goes between have or has and the participle: The bus has just left.",
+    "already means before now or sooner than expected. It goes between have or has and the participle: I've already seen it.",
+    "yet goes at the end of negatives and questions: I haven't finished yet. Have you finished yet?"
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "I haven't told my parents about my exam result ___.",
+     "opts": [
+      "yet",
+      "already",
+      "just"
+     ],
+     "a": "yet",
+     "why": "yet goes at the end of a negative"
+    },
+    {
+     "t": "choose",
+     "q": "She's exhausted because she has ___ run ten kilometres.",
+     "opts": [
+      "yet",
+      "still",
+      "just"
+     ],
+     "a": "just",
+     "why": "just means a very short time ago"
+    },
+    {
+     "t": "choose",
+     "q": "'Shall I explain it again?' 'No, thanks. You've ___ explained it twice.'",
+     "opts": [
+      "already",
+      "yet",
+      "since"
+     ],
+     "a": "already",
+     "why": "already means before now"
+    },
+    {
+     "t": "choose",
+     "q": "Have you finished that boring book ___?",
+     "opts": [
+      "just",
+      "yet",
+      "ever"
+     ],
+     "a": "yet",
+     "why": "yet goes at the end of a question"
+    },
+    {
+     "t": "choose",
+     "q": "We ___ heard the news. We are amazed!",
+     "opts": [
+      "have just",
+      "just have",
+      "has just"
+     ],
+     "a": "have just",
+     "why": "just goes after have"
+    },
+    {
+     "t": "choose",
+     "q": "He hasn't said sorry ___, so I'm still annoyed.",
+     "opts": [
+      "already",
+      "just",
+      "yet"
+     ],
+     "a": "yet",
+     "why": "negative sentence + yet"
+    },
+    {
+     "t": "choose",
+     "q": "It's only nine o'clock and I've ___ done all my homework. I'm so proud!",
+     "opts": [
+      "yet",
+      "already",
+      "ever"
+     ],
+     "a": "already",
+     "why": "sooner than expected"
+    },
+    {
+     "t": "choose",
+     "q": "My sister has just ___ her driving test, so she's very relaxed now.",
+     "opts": [
+      "pass",
+      "passing",
+      "passed"
+     ],
+     "a": "passed",
+     "why": "has just + past participle"
+    },
+    {
+     "t": "choose",
+     "q": "'Is Dad still here?' 'No, he ___. You missed him by a minute.'",
+     "opts": [
+      "has left yet",
+      "has just left",
+      "just has left"
+     ],
+     "a": "has just left",
+     "why": "just goes between has and the participle"
+    },
+    {
+     "t": "write",
+     "q": "The match ___ (just finish). The players are still on the pitch.",
+     "a": [
+      "has just finished",
+      "'s just finished"
+     ],
+     "why": "has + just + participle"
+    },
+    {
+     "t": "write",
+     "q": "I ___ (not see) my exam results yet, so I feel stressed.",
+     "a": [
+      "haven't seen",
+      "have not seen"
+     ],
+     "why": "yet needs the present perfect negative"
+    },
+    {
+     "t": "write",
+     "q": "We ___ (already buy) the tickets, so you don't need to queue.",
+     "a": [
+      "have already bought",
+      "'ve already bought"
+     ],
+     "why": "have + already + participle"
+    },
+    {
+     "t": "write",
+     "q": "___ (you tidy) your room yet? Grandma arrives in an hour.",
+     "a": [
+      "Have you tidied"
+     ],
+     "why": "question with yet uses the present perfect"
+    },
+    {
+     "t": "write",
+     "q": "Don't be scared. The spider ___ (just go) out of the window.",
+     "a": [
+      "has just gone",
+      "'s just gone"
+     ],
+     "why": "has + just + gone"
+    },
+    {
+     "t": "write",
+     "q": "Lucy ___ (not reply) to my message yet. I feel a bit disappointed.",
+     "a": [
+      "hasn't replied",
+      "has not replied"
+     ],
+     "why": "she + hasn't + participle"
+    },
+    {
+     "t": "fix",
+     "q": "She has just arrive at the station.",
+     "a": [
+      "She has just arrived at the station."
+     ],
+     "why": "has just + past participle"
+    },
+    {
+     "t": "fix",
+     "q": "We already have seen this embarrassing video.",
+     "a": [
+      "We have already seen this embarrassing video.",
+      "We've already seen this embarrassing video.",
+      "We have seen this embarrassing video already."
+     ],
+     "why": "already goes after have"
+    },
+    {
+     "t": "fix",
+     "q": "I didn't finish my homework yet.",
+     "a": [
+      "I haven't finished my homework yet.",
+      "I have not finished my homework yet."
+     ],
+     "why": "yet is used with the present perfect"
+    },
+    {
+     "t": "order",
+     "q": "haven't / the / yet / results / they / announced",
+     "a": [
+      "They haven't announced the results yet."
+     ],
+     "why": "yet goes at the end"
+    },
+    {
+     "t": "order",
+     "q": "has / a / my brother / won / just / prize",
+     "a": [
+      "My brother has just won a prize."
+     ],
+     "why": "just goes between has and the participle"
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "title": "Relative clauses: who, which, that, where",
+   "notes": [
+    "A relative clause tells us which person, thing or place we mean: The girl who sits next to me is from Peru.",
+    "who or that for people: an actor who plays a detective. which or that for things: a film which makes me laugh.",
+    "where for places: This is the cinema where we saw the film.",
+    "Do not repeat the subject or object: the film that I watched (not the film that I watched it)."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "A director is a person ___ makes films.",
+     "opts": [
+      "who",
+      "which",
+      "where"
+     ],
+     "a": "who",
+     "why": "who for people"
+    },
+    {
+     "t": "choose",
+     "q": "This is the soap opera ___ my grandma watches every day.",
+     "opts": [
+      "who",
+      "where",
+      "which"
+     ],
+     "a": "which",
+     "why": "which for things"
+    },
+    {
+     "t": "choose",
+     "q": "That's the cinema ___ we saw the horror film.",
+     "opts": [
+      "which",
+      "where",
+      "who"
+     ],
+     "a": "where",
+     "why": "where for places"
+    },
+    {
+     "t": "choose",
+     "q": "I love documentaries ___ teach me about animals.",
+     "opts": [
+      "who",
+      "where",
+      "that"
+     ],
+     "a": "that",
+     "why": "that for things"
+    },
+    {
+     "t": "choose",
+     "q": "The actor ___ plays the main character is from Seville.",
+     "opts": [
+      "which",
+      "who",
+      "where"
+     ],
+     "a": "who",
+     "why": "who for people"
+    },
+    {
+     "t": "choose",
+     "q": "Is this the studio ___ they film the chat show?",
+     "opts": [
+      "where",
+      "which",
+      "who"
+     ],
+     "a": "where",
+     "why": "a place where something happens"
+    },
+    {
+     "t": "choose",
+     "q": "I didn't like the review ___ I read online.",
+     "opts": [
+      "who",
+      "that",
+      "where"
+     ],
+     "a": "that",
+     "why": "that for things"
+    },
+    {
+     "t": "choose",
+     "q": "The woman ___ reads the news is very serious.",
+     "opts": [
+      "which",
+      "where",
+      "that"
+     ],
+     "a": "that",
+     "why": "that can be used for people"
+    },
+    {
+     "t": "choose",
+     "q": "That is the series which ___ about a teenage detective.",
+     "opts": [
+      "it is",
+      "is",
+      "are"
+     ],
+     "a": "is",
+     "why": "which is already the subject, so no it"
+    },
+    {
+     "t": "write",
+     "q": "A comedian is someone ___ (who / which / where) tells jokes on TV.",
+     "a": [
+      "who"
+     ],
+     "why": "who for people"
+    },
+    {
+     "t": "write",
+     "q": "Let's go to the café ___ (who / which / where) we met the actors.",
+     "a": [
+      "where"
+     ],
+     "why": "where for places"
+    },
+    {
+     "t": "write",
+     "q": "The trailer ___ (who / which / where) I watched yesterday was really exciting.",
+     "a": [
+      "which"
+     ],
+     "why": "which for things"
+    },
+    {
+     "t": "write",
+     "q": "She is the presenter ___ (who / which / where) won the prize last year.",
+     "a": [
+      "who"
+     ],
+     "why": "who for people"
+    },
+    {
+     "t": "write",
+     "q": "The soundtrack ___ (who / that / where) you are listening to is from a science fiction film.",
+     "a": [
+      "that"
+     ],
+     "why": "that for things"
+    },
+    {
+     "t": "write",
+     "q": "This is the town ___ (who / which / where) they made the period drama.",
+     "a": [
+      "where"
+     ],
+     "why": "they made it there, so where"
+    },
+    {
+     "t": "fix",
+     "q": "That's the animation that I watched it last night.",
+     "a": [
+      "That's the animation that I watched last night.",
+      "That's the animation which I watched last night.",
+      "That's the animation I watched last night."
+     ],
+     "why": "that replaces it, so do not repeat it"
+    },
+    {
+     "t": "fix",
+     "q": "He is the actor which won the prize.",
+     "a": [
+      "He is the actor who won the prize.",
+      "He is the actor that won the prize."
+     ],
+     "why": "who or that for people, not which"
+    },
+    {
+     "t": "fix",
+     "q": "She's the girl who she plays the detective.",
+     "a": [
+      "She's the girl who plays the detective."
+     ],
+     "why": "who is the subject, so no second she"
+    },
+    {
+     "t": "order",
+     "q": "the man / my uncle / is / who / the crime drama / wrote",
+     "a": [
+      "The man who wrote the crime drama is my uncle.",
+      "My uncle is the man who wrote the crime drama."
+     ],
+     "why": "who + verb after the person"
+    },
+    {
+     "t": "order",
+     "q": "the clip / was / you / very funny / that / sent me",
+     "a": [
+      "The clip that you sent me was very funny."
+     ],
+     "why": "that + clause after the thing"
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "title": "Present simple passive",
+   "notes": [
+    "Form: am, is or are + past participle. Rice is grown in Asia. These cars are made in Germany.",
+    "Negative: isn't or aren't + participle. Question: Is French spoken in Canada?",
+    "Use the passive when the action is more important than who does it, or when we don't know who does it.",
+    "Use by to say who does the action: This app is used by millions of people."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "Millions of photos ___ every day.",
+     "opts": [
+      "are uploaded",
+      "is uploaded",
+      "are upload"
+     ],
+     "a": "are uploaded",
+     "why": "plural subject: are + participle"
+    },
+    {
+     "t": "choose",
+     "q": "This app ___ by teenagers all over the world.",
+     "opts": [
+      "uses",
+      "is used",
+      "is use"
+     ],
+     "a": "is used",
+     "why": "the app does not use, it is used"
+    },
+    {
+     "t": "choose",
+     "q": "___ the computers switched off at night?",
+     "opts": [
+      "Is",
+      "Do",
+      "Are"
+     ],
+     "a": "Are",
+     "why": "plural subject in a passive question"
+    },
+    {
+     "t": "choose",
+     "q": "The school website ___ updated at weekends.",
+     "opts": [
+      "isn't",
+      "aren't",
+      "doesn't"
+     ],
+     "a": "isn't",
+     "why": "singular subject: isn't + participle"
+    },
+    {
+     "t": "choose",
+     "q": "These phones are ___ in South Korea.",
+     "opts": [
+      "make",
+      "making",
+      "made"
+     ],
+     "a": "made",
+     "why": "are + past participle"
+    },
+    {
+     "t": "choose",
+     "q": "Where ___ this podcast recorded?",
+     "opts": [
+      "does",
+      "are",
+      "is"
+     ],
+     "a": "is",
+     "why": "this podcast is singular"
+    },
+    {
+     "t": "choose",
+     "q": "A lot of videos are shared ___ young people.",
+     "opts": [
+      "by",
+      "for",
+      "from"
+     ],
+     "a": "by",
+     "why": "by shows who does the action"
+    },
+    {
+     "t": "choose",
+     "q": "Old files ___ automatically after thirty days.",
+     "opts": [
+      "delete",
+      "are deleted",
+      "are deleting"
+     ],
+     "a": "are deleted",
+     "why": "files do not delete, they are deleted"
+    },
+    {
+     "t": "choose",
+     "q": "'Is the wifi turned off at night?' 'No, it ___.'",
+     "opts": [
+      "doesn't",
+      "isn't",
+      "aren't"
+     ],
+     "a": "isn't",
+     "why": "short answers repeat the verb be"
+    },
+    {
+     "t": "write",
+     "q": "The lights in our classroom ___ (turn off) at five o'clock every day.",
+     "a": [
+      "are turned off"
+     ],
+     "why": "plural subject: are + participle"
+    },
+    {
+     "t": "write",
+     "q": "Spanish ___ (speak) in more than twenty countries.",
+     "a": [
+      "is spoken"
+     ],
+     "why": "the participle of speak is spoken"
+    },
+    {
+     "t": "write",
+     "q": "Mobile phones ___ (not allow) in our exams.",
+     "a": [
+      "aren't allowed",
+      "are not allowed"
+     ],
+     "why": "aren't + participle"
+    },
+    {
+     "t": "write",
+     "q": "This laptop ___ (sell) with a free bag in all the shops.",
+     "a": [
+      "is sold"
+     ],
+     "why": "the participle of sell is sold"
+    },
+    {
+     "t": "write",
+     "q": "How many apps ___ (install) on a new phone in the factory?",
+     "a": [
+      "are installed"
+     ],
+     "why": "apps is plural: are + participle"
+    },
+    {
+     "t": "write",
+     "q": "The projector ___ (not use) very often because it is old.",
+     "a": [
+      "isn't used",
+      "is not used"
+     ],
+     "why": "isn't + participle"
+    },
+    {
+     "t": "fix",
+     "q": "The links is shared with all the students.",
+     "a": [
+      "The links are shared with all the students."
+     ],
+     "why": "links is plural, so are"
+    },
+    {
+     "t": "fix",
+     "q": "This game is play by millions of people.",
+     "a": [
+      "This game is played by millions of people."
+     ],
+     "why": "is + past participle"
+    },
+    {
+     "t": "fix",
+     "q": "Our computers are checked for viruses from an expert.",
+     "a": [
+      "Our computers are checked for viruses by an expert."
+     ],
+     "why": "use by for the person who does the action"
+    },
+    {
+     "t": "order",
+     "q": "in / made / are / these tablets / China",
+     "a": [
+      "These tablets are made in China."
+     ],
+     "why": "are + participle"
+    },
+    {
+     "t": "order",
+     "q": "is / off / the computer / every night / switched / why",
+     "a": [
+      "Why is the computer switched off every night?"
+     ],
+     "why": "question word + is + subject + participle"
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "title": "Zero and first conditional",
+   "notes": [
+    "Zero conditional: if + present simple, present simple. Use it for things that are always true: If you mix blue and yellow, you get green.",
+    "First conditional: if + present simple, will or won't + infinitive. Use it for a real possibility in the future: If it rains, we'll stay in.",
+    "Never use will in the if-clause: If it rains (not If it will rain).",
+    "unless means if not: We won't finish unless we hurry."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "If you boil water, it ___ into steam.",
+     "opts": [
+      "turns",
+      "turn",
+      "turned"
+     ],
+     "a": "turns",
+     "why": "always true: present simple, and it takes -s"
+    },
+    {
+     "t": "choose",
+     "q": "Be careful! If you shake that bottle, the cola ___ out when you open it.",
+     "opts": [
+      "will comes",
+      "will come",
+      "came"
+     ],
+     "a": "will come",
+     "why": "will + infinitive without -s"
+    },
+    {
+     "t": "choose",
+     "q": "If it ___ tomorrow, we will do the experiment inside.",
+     "opts": [
+      "will rain",
+      "rains",
+      "rain"
+     ],
+     "a": "rains",
+     "why": "present simple after if, and it takes -s"
+    },
+    {
+     "t": "choose",
+     "q": "We won't finish the experiment ___ we work faster.",
+     "opts": [
+      "if",
+      "when",
+      "unless"
+     ],
+     "a": "unless",
+     "why": "unless means if we don't"
+    },
+    {
+     "t": "choose",
+     "q": "If you don't stir the soup now, it ___ burn.",
+     "opts": [
+      "will",
+      "is",
+      "does"
+     ],
+     "a": "will",
+     "why": "a future result: will + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "Ice ___ if you take it out of the freezer.",
+     "opts": [
+      "melt",
+      "melts",
+      "is melting"
+     ],
+     "a": "melts",
+     "why": "always true: present simple"
+    },
+    {
+     "t": "choose",
+     "q": "If you ___ the jar with a cloth, the insects won't escape.",
+     "opts": [
+      "will cover",
+      "covered",
+      "cover"
+     ],
+     "a": "cover",
+     "why": "present simple in the if-clause"
+    },
+    {
+     "t": "choose",
+     "q": "Plants die if they ___ enough water.",
+     "opts": [
+      "won't get",
+      "don't get",
+      "doesn't get"
+     ],
+     "a": "don't get",
+     "why": "zero conditional: present simple, and they takes don't"
+    },
+    {
+     "t": "choose",
+     "q": "Unless you ___ the rope tightly, the box will open.",
+     "opts": [
+      "tie",
+      "don't tie",
+      "will tie"
+     ],
+     "a": "tie",
+     "why": "unless already means if not"
+    },
+    {
+     "t": "write",
+     "q": "If you mix red and white, you always ___ (get) pink.",
+     "a": [
+      "get"
+     ],
+     "why": "always true: present simple in both parts"
+    },
+    {
+     "t": "write",
+     "q": "If our teacher ___ (let) us, we will carry out the experiment tomorrow.",
+     "a": [
+      "lets"
+     ],
+     "why": "present simple after if, with -s"
+    },
+    {
+     "t": "write",
+     "q": "You ___ (not pass) the science test next week if you don't work out the answers yourself.",
+     "a": [
+      "won't pass",
+      "will not pass"
+     ],
+     "why": "a future result: won't + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "If you ___ (not wrap) the ice in paper, it will melt before lunchtime.",
+     "a": [
+      "don't wrap",
+      "do not wrap"
+     ],
+     "why": "present simple negative after if"
+    },
+    {
+     "t": "write",
+     "q": "When you rub your hands together, they always ___ (become) warm.",
+     "a": [
+      "become"
+     ],
+     "why": "always true: present simple"
+    },
+    {
+     "t": "write",
+     "q": "If you drop that glass jar in class tomorrow, the teacher ___ (be) angry.",
+     "a": [
+      "will be",
+      "'ll be"
+     ],
+     "why": "a possible future result: will"
+    },
+    {
+     "t": "fix",
+     "q": "If it will be sunny tomorrow, we will do the experiment outside.",
+     "a": [
+      "If it is sunny tomorrow, we will do the experiment outside.",
+      "If it's sunny tomorrow, we will do the experiment outside."
+     ],
+     "why": "no will after if"
+    },
+    {
+     "t": "fix",
+     "q": "If you heat butter, it melt.",
+     "a": [
+      "If you heat butter, it melts."
+     ],
+     "why": "it + present simple takes -s"
+    },
+    {
+     "t": "fix",
+     "q": "Unless you don't add up the numbers carefully, you will make a mistake.",
+     "a": [
+      "Unless you add up the numbers carefully, you will make a mistake.",
+      "If you don't add up the numbers carefully, you will make a mistake."
+     ],
+     "why": "unless already means if not"
+    },
+    {
+     "t": "order",
+     "q": "it / you / if / falls / a ball / drop",
+     "a": [
+      "If you drop a ball, it falls.",
+      "A ball falls if you drop it.",
+      "It falls if you drop a ball."
+     ],
+     "why": "zero conditional: present simple in both parts"
+    },
+    {
+     "t": "order",
+     "q": "we / if / will / hurry / be late / don't / we",
+     "a": [
+      "If we don't hurry, we will be late.",
+      "We will be late if we don't hurry."
+     ],
+     "why": "if + present, will + infinitive"
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "title": "Reported commands and requests",
+   "notes": [
+    "Reporting verb + person + to + infinitive: 'Sit down!' becomes The teacher told us to sit down.",
+    "For negatives use not to + infinitive: 'Don't shout!' becomes She told them not to shout.",
+    "tell for orders, ask for polite requests, advise for advice. Also warn, remind, persuade, encourage.",
+    "tell and ask need a person with no to: He told me to wait (not He said me, not He told to me)."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "The guide told us ___ the paintings.",
+     "opts": [
+      "not to touch",
+      "don't touch",
+      "to not touching"
+     ],
+     "a": "not to touch",
+     "why": "negative command: not to + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "The director asked the actors ___ earlier the next day.",
+     "opts": [
+      "arrive",
+      "to arrive",
+      "arriving"
+     ],
+     "a": "to arrive",
+     "why": "ask + person + to + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "My art teacher ___ me to use more colourful paint.",
+     "opts": [
+      "said",
+      "told to",
+      "told"
+     ],
+     "a": "told",
+     "why": "tell + person, without to"
+    },
+    {
+     "t": "choose",
+     "q": "'Please be quiet.' The poet asked the audience ___ quiet.",
+     "opts": [
+      "to be",
+      "be",
+      "being"
+     ],
+     "a": "to be",
+     "why": "ask + person + to + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "The writer advised ___ to read a lot of novels.",
+     "opts": [
+      "to us",
+      "we",
+      "us"
+     ],
+     "a": "us",
+     "why": "advise + object pronoun"
+    },
+    {
+     "t": "choose",
+     "q": "'Don't forget your tickets!' Mum reminded us ___ our tickets.",
+     "opts": [
+      "don't forget",
+      "not to forget",
+      "to don't forget"
+     ],
+     "a": "not to forget",
+     "why": "not to + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "'Give me your pencil.' She told me to give her ___ pencil.",
+     "opts": [
+      "your",
+      "my",
+      "her"
+     ],
+     "a": "my",
+     "why": "your changes to my in the report"
+    },
+    {
+     "t": "choose",
+     "q": "The guard warned the children ___ near the sculpture.",
+     "opts": [
+      "not run",
+      "to don't run",
+      "not to run"
+     ],
+     "a": "not to run",
+     "why": "warn + person + not to + infinitive"
+    },
+    {
+     "t": "choose",
+     "q": "Our teacher encouraged us ___ the gallery at the weekend.",
+     "opts": [
+      "visiting",
+      "to visit",
+      "visit"
+     ],
+     "a": "to visit",
+     "why": "encourage + person + to + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "'Open your books.' The teacher told us ___ (open) our books.",
+     "a": [
+      "to open"
+     ],
+     "why": "tell + person + to + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "'Don't take photos.' The guard told the visitors ___ (not take) photos.",
+     "a": [
+      "not to take"
+     ],
+     "why": "negative: not to + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "I asked the novelist ___ (sign) my copy of her book, and she did.",
+     "a": [
+      "to sign"
+     ],
+     "why": "ask + person + to + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "'You should visit the studio.' My friend advised me ___ (visit) the studio.",
+     "a": [
+      "to visit"
+     ],
+     "why": "advise + person + to + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "The museum guide warned the tourists ___ (not sit) on the historical chairs.",
+     "a": [
+      "not to sit"
+     ],
+     "why": "warn + person + not to + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "My parents persuaded me ___ (study) art at university. Now I'm a successful painter.",
+     "a": [
+      "to study"
+     ],
+     "why": "persuade + person + to + infinitive"
+    },
+    {
+     "t": "fix",
+     "q": "The teacher said us to write a poem.",
+     "a": [
+      "The teacher told us to write a poem."
+     ],
+     "why": "use tell + person, not say"
+    },
+    {
+     "t": "fix",
+     "q": "She told me to not be late for the concert.",
+     "a": [
+      "She told me not to be late for the concert."
+     ],
+     "why": "not goes before to"
+    },
+    {
+     "t": "fix",
+     "q": "He asked to me to close the studio door.",
+     "a": [
+      "He asked me to close the studio door."
+     ],
+     "why": "ask + person, without to"
+    },
+    {
+     "t": "order",
+     "q": "to / the director / quiet / told / be / everyone",
+     "a": [
+      "The director told everyone to be quiet."
+     ],
+     "why": "tell + person + to + infinitive"
+    },
+    {
+     "t": "order",
+     "q": "asked / not / her / to / me / my sister / use / paints",
+     "a": [
+      "My sister asked me not to use her paints."
+     ],
+     "why": "ask + person + not to + infinitive"
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "title": "Second conditional",
+   "notes": [
+    "Form: if + past simple, would or wouldn't + infinitive. If I had a boat, I would sail around the world.",
+    "Use it for imaginary or unlikely situations in the present or future. It does not talk about the past.",
+    "Never use would in the if-clause: If I knew (not If I would know).",
+    "If I were you, I'd ... is used to give advice. The short form of would is 'd."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "If he ___ taller, he would be a great goalkeeper.",
+     "opts": [
+      "is",
+      "was",
+      "would be"
+     ],
+     "a": "was",
+     "why": "past simple in the if-clause"
+    },
+    {
+     "t": "choose",
+     "q": "If she had more free time, she ___ as a babysitter.",
+     "opts": [
+      "will work",
+      "worked",
+      "would work"
+     ],
+     "a": "would work",
+     "why": "would + infinitive in the result"
+    },
+    {
+     "t": "choose",
+     "q": "What ___ you do if you were a politician?",
+     "opts": [
+      "would",
+      "will",
+      "did"
+     ],
+     "a": "would",
+     "why": "imaginary situation: would"
+    },
+    {
+     "t": "choose",
+     "q": "I wouldn't take that job if I ___ you.",
+     "opts": [
+      "am",
+      "would be",
+      "were"
+     ],
+     "a": "were",
+     "why": "If I were you is used for advice"
+    },
+    {
+     "t": "choose",
+     "q": "If my brother ___ harder, he could be a lawyer.",
+     "opts": [
+      "studies",
+      "studied",
+      "would study"
+     ],
+     "a": "studied",
+     "why": "past simple after if"
+    },
+    {
+     "t": "choose",
+     "q": "I ___ be a vet if I were afraid of animals.",
+     "opts": [
+      "won't",
+      "wouldn't",
+      "didn't"
+     ],
+     "a": "wouldn't",
+     "why": "imaginary result: wouldn't"
+    },
+    {
+     "t": "choose",
+     "q": "If we ___ in a bigger city, there would be more jobs.",
+     "opts": [
+      "lived",
+      "live",
+      "would live"
+     ],
+     "a": "lived",
+     "why": "past simple after if"
+    },
+    {
+     "t": "choose",
+     "q": "Would you be a firefighter if the job ___ so dangerous?",
+     "opts": [
+      "isn't",
+      "wouldn't be",
+      "wasn't"
+     ],
+     "a": "wasn't",
+     "why": "past simple in the if-clause"
+    },
+    {
+     "t": "choose",
+     "q": "If journalists didn't ask questions, we ___ the truth.",
+     "opts": [
+      "wouldn't know",
+      "won't know",
+      "didn't know"
+     ],
+     "a": "wouldn't know",
+     "why": "wouldn't + infinitive in the result"
+    },
+    {
+     "t": "write",
+     "q": "If I ___ (have) a lot of money, I would open my own hairdresser's.",
+     "a": [
+      "had"
+     ],
+     "why": "past simple after if"
+    },
+    {
+     "t": "write",
+     "q": "If she were a film director, she ___ (make) comedies.",
+     "a": [
+      "would make",
+      "'d make"
+     ],
+     "why": "would + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "He ___ (not be) so tired if he didn't work as a cleaner at night.",
+     "a": [
+      "wouldn't be",
+      "would not be"
+     ],
+     "why": "wouldn't + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "If you ___ (can) have any job in the world, what would you choose?",
+     "a": [
+      "could"
+     ],
+     "why": "the past of can is could"
+    },
+    {
+     "t": "write",
+     "q": "Where ___ (you work) if you were an architect?",
+     "a": [
+      "would you work"
+     ],
+     "why": "question: would + subject + infinitive"
+    },
+    {
+     "t": "write",
+     "q": "If my dad ___ (not be) a pharmacist, he would be a scientist.",
+     "a": [
+      "wasn't",
+      "weren't",
+      "was not",
+      "were not"
+     ],
+     "why": "past simple of be after if"
+    },
+    {
+     "t": "fix",
+     "q": "If I would have more time, I would write a novel.",
+     "a": [
+      "If I had more time, I would write a novel.",
+      "If I had more time, I'd write a novel."
+     ],
+     "why": "no would in the if-clause"
+    },
+    {
+     "t": "fix",
+     "q": "If he was a presenter, he will be on TV every day.",
+     "a": [
+      "If he was a presenter, he would be on TV every day.",
+      "If he were a presenter, he would be on TV every day."
+     ],
+     "why": "imaginary situation: would, not will"
+    },
+    {
+     "t": "fix",
+     "q": "I would to be an artist if I could paint well.",
+     "a": [
+      "I would be an artist if I could paint well.",
+      "I'd be an artist if I could paint well."
+     ],
+     "why": "would + infinitive without to"
+    },
+    {
+     "t": "order",
+     "q": "would / if / a scientist / I / I / be / were good at maths",
+     "a": [
+      "If I were good at maths, I would be a scientist.",
+      "I would be a scientist if I were good at maths."
+     ],
+     "why": "if + past, would + infinitive"
+    },
+    {
+     "t": "order",
+     "q": "you / a blogger / what / write about / would / if / you were",
+     "a": [
+      "What would you write about if you were a blogger?",
+      "If you were a blogger, what would you write about?"
+     ],
+     "why": "would + subject + infinitive in the question"
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "title": "Reported speech",
+   "notes": [
+    "The verb moves one step back: present simple to past simple, present continuous to past continuous, will to would, can to could.",
+    "'I like jazz,' said Ben. Ben said (that) he liked jazz. The word that is optional.",
+    "Pronouns and possessives change: 'I'll call my mum,' said Eva. Eva said she would call her mum.",
+    "say something, but tell somebody something: He said he was tired. He told me he was tired."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "'I like graphic novels,' said Leo. Leo said he ___ graphic novels.",
+     "opts": [
+      "like",
+      "liked",
+      "was liking"
+     ],
+     "a": "liked",
+     "why": "present simple moves back to past simple"
+    },
+    {
+     "t": "choose",
+     "q": "She ___ me that the article was interesting.",
+     "opts": [
+      "said",
+      "told",
+      "spoke"
+     ],
+     "a": "told",
+     "why": "tell + person"
+    },
+    {
+     "t": "choose",
+     "q": "He ___ that he couldn't find the brochure.",
+     "opts": [
+      "told",
+      "talked",
+      "said"
+     ],
+     "a": "said",
+     "why": "say has no person after it"
+    },
+    {
+     "t": "choose",
+     "q": "'We are making a poster,' they said. They said they ___ a poster.",
+     "opts": [
+      "were making",
+      "was making",
+      "make"
+     ],
+     "a": "were making",
+     "why": "present continuous moves back to past continuous"
+    },
+    {
+     "t": "choose",
+     "q": "'I will write you a note,' said Mum. Mum said she ___ write me a note.",
+     "opts": [
+      "did",
+      "could",
+      "would"
+     ],
+     "a": "would",
+     "why": "will changes to would"
+    },
+    {
+     "t": "choose",
+     "q": "'I can speak three languages,' said Eva. Eva said she ___ speak three languages.",
+     "opts": [
+      "could",
+      "would",
+      "could to"
+     ],
+     "a": "could",
+     "why": "can changes to could"
+    },
+    {
+     "t": "choose",
+     "q": "'I love my new e-book,' said Ana. Ana said she loved ___ new e-book.",
+     "opts": [
+      "my",
+      "her",
+      "your"
+     ],
+     "a": "her",
+     "why": "my changes to her"
+    },
+    {
+     "t": "choose",
+     "q": "'We don't read the paper,' they said. They said they ___ the paper.",
+     "opts": [
+      "not read",
+      "weren't read",
+      "didn't read"
+     ],
+     "a": "didn't read",
+     "why": "don't changes to didn't"
+    },
+    {
+     "t": "choose",
+     "q": "My teacher told ___ that my article was very good.",
+     "opts": [
+      "to me",
+      "me",
+      "I"
+     ],
+     "a": "me",
+     "why": "tell + object pronoun, without to"
+    },
+    {
+     "t": "write",
+     "q": "'I work for a newspaper,' said Tom. Tom said he ___ (work) for a newspaper.",
+     "a": [
+      "worked"
+     ],
+     "why": "present simple moves back to past simple"
+    },
+    {
+     "t": "write",
+     "q": "'I am reading a great e-book,' said Sara. Sara said she ___ (read) a great e-book.",
+     "a": [
+      "was reading"
+     ],
+     "why": "am reading moves back to was reading"
+    },
+    {
+     "t": "write",
+     "q": "'We will put up the posters,' they said. They said they ___ (put) up the posters.",
+     "a": [
+      "would put"
+     ],
+     "why": "will changes to would"
+    },
+    {
+     "t": "write",
+     "q": "'I can't see the notice,' said Dan. Dan said he ___ (not can) see the notice.",
+     "a": [
+      "couldn't",
+      "could not"
+     ],
+     "why": "can't changes to couldn't"
+    },
+    {
+     "t": "write",
+     "q": "'I don't want any stickers,' said the boy. The boy said he ___ (not want) any stickers.",
+     "a": [
+      "didn't want",
+      "did not want"
+     ],
+     "why": "don't want moves back to didn't want"
+    },
+    {
+     "t": "write",
+     "q": "'I won't tell anyone,' said Paul. Paul said he ___ (not tell) anyone.",
+     "a": [
+      "wouldn't tell",
+      "would not tell"
+     ],
+     "why": "won't changes to wouldn't"
+    },
+    {
+     "t": "fix",
+     "q": "She said me that the advert was funny.",
+     "a": [
+      "She told me that the advert was funny.",
+      "She said that the advert was funny.",
+      "She said to me that the advert was funny."
+     ],
+     "why": "tell + person, or say without a person"
+    },
+    {
+     "t": "fix",
+     "q": "He said he will send me the article.",
+     "a": [
+      "He said he would send me the article."
+     ],
+     "why": "will changes to would after said"
+    },
+    {
+     "t": "fix",
+     "q": "Marta told that she was writing a note.",
+     "a": [
+      "Marta said that she was writing a note.",
+      "Marta told me that she was writing a note."
+     ],
+     "why": "tell needs a person after it"
+    },
+    {
+     "t": "order",
+     "q": "she / said / the brochure / that / was / my aunt / reading",
+     "a": [
+      "My aunt said that she was reading the brochure."
+     ],
+     "why": "said that + subject + past verb"
+    },
+    {
+     "t": "order",
+     "q": "told / would / us / help / he / the teacher / us",
+     "a": [
+      "The teacher told us he would help us.",
+      "He told us the teacher would help us."
+     ],
+     "why": "told + person + clause with would"
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "title": "Past simple passive",
+   "notes": [
+    "Form: was or were + past participle. The bridge was built in 1900. The windows were broken.",
+    "Negative: wasn't or weren't + participle. Question: Was the thief caught? When were they built?",
+    "Use it when the action is more important than who did it, or when we don't know who did it: My bike was stolen.",
+    "Use by to say who did the action: It was painted by Picasso."
+   ],
+   "items": [
+    {
+     "t": "choose",
+     "q": "The first photograph ___ in 1826.",
+     "opts": [
+      "was taken",
+      "were taken",
+      "was took"
+     ],
+     "a": "was taken",
+     "why": "singular subject: was + participle taken"
+    },
+    {
+     "t": "choose",
+     "q": "These paintings ___ by a teenage artist.",
+     "opts": [
+      "was painted",
+      "painted",
+      "were painted"
+     ],
+     "a": "were painted",
+     "why": "plural subject: were + participle"
+    },
+    {
+     "t": "choose",
+     "q": "___ the film watched by many people?",
+     "opts": [
+      "Did",
+      "Were",
+      "Was"
+     ],
+     "a": "Was",
+     "why": "the film is singular"
+    },
+    {
+     "t": "choose",
+     "q": "My phone ___ stolen. I found it under the sofa.",
+     "opts": [
+      "wasn't",
+      "weren't",
+      "didn't"
+     ],
+     "a": "wasn't",
+     "why": "singular subject: wasn't + participle"
+    },
+    {
+     "t": "choose",
+     "q": "The Mona Lisa was painted ___ Leonardo da Vinci.",
+     "opts": [
+      "from",
+      "by",
+      "for"
+     ],
+     "a": "by",
+     "why": "by shows who did the action"
+    },
+    {
+     "t": "choose",
+     "q": "When ___ these houses built?",
+     "opts": [
+      "was",
+      "did",
+      "were"
+     ],
+     "a": "were",
+     "why": "these houses is plural"
+    },
+    {
+     "t": "choose",
+     "q": "The thief ___ by a neighbour last night.",
+     "opts": [
+      "saw",
+      "was seen",
+      "was saw"
+     ],
+     "a": "was seen",
+     "why": "was + participle seen"
+    },
+    {
+     "t": "choose",
+     "q": "We ___ a hint by the teacher, so the puzzle was easier.",
+     "opts": [
+      "gave",
+      "was given",
+      "were given"
+     ],
+     "a": "were given",
+     "why": "we + were + participle"
+    },
+    {
+     "t": "choose",
+     "q": "'Was the letter sent yesterday?' 'Yes, it ___.'",
+     "opts": [
+      "did",
+      "was",
+      "were"
+     ],
+     "a": "was",
+     "why": "short answers repeat was"
+    },
+    {
+     "t": "write",
+     "q": "This bridge ___ (build) more than two hundred years ago.",
+     "a": [
+      "was built"
+     ],
+     "why": "was + participle built"
+    },
+    {
+     "t": "write",
+     "q": "The windows ___ (break) during the storm last night.",
+     "a": [
+      "were broken"
+     ],
+     "why": "plural subject: were + broken"
+    },
+    {
+     "t": "write",
+     "q": "I ___ (not invite) to the party last Saturday, so I stayed at home.",
+     "a": [
+      "wasn't invited",
+      "was not invited"
+     ],
+     "why": "I + wasn't + participle"
+    },
+    {
+     "t": "write",
+     "q": "The first Harry Potter book ___ (write) in the 1990s.",
+     "a": [
+      "was written"
+     ],
+     "why": "the participle of write is written"
+    },
+    {
+     "t": "write",
+     "q": "Where ___ (the keys find) yesterday? I looked everywhere!",
+     "a": [
+      "were the keys found"
+     ],
+     "why": "question: were + subject + participle"
+    },
+    {
+     "t": "write",
+     "q": "The students ___ (not tell) about the test until Friday morning.",
+     "a": [
+      "weren't told",
+      "were not told"
+     ],
+     "why": "plural subject: weren't + told"
+    },
+    {
+     "t": "fix",
+     "q": "The song was sang by the whole class.",
+     "a": [
+      "The song was sung by the whole class."
+     ],
+     "why": "the participle of sing is sung"
+    },
+    {
+     "t": "fix",
+     "q": "Three people was hurt in the accident.",
+     "a": [
+      "Three people were hurt in the accident."
+     ],
+     "why": "people is plural, so were"
+    },
+    {
+     "t": "fix",
+     "q": "My bike stolen last week.",
+     "a": [
+      "My bike was stolen last week."
+     ],
+     "why": "the passive needs was"
+    },
+    {
+     "t": "order",
+     "q": "in / was / this school / 1985 / opened",
+     "a": [
+      "This school was opened in 1985.",
+      "In 1985 this school was opened."
+     ],
+     "why": "was + participle"
+    },
+    {
+     "t": "order",
+     "q": "were / who / by / taken / these photos",
+     "a": [
+      "Who were these photos taken by?"
+     ],
+     "why": "question word + were + subject + participle"
+    }
+   ]
+  }
+ ]
+}
